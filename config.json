@@ -1,7 +1,6 @@
 {
     "useSideMenu": true,
-    "lineBreaks": "gfm",
-    "additionalFooterText": "<a href="http://www.beian.miit.gov.cn/">蜀ICP备19008711号</a>  © 2020 Glab.online",
-    "anchorCharacter": "&#x2693;",
-    "title": "Lotkb Wiki - GT系列键盘Wiki页面"
+    "additionalFooterText": "<a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2020 Glab.online <br/>",
+    "anchorCharacter": "&#10569;",
+    "title": "GT Wiki - GT系列蓝牙双模键盘wiki"
 }
