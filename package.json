@@ -1,0 +1,5 @@
+{
+    "name": "GT Wiki",
+    "main": "server.js",
+    "description": "基于nw.js的本地测试"
+  }
