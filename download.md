@@ -15,25 +15,18 @@ USB固件及完整蓝牙固件烧录工具
 
 操作系统仅限Winodws，且需高于Windows 7 SP1；
 
----------------
-
-
 蓝牙核心固件
 --------------
 此固件为使用烧录工具进行烧录的蓝牙核心固件
 
-<a href="https://eyun.baidu.com/s/3bpVmTzx" class="button2">百度网盘下载</a>
-
----------------
+<a href="https://eyun.baidu.com/s/3bpVmTzx" class="button2">百度网盘下载</a> <a href="#!down_kbd.md" class="button">官方下载地址</a>
 
 蓝牙DFU升级包
 --------------
 此固件为使用nRF Connect程序通过DFU升级的蓝牙固件
 （老升级方式，旧版本固件仅能使用此方法更新）
 
-<a href="https://eyun.baidu.com/s/3jJpXwG2" class="button2">百度网盘下载</a>
-
----------------
+<a href="https://eyun.baidu.com/s/3jJpXwG2" class="button2">百度网盘下载</a> <a href="#!down_dfu.md" class="button">官方下载地址</a>
 
 USB芯片固件
 --------------
@@ -42,12 +35,9 @@ USB芯片固件
 
 <a href="https://eyun.baidu.com/s/3miXCvES" class="button2">百度网盘下载</a>
 
----------------
-
 配置工具
 --------------
 配置工具本地服务端，必须开启才能配置键盘
-
 
 Windows X64版本（推荐）
 <a href="https://eyun.baidu.com/s/3eSSze1O" class="button2">百度网盘下载</a> <a href="http://glab.online/down/lkb-configurator-setup.exe" class="button">官方下载地址一</a> <a href="http://lotkb.cn/down/lkb-configurator-setup.exe" class="button">官方下载地址二</a>
@@ -57,25 +47,17 @@ Windows X64版本（推荐）
 各系统版本:
 <a href="https://eyun.baidu.com/s/3c3X2Zmw" class="button2">百度网盘下载</a>
 
----------------
-
 CMSIS-DAP烧录工具
 --------------
 主要用于更新整个蓝牙主控，解决疑难问题（慎用），内含蓝牙完整固件
 
 <a href="https://eyun.baidu.com/s/3smnHnI1" class="button2">百度网盘下载</a>
 
----------------
-
-
 nRF Connect
 ----------------
 DFU升级所需手机APP
 
 <a href="http://glab.online/down/nRF.Connect.apk" class="button">nRF Connect(Android)</a>
-
----------------
-
 
 键盘的定位板DXF文件
 --------------
