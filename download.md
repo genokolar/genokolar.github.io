@@ -18,13 +18,14 @@ USB固件及完整蓝牙固件烧录工具
 蓝牙核心固件
 --------------
 此固件为使用烧录工具进行烧录的蓝牙核心固件
+（仅新版硬件支持此方式更新）
 
 <a href="https://eyun.baidu.com/s/3bpVmTzx" class="button2">百度网盘下载</a> <a href="#!down_kbd.md" class="button">官方下载地址</a>
 
 蓝牙DFU升级包
 --------------
 此固件为使用nRF Connect程序通过DFU升级的蓝牙固件
-（老升级方式，旧版本固件仅能使用此方法更新）
+（新老硬件均支持此方式更新）
 
 <a href="https://eyun.baidu.com/s/3jJpXwG2" class="button2">百度网盘下载</a> <a href="#!down_dfu.md" class="button">官方下载地址</a>
 
@@ -49,7 +50,7 @@ Windows X64版本（推荐）
 
 CMSIS-DAP烧录工具
 --------------
-主要用于更新整个蓝牙主控，解决疑难问题（慎用），内含蓝牙完整固件
+可更新整个蓝牙主控，可作为修复键盘故障
 
 <a href="https://eyun.baidu.com/s/3smnHnI1" class="button2">百度网盘下载</a>
 
