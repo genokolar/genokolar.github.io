@@ -1,5 +1,15 @@
 {
-    "name": "GT Wiki",
-    "main": "server.js",
-    "description": "基于nw.js的本地测试"
+  "name": "GT Wiki",
+  "main": "server.js",
+  "description": "基于nw.js的本地测试",
+  "window": {
+    "title": "GT Wiki",
+    "toolbar": true,
+    "frame": true,
+    "width": 1280,
+    "height": 800
+  },
+  "webkit": {
+    "plugin": true
   }
+}
