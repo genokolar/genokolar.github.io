@@ -30,5 +30,4 @@ GT BLE60 rev.F 键盘
 下载
 ---------
 
-
-[更多下载](../download.md) 
+[相关下载](../download.md) 

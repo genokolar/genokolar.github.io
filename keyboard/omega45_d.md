@@ -28,16 +28,5 @@ Omega45 Rev.D 介绍
 - 蓝牙连接状态下，指示灯5秒后自动熄灭（可自定义常亮时长）
 - 蓝牙广播30秒后未连接自动熄灭。
 
-固件下载
----------
 
-2021-01-02新固件
-
-优化了指示灯功能
-完善轴灯和指示灯切换
-指示灯省电模式关闭PWM
-修正TRICKY_L与Command L冲突的问题
-
-<a href="http://glab.online/down/omega45/d/Omega45-d-nrf52_kbd_sign.hex" class="button">蓝牙核心固件</a>
-
-[更多下载](../download.md) 
+[相关下载](../download.md) 
