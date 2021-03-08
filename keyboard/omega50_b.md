@@ -14,7 +14,7 @@ Omega50 Rev.B 介绍
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：247.7mm×95.3mm
 
-![](../img/omega50.jpg "Omega50 PCB")
+![](../img/omega50-b.jpg "Omega50 PCB")
 
 指示灯说明
 ----------
