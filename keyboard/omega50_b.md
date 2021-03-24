@@ -37,4 +37,6 @@ Omega50 Rev.B 介绍
 ![](../img/rotary.png "按键示意图")
 
 
-[相关下载](../download.md) 
+## 更多下载
+
+<a href="down/download.md" class="button2">固件及工具等下载</a>

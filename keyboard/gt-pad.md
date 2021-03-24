@@ -42,8 +42,7 @@ GT PAD 标准数字小键盘
 
 ![](../img/padkey.png "控制按键示意")
 
-开源下载
----------
+## 开源下载
 
 提供PCB制造文件、定位板制造文件、外壳3D图纸等硬件开源文件。可自行下载进行PCB制造或外壳打印、CNC。
 
@@ -51,4 +50,6 @@ GT PAD 标准数字小键盘
 
 <a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
 
-[更多下载](../download.md) 
+## 更多下载
+
+<a href="down/download.md" class="button2">固件及工具等下载</a>

@@ -35,7 +35,6 @@ GT BLE60 rev.F 键盘
 
 ![](../img/rotary.png "按键示意图")
 
-下载
----------
+## 更多下载
 
-[相关下载](../download.md) 
+<a href="down/download.md" class="button2">固件及工具等下载</a>

@@ -30,4 +30,6 @@ Omega45 Rev.D 介绍
 - 蓝牙广播30秒后未连接自动熄灭。
 
 
-[相关下载](../download.md) 
+## 更多下载
+
+<a href="down/download.md" class="button2">固件及工具等下载</a>
