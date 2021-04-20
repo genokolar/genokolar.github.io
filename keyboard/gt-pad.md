@@ -63,4 +63,4 @@ RGB轴灯默认作为指示灯，可通过 <kbd>RGB功能</kbd> 在指示灯模�
 
 ## 更多下载
 
-<a href="down/download.md" class="button2">固件及工具等下载</a>
+<a href="../down/download.md" class="button2">固件及工具等下载</a>
