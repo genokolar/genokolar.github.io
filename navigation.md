@@ -33,6 +33,7 @@
   * [BLE60 rev.F](keyboard/gt_ble60_f.md)
   * [Farad69 rev.C](keyboard/farad69_c.md)
   * [Omega45 rev.D](keyboard/omega45_d.md)
+  * [Omega45 rev.E](keyboard/omega45_e.md)
   * [Omega50 rev.B](keyboard/omega50_b.md)
   * [GT PAD](keyboard/gt-pad.md)
 
