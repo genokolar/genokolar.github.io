@@ -36,6 +36,8 @@
   * [Omega45 rev.E](keyboard/omega45_e.md)
   * [Omega50 rev.B](keyboard/omega50_b.md)
   * [GT PAD](keyboard/gt-pad.md)
+  * [GT Planck](keyboard/gt-planck.md)
+
 
 [链接]()
 
