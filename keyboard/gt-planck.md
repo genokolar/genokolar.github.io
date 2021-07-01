@@ -14,6 +14,8 @@ GT Planck 40%的键盘
 
 采用了LESS IO 方式实现键盘矩阵，所以矩阵实际使用IO口为8个，最多可支持56键
 
+![](../img/gt-planck.png "GT Planck PCB")
+
 ## 指示灯说明
 
 Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
@@ -25,9 +27,6 @@ Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
 由于Planck采用了LESS IO方式实现键盘矩阵，所以无法实现任意键唤醒。
 
 键盘休眠后，只能使用第一颗按键唤醒键盘 或 插入USB线唤醒键盘。
-
-
-![](../img/gt-planck.png "GT Planck PCB")
 
 ## 更多下载
 
