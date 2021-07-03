@@ -28,6 +28,10 @@ Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
 
 键盘休眠后，只能使用第一颗按键唤醒键盘 或 插入USB线唤醒键盘。
 
-## 更多下载
+## 固件下载
 
-<a href="../down/download.md" class="button2">固件及工具等下载</a>
+USB固件无需更新，不提供下载
+
+<a href="http://glab.online/down/planck40a/gt_planck40a_20210703_nrf52_kbd_sign.hex" class="button2">20210703蓝牙核心固件</a>
+
+<a href="http://glab.online/down/planck40a/gt_planck40a_20210703_nrf52_all.hex" class="button2">20210703蓝牙完整固件</a>
