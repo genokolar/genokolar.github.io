@@ -42,6 +42,14 @@ RGB轴灯默认作为指示灯，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<k
 
 轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
+## 如何启用旋钮编码器
+
+只需要将旋钮编码器焊接到ESC位置，然后接入配置工具，找到键盘设置--布局配置--编码器选项，将按键更改成编码器。
+
+顶部出现的两颗按钮就是旋转功能，下面第一颗按键，就是旋钮按键功能。
+
+![](../img/rotary.png "按键示意图")
+
 ## 固件下载
 
 USB固件无需更新，不提供下载
