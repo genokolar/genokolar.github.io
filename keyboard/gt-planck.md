@@ -32,6 +32,6 @@ Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
 
 USB固件无需更新，不提供下载
 
-<a href="http://glab.online/down/planck40a/gt_planck40a_20210703_nrf52_kbd_sign.hex" class="button2">20210703蓝牙核心固件</a>
+<a href="http://glab.online/down/sdk17/gt_planck40a_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
 
-<a href="http://glab.online/down/planck40a/gt_planck40a_20210703_nrf52_all.hex" class="button2">20210703蓝牙完整固件</a>
+<a href="../down/download.md" class="button2">工具等下载</a>

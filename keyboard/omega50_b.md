@@ -48,6 +48,11 @@ RGB轴灯默认作为指示灯，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<k
 ![](../img/rotary.png "按键示意图")
 
 
-## 更多下载
+## 固件下载
 
-<a href="../down/download.md" class="button2">固件及工具等下载</a>
+注:USB固件无需更新，不提供下载. 
+本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于SDK15.3的固件混用。
+
+<a href="http://glab.online/down/sdk17/omega50b_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
+
+<a href="../down/download.md" class="button2">工具等下载</a>
