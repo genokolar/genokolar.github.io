@@ -67,6 +67,10 @@ RGB轴灯默认作为指示灯，可通过 <kbd>RGB功能</kbd> 在指示灯模�
 
 <a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
 
-## 更多下载
+## 固件下载
 
-<a href="../down/download.md" class="button2">固件及工具等下载</a>
+注:本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。
+
+<a href="http://glab.online/down/sdk17/gt_pad_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
+
+<a href="../down/download.md" class="button2">工具等下载</a>

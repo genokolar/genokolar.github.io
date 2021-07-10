@@ -50,7 +50,7 @@ RGB轴灯默认作为指示灯，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<k
 ## 固件下载
 
 注:USB固件无需更新，不提供下载. 
-本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于SDK15.3的固件混用。
+本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。
 
 <a href="http://glab.online/down/sdk17/farad69c_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
 
