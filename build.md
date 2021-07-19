@@ -34,6 +34,8 @@ LotKB固件编译指南
 
 下载并安装`Msys2`  [下载Msys2](https://sourceforge.net/projects/msys2/files/latest/download)
 
+为方便大家建立Windows下编译环境，你也可以访问：https://gitee.com/genokolar/nrf52_keyboard_compile_tools 根据说明文档快速建立Windows编译环境。
+
 
 下载SDK
 ------------
@@ -43,12 +45,14 @@ LotKB固件编译指南
    wget http://developer.nordicsemi.com/nRF5_SDK/nRF5_SDK_v15.x.x/nRF5_SDK_15.3.0_59ac345.zip
    unzip -q nRF5_SDK_15.3.0_59ac345.zip
 ```
+注明: 本站采用源码为 ：https://gitee.com/genokolar/nrf52-keyboard 无需单独下载SDK
 
 克隆源码并准备源码
 ------------
 
 ```bash
    git clone https://github.com/Lotlab/nrf52-keyboard # 克隆源码
+
    cd nrf52-keyboard
 
    # Linux 下修改这个
@@ -61,6 +65,8 @@ LotKB固件编译指南
 
    # 将解压的nrf sdk复制到源码的SDK目录下，形成类似于SDK/components, SDK/config 的目录结构
 ```
+注明: 本站采用源码为 ：https://gitee.com/genokolar/nrf52-keyboard
+
 测试编译
 ------------
 
