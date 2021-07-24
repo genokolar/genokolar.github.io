@@ -2,7 +2,7 @@
 键盘使用说明
 =====================
 
-注: 本页面最后修改时间2021-04-27。更多键盘专有说明可以访问键盘产品页面
+注: 本页面最后修改时间2021-07-24。更多键盘专有说明可以访问键盘产品页面
 
 相关概念
 -----
@@ -90,7 +90,7 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 
 轴灯版无独立的指示灯，默认采用轴灯作为指示，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
-轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
+要控制轴灯，请先切换到轴灯模式。轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
 
 功能按键说明
@@ -112,8 +112,8 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 | 启动按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按启动按键，可任意键唤醒。|
 | 切换启动按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`启动按键`功能。<br> 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
 | 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 休眠或关机后唤醒自动恢复第1层为默认层|
-|RGB调整颜色| <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
-| RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | 在32种灯效之间循环，包括长亮、呼吸、多彩变换、贪吃蛇、彩虹、圣诞等|
+|RGB调整颜色| <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版为控制轴灯；非轴灯版为控制底灯</br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
+| RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | 轴灯版为控制轴灯：在常亮、呼吸、多彩变换之间循环</br>非轴灯版为控制底灯：在32种灯效之间循环，包括常亮、呼吸、多彩变换、贪吃蛇、彩虹、圣诞等|
 | RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>       | 切换RGB灯的开关。|
 
 注: 默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过在线编译选择<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
