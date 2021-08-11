@@ -1,12 +1,9 @@
 # GT WiKi
 
 [使用说明](manual.md)
-[配置按键](configurator.md)
-[固件更新](upgrade.md)
 [相关下载](down/download.md)
-[更新日志](changelog.md)
 
-[文档]()
+[更多文档]()
 
   * # 基本
   * [产品初识](introduce.md)
@@ -27,7 +24,7 @@
   * [轴体类型](knowledge/axisswitch.md)
   * [组装键盘](https://glab.online/archives/502)
 
-[产品]()
+[产品页面]()
 
   * # 轴灯版
   * [BLE60 rev.F](keyboard/gt_ble60_f.md)
@@ -39,7 +36,7 @@
   * [GT Planck](keyboard/gt-planck.md)
 
 
-[链接]()
+[更多链接]()
 
   * [官方网站](http://glab.online)
   * [配置工具](http://keyboard.lotlab.org/)
@@ -47,4 +44,4 @@
   * [开源代码](https://github.com/Lotlab/nrf52-keyboard)
   * [淘宝商店](http://shop.glab.online/)
 
-[gimmick:themechooser](主题)
+[gimmick:themechooser](更换主题)
