@@ -20,16 +20,19 @@
 
 注: 仅新的硬件支持`线刷`，部分PCB可能需要你更新USB固件以启用此功能。 [如何确认PCB支持线刷？](faq.md#如何确认PCB支持线刷)
 
-1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup.exe)，并安装。
-2. 下载键盘对应的 [蓝牙核心固件](https://eyun.baidu.com/s/3bpVmTzx) 
+1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup_1.2.1.1.exe)，并安装。
+2. 下载键盘对应的 `蓝牙核心固件` 或 `蓝牙完整固件` 
 3. 打开烧录工具`wch_nrf_burner.exe`。
-4. 直接通过USB连接键盘。刷新当前设备列表，并下拉选择连接的键盘。
+4. 直接通过USB连接键盘。
+   - 选择配置文件，一般为`nRF52系列(CH552)`
+   - 刷新当前设备列表，并下拉选择连接的键盘。
    - 选择设备列表中`Lotlab Configurator` 或 `CMSIS-DAP` 选项。
 5. 在“蓝牙固件”栏选择你第2步下载的蓝牙核心固件
 6. 点击烧录按钮，等待烧录完成即可。
 7. 如传输出错导致更新失败，重新刷新即可。
 
-警告: 请勿勾选"烧录时擦除蓝牙固件"，勾选会导致Bootloader、SD协议栈丢失，必须刷写[蓝牙完整固件](https://eyun.baidu.com/s/3ghoXQDX)才能修复。
+警告: 刷写`蓝牙核心固件`时，请勿勾选"烧录时擦除蓝牙固件"，勾选会导致Bootloader、SD协议栈丢失，键盘不可用
+      刷写`蓝牙完整固件`时
       当前蓝牙固件在逐步更新到SDK17.0.2，请勿将nRF SDK15.3的固件与nRF SDK17.0.2的固件混用，两者间切换需要刷写蓝牙完整固件进行切换。
 
 #### DFU升级方式
@@ -55,6 +58,8 @@
 -----------
 
 警告: **刷入不正确的USB固件可能使你的键盘的USB功能工作不正常！** 请在更新前确认升级包是由可信的人员提供的。
+
+注: 因USB固件基本不需要更新，现在USB固件不再提供下载，如确需下载的请[联系我们](introduce.md#联系我们)。
    
 1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup.exe)，并安装。
 2. 打开烧录工具`wch_nrf_burner.exe`。
