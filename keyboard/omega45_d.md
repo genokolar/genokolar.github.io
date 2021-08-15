@@ -46,7 +46,7 @@ Omega45 Rev.D 介绍
 注:USB固件无需更新，不提供下载. 
 本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。
 
-<a href="http://glab.online/down/sdk17/omega45d_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
+<a href="http://glab.online/down/sdk17/Omega45-d-20210815-nrf52-all.hex" class="button">20210815蓝牙完整固件</a>
 
 
 

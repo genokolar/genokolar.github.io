@@ -56,6 +56,6 @@ Omega45 Rev.E 介绍
 
 USB固件无需更新，不提供下载
 
-<a href="http://glab.online/down/sdk17/omega45e_20210710_nrf52_all.hex" class="button">20210710蓝牙完整固件</a>
+<a href="http://glab.online/down/sdk17/Omega45-e-20210815-nrf52-all.hex" class="button">20210815蓝牙完整固件</a>
 
 <a href="../down/download.md" class="button2">工具等下载</a>
