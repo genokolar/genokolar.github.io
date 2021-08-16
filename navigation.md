@@ -41,7 +41,8 @@
   * [官方网站](http://glab.online)
   * [配置工具](http://keyboard.lotlab.org/)
   * [按键检测](http://glab.online/keytest)
-  * [开源代码](https://github.com/Lotlab/nrf52-keyboard)
+  * [开源代码](https://github.com/genokolar/nrf52-keyboard)
   * [淘宝商店](http://shop.glab.online/)
 
 [gimmick:themechooser](更换主题)
+[gimmick:ForkMeOnGitHub](https://github.com/genokolar/nrf52-keyboard)
