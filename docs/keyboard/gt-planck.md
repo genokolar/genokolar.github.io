@@ -48,7 +48,8 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 ## 固件下载
 
-注: Planck使用nRF52832或nRF52811芯片，请注意区分（查看模块标识）
+!!! tip
+    Planck使用nRF52832或nRF52811芯片，请注意区分（查看模块标识）
 
 <a href="http://glab.online/down/sdk17/gt-planck-a-20210815-nrf52832-all.hex" class="button">蓝牙完整固件:芯片nRF52832.20210815</a>
 

@@ -2,7 +2,8 @@
 键盘使用说明
 =====================
 
-注: 本页面最后修改时间2021-08-10，主要是总体的一个使用说明，更多键盘专有说明可以访问键盘产品页面查阅
+!!! tip
+    本页面最后修改时间2021-08-10，主要是总体的一个使用说明，更多键盘专有说明可以访问键盘产品页面查阅
 
 相关概念
 -----
@@ -118,7 +119,8 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 | RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | 轴灯版（轴灯模式下）为控制轴灯：在常亮、呼吸、多彩变换之间循环</br>非轴灯版为控制底灯：在32种灯效之间循环，包括常亮、呼吸、多彩变换、贪吃蛇、彩虹、圣诞等|
 | RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | 轴灯版（轴灯模式下）为轴灯开关</br>非轴灯版为RGB底灯开关|
 
-注: 默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过在线编译选择<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
+!!! tip
+    默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过在线编译选择<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
 
 <span id="绑定设备">绑定设备</span>
 -----
@@ -138,7 +140,8 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 
 - 5、通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的蓝牙通道，可在多个绑定设备之间切换。
 
-注: 上述切换蓝牙通道及开启蓝牙广播等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 按键进行操作
+!!! tip
+    上述切换蓝牙通道及开启蓝牙广播等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 按键进行操作
 
 #### 更换绑定
 
@@ -152,7 +155,8 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 
 - 4、在需要绑定键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将新的设备绑定到键盘W键（蓝牙通道二）上；
 
-注: 上述切换蓝牙通道及删除绑定设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT解除绑定</kbd> 按键进行操作
+!!! tip
+    上述切换蓝牙通道及删除绑定设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT解除绑定</kbd> 按键进行操作
 
 
 状态提示灯说明
@@ -193,4 +197,5 @@ GT系列蓝牙键盘轴灯版默认采用轴灯作为指示，不同颜色代表
 关闭轴灯状态，1000mah电池可使用约100天。
 开启轴灯后耗电量非常大，仅可使用约2-3天。
 
-注: 更多键盘专有说明可以访问键盘产品页面
+!!! tip
+    更多键盘专有说明可以访问键盘产品页面
