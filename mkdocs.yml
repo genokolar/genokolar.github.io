@@ -1,5 +1,5 @@
 site_name: GT WiKi
-site_url: https://docs.glab.online/
+site_url: https://wiki.glab.online/
 site_description: Glab LotKB Wiki文档站点.
 site_author: Geno
 repo_name: Genokolar/nrf52-keyboard
@@ -28,9 +28,9 @@ theme:
     # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
-    - search.highlight
+    # - search.highlight
     - search.share
-    - search.suggest
+    # - search.suggest
     # - toc.integrate
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -55,7 +55,8 @@ theme:
 
 
 plugins:
-    - search
+    - search:
+        prebuild_index: true
 
 # Extensions
 markdown_extensions:
