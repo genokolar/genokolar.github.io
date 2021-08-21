@@ -2,81 +2,6 @@
 让我们开始阅读文档
 =====================
 
-<div class="text-center">
-<a href="getting-started/" class="btn btn-primary" role="button">Getting Started</a>
-<a href="user-guide/" class="btn btn-primary" role="button">User Guide</a>
-</div>
-
-<div class="jumbotron">
-<h2 class="display-4 text-center">Features</h2>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Great themes available</h3>
-        <p class="card-text">
-            There's a stack of good looking <a
-            href="user-guide/choosing-your-theme">themes</a> available for
-            MkDocs. Choose between the built in themes: <a
-            href="user-guide/choosing-your-theme/#mkdocs">mkdocs</a> and <a
-            href="user-guide/choosing-your-theme/#readthedocs">readthedocs</a>,
-            select one of the third-party themes listed on the <a
-            href="">MkDocs Themes</a> wiki page, or <a href="">build your
-            own</a>.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Easy to customize</h3>
-        <p class="card-text">
-            Get your project documentation looking just the way you want it by
-            <a href="user-guide/customizing-your-theme/">customizing your
-            theme</a> and/or installing some <a
-            href="user-guide/configuration/#plugins">plugins</a>. Modify
-            Markdown's behavior with <a
-            href="user-guide/configuration/#markdown_extensions">Markdown
-            extensions</a>. Many <a
-            href="user-guide/configuration/">configuration options</a> are
-            available.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Preview your site as you work</h3>
-        <p class="card-text">
-            The built-in dev-server allows you to preview your documentation
-            as you're writing it. It will even auto-reload and refresh your
-            browser whenever you save your changes.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Host anywhere</h3>
-        <p class="card-text">
-            MkDocs builds completely static HTML sites that you can host on
-            GitHub pages, Amazon S3, or <a
-            href="user-guide/deploying-your-docs/">anywhere</a> else you
-            choose.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
 公告
 ------
 
@@ -84,7 +9,7 @@
 
 📢 基于nRF SDK17.0.2的固件不能与基于nRF SDK15.3的固件混用，如需两者间切换，请刷写蓝牙完整固件进行切换。
 
-📢 因USB无需更新，USB固件不再提供下载，如确需下载的请[联系我们](introduce.md#联系我们)。
+📢 因USB无需更新，USB固件不再提供下载，如确需下载的请[联系我们](index.md#联系我们)。
 
 📢 受缺芯潮影响，部分PCB已经断货。
 
@@ -144,7 +69,7 @@ GT系列蓝牙双模键盘采用的低功耗蓝牙：Bluetooth Low Energy 5.0，
 操作系统方面广泛支持Windows、Linux、Mac OS，也支持Android及iOS，但由于采用的较新的协议，需要较新的系统才能支持。如： iOS 6以上；Android 4.3以上；Windows 8.1以上；Windows Phone 8.1；较新的Mac os
 
 
-联系我们
+<span id="联系我们">联系我们</span>
 ----------------
 
 QQ交流群：38491793

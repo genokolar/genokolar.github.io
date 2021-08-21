@@ -6,7 +6,7 @@
 [更多文档]()
 
   * # 基本
-  * [产品初识](introduce.md)
+  * [产品初识](index.md)
   * [使用说明](manual.md)
   * [常见问答](faq.md)
   * [故障排除](trouble.md)

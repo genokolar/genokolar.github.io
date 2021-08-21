@@ -62,7 +62,7 @@
 
 警告: **刷入不正确的USB固件可能使你的键盘的USB功能工作不正常！** 请在更新前确认升级包是由可信的人员提供的。
 
-注: 因USB固件基本不需要更新，现在USB固件不再提供下载，如确需下载的请[联系我们](introduce.md#联系我们)。
+注: 因USB固件基本不需要更新，现在USB固件不再提供下载，如确需下载的请[联系我们](index.md#联系我们)。
    
 1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup.exe)，并安装。
 2. 打开烧录工具`wch_nrf_burner.exe`。
