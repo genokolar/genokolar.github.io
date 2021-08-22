@@ -3,7 +3,7 @@
 =====================
 
 !!! tip
-    本页面最后修改时间2021-08-10，主要是总体的一个使用说明，更多键盘专有说明可以访问键盘产品页面查阅
+    本页面最后修改时间2021-08-22，主要是总体的一个使用说明，更多键盘专有说明可以访问键盘产品页面查阅
 
 相关概念
 -----
@@ -120,7 +120,7 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 | RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | 轴灯版（轴灯模式下）为轴灯开关</br>非轴灯版为RGB底灯开关|
 
 !!! tip
-    默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过在线编译选择<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
+    默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过自行编译更改<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>等做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
 
 <span id="绑定设备">绑定设备</span>
 -----
