@@ -51,11 +51,7 @@ Farad69 rev.C 键盘
 
 ## 固件下载
 
-!!! tip  "提示"
-    
-    USB固件无需更新，不提供下载. 
-
-    本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。
+!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。"
 
 [:fontawesome-solid-download:  20210822蓝牙完整固件](http://glab.online/down/sdk17/farad69-c-nrf52_all-20210822-1fd66bc.hex){ .md-button}
 

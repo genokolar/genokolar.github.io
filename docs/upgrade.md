@@ -88,7 +88,7 @@
 
 === "文字说明"
 
-    1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup.exe)，并安装。
+    1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup_1.2.1.1.exe)，并安装。
     2. 打开烧录工具`wch_nrf_burner.exe`。
     3. 如已经刷入2020年8月16日后的USB固件：
         - 直接通过USB连接键盘。刷新当前设备列表，并下拉选择连接的键盘。
