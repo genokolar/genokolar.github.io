@@ -75,6 +75,6 @@ GT PAD 标准数字小键盘
     
     本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。
 
-[:fontawesome-solid-download:  20210815蓝牙完整固件](http://glab.online/down/sdk17/gt-ble60-f-20210815-nrf52-all.hex){ .md-button}
+[:fontawesome-solid-download:  20210822蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-a-nrf52_all-20210822-1fd66bc.hex){ .md-button}
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
