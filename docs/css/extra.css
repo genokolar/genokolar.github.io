@@ -1,88 +1,28 @@
-div.col-md-9 h1:first-of-type {
-    text-align: center;
-    font-size: 60px;
-    font-weight: 300;
-}
+        .button {
+            border-color: #00a6f2;
+            background-color: #00a6f2;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 2px;
+            padding: 6px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
-div.col-md-9>p:first-of-type {
-    text-align: center;
-}
+        .button:hover {
+            background-color:#def5ff;
+            border-color: #00a6f2;
+        }
 
-div.col-md-9 p.admonition-title:first-of-type {
-    text-align: left;
-}
+        a.button:hover {
+            color: #243e4b;
+            font-weight: 400;
+        }
 
-div.col-md-9 h1:first-of-type .headerlink {
-    display: none;
-}
-
-code.no-highlight {
-    color: black;
-}
-
-/* Definition List styles */
-
-dd {
-    padding-left: 20px;
-}
-
-/* Homepage */
-
-body.homepage div.jumbotron {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 0;
-}
-
-body.homepage div.jumbotron div.card {
-    margin-bottom: 2rem;
-}
-
-body.homepage>div.container>div.row>div.col-md-3 {
-    display: none;
-}
-
-body.homepage>div.container>div.row>div.col-md-9 {
-    margin-left: 0;
-    flex: 0 0 100%;
-    max-width: 100%;
-}
-
-kbd {
-    border: 1px;
-    border-color: #d2d2d2;
-    border-style: solid;
-    border-radius: .3em;
-    color: #444444;
-    background: #f2f2f2;
-    letter-spacing: 1px;
-    padding: 0.1em 0.2em .12em;
-}
-
-.button2 {
-    background-color: #c7f4ff;
-    border-top-left-radius:8px;
-    border-bottom-right-radius:8px;
-    border: none;
-    padding: 6px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.button {
-    background-color: #ffe0eb;
-    border-top-left-radius:8px;
-    border-bottom-right-radius:8px;
-    border: none;
-    padding: 6px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+        a.button {
+            color: #FFF;
+        }

@@ -44,7 +44,7 @@ theme:
         icon: material/weather-sunny
         name: 切换到深色模式
       primary: 'Light blue'
-      accent: 'blue'
+      accent: 'Light blue'
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
