@@ -116,7 +116,7 @@ nav:
       - 使用说明: manual.md
       - 常见问答: faq.md
       - 故障排除: trouble.md
-      - 配置按键: configurator.md
+      - 配置键盘: configurator.md
       - 固件更新: upgrade.md
     - 开发指南:
       - 编译指南: build.md
