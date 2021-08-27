@@ -40,6 +40,8 @@
 
 === "USB固件"
 
+    ??? danger "警示: 出厂后一般不需要更新USB固件,非必要请勿更新USB"
+    
     | 键盘        | 说明          | 下载地址 |
     | ------------| --            |---- |
     | Farad69 Rev.A     | 较老的版本        |<a href="http://lotkb.cn/down/ch554/farad69-a-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/farad69-a-ch554.bin" class="button">下载地址二</a> |
