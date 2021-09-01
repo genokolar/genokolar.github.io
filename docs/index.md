@@ -46,15 +46,15 @@ GT系列蓝牙键盘特点
     - 全键自定义，支持多平台更新配置按键，按键设定想怎么改怎么改。
     - 按键自定义功能丰富，最高8层按键，可自定义宏，支持全键无冲
     - 支持旋钮、OLED屏幕、RGB底灯、RGB轴灯
-    - 固件开源并不断更新完善。
+    - 固件开源并不断更新完善,可自行编译固件
 
 ??? faq "LotKB是什么？"
 
-    LotKB是[Jim](https://lotlab.org/)开发的一个基于nRF52芯片的蓝牙键盘的固件。
+    LotKB是[Jim Kirisame](https://github.com/jim-kirisame/)开发的一个基于nRF52芯片的蓝牙键盘的固件。
 
-    硬件上采用nRF52系列蓝牙主控（nrf52810或nrf52832）+ CH552 USB单片机芯片的组合，实现蓝牙与USB双模，使用了nRF SDK 15.3作为底层硬件驱动，并使用TMK键盘库作为键盘功能的上部实现。
+    硬件上采用蓝牙SoC（nRF52810/nRF52811/nRF52832）+USB MCU(CH552/CH554)的组合，实现蓝牙与USB双模，使用了nRF SDK 15.3/17.0.2作为底层硬件驱动，并使用TMK键盘库作为键盘功能的上部实现。
 
-    LotKB是一个开源项目，其软件源码与硬件设计都是开源的，您可以从github上获得。
+    LotKB是一个开源项目，其软件源码与硬件设计都是开源的，您可以从[Github](https://github.com/genokolar/nrf52-keyboard)上获得。
 
 蓝牙兼容性说明
 -----
