@@ -8,11 +8,17 @@
     📢基于nRF SDK17.0.2的固件，请进入对应产品页面进行下载
     ??? faq "当前固件名称命令规则?"
 
-        型号-子型号-固件类型-编译日期-固件版本.文件类型 
-
         如：Omega50-b-nrf52_kbd_sign-20210817-e35fd41.hex 
 
-        型号为Omega84，子型号为B版本，固件类型为nrf_kbd_sign(蓝牙核心固件，已签名），编译日期为20210817，固件版本为e35fd41，文件类型为hex二进制文件 
+        依次为：型号-子型号-固件类型-编译日期-固件版本.文件类型 
+
+        上面文件命名代表：
+        
+        型号：Omega50，子型号：B版本，固件类型：nrf_kbd_sign，编译日期：20210817，固件版本：e35fd41，文件类型：hex
+
+        其中固件类型说明： 
+        
+        nrf52_kbd_sign ：已签名蓝牙核心固件；nrf52_all : 蓝牙完整固件；nrf52_dfu ：DFU升级包；ch554 ：USB固件
 
     | 下载内容       | 说明          | 下载地址 |
     | ------------|  ------------| ------------ |
@@ -40,7 +46,9 @@
 
 === "USB固件"
 
-    !!! danger "警示: 出厂后一般不需要更新USB固件,非必要请勿更新USB"
+    !!! danger "警示"
+        出厂后一般不需要更新USB固件,非必要请勿更新USB
+        针对老款键盘我们提供了USB固件下载，新版键盘无需更新USB，不提USB下载
     
     | 键盘        | 说明          | 下载地址 |
     | ------------| --            |---- |
@@ -49,10 +57,7 @@
     | Omega64 Rev.A & B     | 左移64与非左移64均采用同一个固件        |<a href="http://lotkb.cn/down/ch554/Omega64-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega64-ch554.bin" class="button">下载地址二</a> |
     | GT BLE60 Rev.D     | 老旧版，支持焊接轴体        |<a href="http://lotkb.cn/down/ch554/gt-ble60-d-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/gt-ble60-d-ch554.bin" class="button">下载地址二</a> |
     | GT BLE60 Rev.E     | 不支持轴灯的版本        |<a href="http://lotkb.cn/down/ch554/gt-ble60-e-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/gt-ble60-e-ch554.bin" class="button">下载地址二</a> |
-    | GT BLE60 Rev.F     | 轴灯版本        |<a href="http://lotkb.cn/down/ch554/gt-ble60-f-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/gt-ble60-f-ch554.bin" class="button">下载地址二</a> |
     | Omega50 Rev.A    | 不支持轴灯的版本      |<a href="http://lotkb.cn/down/ch554/Omega50-a-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega50-a-ch554.bin" class="button">下载地址二</a> |
-    | Omega50 Rev.B    | 轴灯版本      |<a href="http://lotkb.cn/down/ch554/Omega50-b-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega50-b-ch554.bin" class="button">下载地址二</a> |
     | Omega84    | 当前仅一个版本        |<a href="http://lotkb.cn/down/ch554/Omega84-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega84-ch554.bin" class="button">下载地址二</a> |
     | Omega45 Rev.C    | 不支持轴灯的版本        |<a href="http://lotkb.cn/down/ch554/Omega45-c-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega45-c-ch554.bin" class="button">下载地址二</a> |
-    | Omega45 Rev.D    | 轴灯版本        |<a href="http://lotkb.cn/down/ch554/Omega45-d-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/Omega45-d-ch554.bin" class="button">下载地址二</a>|
     | GT PAD Rev.A    | 标准数字小键盘        |<a href="http://lotkb.cn/down/ch554/gt-pad-a-ch554.bin" class="button">下载地址一</a><br><a href="http://glab.online/down/ch554/gt-pad-a-ch554.bin" class="button">下载地址二</a> |

@@ -43,7 +43,7 @@ Omega45 Rev.D 介绍
 
 ## 固件下载
 
-!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.0.2 不能与基于nRF SDK15.3的固件混用。"
+!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.0.2    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
 
 [:fontawesome-solid-download:  20210822蓝牙完整固件](http://glab.online/down/sdk17/Omega45-d-nrf52_all-20210822-1fd66bc.hex){ .md-button}
 
