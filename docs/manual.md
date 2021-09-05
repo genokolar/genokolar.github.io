@@ -2,7 +2,7 @@
 键盘使用说明
 =====================
 
-!!! tip "本页面最后修改时间2021-09-04"
+!!! tip "本页面最后修改时间2021-09-05"
 
 相关概念
 -----
@@ -79,8 +79,8 @@ USB连接状态下，通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd
 默认不启用`启动按键`功能，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>启用或禁用。
 
 ### DFU 模式
-!!! tip 
-    采用nRF52811芯片的键盘不支持DFU模式
+!!! tip "说明"
+    采用nRF52811芯片的键盘,由于空间不足不支持DFU模式，请采用线刷方式更新固件
 
 DFU模式为键盘内置的蓝牙刷机模式，在通过手机nRF Connect程序升级时，必须先进入DFU模式。
 
@@ -103,8 +103,14 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 要控制轴灯，请先切换到轴灯模式。轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
 
-功能按键说明
+系统功能按键说明
 -----
+???+ tip "特别提示"
+    - 默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键
+    - 可以通过自行编译固件使用<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>等做为触发按键。
+    - 更改后下表所列功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
+    - 系统功能按键为内置功能，不因修改了按键而消失，只要您确保<kbd>LShift</kbd>/<kbd>RShift</kbd>等功能触发按键存在即可使用
+    - PAD数字键盘，没有<kbd>Shift</kbd>等按键,下列功能按键可以通过配置工具进行设定。
 
 | 功能        | 按键          | 功能说明 |
 | ------------| --            |---- |
@@ -118,52 +124,50 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 | 输出电量 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>H</kbd>       |通过键盘输出当前键盘剩余电量。输出N为检测未稳定，F为满电，数字为电量百分比。|
 | 状态灯开关 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd>       |无轴灯PCB：开启或关闭状态指示灯显示（注：不包括键盘大小写等）。<br>轴灯版PCB：使轴灯在轴灯模式和指示灯模式之间切换|
 | 多功能按钮 | PCB背部按钮属于多功能按钮。| 键盘正常模式下，按下1秒以上后（不超过3秒）松手键盘关机；<br>按下4秒以上后（不超过9秒）松手键盘进入DFU刷机模式；<br>按下10秒以上后松手，键盘将重置。<br>关机状态短按一下开机。|
-|强进DFU |  PCB背部按钮+预设按键 |在断电状态，同时按下背部按钮 + 预设按键（键盘第一行首个或最后一个按键）<br>按下的同时，通过插入USB或电池通电，将强制进入DFU模式。|
+| 强进DFU |  PCB背部按钮+预设按键 |在断电状态，同时按下背部按钮 + 预设按键（键盘第一行首个或最后一个按键）<br>按下的同时，通过插入USB或电池通电，将强制进入DFU模式。|
 | 启动按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按启动按键，可任意键唤醒。|
 | 切换启动按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`启动按键`功能。<br> 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
 | 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 休眠或关机后唤醒自动恢复第1层为默认层|
-|RGB调整颜色| <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版（轴灯模式下）为控制轴灯；非轴灯版为控制底灯</br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
+| RGB调整颜色 | <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版（轴灯模式下）为控制轴灯；非轴灯版为控制底灯</br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
 | RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | 轴灯版（轴灯模式下）为控制轴灯：在常亮、呼吸、多彩变换之间循环</br>非轴灯版为控制底灯：在32种灯效之间循环，包括常亮、呼吸、多彩变换、贪吃蛇、彩虹、圣诞等|
 | RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | 轴灯版（轴灯模式下）为轴灯开关</br>非轴灯版为RGB底灯开关|
-
-!!! tip
-    默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键，可以通过自行编译更改<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>等做为触发按键。更改后上述功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
 
 <span id="绑定设备">绑定设备</span>
 -----
 
 #### 初次绑定
 
-- 1、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>，切换到蓝牙通道一，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播；
+- 1、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>，切换到蓝牙通道1️⃣，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播；
 
-- 2、在需要绑定键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将第一个设备绑定到键盘<kbd>Q</kbd>键（蓝牙通道一）上；
+- 2、在需要绑定键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将第一个设备绑定到键盘蓝牙通道1️⃣（<kbd>Q</kbd>键）；
 
-    - 如果仅有一个蓝牙设备，可以绑定到任意蓝牙通道，但是建议绑定到蓝牙通道一
-    - 如不需要多设备切换，可不再绑定设备到蓝牙通道二和蓝牙通道三
+    - 如果仅有一个蓝牙设备，可以绑定到任意蓝牙通道，但是建议绑定到蓝牙1️⃣
+    - 如不需要多设备切换，可不再绑定设备到蓝牙通道2️⃣和蓝牙通道3️⃣
 
-- 3、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>W</kbd>，切换到蓝牙通道二，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播，再绑定第二个设备到键盘<kbd>W</kbd>键 第二通道上；
+- 3、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>W</kbd>，切换到蓝牙通道2️⃣，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播，再绑定第二个设备到键盘蓝牙通道2️⃣（<kbd>W</kbd>键 ）；
 
-- 4、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>E</kbd>，切换到蓝牙通道三，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播，再绑定第三个设备到键盘<kbd>E</kbd>键 第三通道上；
+- 4、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>E</kbd>，切换到蓝牙通道3️⃣，然后再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播，再绑定第三个设备到键盘蓝牙通道3️⃣（<kbd>E</kbd>键 ）；
 
 - 5、通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的蓝牙通道，可在多个绑定设备之间切换。
 
-!!! tip
-    上述切换蓝牙通道及开启蓝牙广播等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 按键进行操作
-
 #### 更换绑定
 
-如需更换某个设备的绑定，例：要重新绑定一个设备到W键（蓝牙通道二）上。
+如需更换某个设备的绑定，例：要重新绑定一个设备到蓝牙通道2️⃣（<kbd>W</kbd>键 ）。
 
 - 1、将<kbd>W</kbd>键绑定的设备上的蓝牙键盘进行删除（如windows系统进入系统设备删除蓝牙键盘；Android系统进入设置-蓝牙后删除蓝牙键盘）；
 
-- 2、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>W</kbd>，切换到蓝牙通道二；
+- 2、键盘上按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>W</kbd>，切换到蓝牙通道2️⃣；
 
-- 3、键盘上再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>，删除蓝牙通道二绑定的设备；
+- 3、键盘上再按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>，删除蓝牙通道2️⃣绑定的设备；
 
-- 4、在需要绑定键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将新的设备绑定到键盘W键（蓝牙通道二）上；
+- 4、如有必要，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>开启广播；
+
+- 4、在需要绑定键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将新的设备绑定到键盘蓝牙通道2️⃣（<kbd>W</kbd>键 ）；
 
 !!! tip
-    上述切换蓝牙通道及删除绑定设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT解除绑定</kbd> 按键进行操作
+    上述切换蓝牙通道及删除绑定设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT解除绑定</kbd> 等按键进行操作
+    
+    采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>BT 广播</kbd>手动开启蓝牙广播
 
 
 <span id="状态提示灯说明">状态提示灯说明</span>
