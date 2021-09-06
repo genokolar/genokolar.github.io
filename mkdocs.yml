@@ -2,7 +2,7 @@ site_name: GT WiKi
 site_url: https://wiki.glab.online/
 site_description: Glab LotKB Wiki文档站点.
 site_author: Geno
-repo_name: Genokolar/nrf52-keyboard
+repo_name: Lot Keyboard源码
 repo_url: https://github.com/genokolar/nrf52-keyboard/
 edit_uri: ""
 
@@ -26,6 +26,7 @@ theme:
     - navigation.instant
     #顶层部分将作为组在侧边栏中呈现
     - navigation.sections
+    #顶层部分将作为菜单在顶部呈现
     # - navigation.tabs
     # - navigation.tabs.sticky
     #返回顶部按钮
