@@ -54,7 +54,9 @@
 
 #### DFU升级方式
 
-!!! tip "老版PCB仅支持DFU升级方式。新版PCB`线刷`和DFU方式均支持"
+!!! tip "提示"
+    - 老版PCB仅支持DFU升级方式。新版PCB`线刷`和DFU方式均支持
+    - DFU升级，请下载ZIP格式的蓝牙DFU升级包，且不要解压
 
 === "文字说明"
 
@@ -63,7 +65,7 @@
     2. 使键盘进入DFU模式（参见 [如何进入DFU模式](faq.md#如何进入DFU模式)）
     3. 点击nRF Connect右上角的Scan扫描蓝牙设备，找到`DFUTarg`标识的蓝牙设备
     4. 点击CONNCET按钮，等待连接成功
-    5. 点击右上角的DFU按钮，选择第一个Distribution packet(ZIP)，然后选择下载的蓝牙固件包
+    5. 点击右上角的DFU按钮，选择第一个Distribution packet(ZIP)，然后选择下载的蓝牙DFU升级包（ZIP格式）
     6. 等待升级进度100%即可
 
     如果您刷入了错误的程序而无法进入DFU模式，请 [强制进入DFU](faq.md#如何进入DFU模式) 然后更新。
