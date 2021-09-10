@@ -197,5 +197,5 @@
 
     - nrf52_kbd_sign ：已签名蓝牙核心固件;
     - nrf52_all : 蓝牙完整固件；
-    - nrf52_dfu ：DFU升级包；
+    - nrf52_dfu ：蓝牙DFU升级包；
     - ch554 ：USB固件

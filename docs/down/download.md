@@ -6,19 +6,9 @@
 === "蓝牙固件"
 
     📢基于nRF SDK17.0.2的固件，请进入对应产品页面进行下载
-    ??? faq "当前固件名称命令规则?"
 
-        如：Omega50-b-nrf52_kbd_sign-20210817-e35fd41.hex 
-
-        依次为：型号-子型号-固件类型-编译日期-固件版本.文件类型 
-
-        上面文件命名代表：
-        
-        型号：Omega50，子型号：B版本，固件类型：nrf_kbd_sign，编译日期：20210817，固件版本：e35fd41，文件类型：hex
-
-        其中固件类型说明： 
-        
-        nrf52_kbd_sign ：已签名蓝牙核心固件；nrf52_all : 蓝牙完整固件；nrf52_dfu ：DFU升级包；ch554 ：USB固件
+    - [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)
+    - [固件名称命令规则？](../faq.md#固件名称命令规则)
 
     | 下载内容       | 说明          | 下载地址 |
     | ------------|  ------------| ------------ |
@@ -32,10 +22,9 @@
     | ------------|  ------------| ------------ |
     | 烧录工具 | USB固件及完整蓝牙固件烧录工具。</br>操作系统仅限Winodws，且需高于Windows 7 SP1。 | <a href="http://glab.online/down/wch_nrf_burner_setup_1.1.0.2.exe" class="button">1.1.0.2版</a><br><a href="http://glab.online/down/wch_nrf_burner_setup_1.2.1.1.exe" class="button">1.2.1.1版</a><br> <a href="https://eyun.baidu.com/s/3c2Tjcsg" class="button">百度网盘下载</a> |
     | 配置工具（安装包） | 配置工具本地服务端，必须开启才能配置键盘<br>版本：1.1.0.2安装版 - 支持：Windows 64位 ❤️。<br>不支持离线使用 | <a href="http://glab.online/down/lkb_configurator_setup_1.0.2.0.exe" class="button">官方下载地址一</a><br><a href="http://lotkb.cn/down/lkb_configurator_setup_1.0.2.0.exe" class="button">官方下载地址二</a><br><a href="https://eyun.baidu.com/s/3dmjVfK" class="button">百度网盘下载</a> |
-    | 配置工具（绿色版） | 配置工具本地服务端，必须开启才能配置键盘<br>版本：1.1.0.2 - 支持：Windows/Linux/Mac OS<br>支持离线使用（访问http://localhost:5000） | <a href="http://glab.online/down/lkb-configurator/lkb-configurator-win-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(Win X64)</a><br><a href="http://glab.online/down/lkb-configurator/lkb-configurator-osx-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(OSX)</a><br> <a href="http://glab.online/down/lkb-configurator/lkb-configurator-linux-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(Linux)</a><br><a href="http://glab.online/down/lkb-configurator/lkb-configurator-universal-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(其他系统)</a><br><a href="https://eyun.baidu.com/s/3c3X2Zmw" class="button">百度网盘下载</a> |
+    | 配置工具（绿色版） | 配置工具本地服务端，必须开启才能配置键盘<br>版本：1.1.0.2 - 支持：Windows/Linux/Mac OS<br>支持离线使用（访问http://localhost:5000） | <a href="http://glab.online/down/lkb-configurator/lkb-configurator-win-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(Win X64)</a><br><a href="http://glab.online/down/lkb-configurator/lkb-configurator-osx-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(OSX)</a><br> <a href="http://glab.online/down/lkb-configurator/lkb-configurator-linux-x64-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(Linux)</a><br><a href="http://glab.online/down/lkb-configurator/lkb-configurator-universal-2021-01-15_1.0.2.0-0-g316d45b.tar.gz" class="button">官方下载(其他系统)</a><br><a href="https://eyun.baidu.com/s/3c3X2Zmw" class="button">百度网盘下载</a><br><a href="https://github.com/genokolar/lkb-configurator-keyboards/releases" class="button">Github发布页</a> |
     | CMSIS-DAP烧录工具 | 完整蓝牙固件的烧录工具<br> 可更新整个蓝牙主控，可作为键盘修复工具| <a href="https://eyun.baidu.com/s/3smnHnI1" class="button">百度网盘下载</a> |
     | nRF Connect | DFU升级所需手机APP<br>Android版本 |<a href="http://glab.online/down/nRF.Connect.apk" class="button">nRF Connect(Android)</a>|
-
 
 === "定位板图纸"
 
