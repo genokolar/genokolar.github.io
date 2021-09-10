@@ -72,6 +72,6 @@ GT系列蓝牙键盘特点
 <span id="联系我们">联系我们</span>
 ----------------
 
-QQ群：[38491793 | 键圈绵羊多 ](https://jq.qq.com/?_wv=1027&k=wO76pWWU)
+:fontawesome-brands-qq: QQ群：[38491793 | 键圈绵羊多 ](https://jq.qq.com/?_wv=1027&k=wO76pWWU)
 
-淘宝店铺: [http://shop.glab.online/](http://shop.glab.online/)
+:fontawesome-solid-shopping-bag: 淘宝店铺: [http://shop.glab.online/](http://shop.glab.online/)

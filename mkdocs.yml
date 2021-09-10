@@ -136,5 +136,10 @@ nav:
       - 键帽高度: knowledge/keycapheight.md
       - 轴体类型: knowledge/axisswitch.md
       - 组装键盘: https://glab.online/archives/502
+    - 其他链接:
+      - 键盘测试: keytest/index.html
+      - 淘宝店铺: http://shop.glab.online/](http://shop.glab.online/
+      - 加入QQ群: https://jq.qq.com/?_wv=1027&k=wO76pWWU
+      - 获取源码: https://github.com/genokolar/nrf52-keyboard/
 
 copyright: <a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021 Glab.online
