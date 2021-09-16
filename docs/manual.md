@@ -2,7 +2,7 @@
 键盘使用说明
 =====================
 
-!!! tip "本页面最后修改时间2021-09-05"
+!!! tip "本页面最后修改时间2021-09-16"
 
 相关概念
 -----
@@ -43,10 +43,10 @@ GT系列蓝牙双模键盘PCB没有硬件电源开关，只需要接入电池或
 直接将 USB 线缆插入到键盘的 USB 接口，键盘即自动切换至 USB 模式。这时候就可以使用 USB 模式输入了。
 
 
-### USB / 蓝牙状态切换
-同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>可以在USB / 蓝牙 状态之间切换，如未插入USB线，此切换功能无效。
+### 有线 / 无线状态切换
+同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>可以在USB / 无线 状态之间切换，如未插入USB线，此切换功能无效。
 
-USB连接状态下，通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>也可直接跳转到对应蓝牙通道。
+USB连接状态下，无线模式处于蓝牙模式时，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>可直接跳转到对应蓝牙通道。
 
 
 ### 省电模式
@@ -115,16 +115,16 @@ USB ISP 模式为USB主控的烧录模式，在更新USB固件时需要先进入
 | 功能        | 按键          | 功能说明 |
 | ------------| --            |---- |
 | 休眠     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>P</kbd>        |手动进入休眠模式，按任意键可以唤醒。 |
-| 关机     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Backspace</kbd>或<kbd>~</kbd>        |手动进入关机模式。新版固件将<kbd>ESC</kbd>更换成了<kbd>Backspace</kbd>。<br>关机后需要插入USB线 或 短按背部多功能按钮开机。<br>长期不用或携带外出建议关机。 |
+| 关机     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>~</kbd>或<kbd>Backspace</kbd>       |手动进入关机模式。新版固件将<kbd>ESC</kbd>更换成了<kbd>Backspace</kbd>。<br>关机后需要插入USB线 或 短按背部多功能按钮开机。<br>长期不用或携带外出建议关机。 |
+| 有线/无线状态切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在USB有线和无线同时工作时，可以切换有线/无线连接模式。<br>如未同时使用USB有线和无线，按键无效。 |
+| 无线模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd>        |在键盘支持BLE5.0与2.4G无线两种无线模式时，在两种模式之间切换。 |
 | 切换蓝牙设备     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>        |可以在已绑定的蓝牙设备之间进行切换，<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>代表不同蓝牙连接通道 |
 | 重启蓝牙广播     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>        | 重新开启蓝牙广播，用于切换设备后进行绑定。|
-| 切换连接模式     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在通过USB和蓝牙同时连接一台设备/或两台设备的情况下，可以切换连接模式。<br>如未同时使用USB模式和蓝牙模式，按键无效。 |
 | 进入DFU     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>B</kbd>        |重启到DFU刷机模式。<br>也可长按PCB背部多功能按钮4秒以上后松手重启到DFU刷机模式。 |
 | 清空当前绑定  |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>    |清空当前蓝牙设备绑定信息。仅清空当前设备，其余绑定设备不会清空。|
 | 输出电量 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>H</kbd>       |通过键盘输出当前键盘剩余电量。输出N为检测未稳定，F为满电，数字为电量百分比。|
 | 状态灯开关 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd>       |无轴灯PCB：开启或关闭状态指示灯显示（注：不包括键盘大小写等）。<br>轴灯版PCB：使轴灯在轴灯模式和指示灯模式之间切换|
 | 多功能按钮 | PCB背部按钮属于多功能按钮。| 键盘正常模式下，按下1秒以上后（不超过3秒）松手键盘关机；<br>按下4秒以上后（不超过9秒）松手键盘进入DFU刷机模式；<br>按下10秒以上后松手，键盘将重置。<br>关机状态短按一下开机。|
-| 强进DFU |  PCB背部按钮+预设按键 |在断电状态，同时按下背部按钮 + 预设按键（键盘第一行首个或最后一个按键）<br>按下的同时，通过插入USB或电池通电，将强制进入DFU模式。|
 | 启动按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按启动按键，可任意键唤醒。|
 | 切换启动按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`启动按键`功能。<br> 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
 | 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 休眠或关机后唤醒自动恢复第1层为默认层|
@@ -177,6 +177,7 @@ GT系列蓝牙键盘无灯版指示灯一般为3颗，每个键盘指示灯的�
 
 - 蓝色灯-蓝牙连接成功、蓝牙输出
 - 绿色灯-USB输出
+- 红色灯-2.4G无线输出
 - 蓝色指示灯闪烁-蓝牙通道1️⃣广播中
 - 绿色指示灯闪烁-蓝牙通道2️⃣广播中
 - 红色指示灯闪烁-蓝牙通道3️⃣广播中
@@ -188,6 +189,7 @@ GT系列蓝牙键盘轴灯版默认采用轴灯作为指示，不同颜色代表
 
 - 蓝色-蓝牙连接成功、蓝牙输出
 - 绿色-USB输出
+- 青色-2.4G无线输出
 - 粉色-蓝牙通道1️⃣广播中
 - 黄色-蓝牙通道2️⃣广播中
 - 红色-蓝牙通道3️⃣广播中
