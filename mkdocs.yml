@@ -138,7 +138,6 @@ nav:
     - 更新下载: 
       - 相关下载: down/download.md
       - 更新日志: changelog.md
-      - 固件更新: upgrade.md
     - 产品页面:
       - BLE60 rev.F: keyboard/gt_ble60_f.md
       - Farad69 rev.C: keyboard/farad69_c.md
