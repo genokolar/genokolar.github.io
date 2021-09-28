@@ -12,7 +12,7 @@ hide:
 
 :octicons-note-16: 公告
 ------------
-部分新键盘已经提供基于nRF SDK17.0.2的固件，请进入对应产品页面进行下载。
+部分新键盘已经提供基于nRF SDK17.1的固件，请进入对应产品页面进行下载。
 
 2.4G功能已经初步实现，在进一步完善中，我们会适时对所有产品提供功能测试
 
@@ -55,7 +55,7 @@ hide:
 
     LotKB是[Jim Kirisame](https://github.com/jim-kirisame/)开发的一个基于nRF52芯片的蓝牙键盘的固件。
 
-    硬件上采用蓝牙SoC（nRF52810/nRF52811/nRF52832）+USB MCU(CH552/CH554)的组合，实现蓝牙与USB双模，使用了nRF SDK 15.3/17.0.2作为底层硬件驱动，并使用TMK键盘库作为键盘功能的上部实现。
+    硬件上采用蓝牙SoC（nRF52810/nRF52811/nRF52832）+USB MCU(CH552/CH554)的组合，实现蓝牙与USB双模，使用了nRF SDK 15.3/17.1作为底层硬件驱动，并使用TMK键盘库作为键盘功能的上部实现。
 
     LotKB是一个开源项目，其软件源码与硬件设计都是开源的，您可以从[Github](https://github.com/genokolar/nrf52-keyboard)上获得。
 
