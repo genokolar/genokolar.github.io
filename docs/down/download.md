@@ -5,7 +5,7 @@
 
 === "蓝牙固件"
 
-    📢基于nRF SDK17.1的固件，请进入对应产品页面进行下载
+    📢基于nRF SDK17.1的固件，也可进入对应产品页面进行下载
 
     - [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)
     - [固件名称命令规则？](../faq.md#固件名称命令规则)
@@ -13,9 +13,10 @@
     | 下载内容       | 说明          | 下载地址 |
     | ------------|  ------------| ------------ |
     | 蓝牙核心固件 | 此固件基于nRF SDK15.3<br>需使用烧录工具进行烧录的蓝牙核心固件<br>仅新版硬件支持此方式更新<br>不可与SDK17的固件混刷 | <a href="https://eyun.baidu.com/s/3bpVmTzx" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> |
-    | 蓝牙完整固件 | 此固件基于nRF SDK15.3<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可用于返回SDK15固件 | <a href="https://eyun.baidu.com/s/3ghoXQDX" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> |
     | 蓝牙DFU升级包 | 此固件基于nRF SDK15.3<br>需使用nRF Connect程序通过DFU升级<br>新老硬件均支持此方式更新<br>升级到SDK17的固件后，用此固件DFU升级会失败|<a href="https://eyun.baidu.com/s/3jJpXwG2" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a>|
-
+    | 蓝牙完整固件 | 此固件基于nRF SDK15.3<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可用于返回SDK15固件 | <a href="https://eyun.baidu.com/s/3ghoXQDX" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> |
+    | 蓝牙完整固件 | 此固件基于nRF SDK17.1<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可在SDK之间切换 | <a href="https://eyun.baidu.com/s/3jKqTC7k" class="button">百度网盘下载</a> |
+    
 === "烧录&配置工具"
 
     | 下载内容       | 说明          | 下载地址 |
