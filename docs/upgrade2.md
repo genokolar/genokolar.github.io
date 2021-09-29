@@ -21,6 +21,8 @@
 <span id="CMSIS-DAP烧录工具更新">CMSIS-DAP烧录工具更新</span>
 -----------
 
+!!! tip "硬件损坏的可能性极小，99%的问题都可以通过刷写完整固件修复"
+
 （仅Windows X64）
 
 1. 下载CMSIS-DAP烧录工具 [百度网盘下载](https://eyun.baidu.com/s/3smnHnI1)
@@ -36,7 +38,7 @@
 ##### CMSIS-DAP烧录视频演示
 
 <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
-  <source id="mp4" src="https://glab.online/down/CMSIS-DAP.mp4" type="video/mp4">
+  <source id="mp4" src="https://glab.online/down/CMSIS-DAP2.mp4" type="video/mp4">
   您的浏览器不支持播放此视频
 </video>
 
