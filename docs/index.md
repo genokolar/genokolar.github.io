@@ -12,7 +12,7 @@ hide:
 
 :octicons-note-16: 公告
 ------------
-所有键盘已经提供基于nRF SDK17.1的固件，基于nRF SDK15.3的固件将只在】、Github更新。
+所有键盘已经提供基于nRF SDK17.1的固件，基于nRF SDK15.3的固件将只在[Github](https://github.com/genokolar/nrf52-keyboard/releases)更新。
 
 2.4G功能已经初步实现，在进一步完善中，我们会适时对所有产品提供功能测试
 
