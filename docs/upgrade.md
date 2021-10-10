@@ -155,7 +155,7 @@ CMSIS-DAP烧录工具包自带完整蓝牙固件，适合快速刷写完整固�
 === "文字说明"
     （仅Windows）
 
-    1. 下载CMSIS-DAP烧录工具 [百度网盘下载](https://eyun.baidu.com/s/3smnHnI1)
+    1. 下载CMSIS-DAP烧录工具 [百度网盘下载](https://eyun.baidu.com/s/3smnHnI1) 或 [官方地址下载](http://glab.online/down/sdk17/CMSIS-DAP线刷包20211005-b2d93bf-SDK17.zip)
 
     2. 下载后解压，双击运行其中的`#开始烧录.bat`文件
 
@@ -168,6 +168,6 @@ CMSIS-DAP烧录工具包自带完整蓝牙固件，适合快速刷写完整固�
 === "视频演示"
 
     <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
-    <source id="mp4" src="https://glab.online/down/CMSIS-DAP2.mp4" type="video/mp4">
+    <source id="mp4" src="https://glab.online/down/CMSIS-DAP.mp4" type="video/mp4">
     您的浏览器不支持播放此视频
     </video>
