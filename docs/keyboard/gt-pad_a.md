@@ -1,12 +1,12 @@
-GT PAD 标准数字小键盘
+GT PAD Rev.A 标准数字小键盘
 =====================
 
 ## 描述
 
 - 4x5的数字小键盘
-- 支持RGB轴灯
+- 支持RGB轴灯（无灯效）
 - Type-C接口
-- 蓝牙主控为nRF52832（陶瓷天线）
+- 蓝牙主控为nRF52832（Raytac MDBT42Q-512KV2蓝牙模块）
 - 采用热拔插方式（佳达隆轴座）
 - 支持旋转编码器、OLED屏幕
 - 轴灯兼指示灯功能
@@ -14,7 +14,7 @@ GT PAD 标准数字小键盘
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：76.2mm×95.2mm
 
-![](../img/gt-pad.jpg "GT Pad PCB")
+![](../img/gt-pad_a.jpg "GT Pad Rev.A PCB")
 
 ## 指示灯说明
 
@@ -40,11 +40,10 @@ GT PAD 标准数字小键盘
 
 ## RGB轴灯说明
 
-轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
+轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式
 
 当前轴灯版PCB采用蓝牙主控直接驱动RGB灯，所以无复杂灯效，仅有单色常亮、单色呼吸和彩虹循环，可手动调色，可视为单色轴灯的增强版本。
 
-轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
 ## 如何启用旋钮编码器
 
@@ -77,12 +76,4 @@ GT PAD 标准数字小键盘
 
 请勿商用、请勿删除PCB上标识
 
-<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
-
-## 固件下载
-
-!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
-
-[:fontawesome-solid-download:  20211005蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-a-nrf52_all-20211005-b2d93bf.hex){ .md-button}
-
-[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
+暂未上传
