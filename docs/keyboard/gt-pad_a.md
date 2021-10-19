@@ -76,4 +76,4 @@ GT PAD Rev.A 标准数字小键盘
 
 请勿商用、请勿删除PCB上标识
 
-暂未上传
+<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>

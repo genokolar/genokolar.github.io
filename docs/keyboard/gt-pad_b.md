@@ -43,3 +43,8 @@ GT PAD Rev.B 标准数字小键盘
 采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>BT 广播</kbd>手动开启蓝牙广播
 
 ![](../img/padkey.png "控制按键示意")
+
+## 开源下载
+
+后续会提供PCB制造文件，可自行下载进行PCB制造
+
