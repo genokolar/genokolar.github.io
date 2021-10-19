@@ -140,6 +140,8 @@ nav:
       - 更新日志: changelog.md
     - 产品页面:
       - BLE60:
+        - BLE60 rev.D: keyboard/gt_ble60_d.md
+        - BLE60 rev.E: keyboard/gt_ble60_f.md
         - BLE60 rev.F: keyboard/gt_ble60_f.md
       - Farad69:
         - Farad69 rev.A: keyboard/farad69_a.md
@@ -149,10 +151,11 @@ nav:
         - Omega45 rev.D: keyboard/omega45_d.md
         - Omega45 rev.E: keyboard/omega45_e.md
       - Omega50:
+        - Omega50 rev.A: keyboard/omega50_a.md
         - Omega50 rev.B: keyboard/omega50_b.md
       - GT PAD: 
-        - Rev.A: keyboard/gt-pad_a.md
-        - Rev.B: keyboard/gt-pad_b.md
+        - GT PAD Rev.A: keyboard/gt-pad_a.md
+        - GT PAD Rev.B: keyboard/gt-pad_b.md
       - GT Planck: keyboard/gt-planck.md
     - 淘宝店铺: http://shop.glab.online
 
