@@ -140,19 +140,19 @@ nav:
       - 更新日志: changelog.md
     - 产品页面:
       - GT BLE60:
-        - GT BLE60 rev.D: keyboard/gt_ble60_d.md
-        - GT BLE60 rev.E: keyboard/gt_ble60_e.md
-        - GT BLE60 rev.F: keyboard/gt_ble60_f.md
+        - GT BLE60 Rev.D: keyboard/gt_ble60_d.md
+        - GT BLE60 Rev.E: keyboard/gt_ble60_e.md
+        - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
       - Farad69:
-        - Farad69 rev.A: keyboard/farad69_a.md
-        - Farad69 rev.B: keyboard/farad69_b.md
-        - Farad69 rev.C: keyboard/farad69_c.md
+        - Farad69 Rev.A: keyboard/farad69_a.md
+        - Farad69 Rev.B: keyboard/farad69_b.md
+        - Farad69 Rev.C: keyboard/farad69_c.md
       - Omega45:
-        - Omega45 rev.D: keyboard/omega45_d.md
-        - Omega45 rev.E: keyboard/omega45_e.md
+        - Omega45 Rev.D: keyboard/omega45_d.md
+        - Omega45 Rev.E: keyboard/omega45_e.md
       - Omega50:
-        - Omega50 rev.A: keyboard/omega50_a.md
-        - Omega50 rev.B: keyboard/omega50_b.md
+        - Omega50 Rev.A: keyboard/omega50_a.md
+        - Omega50 Rev.B: keyboard/omega50_b.md
       - GT PAD: 
         - GT PAD Rev.A: keyboard/gt-pad_a.md
         - GT PAD Rev.B: keyboard/gt-pad_b.md
