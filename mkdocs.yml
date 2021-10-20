@@ -139,10 +139,10 @@ nav:
       - 相关下载: down/download.md
       - 更新日志: changelog.md
     - 产品页面:
-      - BLE60:
-        - BLE60 rev.D: keyboard/gt_ble60_d.md
-        - BLE60 rev.E: keyboard/gt_ble60_f.md
-        - BLE60 rev.F: keyboard/gt_ble60_f.md
+      - GT BLE60:
+        - GT BLE60 rev.D: keyboard/gt_ble60_d.md
+        - GT BLE60 rev.E: keyboard/gt_ble60_e.md
+        - GT BLE60 rev.F: keyboard/gt_ble60_f.md
       - Farad69:
         - Farad69 rev.A: keyboard/farad69_a.md
         - Farad69 rev.B: keyboard/farad69_b.md
