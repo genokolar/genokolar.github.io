@@ -39,7 +39,7 @@
 请参考配置工具的[帮助页面](https://keyboard.lotlab.org/help)
 
 使用演示视频：
-<video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
+<video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
 <source id="mp4" src="http://glab.online/down/lkb-configurator.mp4" type="video/mp4">
   您的浏览器不支持播放此视频
 </video>

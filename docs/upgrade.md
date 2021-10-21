@@ -50,7 +50,7 @@
 
 === "升级演示视频"
 
-    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
+    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
       <source id="mp4" src="http://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
       您的浏览器不支持播放此视频
     </video>
@@ -108,7 +108,7 @@
 
 === "演示视频"
 
-    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
+    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
        <source id="mp4" src="https://glab.online/wp-content/uploads/2020/01/DFU升级演示.mp4" type="video/mp4">
        您的浏览器不支持播放此视频
     </video>
@@ -137,7 +137,7 @@
 
 === "升级演示视频"
 
-    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
+    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
       <source id="mp4" src="http://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
       您的浏览器不支持播放此视频
     </video>
@@ -167,7 +167,7 @@ CMSIS-DAP烧录工具包自带完整蓝牙固件，适合快速刷写完整固�
 
 === "视频演示"
 
-    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="http://glab.online/wp-content/uploads/2019/10/favicon.png">
+    <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
     <source id="mp4" src="https://glab.online/down/CMSIS-DAP.mp4" type="video/mp4">
     您的浏览器不支持播放此视频
     </video>
