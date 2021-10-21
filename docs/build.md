@@ -49,7 +49,7 @@ LotKB固件编译指南
 ```
 !!! tip
     
-    本站采用源码为 ：https://gitee.com/genokolar/nrf52-keyboard 无需单独下载SDK
+    本站采用源码为 ：https://github.com/genokolar/nrf52-keyboard 无需单独下载SDK
 
 克隆源码并准备源码
 ------------
@@ -71,7 +71,7 @@ LotKB固件编译指南
 ```
 !!! tip
     
-    本站采用源码为 ：https://gitee.com/genokolar/nrf52-keyboard
+    本站采用源码为 ：https://github.com/genokolar/nrf52-keyboard
 
 测试编译
 ------------
