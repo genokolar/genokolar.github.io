@@ -29,7 +29,7 @@
 
     #define PRODUCT "Omega45C" /* 硬件名词，用于蓝牙显示 */
 
-将其中的Omega45C修改为你中意的名字，注意不要过长
+将其中的Omega45C修改为你中意的名字再编译固件，注意名字不要过长
 
 更改灯带的灯数量
 -----------
@@ -37,7 +37,7 @@
 
     #define RGBLED_NUM 8
 
-将数字8，修改为你灯带上灯珠的正确数量
+将数字8，修改为你灯带上灯珠的正确数量再编译固件
 
 更改功能按键
 -------------
@@ -49,11 +49,33 @@
     #define IS_COMMAND() ( \
         keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
-将上面第三行，按照如下对应关系修改：
+将上面第三行，按照如下对应关系修改，再编译固件既可以更改为你想要的触发按键：
 
     双 SHIFT: keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT))
     双CTRL: keyboard_report->mods == (MOD_BIT(KC_LCTRL) | MOD_BIT(KC_RCTRL))
     WIN+ESC: keyboard_report->mods == (MOD_BIT(KC_LGUI)) && get_first_key() == KC_ESC
+
+开启某项功能
+-------------
+默认有的键盘是没有开启一些功能的，需要自行编译开启。
+
+比如OLED屏幕，默认固件未开启功能，但是有预留接口，我们可以自行开启
+
+进入keyboard目录，找到rules.mk，找到如下项：
+
+    RGB_LIGHT_ENABLE = yes     #启用RGB轴灯
+    ROTARY_ENCODER = yes # 启用编码器
+    # SSD1306_OLED = yes
+    ACTIONMAP_ENABLE =yes
+
+将上面# SSD1306_OLED = yes 前的# 去掉再编译固件，既可以开启OLED支持
+
+    RGB_LIGHT_ENABLE = yes     #启用RGB轴灯
+    ROTARY_ENCODER = yes # 启用编码器
+    SSD1306_OLED = yes
+    ACTIONMAP_ENABLE =yes
+
+同理可以开启或者关闭某项其他功能
 
 !!! tip "更多修改方式请自行探索！"
 
