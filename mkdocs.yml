@@ -67,7 +67,7 @@ theme:
 
 plugins:
     - search:
-        prebuild_index: true
+        prebuild_index: false
 
 # Extensions
 markdown_extensions:
