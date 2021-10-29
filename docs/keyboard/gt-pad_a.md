@@ -77,3 +77,11 @@ GT PAD Rev.A 标准数字小键盘
 请勿商用、请勿删除PCB上标识
 
 <a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
+
+## 固件下载
+
+!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
+
+[:fontawesome-solid-download:  20211021蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-a-nrf52_all-20211021-110c7c23.hex){ .md-button}
+
+[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}

@@ -37,14 +37,11 @@ GT PAD Rev.B 标准数字小键盘
 
 建议到手后自行设置按键：将PAD接入配置工具，找到 层级/功能--键盘功能，将蓝牙控制功能（BT字样的按键）设定到你指定的按键上就可以控制蓝牙。找到  灯光 功能，将RGB阵列相关按键设定到你指定的按键上既可以控制RGB灯光。
 
+## 固件下载
 
-出厂固件，默认是按下DEL键切换到第二层，如下图所示按键控制RGB与蓝牙：
+!!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
 
-采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>BT 广播</kbd>手动开启蓝牙广播
+[:fontawesome-solid-download:  20211021蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-b-nrf52_all-20211021-110c7c23.hex){ .md-button}
 
-![](../img/padkey.png "控制按键示意")
-
-## 开源下载
-
-后续会提供PCB制造文件，可自行下载进行PCB制造
+[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
 
