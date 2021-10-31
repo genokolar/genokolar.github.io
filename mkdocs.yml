@@ -147,6 +147,8 @@ nav:
         - Farad69 Rev.A: keyboard/farad69_a.md
         - Farad69 Rev.B: keyboard/farad69_b.md
         - Farad69 Rev.C: keyboard/farad69_c.md
+      - Omega40:
+        - Omega40 Rev.A: keyboard/omega40_a.md
       - Omega45:
         - Omega45 Rev.D: keyboard/omega45_d.md
         - Omega45 Rev.E: keyboard/omega45_e.md
