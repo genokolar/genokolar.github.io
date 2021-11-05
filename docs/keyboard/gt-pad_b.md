@@ -41,7 +41,7 @@ GT PAD Rev.B 标准数字小键盘
 
 !!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
 
-[:fontawesome-solid-download:  20211021蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-b-nrf52_all-20211021-110c7c23.hex){ .md-button}
+[:fontawesome-solid-download:  20211105蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-b-nrf52_all-20211105-11d28f72.hex){ .md-button}
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
 
