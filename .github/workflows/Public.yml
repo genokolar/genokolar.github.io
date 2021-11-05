@@ -25,6 +25,6 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          local-dir: ${{ github.workspace }}/keyboard/
+          local-dir: ${{ github.workspace }}/site/
           server-dir: /htdocs/wiki/
           dangerous-clean-slate: true
