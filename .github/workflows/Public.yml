@@ -10,12 +10,21 @@ jobs:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: 🚚 Checkout main
         uses: actions/checkout@v2
 
-      - name: Deploy docs
+      - name: 🎉 Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CONFIG_FILE: mkdocs.yml
           EXTRA_PACKAGES: build-base
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          local-dir: ${{ github.workspace }}/keyboard/
+          server-dir: /htdocs/wiki/
+          dangerous-clean-slate: true
