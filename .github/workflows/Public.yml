@@ -28,3 +28,4 @@ jobs:
           local-dir: ${{ github.workspace }}/site/
           server-dir: /htdocs/wiki/
           dangerous-clean-slate: true
+          state-name: ../.ftp-deploy-sync-state.json
