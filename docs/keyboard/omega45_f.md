@@ -6,7 +6,7 @@ Omega45 Rev.F 介绍
 ---------
 
 - 4x12阵列的45%键盘，共45键
-- 支持RGB轴灯（QMK灯效）
+- 支持RGB轴灯（同QMK灯效）
 - Type-C接口,引出外接USB接口
 - 蓝牙主控为nRF52832（芯片+陶瓷天线）
 - 采用热拔插方式（佳达隆轴座）
@@ -21,7 +21,7 @@ Omega45 Rev.F 介绍
 
 ## RGB轴灯说明
 
-此版轴灯采用WS2812 RGB灯，支持各种丰富绚丽的灯效（QMK灯效），暂时不支持指示灯功能。
+此版轴灯采用WS2812 RGB灯，支持各种丰富绚丽的灯效（同QMK灯效），暂时不支持指示灯功能。
 
 可采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整RGB轴灯。
 

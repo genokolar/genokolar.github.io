@@ -19,15 +19,17 @@
 
 如何控制或关闭RGB轴灯
 -----------------------
-轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
-
-指示灯模式时，不可控制，固件显示不同颜色指示不同状态
-
-要控制轴灯，请通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 先切换到轴灯模式。
-
-切换到轴灯模式后，通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>可开关轴灯。
-
-通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
+1. 轴灯版PCB：
+    - 轴灯版PCB的轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
+    - 指示灯模式时，不可控制，固件显示不同颜色指示不同状态
+    - 要控制轴灯，请通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 先切换到轴灯模式。
+    - 切换到轴灯模式后，通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>可开关轴灯。
+    - 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
+    
+2. RGB轴灯版PCB：
+    - RGB轴灯版PCB的通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>可开关轴灯。
+    - 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
+    - 接入配置工具，找到 灯光 功能，将RGB阵列相关按键设定到你指定的按键上控制RGB灯光
 
 
 <span id="如何改善蓝牙连接稳定性">如何改善蓝牙连接稳定性</span>

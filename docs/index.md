@@ -12,11 +12,11 @@ hide:
 
 :octicons-note-16: 公告
 ------------
-所有键盘已经提供基于nRF SDK17.1的固件，基于nRF SDK15.3的固件将只在[Github](https://github.com/genokolar/nrf52-keyboard/releases)更新。
+所有键盘已经提供基于nRF SDK17.1的固件，基于nRF SDK15.3的固件将不再更新。
 
-2.4G功能已经初步实现，在进一步完善中，我们会适时对所有产品提供功能测试
+RGB轴灯版PCB已经在测试中，即将发售，我们也重新设计了硬件，直接采用蓝牙芯片，不再受制于蓝牙模块。
 
-受缺芯潮影响，部分PCB已经断货。
+2.4G功能已经初步实现，但还需要进一步完善，接收器也在寻找合适的方案。较为成熟后，所有已出售PCB都可以通过购买接收器即可实现2.4G功能。
 
 
 :fontawesome-solid-keyboard: GT系列蓝牙键盘定位
