@@ -159,7 +159,8 @@ nav:
       - GT PAD: 
         - GT PAD Rev.A: keyboard/gt-pad_a.md
         - GT PAD Rev.B: keyboard/gt-pad_b.md
-      - GT Planck: keyboard/gt-planck.md
+      - GT Planck:
+        - GT Planck Rev.A: keyboard/gt-planck.md
     - 淘宝店铺: http://shop.glab.online
 
 copyright: <a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021 Glab.online
