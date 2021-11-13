@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% extends "base.html" %}
+{% extends "main.html" %}
 {% block tabs %}
   {{ super() }}
   <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}</style>
@@ -9,16 +9,16 @@
     <div class="md-grid md-typeset">
       <div class="mdx-hero">
         <div class="mdx-hero__image">
-          <img src="assets/images/illustration.png" alt="" width="1659" height="1200" draggable="false">
+          <img src="resources/assets/images/illustration.png" alt="" width="1659" height="1200" draggable="false">
         </div>
         <div class="mdx-hero__content">
-          <h1>Technical documentation that just works</h1>
-          <p>{{ config.site_description }}. Set up in 5 minutes.</p>
+          <h1>GT WiKi Documentation</h1>
+          <p>让我们一起享受DIY的快乐，制作出自己的键盘！</p>
           <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
-            Quick start
+            帮助文档
           </a>
-          <a href="{{ 'insiders/' | url }}" title="Material for MkDocs Insiders" class="md-button">
-            Get Insiders
+          <a href="http://shop.glab.online/" title="Material for MkDocs Insiders" class="md-button">
+            购买产品
           </a>
         </div>
       </div>

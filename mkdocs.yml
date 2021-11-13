@@ -9,7 +9,7 @@ edit_uri: ""
 # Configuration
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: 'docs/resources/'
 
   # Don't include MkDocs' JavaScript
   include_search_page: false
@@ -119,6 +119,7 @@ nav:
     - 主页: index.md
     - 帮助文档:
       - 用户手册:
+        - 相关概述: summary.md
         - 使用说明: manual.md
         - 常见问答: faq.md
         - 故障排除: trouble.md
