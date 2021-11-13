@@ -9,6 +9,7 @@ edit_uri: ""
 # Configuration
 theme:
   name: material
+  custom_dir: overrides
 
   # Don't include MkDocs' JavaScript
   include_search_page: false
