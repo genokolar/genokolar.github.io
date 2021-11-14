@@ -4,6 +4,19 @@
 
 大家好，欢迎大家前来了解GT系列蓝牙键盘的相关产品，请耐心的阅读相关内容。
 
+:octicons-note-16: 公告
+------------
+RGB轴灯版PCB即将发售
+
+新方案直接采用蓝牙芯片，不再受限于蓝牙模块
+
+2.4G功能已经初步实现，但需进一步完善
+
+2.4G完成发布后，所有PCB只需要更新固件，加购接收器即可
+
+RGB灯效展示：
+<iframe height=180 width=320 src='https://player.youku.com/embed/XNTgyMDM4MDMzNg==' frameborder=0 'allowfullscreen'></iframe>
+
 :fontawesome-solid-sun: GT系列蓝牙键盘特点
 ------------
 
