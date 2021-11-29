@@ -45,3 +45,10 @@ GT PAD Rev.B 标准数字小键盘
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
 
+## 开源下载
+
+提供定位板制造文件、外壳3D图纸等硬件开源文件。可自行下载生产玻纤定位板或外壳打印、CNC。（同Rev.A的通用）
+
+请勿商用、请勿删除标识
+
+<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
