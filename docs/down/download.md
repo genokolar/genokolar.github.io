@@ -16,7 +16,7 @@
     | SDK15.3 蓝牙DFU升级包 | 此固件基于nRF SDK15.3<br>需使用nRF Connect程序通过DFU升级<br>新老硬件均支持此方式更新<br>升级到SDK17的固件后，用此固件DFU升级会失败|<a href="https://eyun.baidu.com/s/3jJpXwG2" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a>|
     | SDK15.3 蓝牙完整固件 | 此固件基于nRF SDK15.3<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可用于返回SDK15固件 | <a href="https://eyun.baidu.com/s/3ghoXQDX" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> |
     | SDK17.1 蓝牙完整固件 | 此固件基于nRF SDK17.1<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可在SDK之间切换 <br> 刷写包包含刷写程序与所有键盘完整固件，可直接升级键盘 | <a href="https://eyun.baidu.com/s/3jKqTC7k" class="button">百度网盘下载</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> </br> <a href="http://glab.online/down/sdk17/CMSIS-DAP线刷包20211105-11d28f72-SDK17.1.zip" class="button" title="可直接刷写固件的刷写包">CMSIS-DAP刷写包</a> |
-    
+
 === "烧录&配置工具"
 
     | 下载内容       | 说明          | 下载地址 |
@@ -32,7 +32,6 @@
     | ------------|  ------------| ------------ |
     | 键盘的定位板文件 | 各个键盘的定位板图纸，可用于自己定制定位板或外壳 |<a href="https://eyun.baidu.com/s/3kWhhSeb" class="button">百度网盘下载</a>|
     | GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">百度网盘下载</a>|
-
 
 === "USB固件"
 
