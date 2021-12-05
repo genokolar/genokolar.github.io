@@ -114,7 +114,20 @@ extra_css:
 
 extra:
   generator: false
-
+  social:
+    - icon: fontawesome/brands/qq
+      link: https://jq.qq.com/?_wv=1027&k=wO76pWWU
+      name: QQ群 38491793 键圈绵羊多
+    - icon: fontawesome/brands/github
+      link: https://github.com/genokolar/nrf52-keyboard
+      name: nrf52-keyboard
+    - icon: fontawesome/solid/shopping-cart
+      link: http://shop.glab.online/
+      name: 淘宝店铺
+    - icon: fontawesome/brands/weibo
+      link: https://weibo.com/geno
+      name: 格诺爱数码  
+    
 nav:
     - 主页: index.md
     - 帮助文档:
@@ -168,4 +181,4 @@ nav:
       - 近期动态: blog/info.md
     - 淘宝店铺: http://shop.glab.online
 
-copyright: <a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021 Glab.online<br>主站：<a href=https://wiki.glab.online>https://wiki.glab.online</a><br>备用站：<a href=https://glab.online/wiki>https://glab.online/wiki</a>
+copyright: <a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021 Glab.online
