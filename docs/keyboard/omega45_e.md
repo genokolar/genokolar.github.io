@@ -56,6 +56,6 @@ Omega45 Rev.E 介绍
 
 !!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
 
-[:fontawesome-solid-download:  20211105蓝牙完整固件](http://glab.online/down/sdk17/Omega45-e-nrf52_all-20211105-11d28f72.hex){ .md-button}
+[:fontawesome-solid-download:  20211123蓝牙完整固件](http://glab.online/down/sdk17/Omega45-e-nrf52_all-20211123-1162af43.hex){ .md-button}
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
