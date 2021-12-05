@@ -5,9 +5,9 @@
 --------
 !!! note "RGB轴灯版建议更新"
 
-加入Omega40 rev.A
-系统和媒体控制键 在 ACTION_MODS_TAP_KEY与ACTION_LAYER_TAP_KEY下正常工作
-修复偶发的RGB乱闪的问题
+1. 加入Omega40 rev.A
+2. 系统和媒体控制键 在 ACTION_MODS_TAP_KEY与ACTION_LAYER_TAP_KEY下正常工作
+3. 修复偶发的RGB乱闪的问题
 
 2021年11月05日更新内容
 --------
