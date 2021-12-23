@@ -32,6 +32,7 @@
     | ------------|  ------------| ------------ |
     | 键盘的定位板文件 | 各个键盘的定位板图纸，可用于自己定制定位板或外壳 |<a href="https://eyun.baidu.com/s/3kWhhSeb" class="button">百度网盘下载</a>|
     | GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">百度网盘下载</a>|
+    | GT Volta9 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 | <a href="https://eyun.baidu.com/s/3bqA4ywZ" class="button">百度网盘下载</a>|
 
 === "USB固件"
 

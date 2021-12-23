@@ -31,3 +31,12 @@ Volta 9 Rev.A 九键小键盘
 ## 固件下载
 
 暂无
+
+## 开源下载
+
+提供定位板制造文件、外壳3D图纸等硬件开源文件。可自行下载生产玻纤定位板或外壳打印、CNC。
+
+请勿商用、请勿删除标识
+
+<a href="https://eyun.baidu.com/s/3bqA4ywZ" class="button">开源文件下载</a>
+
