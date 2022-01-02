@@ -37,3 +37,8 @@ Omega45 Rev.F 介绍
 
 ![](../img/rotary.png "按键示意图")
 
+## 固件下载
+
+[:fontawesome-solid-download:  20220102蓝牙完整固件](http://glab.online/down/sdk17/Omega45-f-nrf52_all-20220102-11a6408f.hex){ .md-button}
+
+[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}

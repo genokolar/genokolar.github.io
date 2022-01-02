@@ -50,9 +50,9 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 !!! tip  "Planck使用nRF52832或nRF52811芯片，请注意区分（查看模块标识）"
 
-[:fontawesome-solid-download:  蓝牙完整固件:芯片nRF52832.20211123](http://glab.online/down/sdk17/gt-planck-a-nrf52_all-20211123-1162af43.hex){ .md-button}
+[:fontawesome-solid-download:  蓝牙完整固件:芯片nRF52832.20220102](http://glab.online/down/sdk17/gt-planck-a-nrf52_all-20220102-11a6408f.hex){ .md-button}
 
-[:fontawesome-solid-download:  蓝牙完整固件:芯片nRF52811.20211123](http://glab.online/down/sdk17/gt-planck-a-nrf52811_kbd_with_sd-20211123-1162af43.hex){ .md-button}
+[:fontawesome-solid-download:  蓝牙完整固件:芯片nRF52811.20220102](http://glab.online/down/sdk17/gt-planck-a-nrf52811_kbd_with_sd-20220102-11a6408f.hex){ .md-button}
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
 
