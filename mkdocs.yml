@@ -1,3 +1,4 @@
+#项目信息
 site_name: GT WiKi
 site_url: https://wiki.glab.online/
 site_description: Glab LotKB Wiki文档站点.
@@ -6,7 +7,7 @@ repo_name: Lot Keyboard源码
 repo_url: https://github.com/genokolar/nrf52-keyboard/
 edit_uri: ""
 
-# Configuration
+# 配置项
 theme:
   name: material
   custom_dir: 'docs/resources/'
@@ -65,12 +66,12 @@ theme:
     repo: fontawesome/brands/github-alt
 
 
-
+#插件
 plugins:
     - search:
         prebuild_index: false
 
-# Extensions
+# 扩展
 markdown_extensions:
   - admonition
   - abbr
@@ -90,7 +91,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -102,9 +104,10 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid-experimental
+          class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
@@ -112,6 +115,7 @@ markdown_extensions:
 extra_css:
     - css/extra.css
 
+# 额外自定义
 extra:
   generator: false
   social:
@@ -127,7 +131,8 @@ extra:
     - icon: fontawesome/brands/weibo
       link: https://weibo.com/geno
       name: 格诺爱数码  
-    
+
+#页面导航    
 nav:
     - 主页: index.md
     - 帮助文档:
