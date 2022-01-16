@@ -51,6 +51,6 @@ Farad69 REV.C 键盘
 
 ## 固件下载
 
-[:fontawesome-solid-download:  20220102蓝牙完整固件](http://glab.online/down/sdk17/farad69-c-nrf52_all-20220102-11a6408f.hex){ .md-button}
+[:fontawesome-solid-download:  20220116蓝牙完整固件](http://glab.online/down/sdk17/farad69-c-nrf52_all-20220116-11dd5b41.hex){ .md-button}
 
 [:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
