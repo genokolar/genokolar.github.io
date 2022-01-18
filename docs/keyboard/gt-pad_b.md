@@ -10,6 +10,7 @@ GT PAD Rev.B 标准数字小键盘
 - 采用热拔插方式（佳达隆轴座）
 - 支持旋转编码器、OLED屏幕
 - 共引出6个针脚可自行添加外设
+- RGB轴灯兼容指示灯
 - PCB尺寸：76.2mm×95.2mm
 
 ![](../img/gt-pad_b.jpg "GT Pad Rev.B PCB")

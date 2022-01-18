@@ -13,7 +13,7 @@ Omega40 Rev.A 介绍
 - 采用热拔插方式（佳达隆轴座）
 - 支持旋转编码器
 - 共引出7个针脚可自行添加外设
-- 暂无Caps Lock、Num Lock、Screen Lock指示功能
+- RGB轴灯兼容指示灯
 - PCB尺寸：228.5mm×76.2mm
 
 ![](../img/omega40.rev.A.jpg "Omega40 PCB")

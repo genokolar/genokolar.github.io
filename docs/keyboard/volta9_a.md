@@ -8,6 +8,7 @@ Volta 9 Rev.A 九键小键盘
 - Type-C接口
 - 蓝牙主控为nRF52810（芯片+贴片天线）
 - 采用热拔插方式（佳达隆轴座）
+- RGB轴灯兼容指示灯
 - PCB尺寸：57.2mm×57.2mm
 
 ![](../img/volta9.jpg "GT Volta9 Rev.A PCB")
