@@ -1,21 +1,27 @@
 近期动态
 ==========
 
-支持2.4G的固件提供给大家体验下
+2.4G的测试固件可以体验了
 -----------
 :octicons-calendar-24: 2022.01.22
 
-说了很久的2.4G固件，现在算是可以用一用了，虽然是还缺配对功能的半成品，但是使用上没啥大问题了。
-
-暂时未提供接收器，可使用Volta9刷写接收器固件后，使用Volta9作为接收器(或者PAD)。
+说了很久的2.4G固件，虽然是还缺配对功能的半成品，但是使用上没啥大问题了。
 
 不切换到2.4G模式与20220118-11f8fcbc固件基本没有差别，大家可以放心下载测试。
 
-固件下载地址：https://github.com/genokolar/nrf52-keyboard/releases/tag/20220122-114512ba
+<b>键盘</B>:
+
+固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/tag/20220122-114512ba) 或下载[CMSIS-DAP](http://glab.online/down/sdk17/CMSIS-DAP线刷包20220122-114512ba-SDK17.1.zip) 刷写包直接刷写完整固件：
 
 使用说明：键盘刷写👆面的固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换无线模式。
 
-如果要将Volta9或者PAD作为接收器，需要刷写专门的接收器固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换到2.4G模式，然后插入USB线，它就是一个2.4G接收器了，切换回蓝牙模式，它就是一个正常的键盘。
+<b>接收器</B>:
+
+暂时未提供接收器，可使用Volta9刷写接收器固件后，使用Volta9作为接收器(或者PAD)。
+
+如果要将Volta9或者PAD作为接收器，需要刷写专门的接收器固件，刷完固件通过配置工具配置一个无线模式切换按键，切换到2.4G模式，然后插入USB线，它就是一个2.4G接收器了，切换回蓝牙模式，它就是一个正常的键盘。
+
+接收器固件下载： [Volta9](http://glab.online/down/test/Volta9接收器固件.hex) /  [GT-PAD.A](http://glab.online/down/test/gt-pad-a接收器固件.hex)  /  [GT-PAD.B](http://glab.online/down/test/gt-pad-b接收器固件.hex) 
 
 
 Volta9 初步完成了

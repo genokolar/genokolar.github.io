@@ -135,6 +135,8 @@ extra:
 #页面导航    
 nav:
     - 主页: index.md
+    - 信息公告: 
+      - 近期动态: blog/info.md
     - 帮助文档:
       - 用户手册:
         - 相关概述: summary.md
@@ -183,8 +185,6 @@ nav:
         - GT Volta9 Rev.A: keyboard/volta9_a.md
       - GT Planck:
         - GT Planck Rev.A: keyboard/gt-planck.md
-    - 信息公告: 
-      - 近期动态: blog/info.md
     - 淘宝店铺: http://shop.glab.online
 
 copyright: <a href=http://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021-2025 Glab.online
