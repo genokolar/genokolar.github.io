@@ -15,3 +15,5 @@ Omega50 Rev.A 介绍
 - 充电指示灯2颗
 - 8颗RGB底灯（WS2812）
 - 预留WS2812 RGB灯带焊接位
+
+[:fontawesome-solid-download:  下载固件](http://glab.online/down/sdk17/){ .md-button}

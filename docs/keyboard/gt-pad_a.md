@@ -84,4 +84,4 @@ GT PAD Rev.A 标准数字小键盘
 
 [:fontawesome-solid-download:  20220118蓝牙完整固件](http://glab.online/down/sdk17/gt-pad-a-nrf52_all-20220118-11f8fcbc.hex){ .md-button}
 
-[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
+[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}

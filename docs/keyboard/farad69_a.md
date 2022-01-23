@@ -13,3 +13,5 @@ Farad69 REV.A 键盘
 - 采用热拔插方式（佳达隆轴座）
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：285mm×95.3mm
+
+[:fontawesome-solid-download:  下载固件](http://glab.online/down/sdk17/){ .md-button}

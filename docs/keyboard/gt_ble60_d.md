@@ -14,3 +14,5 @@ GT BLE60 rev.D 键盘
 - Caps指示灯1颗
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：285mm×95.3mm
+
+[:fontawesome-solid-download:  下载固件](http://glab.online/down/sdk17/){ .md-button}

@@ -13,3 +13,5 @@ Farad69 REV.B 键盘
 - 8颗RGB底灯（WS2812）
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：285mm×95.3mm
+
+[:fontawesome-solid-download:  下载固件](http://glab.online/down/sdk17/){ .md-button}

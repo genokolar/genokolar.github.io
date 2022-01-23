@@ -54,5 +54,5 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 [:fontawesome-solid-download:  蓝牙完整固件:芯片nRF52811.20220118](http://glab.online/down/sdk17/gt-planck-a-nrf52811_kbd_with_sd-20220118-11f8fcbc.hex){ .md-button}
 
-[:fontawesome-solid-tools:  工具等下载](../down/download.md){ .md-button}
+[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
 
