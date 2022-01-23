@@ -15,7 +15,7 @@
 
 固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/tag/20220122-114512ba) 或下载[CMSIS-DAP](http://glab.online/down/sdk17/CMSIS-DAP线刷包20220122-114512ba-SDK17.1.zip) 刷写包直接刷写完整固件：
 
-使用说明：键盘刷写👆面的固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换无线模式。
+键盘刷写👆面的固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换无线模式。
 
 <b>二、升级接收器固件</B>:
 
