@@ -7,13 +7,13 @@
 
 说了很久的2.4G固件，虽然是还缺配对功能的半成品，但是使用上没啥大问题了。
 
-不切换到2.4G模式与20220118-11f8fcbc固件基本没有差别，大家可以放心下载测试。
+不切换到2.4G模式与正式稳定版固件基本没有差别，大家可以放心下载测试。
 
 测试步骤：
 
 <b>一、升级键盘固件</B>:
 
-固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/tag/20220122-114512ba) 或下载[CMSIS-DAP](http://glab.online/down/sdk17/CMSIS-DAP线刷包20220122-114512ba-SDK17.1.zip) 刷写包直接刷写完整固件：
+固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/tag/20220122-114512ba) / [官方下载页面](http://glab.online/down/Glab3.1/) 
 
 键盘刷写👆面的固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换无线模式。
 
