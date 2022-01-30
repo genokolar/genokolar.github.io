@@ -67,3 +67,7 @@ GT PAD Rev.B 标准数字小键盘
 请勿商用、请勿删除标识
 
 <a href="https://eyun.baidu.com/s/3brmyk0n" class="button">开源文件下载</a>
+
+## 更多使用说明
+
+访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

@@ -14,4 +14,12 @@ Farad69 REV.B 键盘
 - 预留WS2812 RGB灯带焊接位
 - PCB尺寸：285mm×95.3mm
 
+## 下载
+
 [:fontawesome-solid-download:  下载固件](http://glab.online/down/Glab3.0/){ .md-button}
+
+[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
+
+## 使用说明
+
+访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

@@ -33,7 +33,7 @@ GT BLE60 rev.F 键盘
 - 蓝牙连接状态下，指示灯5秒后自动熄灭（可自定义常亮时长）
 - 蓝牙广播30秒后未连接自动熄灭。
 
-### 轴灯说明
+## 轴灯说明
 
 轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
@@ -54,3 +54,7 @@ GT BLE60 rev.F 键盘
 [:fontawesome-solid-download:  20220128蓝牙完整固件](http://glab.online/down/Glab3.0/gt-ble60-f-nrf52_all-20220128-1151e4a4.hex){ .md-button}
 
 [:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
+
+## 更多使用说明
+
+访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

@@ -16,4 +16,13 @@ Omega50 Rev.A 介绍
 - 8颗RGB底灯（WS2812）
 - 预留WS2812 RGB灯带焊接位
 
+
+## 下载
+
 [:fontawesome-solid-download:  下载固件](http://glab.online/down/Glab3.0/){ .md-button}
+
+[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
+
+## 使用说明
+
+访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)
