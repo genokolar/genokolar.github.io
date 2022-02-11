@@ -80,6 +80,7 @@ markdown_extensions:
   - footnotes
   - meta
   - md_in_html
+  - tables
   - toc:
       permalink: true
   - pymdownx.arithmatex:
