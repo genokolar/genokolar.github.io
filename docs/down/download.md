@@ -20,10 +20,6 @@ hide:
     | 下载内容       | 说明          | 下载地址 |
     | :------------:|  ------------| :------------: |
     | <b> 蓝牙完整固件</b> </br>（nRF52系列芯片）| 此固件基于nRF SDK17.1 仅支持线刷的硬件支持此方式更新<br> 完整固件可在SDK之间切换 <br> 刷写包包含所有键盘完整固件，可直接升级或修复键盘 | <a href="http://glab.online/down/Glab3.0/" class="button">官网下载地址</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> </br> <a href="http://glab.online/down/Glab3.1/" class="button">2.4G测试版固件</a>|
-
-    
-    | 键盘        | 说明          | 下载地址 |
-    | :------------:| --            |:----: |
     | <b>USB固件</b></br>（CH55x芯片）     | 20220212 更新 ：<b>修复USB连线开机时卡开机很长时间都问题</b> </br> 很多笔记本存在这个问题，如联想小新air、惠普光影精灵5代等 </br> 建议存在此问题的更新USB固件。     |<a href="http://glab.online/down/ch554" class="button">官方下载页</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases/tag/20220212-11bc5ea3" class="button">Github发布页</a>|
 
 
