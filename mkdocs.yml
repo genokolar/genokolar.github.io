@@ -126,7 +126,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/genokolar/nrf52-keyboard
       name: nrf52-keyboard
-    - icon: fontawesome/solid/shopping-cart
+    - icon: fontawesome/solid/cart-shopping
       link: http://shop.glab.online/
       name: 淘宝店铺
     - icon: fontawesome/brands/weibo
