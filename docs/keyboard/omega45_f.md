@@ -53,9 +53,9 @@ Omega45 Rev.F 介绍
 
 ## 固件下载
 
-[:fontawesome-solid-download:  20220128蓝牙完整固件](http://glab.online/down/Glab3.0/Omega45-f-nrf52_all-20220128-1151e4a4.hex){ .md-button}
+[:fontawesome-solid-download:  20220212蓝牙完整固件](http://glab.online/down/Glab3.0/Omega45-f-nrf52_all-20220212-11bc5ea3.hex){ .md-button}
 
-[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
+[:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
 ## 更多使用说明
 

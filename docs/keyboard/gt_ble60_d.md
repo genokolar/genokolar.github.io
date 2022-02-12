@@ -19,7 +19,7 @@ GT BLE60 rev.D 键盘
 
 [:fontawesome-solid-download:  下载固件](http://glab.online/down/Glab3.0/){ .md-button}
 
-[:fontawesome-solid-tools:  获取更多下载](../down/download.md){ .md-button}
+[:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
 ## 使用说明
 

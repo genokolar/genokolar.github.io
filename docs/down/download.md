@@ -12,7 +12,19 @@
 
     | 下载内容       | 说明          | 下载地址 |
     | ------------|  ------------| ------------ |
-    | SDK17.1 蓝牙完整固件 | 此固件基于nRF SDK17.1<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可在SDK之间切换 <br> 刷写包包含刷写程序与所有键盘完整固件，可直接升级键盘 | <a href="http://glab.online/down/Glab3.0/" class="button">官网下载地址</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> </br> <a href="http://glab.online/down/Glab3.0/CMSIS-DAP线刷包20220128-1151e4a4-SDK17.1.zip" class="button" title="可直接刷写固件的刷写包">CMSIS-DAP刷写包</a> </br> <a href="http://glab.online/down/Glab3.1/" class="button">2.4G测试版固件</a>|
+    | SDK17.1 蓝牙完整固件 | 此固件基于nRF SDK17.1<br>需使用烧录工具进行烧录<br>仅新版硬件支持此方式更新<br>可在SDK之间切换 <br> 刷写包包含刷写程序与所有键盘完整固件，可直接升级键盘 | <a href="http://glab.online/down/Glab3.0/" class="button">官网下载地址</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a> </br> <a href="http://glab.online/down/Glab3.0/CMSIS-DAP线刷包20220212-11bc5ea3-SDK17.1.zip" class="button" title="可直接刷写固件的刷写包">CMSIS-DAP刷写包</a> </br> <a href="http://glab.online/down/Glab3.1/" class="button">2.4G测试版固件</a>|
+
+=== "USB固件"
+
+    !!! danger "警示"
+
+        键盘绝大多数故障与USB无关，出厂后一般不需要更新USB固件
+        </br>除非USB固件更新内容解决了存在的BUG，非必要请勿更新
+
+    
+    | 键盘        | 说明          | 下载地址 |
+    | ------------| --            |---- |
+    | USB固件     | 20220212 更新 </br> <b>修复USB连线开机时卡开机很长时间都问题</b> </br> 很多笔记本存在这个问题，如联想小新air等 </br> 建议存在此问题的更新USB固件。     |<a href="http://glab.online/down/ch554" class="button">官方下载页</a> </br> <a href="https://github.com/genokolar/nrf52-keyboard/releases/tag/20220212-11bc5ea3" class="button">Github发布页</a>|
 
 === "烧录&配置工具"
 
@@ -31,30 +43,3 @@
     | GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://eyun.baidu.com/s/3brmyk0n" class="button">百度网盘下载</a>|
     | GT Volta9 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 | <a href="https://eyun.baidu.com/s/3bqA4ywZ" class="button">百度网盘下载</a>|
 
-=== "USB固件"
-
-    !!! danger "警示"
-
-        出厂后一般不需要更新USB固件,非必要请勿更新
-
-    
-    | 键盘        | 说明          | 下载地址 |
-    | ------------| --            |---- |
-    | Farad69 Rev.A     | 较老的版本        |<a href="http://glab.online/down/ch554/farad69-a-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Farad69 Rev.B     | 不支持轴灯，较新的版本        |<a href="http://glab.online/down/ch554/farad69-b-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Farad69 Rev.C     | 轴灯版本        |<a href="http://glab.online/down/ch554/farad69-c-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega64 Rev.A & B     | 左移64与非左移64均采用同一个固件        |<a href="http://glab.online/down/ch554/Omega64-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT BLE60 Rev.D     | 老旧版，支持焊接轴体        |<a href="http://glab.online/down/ch554/gt-ble60-d-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT BLE60 Rev.E     | 不支持轴灯的版本        |<a href="http://glab.online/down/ch554/gt-ble60-e-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT BLE60 Rev.F     | 轴灯版本        |<a href="http://glab.online/down/ch554/gt-ble60-f-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | NewHope64     | 特殊64版本        |<a href="http://glab.online/down/ch554/newhope64-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega50 Rev.A    | 不支持轴灯的版本      |<a href="http://glab.online/down/ch554/Omega50-a-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega50 Rev.B    | 不支持轴灯的版本      |<a href="http://glab.online/down/ch554/Omega50-b-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega84    | 当前仅一个版本        |<a href="http://glab.online/down/ch554/Omega84-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega45 Rev.C    | 不支持轴灯的版本        |<a href="http://glab.online/down/ch554/Omega45-c-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega45 Rev.D    | 不支持轴灯的版本        |<a href="http://glab.online/down/ch554/Omega45-d-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega45 Rev.E    | 轴灯的版本        |<a href="http://glab.online/down/ch554/Omega45-e-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | Omega45 Rev.F    | RGB轴灯的版本        |<a href="http://glab.online/down/ch554/Omega45-f-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT PAD Rev.A    | 带轴灯标准数字小键盘       |<a href="http://glab.online/down/ch554/gt-pad-a-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT PAD Rev.B    | RGB轴灯标准数字小键盘       |<a href="http://glab.online/down/ch554/gt-pad-b-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
-    | GT Planck Rev.A   | 直列40%键盘       |<a href="http://glab.online/down/ch554/gt-planck-a-ch554-20211105-11d28f72.bin" class="button">官方下载</a> |
