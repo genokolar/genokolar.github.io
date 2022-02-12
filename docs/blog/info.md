@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation # Hide navigation
+---
+
+
 近期动态
 ==========
 
