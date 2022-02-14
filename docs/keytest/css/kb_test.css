@@ -816,13 +816,13 @@ body {
 }
 
 .active .key-base-color, .color.active {
-    background: #fff;
-    fill: #fff
+    background: #e5e5e5;
+    fill: #e5e5e5
 }
 
 .color.pressed, .pressed .key-base-color {
-    background: #111;
-    fill: #111
+    background: #722;
+    fill: #722
 }
 
 .color.never, .never .key-base-color {
@@ -990,7 +990,12 @@ body {
 }
 
 .key-top-color {
-    fill: #afafaf;
+    fill: #cfcfcf;
+    stroke-width: 2px
+}
+
+.active .key-top-color {
+    fill: #a00000;
     stroke-width: 2px
 }
 
@@ -1005,12 +1010,12 @@ body {
 }
 
 .key-side {
-    fill: rgba(0, 0, 0, .1)
+    fill: rgb(0 0 0 / 15%)
 }
 
 .corner-line {
     fill: none;
-    stroke: rgba(0, 0, 0, .4);
+    stroke: rgba(0, 0, 0, .5);
     stroke-width: .1417
 }
 
