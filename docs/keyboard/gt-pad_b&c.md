@@ -1,7 +1,9 @@
-GT PAD Rev.B 标准数字小键盘
+GT PAD Rev.B & Rev.C 标准数字小键盘
 =====================
 
 ## 描述
+
+<b>Rev.B版本：</b>
 
 - 4x5的数字小键盘
 - 支持RGB轴灯（同QMK灯效）
@@ -10,6 +12,17 @@ GT PAD Rev.B 标准数字小键盘
 - 采用热拔插方式（佳达隆轴座）
 - 支持旋转编码器、OLED屏幕
 - 共引出6个针脚可自行添加外设
+- RGB轴灯兼容指示灯
+- PCB尺寸：76.2mm×95.2mm
+
+<b>Rev.C版本：</b>
+
+- 4x5的数字小键盘
+- 支持RGB轴灯（同QMK灯效）
+- Type-C接口,引出外接USB接口
+- 蓝牙主控为nRF52810（芯片+贴片天线）
+- 采用热拔插方式（佳达隆轴座）
+- 支持旋转编码器
 - RGB轴灯兼容指示灯
 - PCB尺寸：76.2mm×95.2mm
 
@@ -43,7 +56,9 @@ GT PAD Rev.B 标准数字小键盘
 
 ## 如何启用旋钮编码器
 
-只需要将旋钮编码器焊接到ESC位置，然后接入配置工具，找到键盘设置--布局配置--编码器选项，将按键更改成编码器。
+只需要将旋钮编码器焊接到ESC位置，然后接入配置工具，找到键盘设置--布局配置--编码器选项，
+
+Rev.C将按键更改成编码器；Rev.B将按键更改成独立编码器。
 
 顶部出现的两颗按钮就是旋转功能，下面第一颗按键，就是旋钮按键功能。
 
@@ -56,7 +71,9 @@ GT PAD Rev.B 标准数字小键盘
 
 ## 固件下载
 
-[:fontawesome-solid-download:  20220212蓝牙完整固件](http://glab.online/down/Glab3.0/gt-pad-b-nrf52_all-20220212-11bc5ea3.hex){ .md-button}
+[:fontawesome-solid-download: 20220212蓝牙完整固件 Rev.B ](http://glab.online/down/Glab3.0/gt-pad-b-nrf52_all-20220212-11bc5ea3.hex){ .md-button}
+
+[:fontawesome-solid-download: 20220212蓝牙完整固件 Rev.C ](http://glab.online/down/Glab3.0/gt-pad-c-nrf52_all-20220212-11bc5ea3.hex){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
