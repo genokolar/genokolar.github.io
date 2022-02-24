@@ -198,20 +198,21 @@
 <span id="固件名称命令规则">固件名称命令规则</span>
 ----------------
 
-如：Omega50-b-nrf52_kbd_sign-20210817-e35fd41.hex 
+如：Omega50-b-nrf52832_kbd_sign-20210817-e35fd41.hex 
 
 依次为：型号-子型号-固件类型-编译日期-固件版本.文件类型 
 
        
 !!! tip "上面文件命名代表："
 
-    型号：Omega50，子型号：B版本，固件类型：nrf_kbd_sign
+    型号：Omega50，子型号：B版本，固件类型：nrf52832_kbd_sign
 
     编译日期：20210817，固件版本：e35fd41，文件类型：hex
 
 !!! tip "其中固件类型说明：" 
 
-    - nrf52_kbd_sign ：已签名蓝牙核心固件;
-    - nrf52_all : 蓝牙完整固件；
-    - nrf52_dfu ：蓝牙DFU升级包；
+    - nrf528xx_kbd_sign ：已签名蓝牙核心固件;
+    - nrf528xx_kbd ：未签名蓝牙核心固件;
+    - nrf528xx_all : 蓝牙完整固件；
+    - nrf528xx_dfu ：蓝牙DFU升级包；
     - ch554 ：USB固件
