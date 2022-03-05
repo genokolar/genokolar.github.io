@@ -16,7 +16,7 @@ Farad69 REV.B 键盘
 
 ## 下载
 
-[:fontawesome-solid-download:  下载固件](http://glab.online/down/Glab3.0/){ .md-button}
+[:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 

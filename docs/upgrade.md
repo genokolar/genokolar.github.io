@@ -37,7 +37,7 @@
     
 === "文字说明"
 
-    1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup_1.2.1.1.exe)，并安装。
+    1. 下载LotKB专属 [烧录工具](https://glab.online/down/wch_nrf_burner_setup_1.2.2.0.exe)，并安装。
     2. 下载键盘对应的 `蓝牙核心固件` 或 `蓝牙完整固件` 
     3. 打开烧录工具`wch_nrf_burner.exe`。
     4. 直接通过USB连接键盘。
@@ -51,7 +51,7 @@
 === "升级演示视频"
 
     <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
-      <source id="mp4" src="http://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
+      <source id="mp4" src="https://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
       您的浏览器不支持播放此视频
     </video>
 
@@ -121,7 +121,7 @@
 
 === "文字说明"
 
-    1. 下载LotKB专属 [烧录工具](http://glab.online/down/wch_nrf_burner_setup_1.2.1.1.exe)，并安装。
+    1. 下载LotKB专属 [烧录工具](https://glab.online/down/wch_nrf_burner_setup_1.2.2.0.exe)，并安装。
     2. 打开烧录工具`wch_nrf_burner.exe`。
     3. 如已经刷入2020年8月16日后的USB固件：
         - 直接通过USB连接键盘。刷新当前设备列表，并下拉选择连接的键盘。
@@ -138,7 +138,7 @@
 === "升级演示视频"
 
     <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
-      <source id="mp4" src="http://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
+      <source id="mp4" src="https://glab.online/down/wch_nrf_burner.mp4" type="video/mp4">
       您的浏览器不支持播放此视频
     </video>
 
@@ -155,7 +155,7 @@ CMSIS-DAP烧录工具包自带完整蓝牙固件，适合快速刷写完整固�
 === "文字说明"
     （仅Windows）
 
-    1. 下载CMSIS-DAP烧录工具 [官方地址下载](http://glab.online/down/Glab3.0)
+    1. 下载CMSIS-DAP烧录工具 [官方地址下载](https://glab.online/down/Glab3.0)
 
     2. 下载后解压，双击运行其中的`#开始烧录.bat`文件
 

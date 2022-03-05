@@ -71,9 +71,9 @@ Rev.C将按键更改成编码器；Rev.B将按键更改成独立编码器。
 
 ## 固件下载
 
-[:fontawesome-solid-download: 20220303蓝牙完整固件 Rev.B ](http://glab.online/down/Glab3.0/gt-pad-b-nrf52832_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download: 20220303蓝牙完整固件 Rev.B ](https://glab.online/down/Glab3.0/gt-pad-b-nrf52832_all-20220303-11e13034.hex){ .md-button}
 
-[:fontawesome-solid-download: 20220303蓝牙完整固件 Rev.C ](http://glab.online/down/Glab3.0/gt-pad-c-nrf52810_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download: 20220303蓝牙完整固件 Rev.C ](https://glab.online/down/Glab3.0/gt-pad-c-nrf52810_all-20220303-11e13034.hex){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 

@@ -45,7 +45,7 @@ Volta 9 Rev.A 九键小键盘
 
 ## 固件下载
 
-[:fontawesome-solid-download:  20220303蓝牙完整固件](http://glab.online/down/Glab3.0/volta9-a-nrf52810_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download:  20220303蓝牙完整固件](https://glab.online/down/Glab3.0/volta9-a-nrf52810_all-20220303-11e13034.hex){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 

@@ -19,7 +19,7 @@
 
 详细的操作步骤可以观看演示视频：
 <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
-<source id="mp4" src="http://glab.online/down/Github_Action_compile_LotKB.mp4" type="video/mp4">
+<source id="mp4" src="https://glab.online/down/Github_Action_compile_LotKB.mp4" type="video/mp4">
   您的浏览器不支持播放此视频
 </video>
 

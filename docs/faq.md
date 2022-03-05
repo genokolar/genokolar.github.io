@@ -127,7 +127,7 @@
 ----------------------------------
 键盘PCB购买后，请及时按照下列步骤完成检测：
 
-1. 下载运行 [按键检测软件](http://glab.online/down/keyboardtestutility.exe)  或 访问[按键检测网站](https://glab.online/keytest/) 。
+1. 下载运行 [按键检测软件](https://glab.online/down/keyboardtestutility.exe)  或 访问[按键检测网站](https://glab.online/keytest/) 。
 
 2. 将键盘PCB用USB线连接到电脑 或 通电状态通过蓝牙连接到设备
 

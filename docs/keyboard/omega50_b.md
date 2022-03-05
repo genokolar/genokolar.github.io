@@ -54,7 +54,7 @@ Omega50 Rev.B 介绍
 
 !!! tip  "本页面提供的蓝牙固件基于nRF SDK17.1    [怎么切换SDK版本？](../faq.md#怎样切换不同SDK版本的固件)"
 
-[:fontawesome-solid-download:  20220303蓝牙完整固件](http://glab.online/down/Glab3.0/Omega50-b-nrf52832_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download:  20220303蓝牙完整固件](https://glab.online/down/Glab3.0/Omega50-b-nrf52832_all-20220303-11e13034.hex){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
