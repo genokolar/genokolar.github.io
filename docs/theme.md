@@ -2,14 +2,20 @@
 icon: fontawesome/solid/palette 
 ---
 
-Change Colors
+更改主题颜色
 ------------
 
-Click on a tile to change the color scheme:
+!!! note "本页面更改的站点颜色无法保存，如需保持请勿刷新"
+
+点击项目更改主题方案:
+
+``` yaml
+    方案: default
+```
 
 <div class="mdx-switch">
-  <button data-md-color-scheme="default"><code>浅色主题</code></button>
-  <button data-md-color-scheme="slate"><code>深色主题</code></button>
+  <button data-md-color-scheme="default"><code>default 浅色主题</code></button>
+  <button data-md-color-scheme="slate"><code>slate 深色主题</code></button>
 </div>
 
 <script>
@@ -25,7 +31,11 @@ Click on a tile to change the color scheme:
 </script>
 
 
-Click on a tile to change the primary color:
+点击颜色方块更改主色:
+
+``` yaml
+  主色: indigo
+```
 
 <div class="mdx-switch">
   <button data-md-color-primary="red"><code>red</code></button>
@@ -63,7 +73,11 @@ Click on a tile to change the primary color:
   })
 </script>
 
-Click on a tile to change the accent color:
+点击颜色方块更改高亮色:
+
+``` yaml
+  高亮色: indigo
+```
 
 <style>
   .md-typeset button[data-md-color-accent] > code {
