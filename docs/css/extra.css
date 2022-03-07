@@ -28,11 +28,12 @@
         }
 
 
-/*自定义图标颜色 */
+/*自定义图标颜色
 
 .twemoji {
     color: #1DA1F2;
   }
+   */
 /* 自定义页面最大宽度
   .md-grid {
     max-width: 1440px;
@@ -46,3 +47,12 @@
     height: 36px;
     width: 36px;
   }
+
+/* 自定义主题颜色*/
+[data-md-color-scheme="youtube"] {
+  --md-primary-fg-color:        #EE0F0F;
+  --md-primary-fg-color--light: #ECB7B7;
+  --md-primary-fg-color--dark:  #90030C;
+  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+}
