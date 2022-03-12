@@ -141,9 +141,9 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 | 启动按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按启动按键，可任意键唤醒。|
 | 切换启动按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`启动按键`功能。<br> 启用`启动按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
 | 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 休眠或关机后唤醒自动恢复第1层为默认层|
-| RGB调整颜色 | <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版（轴灯模式下）为控制轴灯；非轴灯版为控制底灯</br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
-| RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | RGB轴灯版为控制RGB轴灯在灯效之间循环</br>轴灯版（轴灯模式下）为控制轴灯在常亮、呼吸、多彩变换之间循环</br>非轴灯版为控制底灯在32种灯效之间循环 |
-| RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | RGB轴灯版为RGB轴灯开关</br>轴灯版（轴灯模式下）为轴灯开关</br>非轴灯版为RGB底灯开关|
+| RGB调整颜色 | <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版（轴灯模式下）为控制轴灯；非轴灯版为控制底灯<br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
+| RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | RGB轴灯版为控制RGB轴灯在灯效之间循环<br>轴灯版（轴灯模式下）为控制轴灯在常亮、呼吸、多彩变换之间循环<br>非轴灯版为控制底灯在32种灯效之间循环 |
+| RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | RGB轴灯版为RGB轴灯开关<br>轴灯版（轴灯模式下）为轴灯开关<br>非轴灯版为RGB底灯开关|
 
 <span id="配对蓝牙设备">配对蓝牙设备</span>
 -----
