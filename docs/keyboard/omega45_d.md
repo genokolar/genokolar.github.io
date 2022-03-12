@@ -43,12 +43,11 @@ Omega45 Rev.D 介绍
 
 轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
-## 固件下载
+## 下载
 
-[:fontawesome-solid-download:  20220303蓝牙完整固件](https://glab.online/down/Glab3.0/Omega45-d-nrf52832_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
-
 ## 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

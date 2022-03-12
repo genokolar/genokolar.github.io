@@ -43,9 +43,9 @@ Volta 9 Rev.A 九键小键盘
 
 建议到手后自行设置按键：将键盘接入配置工具，找到 层级/功能--键盘功能，将蓝牙控制功能（BT字样的按键）设定到你指定的按键上就可以控制蓝牙。找到 灯光 功能，将RGB阵列相关按键设定到你指定的按键上既可以控制RGB灯光。
 
-## 固件下载
+## 下载
 
-[:fontawesome-solid-download:  20220303蓝牙完整固件](https://glab.online/down/Glab3.0/volta9-a-nrf52810_all-20220303-11e13034.hex){ .md-button}
+[:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
