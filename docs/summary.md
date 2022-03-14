@@ -41,3 +41,5 @@
 :fontawesome-brands-qq: QQ群：[38491793 ](https://jq.qq.com/?_wv=1027&k=wO76pWWU) | [619175701 ](https://jq.qq.com/?_wv=1027&k=PErENtHj)
 
 :fontawesome-solid-bag-shopping: 淘宝店铺: [http://shop.glab.online/](http://shop.glab.online/)
+
+:fontawesome-brands-discourse: 淘宝客服 [联系客服](https://amos.alicdn.com/getcid.aw?site=cntaobao&uid=genokolar:售前)
