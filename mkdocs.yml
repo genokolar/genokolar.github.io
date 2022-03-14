@@ -133,7 +133,7 @@ extra:
       link: https://github.com/genokolar/
       name: Github
     - icon: fontawesome/solid/cart-shopping
-      link: http://shop.glab.online/
+      link: https://glab.taobao.com/
       name: 淘宝店铺：键圈欢乐多
     - icon: fontawesome/brands/weibo
       link: https://weibo.com/geno
@@ -192,7 +192,7 @@ nav:
         - GT Planck Rev.A: keyboard/gt-planck.md
     - 信息公告: 
       - 近期动态: blog/info.md
-    - 淘宝店铺: http://shop.glab.online
+    - 淘宝店铺: https://glab.taobao.com
     - 主题: theme.md  
 
 copyright: <a href=https://glab.online/>键圈欢乐多</a> - <a href=http://www.beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021-2025 Glab.online
