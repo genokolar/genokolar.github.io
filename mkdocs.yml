@@ -166,31 +166,27 @@ nav:
       - 相关下载: down/download.md
       - 更新日志: changelog.md
     - 产品页面:
-      - GT BLE60:
-        - GT BLE60 Rev.D: keyboard/gt_ble60_d.md
-        - GT BLE60 Rev.E: keyboard/gt_ble60_e.md
-        - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
-      - Farad69:
-        - Farad69 Rev.A: keyboard/farad69_a.md
-        - Farad69 Rev.B: keyboard/farad69_b.md
-        - Farad69 Rev.C: keyboard/farad69_c.md
-      - Omega40:
-        - Omega40 Rev.A: keyboard/omega40_a.md
-      - Omega45:
-        - Omega45 Rev.C: keyboard/omega45_c.md
-        - Omega45 Rev.D: keyboard/omega45_d.md
-        - Omega45 Rev.E: keyboard/omega45_e.md
-        - Omega45 Rev.F: keyboard/omega45_f.md
-      - Omega50:
-        - Omega50 Rev.A: keyboard/omega50_a.md
-        - Omega50 Rev.B: keyboard/omega50_b.md
-      - GT PAD: 
-        - GT PAD Rev.A: keyboard/gt-pad_a.md
-        - GT PAD Rev.B & C: keyboard/gt-pad_b&c.md
       - GT Volta9: 
         - GT Volta9 Rev.A: keyboard/volta9_a.md
+      - GT PAD: 
+        - GT PAD Rev.B & C: keyboard/gt-pad_b&c.md
+        - GT PAD Rev.A: keyboard/gt-pad_a.md
+      - Omega40:
+        - Omega40 Rev.A: keyboard/omega40_a.md
       - GT Planck:
         - GT Planck Rev.A: keyboard/gt-planck.md
+      - Omega45:
+        - Omega45 Rev.F: keyboard/omega45_f.md
+        - Other ...: keyboard/omega45_other.md
+      - Omega50:
+        - Omega50 Rev.B: keyboard/omega50_b.md
+        - Omega50 Rev.A: keyboard/omega50_a.md
+      - GT BLE60:
+        - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
+        - Other ...: keyboard/gt_ble60_other.md
+      - Farad69:
+        - Farad69 Rev.C: keyboard/farad69_c.md
+        - Other ...: keyboard/farad69_other.md
     - 信息公告: 
       - 近期动态: blog/info.md
     - 淘宝店铺: https://glab.taobao.com
