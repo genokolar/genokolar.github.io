@@ -182,6 +182,7 @@ nav:
         - Omega50 Rev.B: keyboard/omega50_b.md
         - Omega50 Rev.A: keyboard/omega50_a.md
       - GT BLE60:
+        - GT BLE60 Rev.G: keyboard/gt_ble60_g.md
         - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
         - Other ...: keyboard/gt_ble60_other.md
       - Farad69:
