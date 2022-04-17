@@ -1,5 +1,8 @@
-GT Planck 40%的键盘
+GT Planck 直列40%的键盘
 =====================
+
+GT Planck rev.A
+---------------
 
 #### 描述
 
@@ -46,12 +49,11 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 ![](../img/E104-BT5032A.png "E104-BT5032A")
 
-#### 下载
 
+下载及说明
+---------------
 [:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
-
-#### 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

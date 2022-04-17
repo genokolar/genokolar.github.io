@@ -1,6 +1,8 @@
-Omega40 Rev.A 介绍
+Omega40 Rev.A 40%键盘
 =====================
-本页面仅描述rev.A版本（RGB轴灯版）相关信息
+
+Omega40 Rev.A
+------------
 
 #### 描述
 
@@ -49,12 +51,12 @@ Omega40 Rev.A 介绍
 
 ![](../img/rotary.png "按键示意图")
 
-#### 下载
+
+下载及说明
+---------------
 
 [:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
-
-#### 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)
