@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           local-dir: ${{ github.workspace }}/site/
           server-dir: /htdocs/wiki/
-          state-name: ../.ftp-deploy-sync-state.json
+          state-name: ../.wiki.glab.online-sync-state.json
