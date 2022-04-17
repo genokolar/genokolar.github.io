@@ -1,7 +1,7 @@
 GT Planck 40%的键盘
 =====================
 
-## 描述
+#### 描述
 
 - 4×12的47键键盘（实际阵列为8x7）
 - Type-C接口（支持左侧与中间两个位置）
@@ -16,13 +16,13 @@ GT Planck 40%的键盘
 
 ![](../img/gt-planck.png "GT Planck PCB")
 
-## 指示灯说明
+#### 指示灯说明
 
 Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
 
 蓝牙广播状态，Caps指示灯会闪烁，蓝牙连接成功后，Caps灯会恢复Caps指示（Caps原本状态）
 
-## 关于休眠及唤醒
+#### 关于休眠及唤醒
 
 由于Planck采用了LESS IO方式实现键盘矩阵，所以无法实现任意键唤醒。
 
@@ -30,7 +30,7 @@ Planck仅有一颗Caps指示灯，在关机和开机时会闪烁一次。
 
 如开启了`启动按键`功能，手动休眠后需要同时按<kbd>SPACE</kbd>+<kbd>U</kbd>+第一颗按键唤醒
 
-## 蓝牙主控的区别
+#### 蓝牙主控的区别
 
 Planck使用nRF52832或nRF52811芯片，请注意区分：
 
@@ -46,12 +46,12 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 ![](../img/E104-BT5032A.png "E104-BT5032A")
 
-## 下载
+#### 下载
 
 [:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
-## 更多使用说明
+#### 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

@@ -1,8 +1,11 @@
-Omega50 Rev.B 介绍
+Omega50 键盘
 =====================
-本页面仅描述rev.B版本（轴灯版）相关信息
 
-## 描述
+
+Omega50 Rev.B
+---------
+
+#### 描述
 
 - 5x12阵列的50%键盘，共58键
 - 支持RGB轴灯（无灯效）
@@ -17,7 +20,7 @@ Omega50 Rev.B 介绍
 
 ![](../img/omega50-b.jpg "Omega50 PCB")
 
-## 指示灯说明
+#### 指示灯说明
 
 轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
@@ -32,7 +35,7 @@ Omega50 Rev.B 介绍
 - 蓝牙连接状态下，指示灯5秒后自动熄灭（可自定义常亮时长）
 - 蓝牙广播30秒后未连接自动熄灭。
 
-## 轴灯说明
+#### 轴灯说明
 
 轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
@@ -40,7 +43,7 @@ Omega50 Rev.B 介绍
 
 轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
-## 如何启用旋钮编码器
+#### 如何启用旋钮编码器
 
 只需要将旋钮编码器焊接到ESC位置，然后接入配置工具，找到键盘设置--布局配置--编码器选项，将按键更改成编码器。
 
@@ -48,13 +51,28 @@ Omega50 Rev.B 介绍
 
 ![](../img/rotary.png "按键示意图")
 
+Omega50 Rev.A
+--------
 
-## 下载
+部分老旧PCB上没有版本标识，属于Rev.A 版本
+
+#### 描述
+
+- 5x12的50%键盘
+- 蓝牙主控为nRF52832（信驰达RF-BM-ND04蓝牙模块）
+- 采用热拔插方式
+- 状态指示灯3颗
+- Caps指示灯1颗
+- 充电指示灯2颗
+- 8颗RGB底灯（WS2812）
+- 预留WS2812 RGB灯带焊接位
+
+
+下载及说明
+----------
 
 [:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
-
-## 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

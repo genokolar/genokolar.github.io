@@ -2,7 +2,7 @@ GT BLE60 rev.F 键盘
 =====================
 本页面仅描述rev.F版本（轴灯版）相关信息
 
-## 描述
+#### 描述
 
 - 5x13的60%键盘
 - 支持RGB轴灯（无灯效）
@@ -18,7 +18,7 @@ GT BLE60 rev.F 键盘
 
 ![](../img/gt-ble60.jpg "GT BLE60 rev.F PCB")
 
-## 指示灯说明
+#### 指示灯说明
 
 轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
@@ -33,7 +33,7 @@ GT BLE60 rev.F 键盘
 - 蓝牙连接状态下，指示灯5秒后自动熄灭（可自定义常亮时长）
 - 蓝牙广播30秒后未连接自动熄灭。
 
-## 轴灯说明
+#### 轴灯说明
 
 轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
 
@@ -41,7 +41,7 @@ GT BLE60 rev.F 键盘
 
 轴灯模式时，采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
 
-## 如何启用旋钮编码器
+#### 如何启用旋钮编码器
 
 只需要将旋钮编码器焊接到ESC位置，然后接入配置工具，找到键盘设置--布局配置--编码器选项，将按键更改成编码器。
 
@@ -49,12 +49,12 @@ GT BLE60 rev.F 键盘
 
 ![](../img/rotary.png "按键示意图")
 
-## 下载
+#### 下载
 
 [:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
-## 更多使用说明
+#### 更多使用说明
 
 访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)

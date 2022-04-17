@@ -166,21 +166,15 @@ nav:
       - 相关下载: down/download.md
       - 更新日志: changelog.md
     - 产品页面:
-      - GT Volta9: 
-        - GT Volta9 Rev.A: keyboard/volta9_a.md
-      - GT PAD: 
-        - GT PAD Rev.B & C: keyboard/gt-pad_b&c.md
-        - GT PAD Rev.A: keyboard/gt-pad_a.md
-      - Omega40:
-        - Omega40 Rev.A: keyboard/omega40_a.md
-      - GT Planck:
-        - GT Planck Rev.A: keyboard/gt-planck.md
+      - GT Volta9: keyboard/volta9.md
+      - GT PAD: keyboard/gt-pad.md
+      - Omega40: keyboard/omega40.md
+      - GT Planck: keyboard/gt-planck.md
+      - Omega50: keyboard/omega50.md
+      - NewHope64: keyboard/newhope64.md
       - Omega45:
         - Omega45 Rev.F: keyboard/omega45_f.md
         - Other ...: keyboard/omega45_other.md
-      - Omega50:
-        - Omega50 Rev.B: keyboard/omega50_b.md
-        - Omega50 Rev.A: keyboard/omega50_a.md
       - GT BLE60:
         - GT BLE60 Rev.G: keyboard/gt_ble60_g.md
         - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
