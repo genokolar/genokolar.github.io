@@ -178,10 +178,9 @@ nav:
         - Other ...: keyboard/omega45_other.md
       - GT BLE60:
         - GT BLE60 Rev.G: keyboard/gt_ble60_g.md
-        - GT BLE60 Rev.F: keyboard/gt_ble60_f.md
         - Other ...: keyboard/gt_ble60_other.md
       - Farad69:
-        - Farad69 Rev.C: keyboard/farad69_c.md
+        - Farad69 Rev.D: keyboard/farad69_d.md
         - Other ...: keyboard/farad69_other.md
     - 信息公告: 
       - 近期动态: blog/info.md
