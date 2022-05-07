@@ -29,7 +29,7 @@ hide:
 
 如果要将Volta9或者PAD作为接收器，需要刷写专门的接收器固件，刷完固件通过配置工具配置一个无线模式切换按键，切换到2.4G模式，然后插入USB线，它就是一个2.4G接收器了，切换回蓝牙模式，它就是一个正常的键盘。
 
-接收器固件下载： [Volta9](https://glab.online/down/test/Volta9接收器固件.hex) /  [GT-PAD.A](https://glab.online/down/test/gt-pad-a接收器固件.hex)  /  [GT-PAD.B](https://glab.online/down/test/gt-pad-b接收器固件.hex) 
+接收器固件下载： [Volta9](https://glab.online/down/Glab3.1//volta9-a-nrf52810_all-20220505-11a409eb-接收器固件.hex) /  [GT-PAD.A](https://glab.online/down/Glab3.1//gt-pad-a-nrf52832_all-20220505-11a409eb-接收器固件.hex)  /  [GT-PAD.B](https://glab.online/down/Glab3.1//gt-pad-b-nrf52832_all-20220505-11a409eb-接收器固件.hex)   /  [GT-PAD.C](https://glab.online/down/Glab3.1//gt-pad-c-nrf52810_all-20220505-11a409eb-接收器固件.hex) 
 
 <b>三、如何使用</B>:
 
