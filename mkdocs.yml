@@ -42,9 +42,10 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-    - toc.follow
+    # 边栏跟随自动滚动（内部功能）
+    # - toc.follow
     # 集成导航（仅左侧导航栏，包括目录）
-    # - toc.integrate
+    - toc.integrate
     
   palette:
     - media: "(prefers-color-scheme: light)"
