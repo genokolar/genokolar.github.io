@@ -31,7 +31,7 @@
 <span id="如何控制或关闭RGB轴灯">如何控制或关闭RGB轴灯</span>
 -----------------------
 1. 轴灯版PCB：
-    - 轴灯版PCB的轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 在指示灯模式和轴灯模式之间切换。
+    - 轴灯版PCB的轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 或 通过配置工具设置一颗<kbd>状态灯开关</kbd>按键 在指示灯模式和轴灯模式之间切换。
     - 指示灯模式时，不可控制，固件显示不同颜色指示不同状态
     - 要控制轴灯，请通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 先切换到轴灯模式。
     - 切换到轴灯模式后，通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>可开关轴灯。

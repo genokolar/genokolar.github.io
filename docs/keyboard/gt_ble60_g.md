@@ -36,7 +36,7 @@ GT BLE60 rev.G 键盘
 - 红色-蓝牙通道2️⃣输出
 - 橙色-蓝牙通道3️⃣输出
 
-指示灯可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd>开关
+指示灯可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 或 通过配置工具设置一颗<kbd>状态灯开关</kbd>按键 开关
 
 指示灯支持独立运行，建议在使用电池时，关闭RGB轴灯，开启指示灯，指示灯将可自动关闭节能
 
