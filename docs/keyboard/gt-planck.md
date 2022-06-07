@@ -17,6 +17,8 @@ GT Planck rev.B
 
 相比A版本，支持任意键唤醒，加入了RGB轴灯
 
+![](../img/gt-planck_b.jpg "GT Planck Rev.B PCB")
+
 #### RGB轴灯说明
 
 此版轴灯采用WS2812 RGB灯，支持各种丰富绚丽的灯效（同QMK灯效），支持Caps指示灯、USB与蓝牙状态指示灯。
