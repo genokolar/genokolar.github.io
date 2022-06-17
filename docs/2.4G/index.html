@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Glab无线接收器控制</title>
+  <meta charset=utf-8>
+  <script type="module" src="./js/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/waves.min.css?v=0.7.2">
+</head>
+
+<body>
+  <h1>2.4G接收器控制面板</h1>
+
+
+  <div class="text">
+    初次连接的设备需要先授权 <br />
+	授权后的设备方可正常连接<br />
+  </div>
+  <div class="button">
+      <button id="grant-button" class="btn float-buttons waves-effect waves-button waves-float" style="color: rgb(255, 255, 255); background: rgb(255, 43, 107)" title="授权访问设备权限"> 授权设备 </button>
+      <!-- <button id="list-button" class="btn float-buttons waves-effect waves-button waves-float" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
+      <button id="connect-button" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
+      <button id="disconnect-button" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="断开Lotlab设备连接"> 断开连接 </button>  -->
+      <button id="send-button1" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(255, 255, 255); background: rgb(42, 177, 255)" title="发送命令使设备进入USB ISP模式"> 进入USB ISP </button>
+      <button id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(255, 255, 255); background: rgb(42, 177, 255)" title="发送命令重置键盘"> 重置键盘 </button>
+      <button id="send-button3" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(255, 255, 255); background: rgb(42, 177, 255)" title="发送命令获取键盘信息"> 获取键盘信息 </button>
+  </div>
+  <div class="info">
+      <span class="console" id="consoleinfo">操作信息：<br> </span>
+  </div>
+</body>
+
+</html>
