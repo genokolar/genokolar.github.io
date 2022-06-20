@@ -6,22 +6,16 @@ document.getElementById('grant-button').addEventListener('click', grantDevice); 
 //document.getElementById('disconnect-button').addEventListener('click', closeDevice); //断开连接
 
 document.getElementById('send-button1').addEventListener('click', handleSendClick1); //发送命令：进入USB ISP
+document.getElementById('send-button4').addEventListener('click', handleSendClick4); //发送命令：进入USB ISP
 document.getElementById('send-button2').addEventListener('click', handleSendClick2); //发送命令：重置键盘
 document.getElementById('send-button3').addEventListener('click', handleSendClick3); //发送命令：获取键盘信息
 
 //设置过滤器
 const filters = [
-/**
-{
-	vendorId: 0x1209, // Lotkb
-	productId: 0x0514, // Lotkb
-	//productName: "Lotlab Configurator",
-}, 
-*/
 {
 	vendorId: 0x4366, // Glab
 	productId: 0x1024, // Glab
-	productName: "Lotlab Configurator",
+	productName: "Glab 2.4G Receiver",
 }
 ];
 
@@ -32,7 +26,7 @@ async function grantDevice() {
 		filters
 	});
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName == "Lotlab Configurator") {
+		if (devices_list[i].productName == "Glab 2.4G Receiver") {
 			console.log("Grant Device:", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML +="授权设备:" + devices_list[i].productName + '<br>';
 			openDevice();
@@ -52,13 +46,13 @@ async function listDevices() {
 	}
 	console.log("Devices list:", devices_list);
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName == "Lotlab Configurator") {
+		if (devices_list[i].productName == "Glab 2.4G Receiver") {
 		document.getElementById('consoleinfo').innerHTML +="已授权设备:" + devices_list[i].productName + '<br>';
 		}
 	}
 }
 
-//连接设备【先授权，后连接Lotlab Configurator】
+//连接设备【先授权，后连接Glab 2.4G Receiver】
 async function openDevice() {
 	const devices_list = await navigator.hid.getDevices();
 	if (!devices_list.length) {
@@ -67,10 +61,10 @@ async function openDevice() {
 		return null;
 	} else {
 		for (var i = 0; i < devices_list.length; i++) {
-			if (devices_list[i].opened && devices_list[i].productName == "Lotlab Configurator") {
+			if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 				document.getElementById('consoleinfo').innerHTML += "设备已经连接，请勿重复点击" + '<br>';
 				return devices_list[i];
-			} else if (devices_list[i].productName == "Lotlab Configurator") {
+			} else if (devices_list[i].productName == "Glab 2.4G Receiver") {
 				await devices_list[i].open();
 				console.log("Device Opened:", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
@@ -102,8 +96,8 @@ async function closeDevice() {
 async function handleSendClick1() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Lotlab Configurator") {
-			const outputReportData = new Uint8Array([0xf0]);
+		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+			const outputReportData = new Uint8Array([0xf1]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("Sent to Devices:", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
@@ -120,12 +114,13 @@ async function handleSendClick1() {
 async function handleSendClick2() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Lotlab Configurator") {
+		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("Sent to Devices:", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-			document.getElementById('consoleinfo').innerHTML +="重置键盘:" + devices_list[i].productName + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="重置接收器:" + devices_list[i].productName + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="5秒后,请重新拔插接收器以便完成重置" + '<br>';
 			return null;
 		}
 	}
@@ -137,12 +132,30 @@ async function handleSendClick2() {
 async function handleSendClick3() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Lotlab Configurator") {
+		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 			const outputReportData = new Uint8Array([0x20]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("Sent to Devices:", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-			document.getElementById('consoleinfo').innerHTML +="获取键盘信息:" + devices_list[i].productName + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="获取接收器信息:" + devices_list[i].productName + '<br>';
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
+}
+
+//发送数据处理函数：允许CMSIS刷写
+async function handleSendClick4() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+			const outputReportData = new Uint8Array([0xf2]);
+			await senddata(devices_list[i], outputReportData)
+			console.log("Sent to Devices:", devices_list[i])
+			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
+			document.getElementById('consoleinfo').innerHTML +="允许固件刷写:" + devices_list[i].productName + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="刷写完成后，请重新拔插接收器以便重置状态" + '<br>';
 			return null;
 		}
 	}
@@ -169,7 +182,7 @@ async function senddata(device, data) {
 //监听HID授权设备的接入，并连接设备
 navigator.hid.addEventListener('connect', ({device}) => {
 	console.log(`HID connected: ${device.productName}`);
-	if (device.productName == "Lotlab Configurator") {
+	if (device.productName == "Glab 2.4G Receiver") {
 		document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
 		document.getElementById('consoleinfo').innerHTML +="已授权HID设备接入" + '<br>';
 		openDevice();
@@ -194,7 +207,7 @@ navigator.hid.addEventListener("inputreport", event => {
 document.addEventListener('DOMContentLoaded', async () => {
 	let devices = await navigator.hid.getDevices();
 	devices.forEach(device => {
-		if (device.productName == "Lotlab Configurator") {
+		if (device.productName == "Glab 2.4G Receiver") {
 			document.getElementById('consoleinfo').innerHTML += "已授权HID设备已接入" + '<br>';
 			openDevice();
 		}
