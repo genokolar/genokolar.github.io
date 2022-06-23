@@ -41,7 +41,7 @@ hide:
 :fontawesome-solid-fan: 2.4G特性说明
 -----
 
-- 基于nordic semiconductor ESB的实现2.4G功能
+- 基于Nordic Semiconductor ESB协议实现2.4G无线功能
 - 一个接收器支持配对7个设备，支持最高7个设备同时在线
 - 接收器配对采用开放模式，不需要特别设定，不需要程序干预
 - 所有PCB升级固件后，都可以购买2.4G接收器后实现2.4G功能

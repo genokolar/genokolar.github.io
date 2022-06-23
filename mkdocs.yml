@@ -150,15 +150,9 @@ nav:
       - Omega50: keyboard/omega50.md
       - NewHope64: keyboard/newhope64.md
       - Omega64: keyboard/omega64.md
-      - Omega45:
-        - Omega45 Rev.F: keyboard/omega45_f.md
-        - Other ...: keyboard/omega45_other.md
-      - GT BLE60:
-        - GT BLE60 Rev.G: keyboard/gt_ble60_g.md
-        - Other ...: keyboard/gt_ble60_other.md
-      - Farad69:
-        - Farad69 Rev.D: keyboard/farad69_d.md
-        - Other ...: keyboard/farad69_other.md
+      - Omega45: keyboard/omega45.md
+      - GT BLE60: keyboard/gt_ble60.md
+      - Farad69: keyboard/farad69.md
     - 帮助文档:
       - 用户手册:
         - 相关概述: summary.md
