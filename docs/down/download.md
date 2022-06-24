@@ -16,8 +16,8 @@ hide:
 
 | 下载内容   | 说明  | 下载地址 |
 | :------------:|  ------------| :------------: |
-| <b> 蓝牙完整固件</b> <br>（nRF52系列芯片）| 此固件基于nRF SDK17.1 <br> 完整固件可在SDK之间切换 <br> 刷写包包含所有键盘完整固件，可直接升级或修复键盘 | <a href="https://glab.online/down/Glab3.0/" class="button">官网下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a>|
-| <b>USB固件</b><br>（CH55x芯片） | 20220303 更新 ：<br><b>增强USB兼容性，解决部分电脑卡BIOS的问题 </b> <br> 部分电脑上存在兼容性问题，如联想小新air、惠普光影精灵5代等 <br> 建议存在上述问题的更新USB固件。 |<a href="https://glab.online/down/ch554" class="button">官方下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button">Github发布页</a>|
+| <b> 蓝牙完整固件</b> <br>（nRF52系列芯片）|  <b>2.4G无线功能已经正式上线</b> <br>此固件基于nRF SDK17.1 <br> 完整固件可在SDK之间切换 <br> 刷写包包含所有键盘完整固件，可直接升级或修复键盘 | <a href="https://glab.online/down/Glab3.1/" class="button">📦官网下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">Github发布页</a><br><a href="https://eyun.baidu.com/s/3jKqTC7k" class="button">百度网盘存档</a>|
+| <b>USB固件</b><br>（CH55x芯片） | <b>2022.06.24更新：修正USB模式下无法唤醒睡眠的电脑的问题 </b> <br><b>2022.03.03更新：增强USB兼容性，解决部分电脑卡BIOS的问题 </b> <br> 部分电脑上存在兼容性问题，如联想小新air、惠普光影精灵5代等 <br> 建议存在上述问题的更新USB固件。 |<a href="https://glab.online/down/ch554" class="button">📦官方下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button">Github发布页</a>|
 
 
 ###  烧录&配置工具
