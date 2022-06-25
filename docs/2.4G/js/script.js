@@ -179,37 +179,39 @@ async function senddata(device, data) {
 	}
 }
 
-//监听HID授权设备的接入，并连接设备
-navigator.hid.addEventListener('connect', ({device}) => {
-	console.log(`HID connected: ${device.productName}`);
-	if (device.productName == "Glab 2.4G Receiver") {
-		document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-		document.getElementById('consoleinfo').innerHTML +="已授权HID设备接入" + '<br>';
-		openDevice();
-	}
-});
-  
-//监听HID授权设备的断开，并提示
-navigator.hid.addEventListener('disconnect', ({device}) => {
-	console.log(`HID disconnected: ${device.productName}`);
-	document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-	document.getElementById('consoleinfo').innerHTML +="已授权HID设备断开" +'<br>';
-});
-
-//监听授权设备的报告
-navigator.hid.addEventListener("inputreport", event => {
-	const { data, device, reportId } = event;
-
-	console.log(`DATA: ${data}.`);
-});
-
-//载入时检查授权设备，并连接设备
 document.addEventListener('DOMContentLoaded', async () => {
-	let devices = await navigator.hid.getDevices();
-	devices.forEach(device => {
-		if (device.productName == "Glab 2.4G Receiver") {
-			document.getElementById('consoleinfo').innerHTML += "已授权HID设备已接入" + '<br>';
-			openDevice();
-		}
-	});
+	if ("hid" in navigator) {
+		//监听HID授权设备的接入，并连接设备
+		navigator.hid.addEventListener('connect', ({device}) => {
+			console.log(`HID connected: ${device.productName}`);
+			if (device.productName == "Glab 2.4G Receiver") {
+				document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
+				document.getElementById('consoleinfo').innerHTML +="已授权HID设备接入" + '<br>';
+				openDevice();
+			}
+		});
+  
+		//监听HID授权设备的断开，并提示
+		navigator.hid.addEventListener('disconnect', ({device}) => {
+			console.log(`HID disconnected: ${device.productName}`);
+			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
+			document.getElementById('consoleinfo').innerHTML +="已授权HID设备断开" +'<br>';
+		});
+
+		//监听授权设备的报告
+		navigator.hid.addEventListener("inputreport", event => {
+			const { data, device, reportId } = event;
+			console.log(`DATA: ${data}.`);
+		});
+
+		let devices = await navigator.hid.getDevices();
+		devices.forEach(device => {
+			if (device.productName == "Glab 2.4G Receiver") {
+				document.getElementById('consoleinfo').innerHTML += "已授权HID设备已接入" + '<br>';
+				openDevice();
+			}
+		});
+	} else {
+				document.getElementById('consoleinfo').innerHTML += "浏览器不支持WebHID，使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
+	}
 });
