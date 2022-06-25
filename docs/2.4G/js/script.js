@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			}
 		});
 	} else {
-				document.getElementById('consoleinfo').innerHTML += "浏览器不支持WebHID，使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
+			document.getElementById('consoleinfo').innerHTML ="提示信息：" +'<br>';
+			document.getElementById('consoleinfo').innerHTML += "您的浏览器不支持WebHID，请使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
 	}
 });
