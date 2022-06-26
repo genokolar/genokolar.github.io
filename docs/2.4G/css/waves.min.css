@@ -167,6 +167,12 @@ h1 {
 
 a {
     color: rgb(43, 43, 43);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 171, 223);
+    text-decoration: none;
 }
 
 .footer {
