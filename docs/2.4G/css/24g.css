@@ -7,8 +7,45 @@
  * https://github.com/fians/Waves/blob/master/LICENSE 
  */
 
-body {
-    color: rgb(43, 43, 43);
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #ddd;
+    }
+    a {
+        color: #ddd;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #ddd;
+        text-decoration: none;
+    }
+    a:hover {
+        color: rgb(0, 171, 223);
+        text-decoration: none;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+
+    body {
+        color: #2b2b2b;
+    }
+
+    a {
+        color: #2b2b2b;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #2b2b2b;
+        text-decoration: none;
+    }
+    a:hover {
+        color: rgb(0, 171, 223);
+        text-decoration: none;
+    }
 }
 
 .waves-effect {
@@ -163,16 +200,6 @@ a.waves-effect .waves-ripple {
 
 h1 {
     text-align: center;
-}
-
-a {
-    color: rgb(43, 43, 43);
-    text-decoration: none;
-}
-
-a:hover {
-    color: rgb(0, 171, 223);
-    text-decoration: none;
 }
 
 .footer {
