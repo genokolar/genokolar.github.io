@@ -99,7 +99,7 @@ async function handleSendClick1() {
 		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 			const outputReportData = new Uint8Array([0xf1]);
 			await senddata(devices_list[i], outputReportData)
-			console.log("Sent to Devices:", devices_list[i])
+			console.log("进入USB ISP:", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
 			document.getElementById('consoleinfo').innerHTML +="进入USB ISP:" + devices_list[i].productName + '<br>';
 			return null;
@@ -117,10 +117,9 @@ async function handleSendClick2() {
 		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
 			await senddata(devices_list[i], outputReportData)
-			console.log("Sent to Devices:", devices_list[i])
+			console.log("重置键盘:", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-			document.getElementById('consoleinfo').innerHTML +="重置接收器:" + devices_list[i].productName + '<br>';
-			document.getElementById('consoleinfo').innerHTML +="5秒后,请重新拔插接收器以便完成重置" + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="重置接收器：" + devices_list[i].productName + '<br>';
 			return null;
 		}
 	}
@@ -135,9 +134,8 @@ async function handleSendClick3() {
 		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
 			const outputReportData = new Uint8Array([0x20]);
 			await senddata(devices_list[i], outputReportData)
-			console.log("Sent to Devices:", devices_list[i])
-			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
-			document.getElementById('consoleinfo').innerHTML +="获取接收器信息:" + devices_list[i].productName + '<br>';
+			console.log("获取键盘信息:", devices_list[i])
+			document.getElementById('consoleinfo').innerHTML ="获取接收器 " + devices_list[i].productName + ' 的信息：<br>';
 			return null;
 		}
 	}
@@ -170,8 +168,14 @@ async function senddata(device, data) {
 	try {
 		await device.sendReport(reportId, data);
 		device.oninputreport = ({device, reportId, data}) => {
-			console.log(`Input report ${reportId} from ${device.productName}:`,
-						new Uint8Array(data.buffer));
+			const inputdata = new Uint8Array(data.buffer);
+			console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+			console.log(`已绑定设备数量：`, inputdata[20]);
+			console.log(`绑定设备索引：`, inputdata[21]);
+			document.getElementById('consoleinfo').innerHTML +="已绑定设备数量：" + inputdata[20] + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="已绑定管道索引值：" + (inputdata[21]/2).toString(2).padStart(7, "0") + '<br>';
+			//document.getElementById('consoleinfo').innerHTML +="接收器MAC地址：" + inputdata[22].toString(16).toUpperCase() + ":" + inputdata[23].toString(16).toUpperCase() + ":" + inputdata[24].toString(16).toUpperCase() + ":" + inputdata[25].toString(16).toUpperCase() + '<br>';
+			
 		};
 	} catch (error) {
 		console.error('SendReport: Failed:', error);
