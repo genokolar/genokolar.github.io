@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Checkout main
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          set-safe-directory: '/github/workspace'
 
       - name: 🎉 Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
