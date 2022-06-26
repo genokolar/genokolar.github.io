@@ -13,7 +13,7 @@ jobs:
       - name: 🚚 Checkout main
         uses: actions/checkout@v3
         with:
-          set-safe-directory: '/github/workspace'
+          set-safe-directory: /github/workspace
 
       - name: 🎉 Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
