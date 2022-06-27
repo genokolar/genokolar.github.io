@@ -10,41 +10,111 @@
 
 
 @media (prefers-color-scheme: dark) {
+    
+    html {
+        width: 99.99%;
+        height: 99.99%;
+        background-color:#202020;
+    }
+
     body {
-        background-color: #222;
-        color: #ddd;
+        background-image: linear-gradient(to bottom , #202020, #252525,#2e2e2e, #272727, #202020);
+        color: rgb(196, 196, 196);
     }
     a {
-        color: #ddd;
+        color: rgb(196, 196, 196);
         text-decoration: none;
     }
     a:visited {
-        color: #ddd;
+        color: rgb(196, 196, 196);
         text-decoration: none;
     }
     a:hover {
         color: rgb(0, 171, 223);
         text-decoration: none;
+    }
+
+    .console {
+        width: 800px;
+        height: 300px;
+        color: #7a7a7a;
+        background-color: #001c20;
+        display: block;
+        text-align: left;
+        padding: 10px 5px 0px 5px;
+        margin: 0 auto;
+        border: #474747;
+        border-style: solid;
+    }
+
+    #grant-button {
+        color: rgb(180 180 180);
+        background: rgb(86 21 21);
+    }
+
+    #send-button1, #send-button4 {
+        color: rgb(180 180 180);
+        background: rgb(38 67 77);
+    }
+
+    #send-button2, #send-button3 {
+        color: rgb(180 180 180);
+        background: rgb(47 77 60);
     }
 }
 
 @media (prefers-color-scheme: light) {
 
+    html {
+        width: 99.99%;
+        height: 99.99%;
+        background-color:#e0e0e0;
+    }
+
     body {
-        color: #2b2b2b;
+        background-image: linear-gradient(to bottom , #e0e0e0, #e5e5e5,#eeeeee, #e7e7e7, #e0e0e0);
+        color: rgb(116, 116, 116);
     }
 
     a {
-        color: #2b2b2b;
+        color: rgb(116, 116, 116);
         text-decoration: none;
     }
     a:visited {
-        color: #2b2b2b;
+        color: rgb(116, 116, 116);
         text-decoration: none;
     }
     a:hover {
-        color: rgb(0, 171, 223);
+        color: rgb(17, 175, 167);
         text-decoration: none;
+    }
+
+    .console {
+        width: 800px;
+        height: 300px;
+        color: #00acac;
+        background-color: #004b58;
+        display: block;
+        text-align: left;
+        padding: 10px 5px 0px 5px;
+        margin: 0 auto;
+        border: #007e77;
+        border-style: solid;
+    }
+
+    #grant-button {
+        color: rgb(255, 255, 255);
+        background: rgb(206, 25, 79);
+    }
+    
+    #send-button1, #send-button4 {
+        color: rgb(255, 255, 255);
+        background: #1aa5d3;
+    }
+
+    #send-button2, #send-button3 {
+        color: rgb(255, 255, 255);
+        background: rgb(17, 175, 167);
     }
 }
 
@@ -221,17 +291,4 @@ h1 {
 .info {
     margin-top: 15px;
     text-align:center;
-}
-
-.console {
-    width: 800px;
-    height: 300px;
-    color: #00acac;
-    background-color: #00313a;
-    display: block;
-    text-align: left;
-    padding: 10px 5px 0px 5px;
-    margin: 0 auto;
-    border: #009e97;
-    border-style: solid;
 }
