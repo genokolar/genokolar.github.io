@@ -74,7 +74,6 @@ async function openDevice() {
 	}
 }
 
-
 //断开设备
 async function closeDevice() {
 
@@ -193,6 +192,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 				document.getElementById('consoleinfo').innerHTML +="已授权HID设备接入" + '<br>';
 				openDevice();
 			}
+			if (device.productName == "CMSIS-DAP") {
+				document.getElementById('consoleinfo').innerHTML +="⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
+			}
 		});
   
 		//监听HID授权设备的断开，并提示
@@ -209,10 +211,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 		});
 
 		let devices = await navigator.hid.getDevices();
+		if (devices.length) {
+			document.getElementById('consoleinfo').innerHTML += "已接入授权HID设备" + '<br>';
+			for (var i = 0; i < devices.length; i++) {
+				if (devices[i].productName == "Glab 2.4G Receiver") {
+					await devices[i].open();
+					console.log("Opened Device :", devices[i]);
+					document.getElementById('consoleinfo').innerHTML += "自动连接设备: " + devices[i].productName + '<br>';
+				}
+			}
+		}
 		devices.forEach(device => {
-			if (device.productName == "Glab 2.4G Receiver") {
-				document.getElementById('consoleinfo').innerHTML += "已授权HID设备已接入" + '<br>';
-				openDevice();
+			if (device.productName == "CMSIS-DAP") {
+				document.getElementById('consoleinfo').innerHTML +="⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
 			}
 		});
 	} else {
