@@ -36,7 +36,7 @@ GT PAD Rev.B & Rev.C
 
 由于PAD按键较少，没有<kbd>Shift</kbd>等按键，无法使用系统内置功能按键，
 
-请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 等按键进行系统操作
+请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>无线 广播配对</kbd> 等按键进行系统操作
 
 #### RGB轴灯说明
 
@@ -111,7 +111,7 @@ GT PAD Rev.A
 
 由于PAD按键较少，没有<kbd>Shift</kbd>等按键，无法使用系统内置功能按键，
 
-请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 等按键进行系统操作
+请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>无线 广播配对</kbd> 等按键进行系统操作
 
 #### 轴灯说明
 
@@ -135,7 +135,7 @@ GT PAD Rev.A
 
 出厂固件，默认是按下DEL键切换到第二层，如下图所示按键控制RGB与蓝牙：
 
-采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>BT 广播</kbd>手动开启蓝牙广播
+采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>无线 广播配对</kbd>手动开启蓝牙广播
 
 ![](../img/padkey.png "控制按键示意")
 

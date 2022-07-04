@@ -179,9 +179,9 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 5. 在需要配对键盘的设备上搜索蓝牙键盘，搜索到相应蓝牙键盘名称后，将新的设备配对到键盘蓝牙通道2️⃣（<kbd>W</kbd>键 ）；
 
 !!! tip
-    上述切换蓝牙通道及删除配对设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT解除绑定</kbd> 等按键进行操作
+    上述切换蓝牙通道及删除配对设备等，也可通过<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>无线 解除配对</kbd> 等按键进行操作
     
-    采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>BT 广播</kbd>手动开启蓝牙广播
+    采用<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键切换蓝牙通道后，需要按下<kbd>无线 广播配对</kbd>手动开启蓝牙广播
 
 <span id="2.4G接收器配对">2.4G接收器配对</span>
 -----
@@ -190,7 +190,7 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 2. 键盘切换到2.4G无线模式
 3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
 4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动绑定通讯，即可配对到新的接收器
-5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>BT 广播</kbd>/<kbd>BT 解除配对</kbd>，启动配对通讯、删除配对信息
+5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>，启动配对通讯、删除配对信息
 
 
 <span id="状态提示灯说明">状态提示灯说明</span>

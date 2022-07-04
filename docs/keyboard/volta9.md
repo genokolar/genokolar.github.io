@@ -20,7 +20,7 @@ Volta 9 Rev.A
 
 由于按键较少，没有<kbd>Shift</kbd>等按键，无法使用系统内置功能按键，
 
-请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>BT 广播</kbd> 等按键进行系统操作
+请使用配置工具自行配置 <kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd> / <kbd>无线 广播配对</kbd> 等按键进行系统操作
 
 #### RGB轴灯说明
 
