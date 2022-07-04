@@ -21,8 +21,9 @@
 
 1. 将接收器插入电脑USB口通电
 2. 键盘切换到2.4G无线模式
-3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动绑定通讯，即可配对完成
-4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除绑定信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动绑定通讯，即可配对到新的接收器
+3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
+4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动绑定通讯，即可配对到新的接收器
+5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>BT 广播</kbd>/<kbd>BT 解除配对</kbd>，启动配对通讯、删除配对信息
 
 ## 键盘如何支持2.4G功能
 
