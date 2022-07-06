@@ -69,7 +69,7 @@ Omega45 Rev.E
 - 暂无Caps Lock、Num Lock、Screen Lock指示功能
 - PCB尺寸：247.7mm×76.2mm
 
-相比rev.D版本：采用高品质的主控模块，陶瓷天线信号更稳定可靠；引出4个针脚可自行定义；支持PCB卫星轴。
+相比rev.D版本：采用高品质的主控模块，贴片天线信号更稳定可靠；引出4个针脚可自行定义；支持PCB卫星轴。
 
 ![](../img/omega45.rev.E.jpg "Omega45 PCB")
 
