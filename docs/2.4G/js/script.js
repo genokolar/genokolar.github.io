@@ -5,17 +5,16 @@ document.getElementById('grant-button').addEventListener('click', grantDevice); 
 //document.getElementById('connect-button').addEventListener('click', openDevice); //连接设备
 //document.getElementById('disconnect-button').addEventListener('click', closeDevice); //断开连接
 
-document.getElementById('send-button1').addEventListener('click', handleSendClick1); //发送命令：进入USB ISP
-document.getElementById('send-button4').addEventListener('click', handleSendClick4); //发送命令：进入USB ISP
-document.getElementById('send-button2').addEventListener('click', handleSendClick2); //发送命令：重置键盘
-document.getElementById('send-button3').addEventListener('click', handleSendClick3); //发送命令：获取键盘信息
+document.getElementById('send-button1').addEventListener('click', EnterUSBISP); //发送命令：进入USB ISP
+document.getElementById('send-button4').addEventListener('click', EnterCMSISDAP); //发送命令：进入CMSIS-DAP
+document.getElementById('send-button2').addEventListener('click', ResetKeyboard); //发送命令：重置键盘
+document.getElementById('send-button3').addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
 
 //设置过滤器
 const filters = [
 {
 	vendorId: 0x4366, // Glab
 	productId: 0x1024, // Glab
-	productName: "Glab 2.4G Receiver",
 }
 ];
 
@@ -26,7 +25,7 @@ async function grantDevice() {
 		filters
 	});
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].productName.includes("Glab")) {
 			console.log("Grant Device:", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML +="授权设备:" + devices_list[i].productName + '<br>';
 			openDevice();
@@ -46,7 +45,7 @@ async function listDevices() {
 	}
 	console.log("Devices list:", devices_list);
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].productName.includes("Glab")) {
 		document.getElementById('consoleinfo').innerHTML +="已授权设备:" + devices_list[i].productName + '<br>';
 		}
 	}
@@ -61,10 +60,10 @@ async function openDevice() {
 		return null;
 	} else {
 		for (var i = 0; i < devices_list.length; i++) {
-			if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+			if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 				document.getElementById('consoleinfo').innerHTML += "设备已经连接，请勿重复点击" + '<br>';
 				return devices_list[i];
-			} else if (devices_list[i].productName == "Glab 2.4G Receiver") {
+			} else if (devices_list[i].productName.includes("Glab")) {
 				await devices_list[i].open();
 				console.log("Device Opened:", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
@@ -92,10 +91,10 @@ async function closeDevice() {
 }
 
 //发送数据处理函数：进入USB ISP
-async function handleSendClick1() {
+async function EnterUSBISP() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0xf1]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("进入USB ISP:", devices_list[i])
@@ -110,10 +109,10 @@ async function handleSendClick1() {
 
 
 //发送数据处理函数：重置键盘
-async function handleSendClick2() {
+async function ResetKeyboard() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("重置键盘:", devices_list[i])
@@ -127,10 +126,10 @@ async function handleSendClick2() {
 }
 
 //发送数据处理函数：获取键盘信息
-async function handleSendClick3() {
+async function GetKeyboardInfo() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0x20]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("获取键盘信息:", devices_list[i])
@@ -143,10 +142,10 @@ async function handleSendClick3() {
 }
 
 //发送数据处理函数：允许CMSIS刷写
-async function handleSendClick4() {
+async function EnterCMSISDAP() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName == "Glab 2.4G Receiver") {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0xf2]);
 			await senddata(devices_list[i], outputReportData)
 			console.log("Sent to Devices:", devices_list[i])
@@ -171,10 +170,13 @@ async function senddata(device, data) {
 			console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
 			console.log(`已绑定设备数量：`, inputdata[20]);
 			console.log(`绑定设备索引：`, inputdata[21]);
+			var builddata = parseInt("0x" +inputdata[15].toString(16) + inputdata[14].toString(16) + inputdata[13].toString(16) + inputdata[12].toString(16)).toString(10);
+			var newDate = new Date();
+			newDate.setTime(builddata * 1000);
 			document.getElementById('consoleinfo').innerHTML +="已绑定设备数量：" + inputdata[20] + '<br>';
 			document.getElementById('consoleinfo').innerHTML +="已绑定管道索引值：" + (inputdata[21]/2).toString(2).padStart(7, "0") + '<br>';
-			//document.getElementById('consoleinfo').innerHTML +="接收器MAC地址：" + inputdata[22].toString(16).toUpperCase() + ":" + inputdata[23].toString(16).toUpperCase() + ":" + inputdata[24].toString(16).toUpperCase() + ":" + inputdata[25].toString(16).toUpperCase() + '<br>';
-			
+			document.getElementById('consoleinfo').innerHTML +="接收器MAC信息：" + inputdata[22].toString(16).toUpperCase() + ":" + inputdata[23].toString(16).toUpperCase() + ":" + inputdata[24].toString(16).toUpperCase() + ":" + inputdata[25].toString(16).toUpperCase() + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="固件编译日期：" + newDate.toLocaleString () + '<br>';			
 		};
 	} catch (error) {
 		console.error('SendReport: Failed:', error);
