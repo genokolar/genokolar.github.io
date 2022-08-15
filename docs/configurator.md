@@ -62,7 +62,7 @@
 
 使用演示视频：
 <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
-<source id="mp4" src="https://glab.online/down/lkb-configurator.mp4" type="video/mp4">
+<source id="mp4" src="https://down.glab.online:5550/lkb-configurator.mp4" type="video/mp4">
   您的浏览器不支持播放此视频
 </video>
 

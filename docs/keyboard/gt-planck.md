@@ -102,7 +102,7 @@ Planck使用nRF52832或nRF52811芯片，请注意区分：
 
 下载及说明
 ---------------
-[:fontawesome-solid-download:  下载固件](https://glab.online/down/Glab3.0/){ .md-button}
+[:fontawesome-solid-download:  下载固件](https://down.glab.online:5550/Glab3.1/){ .md-button}
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
