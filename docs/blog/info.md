@@ -21,14 +21,6 @@ hide:
 3. 接收器配对采用开放模式，不需要特别设定，不需要程序干预
 4. 与蓝牙、USB可以实现无缝切换
 
-**2.4G接收器配对**
-
-1. 将接收器插入电脑USB口通电
-2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
-3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
-4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
-5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>，启动配对通讯、删除配对信息
-
 **键盘如何支持2.4G功能**
 
 1. 所有Glab键盘[^1]升级20220624版及以后固件都可支持2.4G功能。已经刷入2.4G测试固件的需要升级新的正式固件
@@ -36,6 +28,14 @@ hide:
 3. 将键盘刷写支持2.4G无线功能的固件，从双模固件升级的，刷写时注意勾选"擦除蓝牙芯片"，刷写键盘主控完整固件
 4. 刷完固件用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> （或者通过配置工具配置一个无线模式切换按键）切换无线模式
 5. 完成2.4G接收器配对即可正常使用2.4G无线功能
+
+**2.4G接收器配对**
+
+1. 将接收器插入电脑USB口通电
+2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
+3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
+4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
+5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>，启动配对通讯、删除配对信息
 
 **接收器配对满载后如何配对设备**
 
