@@ -158,10 +158,10 @@ nav:
       - 用户手册:
         - 相关概述: summary.md
         - 使用说明: manual.md
-        - 常见问答: faq.md
-        - 故障排除: trouble.md
         - 配置键盘: configurator.md
         - 固件更新: upgrade.md
+        - 常见问答: faq.md
+        - 故障排除: trouble.md
       - 开发指南:
         - 编译指南: build.md
         - 移植指南: porting.md
