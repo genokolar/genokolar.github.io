@@ -12,14 +12,13 @@
 @media (prefers-color-scheme: dark) {
     
     html {
-        width: 99.99%;
-        height: 99.99%;
         background-color:#202020;
     }
 
     body {
         background-image: linear-gradient(to bottom , #202020, #252525,#2e2e2e, #272727, #202020);
         color: rgb(196, 196, 196);
+        margin: 0px;
     }
     a {
         color: rgb(196, 196, 196);
@@ -35,8 +34,8 @@
     }
 
     .console {
-        width: 800px;
-        height: 300px;
+        width: 48em;
+        height: 18em;
         color: #7a7a7a;
         background-color: #001c20;
         display: block;
@@ -66,14 +65,13 @@
 @media (prefers-color-scheme: light) {
 
     html {
-        width: 99.99%;
-        height: 99.99%;
         background-color:#e0e0e0;
     }
 
     body {
-        background-image: linear-gradient(to bottom , #e0e0e0, #e5e5e5,#eeeeee, #e7e7e7, #e0e0e0);
+        background-image: linear-gradient(to bottom , #e0e0e0, #d9d9d9,#f2f2f2, #d9d9d9, #e0e0e0);
         color: rgb(116, 116, 116);
+        margin: 0px;
     }
 
     a {
@@ -90,8 +88,8 @@
     }
 
     .console {
-        width: 800px;
-        height: 300px;
+        width: 48em;
+        height: 18em;
         color: #00acac;
         background-color: #004b58;
         display: block;
