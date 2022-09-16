@@ -95,7 +95,7 @@
         - 可以到[官方下载页面](https://www.nordicsemi.com/Software-and-tools/Development-Tools/nRF-Connect-for-mobile)或者应用商店搜索下载。
     2. 使键盘进入DFU模式（参见 [如何进入DFU模式](faq.md#如何进入DFU模式)）
     3. 点击nRF Connect右上角的Scan扫描蓝牙设备，找到`DFUTarg`标识的蓝牙设备
-    4. 点击CONNCET按钮，等待连接成功
+    4. 点击蓝牙设备旁CONNECT按钮，等待连接成功
     5. 点击右上角的DFU按钮，选择第一个Distribution packet(ZIP)，然后选择下载的蓝牙DFU升级包（ZIP格式）
     6. 等待升级进度100%即可
 
