@@ -168,7 +168,7 @@ RGB灯效展示
 
 我们通过移植QMK的RGB功能，实现了RGB灯效，当前采用的是自带芯片的WS2812灯珠，下面的视频演示了其中部分灯效。
 
-<iframe height=180 width=320 src='http://player.youku.com/embed/XNTgyMDM4MDMzNg==' frameborder=0 'allowfullscreen'></iframe>
+<iframe height=180 width=320 src='https://player.youku.com/embed/XNTgyMDM4MDMzNg==' frameborder=0 'allowfullscreen'></iframe>
 
 由于WS2812的静态耗电非常大，哪怕是Keypress类灯效（只有按键后才会亮灯），耗电也很大。所以在使用电池供电时，请尽量关闭RGB以便节电。需要使用灯效的情况，建议采用USB供电。
 
