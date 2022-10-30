@@ -194,6 +194,8 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
 5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>，启动配对通讯、删除配对信息
 
+!!! tip
+    配对前请确保键盘固件更新到支持三模固件的版本，并确保接收器和键盘的固件版本对应。
 
 <span id="状态提示灯说明">状态提示灯说明</span>
 -----
