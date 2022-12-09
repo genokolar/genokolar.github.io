@@ -96,8 +96,8 @@ async function EnterUSBISP() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0xf1]);
-			await senddata(devices_list[i], outputReportData)
-			console.log("进入USB ISP:", devices_list[i])
+			await senddata(devices_list[i], outputReportData);
+			console.log("进入USB ISP:", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
 			document.getElementById('consoleinfo').innerHTML +="进入USB ISP:" + devices_list[i].productName + '<br>';
 			return null;
@@ -114,8 +114,8 @@ async function ResetKeyboard() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
-			await senddata(devices_list[i], outputReportData)
-			console.log("重置键盘:", devices_list[i])
+			await senddata(devices_list[i], outputReportData);
+			console.log("重置键盘:", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
 			document.getElementById('consoleinfo').innerHTML +="重置接收器：" + devices_list[i].productName + '<br>';
 			return null;
@@ -131,8 +131,8 @@ async function GetKeyboardInfo() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
 			const outputReportData = new Uint8Array([0x20]);
-			await senddata(devices_list[i], outputReportData)
-			console.log("获取键盘信息:", devices_list[i])
+			await senddata(devices_list[i], outputReportData);
+			console.log("获取键盘信息:", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML ="获取接收器 " + devices_list[i].productName + ' 的信息：<br>';
 			return null;
 		}
@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 				document.getElementById('consoleinfo').innerHTML ="操作信息：" +'<br>';
 				document.getElementById('consoleinfo').innerHTML +="已授权HID设备接入" + '<br>';
 				openDevice();
+				setTimeout(GetKeyboardInfo, 1000);
 			}
 			if (device.productName == "CMSIS-DAP") {
 				document.getElementById('consoleinfo').innerHTML +="⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
@@ -220,6 +221,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 					await devices[i].open();
 					console.log("Opened Device :", devices[i]);
 					document.getElementById('consoleinfo').innerHTML += "自动连接设备: " + devices[i].productName + '<br>';
+					setTimeout(GetKeyboardInfo, 1000);
 				}
 			}
 		}
