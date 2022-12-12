@@ -175,6 +175,7 @@ async function senddata(device, data) {
 			newDate.setTime(builddata * 1000);
 			document.getElementById('consoleinfo').innerHTML +="已绑定设备数量：" + inputdata[20] + '<br>';
 			document.getElementById('consoleinfo').innerHTML +="已绑定管道索引值：" + (inputdata[21]/2).toString(2).padStart(7, "0") + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="当前无线通讯频道：" + inputdata[26] + '<br>';	
 			document.getElementById('consoleinfo').innerHTML +="接收器硬件信息：" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[24].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[23].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[22].toString(16).toUpperCase()).slice(-2) + '<br>';
 			document.getElementById('consoleinfo').innerHTML +="接收器固件日期：" + newDate.toLocaleString () + '<br>';			
 		};
