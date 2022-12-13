@@ -2,7 +2,7 @@
 键盘使用说明
 =====================
 
-!!! tip "本页面最后修改时间2022-08-27"
+!!! tip "本页面最后修改时间2022-12-14"
 
 相关概念
 -----
@@ -133,7 +133,7 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 | 关机     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>~</kbd>或<kbd>Backspace</kbd>       |手动进入关机模式。新版固件将<kbd>ESC</kbd>更换成了<kbd>Backspace</kbd>。<br>关机后需要插入USB线 或 短按背部多功能按钮开机。<br>长期不用或携带外出建议关机。 |
 | 有线/无线状态切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在USB有线和无线同时工作时，可以切换有线/无线连接模式。<br>如未同时使用USB有线和无线，按键无效。 |
 | 无线模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd>        |在键盘支持BLE5.0与2.4G无线两种无线模式时，在两种模式之间切换。 |
-| 切换蓝牙设备     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>        |可以在已配对的蓝牙设备之间进行切换，<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>代表不同蓝牙连接通道 |
+| 切换蓝牙设备/无线接收器     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>        |可以在已配对的蓝牙设备/无线接收器之间进行切换，<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>代表不同蓝牙连接通道/无线接收器 |
 | 重启蓝牙广播<br>2.4G无线配对     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>        | 蓝牙模式：重新开启蓝牙广播，用于手动进行连接或切换设备后配对。<br>2.4G无线模式：启动配对通讯，与2.4G接收器进行配对。|
 | 进入DFU     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>B</kbd>        |重启到DFU刷机模式。<br>也可长按PCB背部多功能按钮4秒以上后松手重启到DFU刷机模式。 |
 | 清空当前配对  |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>    |蓝牙模式：清空当前蓝牙设备配对信息。仅清空当前设备，其余配对设备不会清空。<br>2.4G无线模式：解除与当前2.4G接收器的配对|
@@ -192,7 +192,9 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
 3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
 4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
-5. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>，启动配对通讯、删除配对信息
+5. 配对多个接收器：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换不同的无线通道，然后重复执行2-4三个步骤完成与不同接收器的配对
+6. 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的无线通道，可在多个配对的无线接收器之间切换。
+7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，启动配对通讯、删除配对信息、切换无线接收器
 
 !!! tip
     配对前请确保键盘固件更新到支持三模固件的版本，并确保接收器和键盘的固件版本对应。
@@ -227,10 +229,12 @@ GT系列无线键盘单色RGB轴灯版默认采用轴灯作为指示，不同颜
 GT系列无线键盘炫彩RGB轴灯版默认采用某颗轴灯作为指示，不同颜色代表不同状态：
 
 - 绿色-USB输出
-- 青色-2.4G无线输出
 - 蓝色-蓝牙通道1️⃣输出
 - 红色-蓝牙通道2️⃣输出
 - 橙色-蓝牙通道3️⃣输出
+- 青色-2.4G无线接收器1️⃣
+- 紫色-2.4G无线接收器2️⃣
+- 粉色-2.4G无线接收器3️⃣
 - 指示灯可通过配置工具设置一颗`状态灯开关`按键进行开关
 - 指示灯支持独立运行，建议在使用电池时，关闭RGB轴灯，开启指示灯，指示灯将可自动关闭节能
 
