@@ -66,6 +66,12 @@
 5. 需要刷写主控固件的话，点击<kbd>启用CMSIS-DAP</kbd> 按钮，启用CMSIS-DAP刷写功能，随后按照键盘刷写键盘主控固件的方法刷写主控固件
 6. 刷写固件后，请重新拔插接收器，以便恢复默认禁止刷写状态
 
+#### 固件更新演示视频
+
+<video id="video" width="640px" height="auto" controls="controls" preload="none" poster="../../img/videoicon_640.png">
+    <source id="mp4" src="https://down.glab.online:5550//2.4G接收器刷写.mp4" type="video/mp4">
+    您的浏览器不支持播放此视频
+</video>
 
 
 [^1]: 过于老旧的PCB不支持线刷固件，无法升级到最新固件版，需要自行使用Jlink等烧录器通过PCB上SWD接口烧录升级固件
