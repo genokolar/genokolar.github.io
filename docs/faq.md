@@ -30,7 +30,7 @@
 
 <span id="如何控制或关闭RGB轴灯">如何控制或关闭RGB轴灯</span>
 -----------------------
-1. 轴灯版PCB：
+1. 单色RGB轴灯版PCB：
     - 轴灯版PCB的轴灯分为轴灯模式和指示灯模式，出厂默认为指示灯模式，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 或 通过配置工具设置一颗<kbd>状态灯开关</kbd>按键 在指示灯模式和轴灯模式之间切换。
     - 指示灯模式时，不可控制，固件显示不同颜色指示不同状态
     - 要控制轴灯，请通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd> 先切换到轴灯模式。
@@ -38,7 +38,7 @@
     - 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
     - 如无shift等按键，可接入配置工具，找到 层级/功能 选项，将标识RGB的相关按键设定到你指定的按键上控制RGB轴灯
     
-2. RGB轴灯版PCB：
+2. 炫彩RGB轴灯版PCB：
     - RGB轴灯版PCB的通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>可开关轴灯。
     - 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>C</kbd> <kbd>V</kbd>等RGB控制功能调整轴灯。
     - 如无shift等按键，可接入配置工具，找到 灯光 功能，将RGB阵列相关按键设定到你指定的按键上控制RGB轴灯
@@ -164,6 +164,12 @@
 参考[配置键盘](configurator.md),将键盘接入[Lotlab 键盘配置工具](http://keyboard.lotlab.org) 
 
 正确接入后可看到固件编译日期及固件版本
+
+<span id="如何查看键盘硬件版本">如何查看键盘硬件版本</span>
+------------------
+参考[配置键盘](configurator.md),将键盘接入[Lotlab 键盘配置工具](http://keyboard.lotlab.org) 
+
+正确接入后可看到硬件版本
 
 <span id="如何确认PCB支持线刷">如何确认PCB支持线刷</span>
 ------------------
