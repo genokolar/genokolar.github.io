@@ -32,8 +32,8 @@
 
 1. 将接收器插入电脑USB口通电
 2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
-3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
-4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
+3. 键盘未配对：快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
+4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
 5. 配对多个接收器：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换不同的无线通道，然后重复执行2-4三个步骤完成与不同接收器的配对
 6. 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的无线通道，可在多个配对的无线接收器之间切换。
 7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，启动配对通讯、删除配对信息、切换无线接收器

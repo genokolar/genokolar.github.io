@@ -2,7 +2,9 @@
 键盘使用说明
 =====================
 
-!!! tip "本页面最后修改时间2022-12-14"
+!!! tip "本页面最后修改时间2023-03-03"
+    本页面操作说明全系列键盘通用，更多键盘专有说明可以访问键盘[产品信息](keyboard/volta9.md)页面
+
 
 相关概念
 -----
@@ -134,7 +136,7 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 | 有线/无线状态切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在USB有线和无线同时工作时，可以切换有线/无线连接模式。<br>如未同时使用USB有线和无线，按键无效。 |
 | 无线模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd>        |在键盘支持BLE5.0与2.4G无线两种无线模式时，在两种模式之间切换。 |
 | 切换蓝牙设备/无线接收器     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>        |可以在已配对的蓝牙设备/无线接收器之间进行切换，<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>代表不同蓝牙连接通道/无线接收器 |
-| 重启蓝牙广播<br>2.4G无线配对     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>        | 蓝牙模式：重新开启蓝牙广播，用于手动进行连接或切换设备后配对。<br>2.4G无线模式：启动配对通讯，与2.4G接收器进行配对。|
+| 重启蓝牙广播<br>2.4G无线配对     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>        | 蓝牙模式：重新开启蓝牙广播，用于手动进行连接或切换设备后配对。<br>2.4G无线模式：发起配对通讯，与2.4G接收器进行配对。|
 | 进入DFU     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>B</kbd>        |重启到DFU刷机模式。<br>也可长按PCB背部多功能按钮4秒以上后松手重启到DFU刷机模式。 |
 | 清空当前配对  |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>    |蓝牙模式：清空当前蓝牙设备配对信息。仅清空当前设备，其余配对设备不会清空。<br>2.4G无线模式：解除与当前2.4G接收器的配对|
 | 输出电量 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>H</kbd>       |通过键盘输出当前键盘剩余电量。输出N为检测未稳定，F为满电，数字为电量百分比。|
@@ -190,8 +192,8 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 
 1. 将接收器插入电脑USB口通电
 2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
-3. 键盘未配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对完成
-4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，即可配对到新的接收器
+3. 键盘未配对：快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
+4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
 5. 配对多个接收器：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换不同的无线通道，然后重复执行2-4三个步骤完成与不同接收器的配对
 6. 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的无线通道，可在多个配对的无线接收器之间切换。
 7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，启动配对通讯、删除配对信息、切换无线接收器
@@ -262,5 +264,5 @@ GT系列无线键盘炫彩RGB轴灯版默认采用某颗轴灯作为指示，不
 - nRF52主要负责 运行键盘主控程序、蓝牙通讯、2.4G通讯、灯光控制，是主功能芯片。
 - CH55x主要负责 USB通讯，包括转发nRF52数据到USB主机，转发配置数据到nRF52，烧录nRF52芯片固件
 
-!!! tip
-    更多键盘专有说明可以访问键盘产品页面
+!!! tip "本页面最后修改时间2023-03-03"
+    本页面操作说明全系列键盘通用，更多键盘专有说明可以访问键盘[产品信息](keyboard/volta9.md)页面
