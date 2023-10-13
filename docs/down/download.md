@@ -37,6 +37,6 @@ hide:
 | 下载内容   | 说明  | 下载地址 |
 | ------------|  ------------| ------------ |
 | 键盘的定位板文件 | 各个键盘的定位板图纸，可用于自己定制定位板或外壳 |<a href="https://down.glab.online:5550/dxf" class="button">📦官方下载</a> <br> <a href="https://pan.quark.cn/s/1d8c704f258b" class="button">🗂️夸克网盘下载</a>|
-| GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://pan.quark.cn/s/06f954c" class="button">🗂️夸克网盘下载</a>|
+| GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://pan.quark.cn/s/06f954c7961b" class="button">🗂️夸克网盘下载</a>|
 | GT Volta9 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 | <a href="https://pan.quark.cn/s/1083e26f2c6f" class="button">🗂️夸克网盘下载</a>|
 
