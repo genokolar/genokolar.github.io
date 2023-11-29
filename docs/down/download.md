@@ -16,7 +16,7 @@ hide:
 
 | 下载内容   | 说明  | 下载地址 |
 | :------------:|  ------------| :------------: |
-| <b> 键盘主控完整固件</b> <br>（nRF52系列芯片）|  <b>2023.03.03更新：优化键盘2.4G配对流程，优化2.4G跳频算法</b> <br>此固件基于nRF SDK17.1 <br> 完整固件可在SDK之间切换 <br> 刷写包包含所有键盘完整固件，可直接升级或修复键盘 | <a href="https://down.glab.online:5550/Glab3.1/" class="button">📦官网下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">🧱Github发布页</a>|
+| <b> 键盘主控完整固件</b> <br>（nRF52系列芯片）|  <b>2023.11.29更新：<br> 修正指示灯与轴灯都关闭时RGB的耗电异常问题<br> 新增在电池供电时限制RGB轴灯最高亮度的节能功能</b>  | <a href="https://down.glab.online:5550/Glab3.1/" class="button">📦官网下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">🧱Github发布页</a>|
 | <b>USB固件</b><br>（CH55x芯片） | <b>2022.06.24更新：修正USB模式下无法唤醒睡眠的电脑的问题 </b> <br><b>2022.03.03更新：增强USB兼容性，解决部分电脑卡BIOS的问题 </b> <br> 部分电脑上存在兼容性问题，如联想小新air、惠普光影精灵5代等 <br> 建议存在上述问题的更新USB固件。 |<a href="https://down.glab.online:5550/ch554" class="button">📦官方下载页</a> <br> <a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button">🧱Github发布页</a>|
 | <b>2.4G接收器固件</b><br>（含USB及主固件） | <b>2022.12.19更新：优化动态跳频算法 </b> <br> 建议及时更新固件获得更好体验。 |<a href="https://down.glab.online:5550/receiver" class="button">📦官方下载页</a> |
 
