@@ -19,8 +19,6 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: zh
   features:
-    - content.code.annotate
-    - content.tabs.link
     - header.autohide
     # 左侧栏默认会展开所有可折叠的子导航项
     - navigation.expand
@@ -32,6 +30,7 @@ theme:
     - navigation.tabs
     # 返回顶部按钮
     - navigation.top
+    # 底页脚中的上一个和下一个按钮
     - navigation.footer
     # 锚跟踪，地址栏中的 URL 会自动更新
     - navigation.tracking
@@ -47,6 +46,15 @@ theme:
     # - toc.follow
     # 集成导航（仅左侧导航栏，包括目录）
     - toc.integrate
+    # 查看与编辑源代码按钮
+    - content.action.edit
+    - content.action.view
+    # 代码批注
+    - content.code.annotate
+    # 代码复制
+    - content.code.copy
+    # 链接内容选项卡
+    - content.tabs.link
     
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -72,6 +80,7 @@ theme:
 #插件
 plugins:
   - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
 
@@ -94,13 +103,16 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
+      normalize_issue_symbols: true
       repo_url_shorthand: true
       user: squidfunk
       repo: mkdocs-material
@@ -113,6 +125,10 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
