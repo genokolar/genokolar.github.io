@@ -66,4 +66,4 @@ Omega40 Rev.A
 
 [:fontawesome-solid-screwdriver-wrench:  获取更多下载](../down/download.md){ .md-button}
 
-访问 [使用说明](../../manual) / [常见问答](../../faq) / [故障排除](../../trouble)
+访问 [使用说明](../manual.md) / [常见问答](../faq.md) / [故障排除](../trouble.md)
