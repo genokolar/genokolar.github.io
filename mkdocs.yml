@@ -32,6 +32,7 @@ theme:
     - navigation.tabs
     # 返回顶部按钮
     - navigation.top
+    - navigation.footer
     # 锚跟踪，地址栏中的 URL 会自动更新
     - navigation.tracking
     # 导航菜单将锁定在标题下方，并在向下滚动时始终可见（内部功能）
