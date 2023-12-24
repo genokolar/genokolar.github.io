@@ -363,7 +363,7 @@ function onResetScreen() {
             if (i = r[o].call(n, e, t)) return i
     }
 
-    function N(t, e, n) {
+    function P(t, e, n) {
         var i, r, o, a, s, l, u, c, h = this,
             d = {},
             f = t.style,
@@ -399,7 +399,7 @@ function onResetScreen() {
         }
     }
 
-    function P(t, e) {
+    function N(t, e) {
         var n, i, r, o, a;
         for (n in t)
             if (i = Q.camelCase(n), r = e[i], o = t[n], Q.isArray(o) && (r = o[1], o = t[n] = o[0]), n !== i && (t[i] = o, delete t[n]), a = Q.cssHooks[i], a && "expand" in a) {
@@ -443,7 +443,7 @@ function onResetScreen() {
                 }
             }),
             c = u.props;
-        for (P(c, u.opts.specialEasing); a > o; o++)
+        for (N(c, u.opts.specialEasing); a > o; o++)
             if (i = ee[o].call(u, t, c, u.opts)) return i;
         return Q.map(c, L, u), Q.isFunction(u.opts.start) && u.opts.start.call(t, u), Q.fx.timer(Q.extend(l, {
             elem: t,
@@ -718,7 +718,7 @@ function onResetScreen() {
     var rt = function (t) {
         function e(t, e, n, i) {
             var r, o, a, s, l, u, h, f, p, g;
-            if ((e ? e.ownerDocument || e : F) !== N && L(e), e = e || N, n = n || [], s = e.nodeType, "string" != typeof t || !t || 1 !== s && 9 !== s && 11 !== s) return n;
+            if ((e ? e.ownerDocument || e : F) !== P && L(e), e = e || P, n = n || [], s = e.nodeType, "string" != typeof t || !t || 1 !== s && 9 !== s && 11 !== s) return n;
             if (!i && O) {
                 if (11 !== s && (r = yt.exec(t)))
                     if (a = r[1]) {
@@ -757,7 +757,7 @@ function onResetScreen() {
         }
 
         function r(t) {
-            var e = N.createElement("div");
+            var e = P.createElement("div");
             try {
                 return !!t(e)
             } catch (n) {
@@ -908,7 +908,7 @@ function onResetScreen() {
                         x = i || o && w.find.TAG("*", u),
                         _ = H += null == y ? 1 : Math.random() || .1,
                         b = x.length;
-                    for (u && (A = a !== N && a); p !== b && null != (c = x[p]); p++) {
+                    for (u && (A = a !== P && a); p !== b && null != (c = x[p]); p++) {
                         if (o && c) {
                             for (h = 0; d = t[h++];)
                                 if (d(c, a, s)) {
@@ -931,7 +931,7 @@ function onResetScreen() {
                 };
             return r ? i(a) : a
         }
-        var _, b, w, S, M, I, T, C, A, D, k, L, N, P, O, E, R, z, B, V = "sizzle" + 1 * new Date,
+        var _, b, w, S, M, I, T, C, A, D, k, L, P, N, O, E, R, z, B, V = "sizzle" + 1 * new Date,
             F = t.document,
             H = 0,
             G = 0,
@@ -1007,12 +1007,12 @@ function onResetScreen() {
             return !!e && "HTML" !== e.nodeName
         }, L = e.setDocument = function (t) {
             var e, n, i = t ? t.ownerDocument || t : F;
-            return i !== N && 9 === i.nodeType && i.documentElement ? (N = i, P = i.documentElement, n = i.defaultView, n && n !== n.top && (n.addEventListener ? n.addEventListener("unload", St, !1) : n.attachEvent && n.attachEvent("onunload", St)), O = !M(i), b.attributes = r(function (t) {
+            return i !== P && 9 === i.nodeType && i.documentElement ? (P = i, N = i.documentElement, n = i.defaultView, n && n !== n.top && (n.addEventListener ? n.addEventListener("unload", St, !1) : n.attachEvent && n.attachEvent("onunload", St)), O = !M(i), b.attributes = r(function (t) {
                 return t.className = "i", !t.getAttribute("className")
             }), b.getElementsByTagName = r(function (t) {
                 return t.appendChild(i.createComment("")), !t.getElementsByTagName("*").length
             }), b.getElementsByClassName = vt.test(i.getElementsByClassName), b.getById = r(function (t) {
-                return P.appendChild(t).id = V, !i.getElementsByName || !i.getElementsByName(V).length
+                return N.appendChild(t).id = V, !i.getElementsByName || !i.getElementsByName(V).length
             }), b.getById ? (w.find.ID = function (t, e) {
                 if ("undefined" != typeof e.getElementById && O) {
                     var n = e.getElementById(t);
@@ -1043,13 +1043,13 @@ function onResetScreen() {
             }, w.find.CLASS = b.getElementsByClassName && function (t, e) {
                 return O ? e.getElementsByClassName(t) : void 0
             }, R = [], E = [], (b.qsa = vt.test(i.querySelectorAll)) && (r(function (t) {
-                P.appendChild(t).innerHTML = "<a id='" + V + "'></a><select id='" + V + "-\f]' msallowcapture=''><option selected=''></option></select>", t.querySelectorAll("[msallowcapture^='']").length && E.push("[*^$]=" + nt + "*(?:''|\"\")"), t.querySelectorAll("[selected]").length || E.push("\\[" + nt + "*(?:value|" + et + ")"), t.querySelectorAll("[id~=" + V + "-]").length || E.push("~="), t.querySelectorAll(":checked").length || E.push(":checked"), t.querySelectorAll("a#" + V + "+*").length || E.push(".#.+[+~]")
+                N.appendChild(t).innerHTML = "<a id='" + V + "'></a><select id='" + V + "-\f]' msallowcapture=''><option selected=''></option></select>", t.querySelectorAll("[msallowcapture^='']").length && E.push("[*^$]=" + nt + "*(?:''|\"\")"), t.querySelectorAll("[selected]").length || E.push("\\[" + nt + "*(?:value|" + et + ")"), t.querySelectorAll("[id~=" + V + "-]").length || E.push("~="), t.querySelectorAll(":checked").length || E.push(":checked"), t.querySelectorAll("a#" + V + "+*").length || E.push(".#.+[+~]")
             }), r(function (t) {
                 var e = i.createElement("input");
                 e.setAttribute("type", "hidden"), t.appendChild(e).setAttribute("name", "D"), t.querySelectorAll("[name=d]").length && E.push("name" + nt + "*[*^$|!~]?="), t.querySelectorAll(":enabled").length || E.push(":enabled", ":disabled"), t.querySelectorAll("*,:x"), E.push(",.*:")
-            })), (b.matchesSelector = vt.test(z = P.matches || P.webkitMatchesSelector || P.mozMatchesSelector || P.oMatchesSelector || P.msMatchesSelector)) && r(function (t) {
+            })), (b.matchesSelector = vt.test(z = N.matches || N.webkitMatchesSelector || N.mozMatchesSelector || N.oMatchesSelector || N.msMatchesSelector)) && r(function (t) {
                 b.disconnectedMatch = z.call(t, "div"), z.call(t, "[s!='']:x"), R.push("!=", at)
-            }), E = E.length && new RegExp(E.join("|")), R = R.length && new RegExp(R.join("|")), e = vt.test(P.compareDocumentPosition), B = e || vt.test(P.contains) ? function (t, e) {
+            }), E = E.length && new RegExp(E.join("|")), R = R.length && new RegExp(R.join("|")), e = vt.test(N.compareDocumentPosition), B = e || vt.test(N.contains) ? function (t, e) {
                 var n = 9 === t.nodeType ? t.documentElement : t,
                     i = e && e.parentNode;
                 return t === i || !(!i || 1 !== i.nodeType || !(n.contains ? n.contains(i) : t.compareDocumentPosition && 16 & t.compareDocumentPosition(i)))
@@ -1075,19 +1075,19 @@ function onResetScreen() {
                 for (n = e; n = n.parentNode;) u.unshift(n);
                 for (; l[r] === u[r];) r++;
                 return r ? a(l[r], u[r]) : l[r] === F ? -1 : u[r] === F ? 1 : 0
-            }, i) : N
+            }, i) : P
         }, e.matches = function (t, n) {
             return e(t, null, null, n)
         }, e.matchesSelector = function (t, n) {
-            if ((t.ownerDocument || t) !== N && L(t), n = n.replace(ht, "='$1']"), !(!b.matchesSelector || !O || R && R.test(n) || E && E.test(n))) try {
+            if ((t.ownerDocument || t) !== P && L(t), n = n.replace(ht, "='$1']"), !(!b.matchesSelector || !O || R && R.test(n) || E && E.test(n))) try {
                 var i = z.call(t, n);
                 if (i || b.disconnectedMatch || t.document && 11 !== t.document.nodeType) return i
             } catch (r) {}
-            return e(n, N, null, [t]).length > 0
+            return e(n, P, null, [t]).length > 0
         }, e.contains = function (t, e) {
-            return (t.ownerDocument || t) !== N && L(t), B(t, e)
+            return (t.ownerDocument || t) !== P && L(t), B(t, e)
         }, e.attr = function (t, e) {
-            (t.ownerDocument || t) !== N && L(t);
+            (t.ownerDocument || t) !== P && L(t);
             var n = w.attrHandle[e.toLowerCase()],
                 i = n && Z.call(w.attrHandle, e.toLowerCase()) ? n(t, e, !O) : void 0;
             return void 0 !== i ? i : b.attributes || !O ? t.getAttribute(e) : (i = t.getAttributeNode(e)) && i.specified ? i.value : null
@@ -1249,10 +1249,10 @@ function onResetScreen() {
                     return n && n.slice(1) === e.id
                 },
                 root: function (t) {
-                    return t === P
+                    return t === N
                 },
                 focus: function (t) {
-                    return t === N.activeElement && (!N.hasFocus || N.hasFocus()) && !!(t.type || t.href || ~t.tabIndex)
+                    return t === P.activeElement && (!P.hasFocus || P.hasFocus()) && !!(t.type || t.href || ~t.tabIndex)
                 },
                 enabled: function (t) {
                     return t.disabled === !1
@@ -1368,7 +1368,7 @@ function onResetScreen() {
             }
             return (u || T(t, h))(i, e, !O, n, xt.test(t) && c(e.parentNode) || e), n
         }, b.sortStable = V.split("").sort(U).join("") === V, b.detectDuplicates = !!k, L(), b.sortDetached = r(function (t) {
-            return 1 & t.compareDocumentPosition(N.createElement("div"))
+            return 1 & t.compareDocumentPosition(P.createElement("div"))
         }), r(function (t) {
             return t.innerHTML = "<a href='#'></a>", "#" === t.firstChild.getAttribute("href")
         }) || o("type|href|height|width", function (t, e, n) {
@@ -2073,8 +2073,8 @@ function onResetScreen() {
     });
     var kt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
         Lt = /<([\w:]+)/,
-        Nt = /<|&#?\w+;/,
-        Pt = /<(?:script|style|link)/i,
+        Pt = /<|&#?\w+;/,
+        Nt = /<(?:script|style|link)/i,
         Ot = /checked\s*(?:[^=]|=\s*.checked.)/i,
         Et = /^$|\/(?:java|ecma)script/i,
         Rt = /^true\/(.*)/,
@@ -2103,7 +2103,7 @@ function onResetScreen() {
             for (var r, o, a, s, l, u, c = e.createDocumentFragment(), h = [], d = 0, f = t.length; f > d; d++)
                 if (r = t[d], r || 0 === r)
                     if ("object" === Q.type(r)) Q.merge(h, r.nodeType ? [r] : r);
-                    else if (Nt.test(r)) {
+                    else if (Pt.test(r)) {
                 for (o = o || c.appendChild(e.createElement("div")), a = (Lt.exec(r) || ["", ""])[1].toLowerCase(), s = Bt[a] || Bt._default, o.innerHTML = s[1] + r.replace(kt, "<$1></$2>") + s[2], u = s[0]; u--;) o = o.lastChild;
                 Q.merge(h, o.childNodes), o = c.firstChild, o.textContent = ""
             } else h.push(e.createTextNode(r));
@@ -2175,7 +2175,7 @@ function onResetScreen() {
                     n = 0,
                     i = this.length;
                 if (void 0 === t && 1 === e.nodeType) return e.innerHTML;
-                if ("string" == typeof t && !Pt.test(t) && !Bt[(Lt.exec(t) || ["", ""])[1].toLowerCase()]) {
+                if ("string" == typeof t && !Nt.test(t) && !Bt[(Lt.exec(t) || ["", ""])[1].toLowerCase()]) {
                     t = t.replace(kt, "<$1></$2>");
                     try {
                         for (; i > n; n++) e = this[n] || {}, 1 === e.nodeType && (Q.cleanData(v(e, !1)), e.innerHTML = t);
@@ -2399,7 +2399,7 @@ function onResetScreen() {
     var Yt, Kt, Jt = /^(?:toggle|show|hide)$/,
         Qt = new RegExp("^(?:([+-])=|)(" + bt + ")([a-z%]*)$", "i"),
         te = /queueHooks$/,
-        ee = [N],
+        ee = [P],
         ne = {
             "*": [function (t, e) {
                 var n = this.createTween(t, e),
@@ -3031,22 +3031,22 @@ function onResetScreen() {
             }
         }
     });
-    var Ne = [],
-        Pe = /(=)\?(?=&|$)|\?\?/;
+    var Pe = [],
+        Ne = /(=)\?(?=&|$)|\?\?/;
     Q.ajaxSetup({
         jsonp: "callback",
         jsonpCallback: function () {
-            var t = Ne.pop() || Q.expando + "_" + ue++;
+            var t = Pe.pop() || Q.expando + "_" + ue++;
             return this[t] = !0, t
         }
     }), Q.ajaxPrefilter("json jsonp", function (e, n, i) {
-        var r, o, a, s = e.jsonp !== !1 && (Pe.test(e.url) ? "url" : "string" == typeof e.data && !(e.contentType || "").indexOf("application/x-www-form-urlencoded") && Pe.test(e.data) && "data");
-        return s || "jsonp" === e.dataTypes[0] ? (r = e.jsonpCallback = Q.isFunction(e.jsonpCallback) ? e.jsonpCallback() : e.jsonpCallback, s ? e[s] = e[s].replace(Pe, "$1" + r) : e.jsonp !== !1 && (e.url += (ce.test(e.url) ? "&" : "?") + e.jsonp + "=" + r), e.converters["script json"] = function () {
+        var r, o, a, s = e.jsonp !== !1 && (Ne.test(e.url) ? "url" : "string" == typeof e.data && !(e.contentType || "").indexOf("application/x-www-form-urlencoded") && Ne.test(e.data) && "data");
+        return s || "jsonp" === e.dataTypes[0] ? (r = e.jsonpCallback = Q.isFunction(e.jsonpCallback) ? e.jsonpCallback() : e.jsonpCallback, s ? e[s] = e[s].replace(Ne, "$1" + r) : e.jsonp !== !1 && (e.url += (ce.test(e.url) ? "&" : "?") + e.jsonp + "=" + r), e.converters["script json"] = function () {
             return a || Q.error(r + " was not called"), a[0]
         }, e.dataTypes[0] = "json", o = t[r], t[r] = function () {
             a = arguments
         }, i.always(function () {
-            t[r] = o, e[r] && (e.jsonpCallback = n.jsonpCallback, Ne.push(r)), a && Q.isFunction(o) && o(a[0]), a = o = void 0
+            t[r] = o, e[r] && (e.jsonpCallback = n.jsonpCallback, Pe.push(r)), a && Q.isFunction(o) && o(a[0]), a = o = void 0
         }), "script") : void 0
     }), Q.parseHTML = function (t, e, n) {
         if (!t || "string" != typeof t) return null;
@@ -3358,7 +3358,7 @@ function onResetScreen() {
     });
     var L = _._config.usePrefixes ? C.toLowerCase().split(" ") : [];
     _._domPrefixes = L, _.testAllProps = v;
-    var N = function (e) {
+    var P = function (e) {
         var i, r = I.length,
             o = t.CSSRule;
         if ("undefined" == typeof o) return n;
@@ -3371,12 +3371,12 @@ function onResetScreen() {
         }
         return !1
     };
-    _.atRule = N;
-    var P = _.prefixed = function (t, e, n) {
-        return 0 === t.indexOf("@") ? N(t) : (-1 != t.indexOf("-") && (t = f(t)), e ? v(t, e, n) : v(t, "pfx"))
+    _.atRule = P;
+    var N = _.prefixed = function (t, e, n) {
+        return 0 === t.indexOf("@") ? P(t) : (-1 != t.indexOf("-") && (t = f(t)), e ? v(t, e, n) : v(t, "pfx"))
     };
     _.prefixedCSS = function (t) {
-        var e = P(t);
+        var e = N(t);
         return e && c(e)
     }, b.addTest("svg", !!e.createElementNS && !!e.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect), _.testAllProps = y, b.addTest("flexbox", y("flexBasis", "1px", !0)), b.addTest("csstransitions", y("transition", "all", !0)), b.addTest("inlinesvg", function () {
         var t = a("div");
@@ -3818,7 +3818,7 @@ var zfStorage = function () {
                     D = function () {
                         var t = F,
                             e = H,
-                            n = N(),
+                            n = P(),
                             i = function (e) {
                                 t(e.target || e.srcElement || {})
                             },
@@ -3841,10 +3841,10 @@ var zfStorage = function () {
                             placement: n,
                             forms: i,
                             sameHost: r
-                        }, N().decorators.push(t)
+                        }, P().decorators.push(t)
                     },
                     L = function (t, e, n) {
-                        for (var i = N().decorators, r = {}, o = 0; o < i.length; ++o) {
+                        for (var i = P().decorators, r = {}, o = 0; o < i.length; ++o) {
                             var a, s = i[o];
                             if (a = !n || s.forms) t: {
                                 a = s.domains;
@@ -3867,14 +3867,14 @@ var zfStorage = function () {
                         }
                         return r
                     },
-                    N = function () {
+                    P = function () {
                         var t = {},
                             e = _.google_tag_data;
                         return _.google_tag_data = void 0 === e ? t : e, t = _.google_tag_data, e = t.gl, e && e.decorators || (e = {
                             decorators: []
                         }, t.gl = e), e
                     },
-                    P = /(.*?)\*(.*?)\*(.*)/,
+                    N = /(.*?)\*(.*?)\*(.*)/,
                     O = /([^?#]+)(\?[^#]*)?(#.*)?/,
                     E = function (n) {
                         var i, r = [];
@@ -3935,7 +3935,7 @@ var zfStorage = function () {
                             if (t) {
                                 t: {
                                     for (var i = 0; 3 > i; ++i) {
-                                        var r = P.exec(t);
+                                        var r = N.exec(t);
                                         if (r) {
                                             var o = r;
                                             break t
@@ -3999,7 +3999,7 @@ var zfStorage = function () {
                     return t = E(t), s("_gl", t, e, !!n)
                 }), p("google_tag_data.glBridge.generate", E), p("google_tag_data.glBridge.get", function (t, e) {
                     var n = z(!!e);
-                    return e = N(), e.data || (e.data = {
+                    return e = P(), e.data || (e.data = {
                         query: {},
                         fragment: {}
                     }, n(e.data)), n = {}, (e = e.data) && (v(n, e.query), t && v(n, e.fragment)), n
@@ -4017,7 +4017,7 @@ var zfStorage = function () {
                 }
 
                 function e(t) {
-                    P.set(t)
+                    N.set(t)
                 }
 
                 function n(e) {
@@ -4052,10 +4052,10 @@ var zfStorage = function () {
                         r = n || (i || Dt(!1) + "") + "/collect";
                     switch (Ut(t, hi)) {
                         case "d":
-                            r = n || (i || Dt(!1) + "") + "/j/collect", e = t.get(ci) || void 0, Pt(r, Ut(t, ue), e, t.Z(le));
+                            r = n || (i || Dt(!1) + "") + "/j/collect", e = t.get(ci) || void 0, Nt(r, Ut(t, ue), e, t.Z(le));
                             break;
                         default:
-                            e ? (n = Ut(t, ue), i = (i = t.Z(le)) || W, "image" == e ? Ot(r, n, i) : "xhr" == e && Et(r, n, i) || "beacon" == e && Bt(r, n, i) || Nt(r, n, i)) : Nt(r, Ut(t, ue), t.Z(le))
+                            e ? (n = Ut(t, ue), i = (i = t.Z(le)) || W, "image" == e ? Ot(r, n, i) : "xhr" == e && Et(r, n, i) || "beacon" == e && Bt(r, n, i) || Pt(r, n, i)) : Pt(r, Ut(t, ue), t.Z(le))
                     }
                     r = Ut(t, Dn), r = Ht(r), e = r.hitcount, r.hitcount = e ? e + 1 : 1, r.first_hit || (r.first_hit = (new Date).getTime()), r = Ut(t, Dn), delete Ht(r).pending_experiments, t.set(le, W, !0)
                 }
@@ -4235,11 +4235,11 @@ var zfStorage = function () {
                 var D = C || "ga",
                     k = /^(?:utma\.)?\d+\.\d+$/,
                     L = /^amp-[\w.-]{22,64}$/,
-                    N = !1,
-                    P = new M,
+                    P = !1,
+                    N = new M,
                     O = function (t) {
                         t = E(t), t = new M(t);
-                        for (var e = P.C.slice(), n = 0; n < t.C.length; n++) e[n] = e[n] || t.C[n];
+                        for (var e = N.C.slice(), n = 0; n < t.C.length; n++) e[n] = e[n] || t.C[n];
                         return new M(e).encode()
                     },
                     E = function (t) {
@@ -4410,7 +4410,7 @@ var zfStorage = function () {
                             else {
                                 t: {
                                     n = String(t[Ln] || K());
-                                    var i = String(t[Nn] || "/"),
+                                    var i = String(t[Pn] || "/"),
                                         r = dt(String(t[kn] || "_ga"));
                                     if (n = ki(r, n, i), !n || k.test(n)) n = !0;
                                     else if (n = dt("AMP_TOKEN"), 0 == n.length) n = !0;
@@ -4428,7 +4428,7 @@ var zfStorage = function () {
                         return !1
                     },
                     wt = function () {
-                        Nr.D([W])
+                        Pr.D([W])
                     },
                     St = function (t, n) {
                         var i = dt("AMP_TOKEN");
@@ -4466,7 +4466,7 @@ var zfStorage = function () {
                     Tt = function (t, e) {
                         if (void 0 === rt) {
                             rt = "";
-                            for (var n = Pi(), i = 0; i < n.length; i++) {
+                            for (var n = Ni(), i = 0; i < n.length; i++) {
                                 var r = n[i];
                                 if (ft("AMP_TOKEN", encodeURIComponent(t), "/", r, "", e)) return void(rt = r)
                             }
@@ -4503,7 +4503,7 @@ var zfStorage = function () {
                         return n && !1 !== t
                     },
                     Dt = function (t) {
-                        return (t ? "https:" : N || "https:" == st.location.protocol ? "https:" : "http:") + "//www.google-analytics.com"
+                        return (t ? "https:" : P || "https:" == st.location.protocol ? "https:" : "http:") + "//www.google-analytics.com"
                     },
                     kt = function (t) {
                         switch (t) {
@@ -4517,14 +4517,14 @@ var zfStorage = function () {
                     Lt = function (t) {
                         this.name = "len", this.message = t + "-8192"
                     },
-                    Nt = function (t, e, n) {
+                    Pt = function (t, e, n) {
                         if (n = n || W, 2036 >= e.length) Ot(t, e, n);
                         else {
                             if (!(8192 >= e.length)) throw Vt("len", e.length), new Lt(e.length);
                             Bt(t, e, n) || Et(t, e, n) || Ot(t, e, n)
                         }
                     },
-                    Pt = function (t, e, n, i) {
+                    Nt = function (t, e, n, i) {
                         i = i || W, Et(t + "?" + e, "", i, n)
                     },
                     Ot = function (t, e, n) {
@@ -4569,7 +4569,7 @@ var zfStorage = function () {
                             var i = e.charAt(0);
                             switch (i) {
                                 case "d":
-                                    Pt("https://stats.g.doubleclick.net/j/collect", t.U, t, n);
+                                    Nt("https://stats.g.doubleclick.net/j/collect", t.U, t, n);
                                     break;
                                 case "g":
                                     Ot("https://www.google.%/ads/ga-audiences".replace("%", "com"), t.google, n), (e = e.substring(1)) && (/^[a-z.]{1,6}$/.test(e) ? Ot("https://www.google.%/ads/ga-audiences".replace("%", e), t.google, W) : Vt("tld", "bcc", e));
@@ -4730,8 +4730,8 @@ var zfStorage = function () {
                     De = te("socialTarget", "st"),
                     ke = te("l1", "plt"),
                     Le = te("l2", "pdt"),
-                    Ne = te("l3", "dns"),
-                    Pe = te("l4", "rrt"),
+                    Pe = te("l3", "dns"),
+                    Ne = te("l4", "rrt"),
                     Oe = te("l5", "srt"),
                     Ee = te("l6", "tcp"),
                     Re = te("l7", "dit"),
@@ -4763,9 +4763,9 @@ var zfStorage = function () {
                     nn = te("usage", "_u"),
                     rn = te("_um");
                 te("forceSSL", void 0, void 0, function () {
-                    return N
+                    return P
                 }, function (t, n, i) {
-                    e(34), N = !!i
+                    e(34), P = !!i
                 });
                 var on = te("_j1", "jid"),
                     an = te("_j2", "gjid");
@@ -4803,8 +4803,8 @@ var zfStorage = function () {
                     Dn = ne("trackingId", "tid"),
                     kn = ne("cookieName", void 0, "_ga"),
                     Ln = ne("cookieDomain"),
-                    Nn = ne("cookiePath", void 0, "/"),
-                    Pn = ne("cookieExpires", void 0, 63072e3),
+                    Pn = ne("cookiePath", void 0, "/"),
+                    Nn = ne("cookieExpires", void 0, 63072e3),
                     On = ne("cookieUpdate", void 0, !0),
                     En = ne("cookieFlags", void 0, ""),
                     Rn = ne("legacyCookieDomain"),
@@ -4854,7 +4854,7 @@ var zfStorage = function () {
                         var e = {};
                         if (yi(e) || xi(e)) {
                             var n = e[ke];
-                            void 0 == n || 1 / 0 == n || isNaN(n) || (0 < n ? (_i(e, Ne), _i(e, Ee), _i(e, Oe), _i(e, Le), _i(e, Pe), _i(e, Re), _i(e, ze), _i(e, Be), _i(e, Ve), _i(e, Fe), _i(e, He), lt(function () {
+                            void 0 == n || 1 / 0 == n || isNaN(n) || (0 < n ? (_i(e, Pe), _i(e, Ee), _i(e, Oe), _i(e, Le), _i(e, Ne), _i(e, Re), _i(e, ze), _i(e, Be), _i(e, Ve), _i(e, Fe), _i(e, He), lt(function () {
                                 t(e)
                             }, 10)) : $(at, "load", function () {
                                 vi(t)
@@ -4865,7 +4865,7 @@ var zfStorage = function () {
                         var e = at.performance || at.webkitPerformance;
                         if (e = e && e.timing, !e) return !1;
                         var n = e.navigationStart;
-                        return 0 != n && (t[ke] = e.loadEventStart - n, t[Ne] = e.domainLookupEnd - e.domainLookupStart, t[Ee] = e.connectEnd - e.connectStart, t[Oe] = e.responseStart - e.requestStart, t[Le] = e.responseEnd - e.responseStart, t[Pe] = e.fetchStart - n, t[Re] = e.domInteractive - n, t[ze] = e.domContentLoadedEventStart - n, t[Be] = Pr.L - n, t[Ve] = Pr.ya - n, at.google_tag_manager && at.google_tag_manager._li && (e = at.google_tag_manager._li, t[Fe] = e.cst, t[He] = e.cbt), !0)
+                        return 0 != n && (t[ke] = e.loadEventStart - n, t[Pe] = e.domainLookupEnd - e.domainLookupStart, t[Ee] = e.connectEnd - e.connectStart, t[Oe] = e.responseStart - e.requestStart, t[Le] = e.responseEnd - e.responseStart, t[Ne] = e.fetchStart - n, t[Re] = e.domInteractive - n, t[ze] = e.domContentLoadedEventStart - n, t[Be] = Nr.L - n, t[Ve] = Nr.ya - n, at.google_tag_manager && at.google_tag_manager._li && (e = at.google_tag_manager._li, t[Fe] = e.cst, t[He] = e.cbt), !0)
                     },
                     xi = function (t) {
                         if (at.top != at) return !1;
@@ -4894,38 +4894,38 @@ var zfStorage = function () {
                     Si = function (t) {
                         if ("cookie" == Ut(t, Bn)) {
                             if (t.get(On) || Ut(t, Cn) != Ut(t, In)) {
-                                var n = 1e3 * qt(t, Pn);
+                                var n = 1e3 * qt(t, Nn);
                                 Mi(t, In, kn, n), t.data.set(Cn, Ut(t, In))
                             }
                             if ((t.get(On) || Ii(t) != Ut(t, jn)) && Mi(t, jn, $n, 864e5), t.get(Kn)) {
                                 var i = Ut(t, qn);
                                 if (i) {
-                                    var r = Math.min(qt(t, Xn), 1e3 * qt(t, Pn));
+                                    var r = Math.min(qt(t, Xn), 1e3 * qt(t, Nn));
                                     r = Math.min(r, 1e3 * qt(t, Zn) + r - (new Date).getTime()), t.data.set(Xn, r), n = {};
                                     var o = Ut(t, Zn),
                                         a = Ut(t, Yn),
-                                        s = Oi(Ut(t, Nn)),
-                                        l = Ni(Ut(t, Ln)),
+                                        s = Oi(Ut(t, Pn)),
+                                        l = Pi(Ut(t, Ln)),
                                         u = Ut(t, Dn),
                                         c = Ut(t, En);
                                     a && "aw.ds" != a ? n && (n.ua = !0) : (i = ["1", o, pt(i)].join("."), 0 < r && (n && (n.ta = !0), ft("_gac_" + pt(u), i, s, l, u, r, c))), Ri(n)
                                 }
                             } else e(75);
-                            t.get(Kn) && (i = Ut(t, ri)) && (a = Math.min(qt(t, ai), 1e3 * qt(t, Pn)), a = Math.min(a, 1e3 * qt(t, oi) + a - (new Date).getTime()), t.data.set(ai, a), n = {}, o = Ut(t, oi), s = Oi(Ut(t, Nn)), l = Ni(Ut(t, Ln)), r = Ut(t, Dn), t = Ut(t, En), i = ["1", o, pt(i)].join("."), 0 < a && (n && (n.ta = !0), ft("_gac_gb_" + pt(r), i, s, l, r, a, t)), n.ta && e(85), n.na && e(86), n.pa && e(87))
+                            t.get(Kn) && (i = Ut(t, ri)) && (a = Math.min(qt(t, ai), 1e3 * qt(t, Nn)), a = Math.min(a, 1e3 * qt(t, oi) + a - (new Date).getTime()), t.data.set(ai, a), n = {}, o = Ut(t, oi), s = Oi(Ut(t, Pn)), l = Pi(Ut(t, Ln)), r = Ut(t, Dn), t = Ut(t, En), i = ["1", o, pt(i)].join("."), 0 < a && (n && (n.ta = !0), ft("_gac_gb_" + pt(r), i, s, l, r, a, t)), n.ta && e(85), n.na && e(86), n.pa && e(87))
                         }
                     },
                     Mi = function (t, n, i, r) {
                         var o = Ai(t, n);
                         if (o) {
                             i = Ut(t, i);
-                            var a = Oi(Ut(t, Nn)),
-                                s = Ni(Ut(t, Ln)),
+                            var a = Oi(Ut(t, Pn)),
+                                s = Pi(Ut(t, Ln)),
                                 l = Ut(t, En),
                                 u = Ut(t, Dn);
                             if ("auto" != s) ft(i, o, a, s, u, r, l) && (wi = !0);
                             else {
                                 e(32);
-                                for (var c = Pi(), h = 0; h < c.length; h++)
+                                for (var c = Ni(), h = 0; h < c.length; h++)
                                     if (s = c[h], t.data.set(Ln, s), o = Ai(t, n), ft(i, o, a, s, u, r, l)) return void(wi = !0);
                                 t.data.set(Ln, "auto")
                             }
@@ -4948,11 +4948,11 @@ var zfStorage = function () {
                     },
                     Ai = function (t, e) {
                         e = pt(Ut(t, e));
-                        var n = Ni(Ut(t, Ln)).split(".").length;
-                        return t = Ei(Ut(t, Nn)), 1 < t && (n += "-" + t), e ? ["GA1", n, e].join(".") : ""
+                        var n = Pi(Ut(t, Ln)).split(".").length;
+                        return t = Ei(Ut(t, Pn)), 1 < t && (n += "-" + t), e ? ["GA1", n, e].join(".") : ""
                     },
                     Di = function (t, e) {
-                        return ki(e, Ut(t, Ln), Ut(t, Nn))
+                        return ki(e, Ut(t, Ln), Ut(t, Pn))
                     },
                     ki = function (t, n, i) {
                         if (!t || 1 > t.length) e(12);
@@ -4970,7 +4970,7 @@ var zfStorage = function () {
                                 } : void 0, s && r.push(s)
                             }
                             if (1 == r.length) return e(13), r[0].s;
-                            if (0 != r.length) return e(14), r = Li(r, Ni(n).split(".").length, 0), 1 == r.length ? r[0].s : (r = Li(r, Ei(i), 1), 1 < r.length && e(41), r[0] && r[0].s);
+                            if (0 != r.length) return e(14), r = Li(r, Pi(n).split(".").length, 0), 1 == r.length ? r[0].s : (r = Li(r, Ei(i), 1), 1 < r.length && e(41), r[0] && r[0].s);
                             e(12)
                         }
                     },
@@ -4981,10 +4981,10 @@ var zfStorage = function () {
                         }
                         return 0 < r.length ? r : o
                     },
-                    Ni = function (t) {
+                    Pi = function (t) {
                         return 0 == t.indexOf(".") ? t.substr(1) : t
                     },
-                    Pi = function () {
+                    Ni = function () {
                         var t = [],
                             e = K().split(".");
                         if (4 == e.length) {
@@ -5138,7 +5138,7 @@ var zfStorage = function () {
                                     google: or(t, 2),
                                     count: 0
                                 };
-                                Pt("https://stats.g.doubleclick.net/j/collect", i.U, i), t.set(on, "", !0)
+                                Nt("https://stats.g.doubleclick.net/j/collect", i.U, i), t.set(on, "", !0)
                             }
                             return n
                         })
@@ -5147,7 +5147,7 @@ var zfStorage = function () {
                         !1 === e.get(di) || e.get(n) || ("1" == dt(t.Y)[0] ? e.set(n, "", !0) : e.set(n, "" + Wt(), !0))
                     },
                     nr = function (t, e) {
-                        ir(e) && ft(t.Y, "1", Ut(e, Nn), Ut(e, Ln), Ut(e, Dn), 6e4, Ut(e, En))
+                        ir(e) && ft(t.Y, "1", Ut(e, Pn), Ut(e, Ln), Ut(e, Dn), 6e4, Ut(e, En))
                     },
                     ir = function (t) {
                         return !!t.get(on) && !1 !== t.get(di)
@@ -5211,7 +5211,7 @@ var zfStorage = function () {
                             e(t, n), p.filters.add(t)
                         }
                         var p = this;
-                        this.model = new $t, this.filters = new Gt, e(Mn, t[Mn]), e(Dn, F(t[Dn])), e(kn, t[kn]), e(Ln, t[Ln] || K()), e(Nn, t[Nn]), e(Pn, t[Pn]), e(On, t[On]), e(En, t[En]), e(Rn, t[Rn]), e(zn, t[zn]), e(Vn, t[Vn]), e(Fn, t[Fn]), e(Hn, t[Hn]), e(Gn, t[Gn]), e(Wn, t[Wn]), e(Bn, t[Bn]), e(An, t[An]), e(Tn, t[Tn]), e(Un, t[Un]), e(Kn, t[Kn]), e(en, t[en]), e(Jn, t[Jn]), e(ei, t[ei]), e(ti, t[ti]), e(re, 1), e(oe, "j89"), f(Sn, h), f(sn, i), f(bn, W), f(ln, l), f(un, r), f(cn, c), f(hn, Ti), f(dn, Ci), f(fn, n), f(pn, d), f(vn, s), f(yn, u), f(_n, ur), f(wn, gi), f(gn, o), f(mn, a), f(xn, bi(this)), yr(this.model), vr(this.model, t[In]), this.model.set(ae, cr())
+                        this.model = new $t, this.filters = new Gt, e(Mn, t[Mn]), e(Dn, F(t[Dn])), e(kn, t[kn]), e(Ln, t[Ln] || K()), e(Pn, t[Pn]), e(Nn, t[Nn]), e(On, t[On]), e(En, t[En]), e(Rn, t[Rn]), e(zn, t[zn]), e(Vn, t[Vn]), e(Fn, t[Fn]), e(Hn, t[Hn]), e(Gn, t[Gn]), e(Wn, t[Wn]), e(Bn, t[Bn]), e(An, t[An]), e(Tn, t[Tn]), e(Un, t[Un]), e(Kn, t[Kn]), e(en, t[en]), e(Jn, t[Jn]), e(ei, t[ei]), e(ti, t[ti]), e(re, 1), e(oe, "j89"), f(Sn, h), f(sn, i), f(bn, W), f(ln, l), f(un, r), f(cn, c), f(hn, Ti), f(dn, Ci), f(fn, n), f(pn, d), f(vn, s), f(yn, u), f(_n, ur), f(wn, gi), f(gn, o), f(mn, a), f(xn, bi(this)), yr(this.model), vr(this.model, t[In]), this.model.set(ae, cr())
                     };
                 dr.prototype.get = function (t) {
                     return this.model.get(t)
@@ -5241,7 +5241,7 @@ var zfStorage = function () {
                             if (i && (wi = !0), r = i && !t.get(On))
                                 if (r = i.split("."), 2 != r.length) r = !1;
                                 else if (r = Number(r[1])) {
-                                var o = qt(t, Pn);
+                                var o = qt(t, Nn);
                                 r = r + o < (new Date).getTime() / 1e3
                             } else r = !1;
                             if (r && (i = void 0), i && (t.data.set(Cn, i), t.data.set(In, i), (i = Ii(t)) && t.data.set(jn, i)), t.get(Kn) && (i = t.get(qn), r = t.get(Yn), !i || r && "aw.ds" != r)) {
@@ -5371,18 +5371,18 @@ var zfStorage = function () {
                     linkid: 47
                 };
                 var Mr = function (t, e, n) {
-                        e == Pr || e.get(Mn);
+                        e == Nr || e.get(Mn);
                         var i = fr.get(t);
                         return !!R(i) && (e.plugins_ = e.plugins_ || new et, !!e.plugins_.get(t) || (e.plugins_.set(t, new i(e, n || {})), !0))
                     },
                     Ir = function (t, n, i, r, o) {
                         if (!R(fr.get(n)) && !gr.get(n)) {
-                            pr.hasOwnProperty(n) && e(pr[n]), t = Pr.j(t);
+                            pr.hasOwnProperty(n) && e(pr[n]), t = Nr.j(t);
                             var a = void 0;
                             if (ji.test(n)) {
                                 if (e(52), !t) return !0;
                                 i = Ki(t.model, n, r, o), a = function () {
-                                    Nr.D(["provide", n, function () {}]);
+                                    Pr.D(["provide", n, function () {}]);
                                     var t = at[r && r.dataLayer || "dataLayer"];
                                     t && t.hide && R(t.hide.end) && t.hide[n] && (t.hide.end(), t.hide.end = void 0)
                                 }
@@ -5437,29 +5437,29 @@ var zfStorage = function () {
                     Lr = function (t, e) {
                         return t && 0 <= t.indexOf("/") ? t : (e || Dt(!1)) + "/plugins/ua/" + t
                     },
-                    Nr = {
+                    Pr = {
                         ga: function () {
-                            Nr.fa = []
+                            Pr.fa = []
                         }
                     };
-                Nr.ga(), Nr.D = function (t) {
-                    var e = Nr.J.apply(Nr, arguments);
-                    for (e = Nr.fa.concat(e), Nr.fa = []; 0 < e.length && !Nr.v(e[0]) && (e.shift(), !(0 < Nr.fa.length)););
-                    Nr.fa = Nr.fa.concat(e)
-                }, Nr.J = function (t) {
+                Pr.ga(), Pr.D = function (t) {
+                    var e = Pr.J.apply(Pr, arguments);
+                    for (e = Pr.fa.concat(e), Pr.fa = []; 0 < e.length && !Pr.v(e[0]) && (e.shift(), !(0 < Pr.fa.length)););
+                    Pr.fa = Pr.fa.concat(e)
+                }, Pr.J = function (t) {
                     for (var e = [], n = 0; n < arguments.length; n++) try {
                         var i = new Sr(arguments[n]);
                         i.g ? Cr(i.aa[0], i.aa[1]) : (i.i && (i.ha = Ir(i.da, i.aa[0], i.X, i.W)), e.push(i))
                     } catch (r) {}
                     return e
-                }, Nr.v = function (t) {
+                }, Pr.v = function (t) {
                     try {
-                        if (t.u) t.u.call(at, Pr.j("t0"));
+                        if (t.u) t.u.call(at, Nr.j("t0"));
                         else {
-                            var e = t.da == D ? Pr : Pr.j(t.da);
+                            var e = t.da == D ? Nr : Nr.j(t.da);
                             if (t.A) {
-                                if ("t0" == t.da && (e = Pr.create.apply(Pr, t.aa), null === e)) return !0
-                            } else if (t.ba) Pr.remove(t.da);
+                                if ("t0" == t.da && (e = Nr.create.apply(Nr, t.aa), null === e)) return !0
+                            } else if (t.ba) Nr.remove(t.da);
                             else if (e)
                                 if (t.i) {
                                     if (t.ha && (t.ha = Ir(t.da, t.aa[0], t.X, t.W)), !Mr(t.aa[0], e, t.W)) return !0
@@ -5472,38 +5472,38 @@ var zfStorage = function () {
                         }
                     } catch (o) {}
                 };
-                var Pr = function (t) {
-                    e(1), Nr.D.apply(Nr, [arguments])
+                var Nr = function (t) {
+                    e(1), Pr.D.apply(Pr, [arguments])
                 };
-                Pr.h = {}, Pr.P = [], Pr.L = 0, Pr.ya = 0, Pr.answer = 42;
+                Nr.h = {}, Nr.P = [], Nr.L = 0, Nr.ya = 0, Nr.answer = 42;
                 var Or = [Dn, Ln, Mn];
-                Pr.create = function (t) {
+                Nr.create = function (t) {
                     var e = Q(Or, [].slice.call(arguments));
                     e[Mn] || (e[Mn] = "t0");
                     var n = "" + e[Mn];
-                    if (Pr.h[n]) return Pr.h[n];
+                    if (Nr.h[n]) return Nr.h[n];
                     if (bt(e)) return null;
-                    if (e = new dr(e), Pr.h[n] = e, Pr.P.push(e), n = Ft().tracker_created, R(n)) try {
+                    if (e = new dr(e), Nr.h[n] = e, Nr.P.push(e), n = Ft().tracker_created, R(n)) try {
                         n(e)
                     } catch (i) {}
                     return e
-                }, Pr.remove = function (t) {
-                    for (var e = 0; e < Pr.P.length; e++)
-                        if (Pr.P[e].get(Mn) == t) {
-                            Pr.P.splice(e, 1), Pr.h[t] = null;
+                }, Nr.remove = function (t) {
+                    for (var e = 0; e < Nr.P.length; e++)
+                        if (Nr.P[e].get(Mn) == t) {
+                            Nr.P.splice(e, 1), Nr.h[t] = null;
                             break
                         }
-                }, Pr.j = function (t) {
-                    return Pr.h[t]
-                }, Pr.getAll = function () {
-                    return Pr.P.slice(0)
-                }, Pr.N = function () {
+                }, Nr.j = function (t) {
+                    return Nr.h[t]
+                }, Nr.getAll = function () {
+                    return Nr.P.slice(0)
+                }, Nr.N = function () {
                     "ga" != D && e(49);
                     var t = at[D];
                     if (!t || 42 != t.answer) {
-                        Pr.L = t && t.l, Pr.ya = 1 * new Date, Pr.loaded = !0;
-                        var n = at[D] = Pr;
-                        if (f("create", n, n.create), f("remove", n, n.remove), f("getByName", n, n.j, 5), f("getAll", n, n.getAll, 6), n = dr.prototype, f("get", n, n.get, 7), f("set", n, n.set, 4), f("send", n, n.send), f("requireSync", n, n.ma), n = $t.prototype, f("get", n, n.get), f("set", n, n.set), "https:" != st.location.protocol && !N) {
+                        Nr.L = t && t.l, Nr.ya = 1 * new Date, Nr.loaded = !0;
+                        var n = at[D] = Nr;
+                        if (f("create", n, n.create), f("remove", n, n.remove), f("getByName", n, n.j, 5), f("getAll", n, n.getAll, 6), n = dr.prototype, f("get", n, n.get, 7), f("set", n, n.set, 4), f("send", n, n.send), f("requireSync", n, n.ma), n = $t.prototype, f("get", n, n.get), f("set", n, n.set), "https:" != st.location.protocol && !P) {
                             t: {
                                 n = st.getElementsByTagName("script");
                                 for (var i = 0; i < n.length && 100 > i; i++) {
@@ -5515,14 +5515,14 @@ var zfStorage = function () {
                                 }
                                 n = !1
                             }
-                            n && (N = !0)
-                        }(at.gaplugins = at.gaplugins || {}).Linker = Hi, n = Hi.prototype, Cr("linker", Hi), f("decorate", n, n.ca, 20), f("autoLink", n, n.S, 25), f("passthrough", n, n.$, 25), Cr("displayfeatures", lr), Cr("adfeatures", lr), t = t && t.q, z(t) ? Nr.D.apply(Pr, t) : e(50)
+                            n && (P = !0)
+                        }(at.gaplugins = at.gaplugins || {}).Linker = Hi, n = Hi.prototype, Cr("linker", Hi), f("decorate", n, n.ca, 20), f("autoLink", n, n.S, 25), f("passthrough", n, n.$, 25), Cr("displayfeatures", lr), Cr("adfeatures", lr), t = t && t.q, z(t) ? Pr.D.apply(Nr, t) : e(50)
                     }
                 };
-                var Er = Pr.N,
+                var Er = Nr.N,
                     Rr = at[D];
                 Rr && Rr.r ? Er() : br(Er), br(function () {
-                    Nr.D(["provide", "render", W])
+                    Pr.D(["provide", "render", W])
                 })
             }(window), t(), ga(function (t) {
                 t.set("sendHitTask", function (t) {
@@ -5545,7 +5545,7 @@ var zfStorage = function () {
                 u++;
                 var e = t[0],
                     n = e.c_time + 18e5;
-                (new Date).getTime() > n || !e.orderData ? (jsReportText("send ga revenue error " + JSON.stringify(e)), t.shift(), zfStorage.setItem(a, t)) : r(e.orderData, function () {
+                (new Date).getTime() > n || !e.orderData ? (t.shift(), zfStorage.setItem(a, t)) : r(e.orderData, function () {
                     t.shift(), zfStorage.setItem(a, t)
                 }), setTimeout(function () {
                     i()
@@ -5747,7 +5747,7 @@ var zfStorage = function () {
                         orderData: t
                     };
                 n.push(i), zfStorage.setItem(a, n), e && e()
-            } else jsReportText("client not support localStorage sync send ga revenue " + JSON.stringify(t)), r(t, e), setTimeout(function () {
+            } else r(t, e), setTimeout(function () {
                 e && e()
             }, 3e3)
         }, s;
@@ -5917,7 +5917,7 @@ var zfStorage = function () {
 
     function A(t, e) {
         var n;
-        if (r(t) && !(t instanceof Fi)) return d(t, "__ob__") && t.__ob__ instanceof qi ? n = t.__ob__ : Ui && !Pi() && (Array.isArray(t) || o(t)) && Object.isExtensible(t) && !t._isVue && (n = new qi(t)), e && n && n.vmCount++, n
+        if (r(t) && !(t instanceof Fi)) return d(t, "__ob__") && t.__ob__ instanceof qi ? n = t.__ob__ : Ui && !Ni() && (Array.isArray(t) || o(t)) && Object.isExtensible(t) && !t._isVue && (n = new qi(t)), e && n && n.vmCount++, n
     }
 
     function D(t, e, n, i, r) {
@@ -5960,19 +5960,19 @@ var zfStorage = function () {
         }
     }
 
-    function N(t, e) {
+    function P(t, e) {
         if (!e) return t;
-        for (var n, i, r, a = Ei ? Reflect.ownKeys(e) : Object.keys(e), s = 0; s < a.length; s++) "__ob__" !== (n = a[s]) && (i = t[n], r = e[n], d(t, n) ? i !== r && o(i) && o(r) && N(i, r) : k(t, n, r));
+        for (var n, i, r, a = Ei ? Reflect.ownKeys(e) : Object.keys(e), s = 0; s < a.length; s++) "__ob__" !== (n = a[s]) && (i = t[n], r = e[n], d(t, n) ? i !== r && o(i) && o(r) && P(i, r) : k(t, n, r));
         return t
     }
 
-    function P(t, e, n) {
+    function N(t, e, n) {
         return n ? function () {
             var i = "function" == typeof e ? e.call(n, n) : e,
                 r = "function" == typeof t ? t.call(n, n) : t;
-            return i ? N(i, r) : r
+            return i ? P(i, r) : r
         } : e ? t ? function () {
-            return N("function" == typeof e ? e.call(this, this) : e, "function" == typeof t ? t.call(this, this) : t)
+            return P("function" == typeof e ? e.call(this, this) : e, "function" == typeof t ? t.call(this, this) : t)
         } : e : t
     }
 
@@ -6156,7 +6156,7 @@ var zfStorage = function () {
                 } else n && n(e)
             }), Qi || (Qi = !0, Xi()), !t && "undefined" != typeof Promise) return new Promise(function (t) {
             n = t
-        })
+        });
     }
 
     function Z(t) {
@@ -6604,11 +6604,11 @@ var zfStorage = function () {
         ar.$on(t, e)
     }
 
-    function Nt(t, e) {
+    function Pt(t, e) {
         ar.$off(t, e)
     }
 
-    function Pt(t, e) {
+    function Nt(t, e) {
         var n = ar;
         return function i() {
             null !== e.apply(null, arguments) && n.$off(t, i)
@@ -6616,7 +6616,7 @@ var zfStorage = function () {
     }
 
     function Ot(t, e, n) {
-        ar = t, Y(e, n || {}, Lt, Nt, Pt, t), ar = void 0
+        ar = t, Y(e, n || {}, Lt, Pt, Nt, t), ar = void 0
     }
 
     function Et(t) {
@@ -6719,7 +6719,7 @@ var zfStorage = function () {
             A(e, !0)
         }(t) : A(t._data = {}, !0), e.computed && function (t, e) {
             var n = t._computedWatchers = Object.create(null),
-                i = Pi();
+                i = Ni();
             for (var r in e) {
                 var o = e[r],
                     a = "function" == typeof o ? o : o.get;
@@ -6736,7 +6736,7 @@ var zfStorage = function () {
     }
 
     function Gt(t, e, n) {
-        var i = !Pi();
+        var i = !Ni();
         "function" == typeof n ? (Mr.get = i ? Wt(e) : jt(n), Mr.set = v) : (Mr.get = n.get ? i && !1 !== n.cache ? Wt(e) : jt(n.get) : v, Mr.set = n.set || v), Object.defineProperty(t, e, Mr)
     }
 
@@ -7148,28 +7148,28 @@ var zfStorage = function () {
 
     function Le(t, e) {
         var n = function (t) {
-            if (t = t.trim(), Dr = t.length, t.indexOf("[") < 0 || t.lastIndexOf("]") < Dr - 1) return (Nr = t.lastIndexOf(".")) > -1 ? {
-                exp: t.slice(0, Nr),
-                key: '"' + t.slice(Nr + 1) + '"'
+            if (t = t.trim(), Dr = t.length, t.indexOf("[") < 0 || t.lastIndexOf("]") < Dr - 1) return (Pr = t.lastIndexOf(".")) > -1 ? {
+                exp: t.slice(0, Pr),
+                key: '"' + t.slice(Pr + 1) + '"'
             } : {
                 exp: t,
                 key: null
             };
-            for (kr = t, Nr = Pr = Or = 0; !Pe();) Oe(Lr = Ne()) ? Re(Lr) : 91 === Lr && Ee(Lr);
+            for (kr = t, Pr = Nr = Or = 0; !Ne();) Oe(Lr = Pe()) ? Re(Lr) : 91 === Lr && Ee(Lr);
             return {
-                exp: t.slice(0, Pr),
-                key: t.slice(Pr + 1, Or)
+                exp: t.slice(0, Nr),
+                key: t.slice(Nr + 1, Or)
             }
         }(t);
         return null === n.key ? t + "=" + e : "$set(" + n.exp + ", " + n.key + ", " + e + ")"
     }
 
-    function Ne() {
-        return kr.charCodeAt(++Nr)
+    function Pe() {
+        return kr.charCodeAt(++Pr)
     }
 
-    function Pe() {
-        return Nr >= Dr
+    function Ne() {
+        return Pr >= Dr
     }
 
     function Oe(t) {
@@ -7178,16 +7178,16 @@ var zfStorage = function () {
 
     function Ee(t) {
         var e = 1;
-        for (Pr = Nr; !Pe();)
-            if (Oe(t = Ne())) Re(t);
+        for (Nr = Pr; !Ne();)
+            if (Oe(t = Pe())) Re(t);
             else if (91 === t && e++, 93 === t && e--, 0 === e) {
-            Or = Nr;
+            Or = Pr;
             break
         }
     }
 
     function Re(t) {
-        for (var e = t; !Pe() && (t = Ne()) !== e;);
+        for (var e = t; !Ne() && (t = Pe()) !== e;);
     }
 
     function ze(t, e, n) {
@@ -7339,8 +7339,8 @@ var zfStorage = function () {
     }
 
     function Xe(t) {
-        Po(function () {
-            Po(t)
+        No(function () {
+            No(t)
         })
     }
 
@@ -7359,7 +7359,7 @@ var zfStorage = function () {
             o = i.timeout,
             a = i.propCount;
         if (!r) return n();
-        var s = r === Co ? ko : No,
+        var s = r === Co ? ko : Po,
             l = 0,
             u = function () {
                 t.removeEventListener(s, c), n()
@@ -7412,23 +7412,23 @@ var zfStorage = function () {
                 var D = A && f ? f : c,
                     k = A && g ? g : d,
                     L = A && p ? p : h,
-                    N = A && b || m,
-                    P = A && "function" == typeof w ? w : v,
+                    P = A && b || m,
+                    N = A && "function" == typeof w ? w : v,
                     O = A && S || y,
                     E = A && M || x,
                     R = u(r(I) ? I.enter : I),
                     z = !1 !== s && !Ii,
-                    B = an(P),
+                    B = an(N),
                     V = o._enterCb = _(function () {
                         z && (Ke(o, L), Ke(o, k)), V.cancelled ? (z && Ke(o, D), E && E(o)) : O && O(o), o._enterCb = null
                     });
                 n.data.show || K(n, "insert", function () {
                     var t = o.parentNode,
                         e = t && t._pending && t._pending[n.key];
-                    e && e.tag === n.tag && e.elm._leaveCb && e.elm._leaveCb(), P && P(o, V)
-                }), N && N(o), z && (Ye(o, D), Ye(o, k), Xe(function () {
+                    e && e.tag === n.tag && e.elm._leaveCb && e.elm._leaveCb(), N && N(o, V)
+                }), P && P(o), z && (Ye(o, D), Ye(o, k), Xe(function () {
                     Ke(o, D), V.cancelled || (Ye(o, L), B || (on(R) ? setTimeout(V, R) : Je(o, l, V)))
-                })), n.data.show && (i && i(), P && P(o, V)), z || B || V()
+                })), n.data.show && (i && i(), N && N(o, V)), z || B || V()
             }
         }
     }
@@ -7668,8 +7668,7 @@ var zfStorage = function () {
                 else r = 0;
                 if (r >= 0) {
                     for (var a = l.length - 1; a >= r; a--) e.end && e.end(l[a].tag, n, i);
-                    l.length = r,
-                        s = r && l[r - 1].tag
+                    l.length = r, s = r && l[r - 1].tag
                 } else "br" === o ? e.start && e.start(t, [], !0, n, i) : "p" === o && (e.start && e.start(t, [], !1, n, i), e.end && e.end(t, n, i))
             }
             for (var a, s, l = [], u = e.expectHTML, c = e.isUnaryTag || hi, h = e.canBeLeftOpenTag || hi, d = 0; t;) {
@@ -7749,7 +7748,7 @@ var zfStorage = function () {
                     return e
                 }(i));
                 var f, p = Sn(t, i, o);
-                d && (p.ns = d), "style" !== (f = p).tag && ("script" !== f.tag || f.attrsMap.type && "text/javascript" !== f.attrsMap.type) || Pi() || (p.forbidden = !0);
+                d && (p.ns = d), "style" !== (f = p).tag && ("script" !== f.tag || f.attrsMap.type && "text/javascript" !== f.attrsMap.type) || Ni() || (p.forbidden = !0);
                 for (var g = 0; g < Zo.length; g++) p = Zo[g](p, e) || p;
                 u || (! function (t) {
                     null != Ce(t, "v-pre") && (t.pre = !0)
@@ -7876,12 +7875,12 @@ var zfStorage = function () {
             var e, n, i, r, o, a, s, l, u = t.attrsList;
             for (e = 0, n = u.length; e < n; e++)
                 if (i = r = u[e].name, o = u[e].value, Aa.test(i))
-                    if (t.hasBindings = !0, (a = Dn(i.replace(Aa, ""))) && (i = i.replace(Ea, "")), Oa.test(i)) i = i.replace(Oa, ""), o = me(o), (l = Na.test(i)) && (i = i.slice(1, -1)), a && (a.prop && !l && "innerHtml" === (i = ai(i)) && (i = "innerHTML"), a.camel && !l && (i = ai(i)), a.sync && (s = Le(o, "$event"), l ? Ie(t, '"update:"+(' + i + ")", s, null, !1, 0, u[e], !0) : (Ie(t, "update:" + ai(i), s, null, !1, 0, u[e]), ui(i) !== ai(i) && Ie(t, "update:" + ui(i), s, null, !1, 0, u[e])))), a && a.prop || !t.component && Ko(t.tag, t.attrsMap.type, i) ? _e(t, i, o, u[e], l) : be(t, i, o, u[e], l);
-                    else if (Ca.test(i)) i = i.replace(Ca, ""), (l = Na.test(i)) && (i = i.slice(1, -1)), Ie(t, i, o, a, !1, 0, u[e], l);
+                    if (t.hasBindings = !0, (a = Dn(i.replace(Aa, ""))) && (i = i.replace(Ea, "")), Oa.test(i)) i = i.replace(Oa, ""), o = me(o), (l = Pa.test(i)) && (i = i.slice(1, -1)), a && (a.prop && !l && "innerHtml" === (i = ai(i)) && (i = "innerHTML"), a.camel && !l && (i = ai(i)), a.sync && (s = Le(o, "$event"), l ? Ie(t, '"update:"+(' + i + ")", s, null, !1, 0, u[e], !0) : (Ie(t, "update:" + ai(i), s, null, !1, 0, u[e]), ui(i) !== ai(i) && Ie(t, "update:" + ui(i), s, null, !1, 0, u[e])))), a && a.prop || !t.component && Ko(t.tag, t.attrsMap.type, i) ? _e(t, i, o, u[e], l) : be(t, i, o, u[e], l);
+                    else if (Ca.test(i)) i = i.replace(Ca, ""), (l = Pa.test(i)) && (i = i.slice(1, -1)), Ie(t, i, o, a, !1, 0, u[e], l);
             else {
-                var c = (i = i.replace(Aa, "")).match(Pa),
+                var c = (i = i.replace(Aa, "")).match(Na),
                     h = c && c[1];
-                l = !1, h && (i = i.slice(0, -(h.length + 1)), Na.test(h) && (h = h.slice(1, -1), l = !0)), Se(t, i, r, o, h, l, a, u[e])
+                l = !1, h && (i = i.slice(0, -(h.length + 1)), Pa.test(h) && (h = h.slice(1, -1), l = !0)), Se(t, i, r, o, h, l, a, u[e])
             } else be(t, i, JSON.stringify(o), u[e]), !t.component && "muted" === i && Ko(t.tag, t.attrsMap.type, i) && _e(t, i, "true", u[e])
         }(t), t
     }
@@ -7909,7 +7908,7 @@ var zfStorage = function () {
 
     function An(t) {
         var e = t.name.replace(Ra, "");
-        return e || "#" !== t.name[0] && (e = "default"), Na.test(e) ? {
+        return e || "#" !== t.name[0] && (e = "default"), Pa.test(e) ? {
             name: e.slice(1, -1),
             dynamic: !0
         } : {
@@ -7937,7 +7936,7 @@ var zfStorage = function () {
         return Sn(t.tag, t.attrsList.slice(), t.parent)
     }
 
-    function Nn(t, e) {
+    function Pn(t, e) {
         t && (Qo = $a(e.staticKeys || ""), ta = e.isReservedTag || hi, function n(t) {
             if (t["static"] = function (t) {
                     return 2 !== t.type && (3 === t.type || !(!t.pre && (t.hasBindings || t["if"] || t["for"] || ni(t.tag) || !ta(t.tag) || function (t) {
@@ -7970,7 +7969,7 @@ var zfStorage = function () {
         }(t, !1))
     }
 
-    function Pn(t, e) {
+    function Nn(t, e) {
         var n = e ? "nativeOn:" : "on:",
             i = "",
             r = "";
@@ -8121,7 +8120,7 @@ var zfStorage = function () {
             }(t, e);
         i && (n += i + ","), t.key && (n += "key:" + t.key + ","), t.ref && (n += "ref:" + t.ref + ","), t.refInFor && (n += "refInFor:true,"), t.pre && (n += "pre:true,"), t.component && (n += 'tag:"' + t.tag + '",');
         for (var r = 0; r < e.dataGenFns.length; r++) n += e.dataGenFns[r](t);
-        if (t.attrs && (n += "attrs:" + Zn(t.attrs) + ","), t.props && (n += "domProps:" + Zn(t.props) + ","), t.events && (n += Pn(t.events, !1) + ","), t.nativeEvents && (n += Pn(t.nativeEvents, !0) + ","), t.slotTarget && !t.slotScope && (n += "slot:" + t.slotTarget + ","), t.scopedSlots && (n += function (t, e, n) {
+        if (t.attrs && (n += "attrs:" + Zn(t.attrs) + ","), t.props && (n += "domProps:" + Zn(t.props) + ","), t.events && (n += Nn(t.events, !1) + ","), t.nativeEvents && (n += Nn(t.nativeEvents, !0) + ","), t.slotTarget && !t.slotScope && (n += "slot:" + t.slotTarget + ","), t.scopedSlots && (n += function (t, e, n) {
                 var i = t["for"] || Object.keys(e).some(function (t) {
                         var n = e[t];
                         return n.slotTargetDynamic || n["if"] || n["for"] || Wn(n)
@@ -8330,12 +8329,12 @@ var zfStorage = function () {
             }
         }), window.addEventListener("test-passive", null, Li)
     } catch (ti) {}
-    var Ni, Pi = function () {
+    var Pi, Ni = function () {
             return void 0 === Qn && (Qn = !_i && !bi && "undefined" != typeof global && global.process && "server" === global.process.env.VUE_ENV), Qn
         },
         Oi = _i && window.__VUE_DEVTOOLS_GLOBAL_HOOK__,
         Ei = "undefined" != typeof Symbol && w(Symbol) && "undefined" != typeof Reflect && w(Reflect.ownKeys);
-    Ni = "undefined" != typeof Set && w(Set) ? Set : function () {
+    Pi = "undefined" != typeof Set && w(Set) ? Set : function () {
         function t() {
             this.set = Object.create(null)
         }
@@ -8415,7 +8414,7 @@ var zfStorage = function () {
     };
     var Zi = mi.optionMergeStrategies;
     Zi.data = function (t, e, n) {
-        return n ? P(t, e, n) : e && "function" != typeof e ? t : P(t, e)
+        return n ? N(t, e, n) : e && "function" != typeof e ? t : N(t, e)
     }, gi.forEach(function (t) {
         Zi[t] = O
     }), pi.forEach(function (t) {
@@ -8434,7 +8433,7 @@ var zfStorage = function () {
         if (!t) return e;
         var r = Object.create(null);
         return g(r, t), e && g(r, e), r
-    }, Zi.provide = P;
+    }, Zi.provide = N;
     var Xi, Yi = function (t, e) {
             return void 0 === e ? t : e
         },
@@ -8461,7 +8460,7 @@ var zfStorage = function () {
             er = (er + 1) % 2, ir.data = String(er)
         }, Ki = !0
     }
-    var rr = new Ni,
+    var rr = new Pi,
         or = f(function (t) {
             var e = "&" === t.charAt(0),
                 n = "~" === (t = e ? t.slice(1) : t).charAt(0),
@@ -8547,7 +8546,7 @@ var zfStorage = function () {
     }
     var wr = 0,
         Sr = function (t, e, n, i, r) {
-            this.vm = t, r && (t._watcher = this), t._watchers.push(this), i ? (this.deep = !!i.deep, this.user = !!i.user, this.lazy = !!i.lazy, this.sync = !!i.sync, this.before = i.before) : this.deep = this.user = this.lazy = this.sync = !1, this.cb = n, this.id = ++wr, this.active = !0, this.dirty = this.lazy, this.deps = [], this.newDeps = [], this.depIds = new Ni, this.newDepIds = new Ni, this.expression = "", "function" == typeof e ? this.getter = e : (this.getter = function (t) {
+            this.vm = t, r && (t._watcher = this), t._watchers.push(this), i ? (this.deep = !!i.deep, this.user = !!i.user, this.lazy = !!i.lazy, this.sync = !!i.sync, this.before = i.before) : this.deep = this.user = this.lazy = this.sync = !1, this.cb = n, this.id = ++wr, this.active = !0, this.dirty = this.lazy, this.deps = [], this.newDeps = [], this.depIds = new Pi, this.newDepIds = new Pi, this.expression = "", "function" == typeof e ? this.getter = e : (this.getter = function (t) {
                 if (!yi.test(t)) {
                     var e = t.split(".");
                     return function (t) {
@@ -8864,7 +8863,7 @@ var zfStorage = function () {
                 })
             }(t)
     }(qt), Object.defineProperty(qt.prototype, "$isServer", {
-        get: Pi
+        get: Ni
     }), Object.defineProperty(qt.prototype, "$ssrContext", {
         get: function () {
             return this.$vnode && this.$vnode.ssrContext
@@ -8872,7 +8871,7 @@ var zfStorage = function () {
     }), Object.defineProperty(qt, "FunctionalRenderContext", {
         value: wt
     }), qt.version = "2.6.12";
-    var Dr, kr, Lr, Nr, Pr, Or, Er, Rr, zr, Br = c("style,class"),
+    var Dr, kr, Lr, Pr, Nr, Or, Er, Rr, zr, Br = c("style,class"),
         Vr = c("input,textarea,option,select,progress"),
         Fr = function (t, e, n) {
             return "value" === n && Vr(t) && "button" !== e || "selected" === n && "option" === t || "checked" === n && "input" === t || "muted" === n && "video" === t
@@ -9036,9 +9035,9 @@ var zfStorage = function () {
         Do = "transition",
         ko = "transitionend",
         Lo = "animation",
-        No = "animationend";
-    To && (void 0 === window.ontransitionend && void 0 !== window.onwebkittransitionend && (Do = "WebkitTransition", ko = "webkitTransitionEnd"), void 0 === window.onanimationend && void 0 !== window.onwebkitanimationend && (Lo = "WebkitAnimation", No = "webkitAnimationEnd"));
-    var Po = _i ? window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : setTimeout : function (t) {
+        Po = "animationend";
+    To && (void 0 === window.ontransitionend && void 0 !== window.onwebkittransitionend && (Do = "WebkitTransition", ko = "webkitTransitionEnd"), void 0 === window.onanimationend && void 0 !== window.onwebkitanimationend && (Lo = "WebkitAnimation", Po = "webkitAnimationEnd"));
+    var No = _i ? window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : setTimeout : function (t) {
             return t()
         },
         Oo = /\b(transform|all)(,|$)/,
@@ -9516,8 +9515,8 @@ var zfStorage = function () {
         Da = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/,
         ka = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/,
         La = /^\(|\)$/g,
-        Na = /^\[.*\]$/,
-        Pa = /:(.*)$/,
+        Pa = /^\[.*\]$/,
+        Na = /:(.*)$/,
         Oa = /^:|^\.|^v-bind:/,
         Ea = /\.[^.\]]+(?=[^\]]*$)/g,
         Ra = /^v-slot(:|$)|^#/,
@@ -9685,7 +9684,7 @@ var zfStorage = function () {
     new RegExp("\\b" + "do,if,for,let,new,try,var,case,else,with,await,break,catch,class,const,super,throw,while,yield,delete,export,import,return,switch,default,extends,finally,continue,debugger,function,arguments".split(",").join("\\b|\\b") + "\\b");
     var es, ns, is = (es = function (t, e) {
             var n = Mn(t.trim(), e);
-            !1 !== e.optimize && Nn(n, e);
+            !1 !== e.optimize && Pn(n, e);
             var i = Rn(n, e);
             return {
                 ast: n,
@@ -9944,11 +9943,11 @@ var zfStorage = function () {
         if (!t) throw new Error(e)
     }
 
-    function N(t) {
+    function P(t) {
         return null == t ? null : "function" == typeof t.trim ? t.trim() : t.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "")
     }
 
-    function P(t) {
+    function N(t) {
         t[rb] = !0
     }
 
@@ -10249,16 +10248,16 @@ var zfStorage = function () {
         return (t = Math.round(t)) < 0 ? 0 : t > 360 ? 360 : t
     }
 
-    function Nt(t) {
+    function Pt(t) {
         return t < 0 ? 0 : t > 1 ? 1 : t
     }
 
-    function Pt(t) {
+    function Nt(t) {
         return kt(t.length && "%" === t.charAt(t.length - 1) ? parseFloat(t) / 100 * 255 : parseInt(t, 10))
     }
 
     function Ot(t) {
-        return Nt(t.length && "%" === t.charAt(t.length - 1) ? parseFloat(t) / 100 : parseFloat(t))
+        return Pt(t.length && "%" === t.charAt(t.length - 1) ? parseFloat(t) / 100 : parseFloat(t))
     }
 
     function Et(t, e, n) {
@@ -10300,7 +10299,7 @@ var zfStorage = function () {
                             if (4 !== s.length) return void zt(e, 0, 0, 0, 1);
                             l = Ot(s.pop());
                         case "rgb":
-                            return 3 !== s.length ? void zt(e, 0, 0, 0, 1) : (zt(e, Pt(s[0]), Pt(s[1]), Pt(s[2]), l), Vt(t, e), e);
+                            return 3 !== s.length ? void zt(e, 0, 0, 0, 1) : (zt(e, Nt(s[0]), Nt(s[1]), Nt(s[2]), l), Vt(t, e), e);
                         case "hsla":
                             return 4 !== s.length ? void zt(e, 0, 0, 0, 1) : (s[3] = Ot(s[3]), Ht(s, e), Vt(t, e), e);
                         case "hsl":
@@ -10373,7 +10372,7 @@ var zfStorage = function () {
                 a = e[r],
                 s = e[o],
                 l = i - r;
-            return n[0] = kt(Rt(a[0], s[0], l)), n[1] = kt(Rt(a[1], s[1], l)), n[2] = kt(Rt(a[2], s[2], l)), n[3] = Nt(Rt(a[3], s[3], l)), n
+            return n[0] = kt(Rt(a[0], s[0], l)), n[1] = kt(Rt(a[1], s[1], l)), n[2] = kt(Rt(a[2], s[2], l)), n[3] = Pt(Rt(a[3], s[3], l)), n
         }
     }
 
@@ -10385,7 +10384,7 @@ var zfStorage = function () {
                 a = Ft(e[r]),
                 s = Ft(e[o]),
                 l = i - r,
-                u = Xt([kt(Rt(a[0], s[0], l)), kt(Rt(a[1], s[1], l)), kt(Rt(a[2], s[2], l)), Nt(Rt(a[3], s[3], l))], "rgba");
+                u = Xt([kt(Rt(a[0], s[0], l)), kt(Rt(a[1], s[1], l)), kt(Rt(a[2], s[2], l)), Pt(Rt(a[3], s[3], l))], "rgba");
             return n ? {
                 color: u,
                 leftIndex: r,
@@ -10400,7 +10399,7 @@ var zfStorage = function () {
     }
 
     function Zt(t, e) {
-        if ((t = Ft(t)) && null != e) return t[3] = Nt(e), Xt(t, "rgba")
+        if ((t = Ft(t)) && null != e) return t[3] = Pt(e), Xt(t, "rgba")
     }
 
     function Xt(t, e) {
@@ -10525,8 +10524,8 @@ var zfStorage = function () {
                 d && ee(a(t._target, r), S, g);
                 var M, I, T, C, A, D, k = 0,
                     L = 0;
-                if (f) var N = [0, 0, 0, 0];
-                var P = new Dt({
+                if (f) var P = [0, 0, 0, 0];
+                var N = new Dt({
                     target: t._target,
                     life: c,
                     loop: t._loop,
@@ -10547,7 +10546,7 @@ var zfStorage = function () {
                             if (I = (e - m[n]) / i, l)
                                 if (C = v[n], T = v[0 === n ? n : n - 1], A = v[n > u - 2 ? u - 1 : n + 1], D = v[n > u - 3 ? u - 1 : n + 2], d) ie(T, C, A, D, I, I * I, I * I * I, a(t, r), g);
                                 else {
-                                    if (f) o = ie(T, C, A, D, I, I * I, I * I * I, N, 1), o = ae(N);
+                                    if (f) o = ie(T, C, A, D, I, I * I, I * I * I, P, 1), o = ae(P);
                                     else {
                                         if (p) return Qt(C, A, I);
                                         o = re(T, C, A, D, I, I * I, I * I * I)
@@ -10557,7 +10556,7 @@ var zfStorage = function () {
                         else if (d) te(v[n], v[n + 1], I, a(t, r), g);
                         else {
                             var o;
-                            if (f) te(v[n], v[n + 1], I, N, 1), o = ae(N);
+                            if (f) te(v[n], v[n + 1], I, P, 1), o = ae(P);
                             else {
                                 if (p) return Qt(v[n], v[n + 1], I);
                                 o = Jt(v[n], v[n + 1], I)
@@ -10567,7 +10566,7 @@ var zfStorage = function () {
                     },
                     ondestroy: n
                 });
-                return e && "spline" !== e && (P.easing = e), P
+                return e && "spline" !== e && (N.easing = e), N
             }
         }
     }
@@ -10948,10 +10947,10 @@ var zfStorage = function () {
     }
 
     function Le(t, e, n, i, r, o, a, s) {
-        return a ? Pe(t, e, n, i, r, o, a, s) : Ne(t, e, n, i, r, o, s)
+        return a ? Ne(t, e, n, i, r, o, a, s) : Pe(t, e, n, i, r, o, s)
     }
 
-    function Ne(t, e, n, i, r, o, a) {
+    function Pe(t, e, n, i, r, o, a) {
         var s = We(t, e, r, o, a),
             l = ke(t, e);
         r && (l += r[1] + r[3]);
@@ -10960,7 +10959,7 @@ var zfStorage = function () {
         return c.lineHeight = s.lineHeight, c
     }
 
-    function Pe(t, e, n, i, r, o, a, s) {
+    function Ne(t, e, n, i, r, o, a, s) {
         var l = je(t, {
                 rich: a,
                 truncate: s,
@@ -11173,8 +11172,8 @@ var zfStorage = function () {
         n.outerWidth = n.width = C(e.textWidth, l), n.outerHeight = n.height = C(e.textHeight, s), c && (n.outerWidth += c[1] + c[3], n.outerHeight += c[0] + c[2]);
         for (var k = 0; k < u.length; k++) {
             var L = u[k],
-                N = L.percentWidth;
-            L.width = parseInt(N, 10) / 100 * l
+                P = L.percentWidth;
+            L.width = parseInt(P, 10) / 100 * l
         }
         return n
     }
@@ -11202,7 +11201,7 @@ var zfStorage = function () {
 
     function Ue(t) {
         var e = (t.fontSize || t.fontFamily) && [t.fontStyle, t.fontWeight, (t.fontSize || 12) + "px", t.fontFamily || "sans-serif"].join(" ");
-        return e && N(e) || t.textFont || t.font
+        return e && P(e) || t.textFont || t.font
     }
 
     function qe(t, e) {
@@ -11273,13 +11272,13 @@ var zfStorage = function () {
             l && L === a[D] || (e[k] = ow(e, k, L || A[2]))
         }
         I += v / 2;
-        var N = i.textStrokeWidth,
-            P = l ? a.textStrokeWidth : null,
-            O = !l || N !== P,
+        var P = i.textStrokeWidth,
+            N = l ? a.textStrokeWidth : null,
+            O = !l || P !== N,
             E = !l || O || i.textStroke !== a.textStroke,
-            R = ln(i.textStroke, N),
+            R = ln(i.textStroke, P),
             z = un(i.textFill);
-        if (R && (O && (e.lineWidth = N), E && (e.strokeStyle = R)), z && (l && i.textFill === a.textFill || (e.fillStyle = z)), 1 === m.length) R && e.strokeText(m[0], M, I), z && e.fillText(m[0], M, I);
+        if (R && (O && (e.lineWidth = P), E && (e.strokeStyle = R)), z && (l && i.textFill === a.textFill || (e.fillStyle = z)), 1 === m.length) R && e.strokeText(m[0], M, I), z && e.fillText(m[0], M, I);
         else
             for (var B = 0; B < m.length; B++) R && e.strokeText(m[B], M, I), z && e.fillText(m[B], M, I), I += v
     }
@@ -11486,7 +11485,7 @@ var zfStorage = function () {
             t._handlers[e] = m(zw[e], t)
         }), d(Rw, function (e) {
             t._handlers[e] = m(zw[e], t)
-        }), d(Pw, function (n) {
+        }), d(Nw, function (n) {
             t._handlers[n] = e(zw[n], t)
         })
     }
@@ -11497,7 +11496,7 @@ var zfStorage = function () {
                 ct(t, bn(e), n._handlers[e])
             }, n)
         }
-        fb.call(this), this.dom = t, this._touching = !1, this._touchTimer, this._handlers = {}, Mn(this), $_.pointerEventsSupported ? e(Rw, this) : ($_.touchEventsSupported && e(Ow, this), e(Pw, this))
+        fb.call(this), this.dom = t, this._touching = !1, this._touchTimer, this._handlers = {}, Mn(this), $_.pointerEventsSupported ? e(Rw, this) : ($_.touchEventsSupported && e(Ow, this), e(Nw, this))
     }
 
     function Tn(t, e) {
@@ -11531,11 +11530,11 @@ var zfStorage = function () {
         return !$w(t) || Uw(t) || t instanceof Date ? t : t.value
     }
 
-    function Nn(t) {
+    function Pn(t) {
         return $w(t) && !(t instanceof Array)
     }
 
-    function Pn(t, e) {
+    function Nn(t, e) {
         e = (e || []).slice();
         var n = f(t || [], function (t, e) {
             return {
@@ -12160,11 +12159,11 @@ var zfStorage = function () {
         return Di(t, e, !0, n, i)
     }
 
-    function Ni(t) {
+    function Pi(t) {
         fn.call(this, t), this.path = null
     }
 
-    function Pi(t, e, n, i, r, o, a, s, l, u, c) {
+    function Ni(t, e, n, i, r, o, a, s, l, u, c) {
         var h = l * (tM / 180),
             d = QS(h) * (t - n) / 2 + JS(h) * (e - i) / 2,
             f = -1 * JS(h) * (t - n) / 2 + QS(h) * (e - i) / 2,
@@ -12251,10 +12250,10 @@ var zfStorage = function () {
                         e === s.Q && (v += n - C[T - 4], y += i - C[T - 3]), n += f[m++], i += f[m++], c = s.Q, a.addData(c, v, y, n, i);
                         break;
                     case "A":
-                        x = f[m++], _ = f[m++], b = f[m++], w = f[m++], S = f[m++], Pi(M = n, I = i, n = f[m++], i = f[m++], w, S, x, _, b, c = s.A, a);
+                        x = f[m++], _ = f[m++], b = f[m++], w = f[m++], S = f[m++], Ni(M = n, I = i, n = f[m++], i = f[m++], w, S, x, _, b, c = s.A, a);
                         break;
                     case "a":
-                        x = f[m++], _ = f[m++], b = f[m++], w = f[m++], S = f[m++], Pi(M = n, I = i, n += f[m++], i += f[m++], w, S, x, _, b, c = s.A, a)
+                        x = f[m++], _ = f[m++], b = f[m++], w = f[m++], S = f[m++], Ni(M = n, I = i, n += f[m++], i += f[m++], w, S, x, _, b, c = s.A, a)
                 }
             }
             "z" !== d && "Z" !== d || (c = s.Z, a.addData(c), n = r, i = o), e = c
@@ -12276,11 +12275,11 @@ var zfStorage = function () {
     }
 
     function Ri(t, e) {
-        return new Ni(Ei(t, e))
+        return new Pi(Ei(t, e))
     }
 
     function zi(t, e) {
-        return Ni.extend(Ei(t, e))
+        return Pi.extend(Ei(t, e))
     }
 
     function Bi(t, e, n, i, r, o, a) {
@@ -12348,7 +12347,7 @@ var zfStorage = function () {
     }
 
     function $i(t) {
-        return Ni.extend(t)
+        return Pi.extend(t)
     }
 
     function Ui(t, e, n, i) {
@@ -12450,7 +12449,7 @@ var zfStorage = function () {
             if (i || !n) {
                 var r = t,
                     o = t.style;
-                n && (o = (r = i.addHover(t)).style), br(o), n || er(r), o.extendFrom(e), ir(o, e, "fill"), ir(o, e, "stroke"), _r(o), n || (t.dirty(!1), t.z2 += PM)
+                n && (o = (r = i.addHover(t)).style), br(o), n || er(r), o.extendFrom(e), ir(o, e, "fill"), ir(o, e, "stroke"), _r(o), n || (t.dirty(!1), t.z2 += NM)
             }
         }
     }
@@ -12468,7 +12467,7 @@ var zfStorage = function () {
                 i = t.__cachedNormalStl;
             i && (br(n), t.setStyle(i), _r(n));
             var r = t.__cachedNormalZ2;
-            null != r && t.z2 - r === PM && (t.z2 = r)
+            null != r && t.z2 - r === NM && (t.z2 = r)
         }
     }
 
@@ -12517,7 +12516,7 @@ var zfStorage = function () {
     }
 
     function pr(t, e, n, i, r, o, a) {
-        var s, l = (r = r || NM).labelFetcher,
+        var s, l = (r = r || PM).labelFetcher,
             u = r.labelDataIndex,
             c = r.labelDimIndex,
             h = n.getShallow("show"),
@@ -12533,7 +12532,7 @@ var zfStorage = function () {
     }
 
     function mr(t, e, n, i) {
-        if ((n = n || NM).isRectText) {
+        if ((n = n || PM).isRectText) {
             var r = e.getShallow("position") || (i ? null : "inside");
             "outside" === r && (r = "top"), t.textPosition = r, t.textOffset = e.getShallow("offset");
             var o = e.getShallow("rotate");
@@ -12555,7 +12554,7 @@ var zfStorage = function () {
 
     function vr(t) {
         for (var e; t && t !== t.ecModel;) {
-            var n = (t.option || NM).rich;
+            var n = (t.option || PM).rich;
             if (n) {
                 e = e || {};
                 for (var i in n) n.hasOwnProperty(i) && (e[i] = 1)
@@ -12566,7 +12565,7 @@ var zfStorage = function () {
     }
 
     function yr(t, e, n, i, r, o) {
-        n = !r && n || NM, t.textFill = xr(e.getShallow("color"), i) || n.color, t.textStroke = xr(e.getShallow("textBorderColor"), i) || n.textBorderColor, t.textStrokeWidth = C(e.getShallow("textBorderWidth"), n.textBorderWidth), t.insideRawTextPosition = t.textPosition, r || (o && (t.insideRollbackOpt = i, _r(t)), null == t.textFill && (t.textFill = i.autoColor)), t.fontStyle = e.getShallow("fontStyle") || n.fontStyle, t.fontWeight = e.getShallow("fontWeight") || n.fontWeight, t.fontSize = e.getShallow("fontSize") || n.fontSize, t.fontFamily = e.getShallow("fontFamily") || n.fontFamily, t.textAlign = e.getShallow("align"), t.textVerticalAlign = e.getShallow("verticalAlign") || e.getShallow("baseline"), t.textLineHeight = e.getShallow("lineHeight"), t.textWidth = e.getShallow("width"), t.textHeight = e.getShallow("height"), t.textTag = e.getShallow("tag"), o && i.disableBox || (t.textBackgroundColor = xr(e.getShallow("backgroundColor"), i), t.textPadding = e.getShallow("padding"), t.textBorderColor = xr(e.getShallow("borderColor"), i), t.textBorderWidth = e.getShallow("borderWidth"), t.textBorderRadius = e.getShallow("borderRadius"), t.textBoxShadowColor = e.getShallow("shadowColor"), t.textBoxShadowBlur = e.getShallow("shadowBlur"), t.textBoxShadowOffsetX = e.getShallow("shadowOffsetX"), t.textBoxShadowOffsetY = e.getShallow("shadowOffsetY")), t.textShadowColor = e.getShallow("textShadowColor") || n.textShadowColor, t.textShadowBlur = e.getShallow("textShadowBlur") || n.textShadowBlur, t.textShadowOffsetX = e.getShallow("textShadowOffsetX") || n.textShadowOffsetX, t.textShadowOffsetY = e.getShallow("textShadowOffsetY") || n.textShadowOffsetY
+        n = !r && n || PM, t.textFill = xr(e.getShallow("color"), i) || n.color, t.textStroke = xr(e.getShallow("textBorderColor"), i) || n.textBorderColor, t.textStrokeWidth = C(e.getShallow("textBorderWidth"), n.textBorderWidth), t.insideRawTextPosition = t.textPosition, r || (o && (t.insideRollbackOpt = i, _r(t)), null == t.textFill && (t.textFill = i.autoColor)), t.fontStyle = e.getShallow("fontStyle") || n.fontStyle, t.fontWeight = e.getShallow("fontWeight") || n.fontWeight, t.fontSize = e.getShallow("fontSize") || n.fontSize, t.fontFamily = e.getShallow("fontFamily") || n.fontFamily, t.textAlign = e.getShallow("align"), t.textVerticalAlign = e.getShallow("verticalAlign") || e.getShallow("baseline"), t.textLineHeight = e.getShallow("lineHeight"), t.textWidth = e.getShallow("width"), t.textHeight = e.getShallow("height"), t.textTag = e.getShallow("tag"), o && i.disableBox || (t.textBackgroundColor = xr(e.getShallow("backgroundColor"), i), t.textPadding = e.getShallow("padding"), t.textBorderColor = xr(e.getShallow("borderColor"), i), t.textBorderWidth = e.getShallow("borderWidth"), t.textBorderRadius = e.getShallow("borderRadius"), t.textBoxShadowColor = e.getShallow("shadowColor"), t.textBoxShadowBlur = e.getShallow("shadowBlur"), t.textBoxShadowOffsetX = e.getShallow("shadowOffsetX"), t.textBoxShadowOffsetY = e.getShallow("shadowOffsetY")), t.textShadowColor = e.getShallow("textShadowColor") || n.textShadowColor, t.textShadowBlur = e.getShallow("textShadowBlur") || n.textShadowBlur, t.textShadowOffsetX = e.getShallow("textShadowOffsetX") || n.textShadowOffsetX, t.textShadowOffsetY = e.getShallow("textShadowOffsetY") || n.textShadowOffsetY
     }
 
     function xr(t, e) {
@@ -12596,7 +12595,7 @@ var zfStorage = function () {
 
     function wr(t, e) {
         var n = e || e.getModel("textStyle");
-        return N([t.fontStyle || n && n.getShallow("fontStyle") || "", t.fontWeight || n && n.getShallow("fontWeight") || "", (t.fontSize || n && n.getShallow("fontSize") || 12) + "px", t.fontFamily || n && n.getShallow("fontFamily") || "sans-serif"].join(" "))
+        return P([t.fontStyle || n && n.getShallow("fontStyle") || "", t.fontWeight || n && n.getShallow("fontWeight") || "", (t.fontSize || n && n.getShallow("fontSize") || 12) + "px", t.fontFamily || n && n.getShallow("fontFamily") || "sans-serif"].join(" "))
     }
 
     function Sr(t, e, n, i, r, o) {
@@ -12683,11 +12682,11 @@ var zfStorage = function () {
             }, t) return 0 === t.indexOf("image://") ? (i.image = t.slice(8), a(i, n), new pn(e)) : Ui(t.replace("path://", ""), e, n, "center")
     }
 
-    function Nr(t, e, n) {
+    function Pr(t, e, n) {
         this.parentModel = e, this.ecModel = n, this.option = t
     }
 
-    function Pr(t, e, n) {
+    function Nr(t, e, n) {
         for (var i = 0; i < e.length && (!e[i] || null != (t = t && "object" == typeof t ? t[e[i]] : null)); i++);
         return null == t && n && (t = n.get(e)), t
     }
@@ -13257,7 +13256,7 @@ var zfStorage = function () {
                 }
             })
         } else if (null != h.get(c)) {
-            for (var y, x = 0; x < 5 && null == y; x++) No(n, i, r, o.dimensionsDefine, o.startIndex, x) || (y = x);
+            for (var y, x = 0; x < 5 && null == y; x++) Po(n, i, r, o.dimensionsDefine, o.startIndex, x) || (y = x);
             if (null != y) {
                 s.value = y;
                 var _ = o.potentialNameDimIndex || Math.max(y - 1, 0);
@@ -13273,10 +13272,10 @@ var zfStorage = function () {
     }
 
     function Lo(t, e) {
-        return No(t.data, t.sourceFormat, t.seriesLayoutBy, t.dimensionsDefine, t.startIndex, e)
+        return Po(t.data, t.sourceFormat, t.seriesLayoutBy, t.dimensionsDefine, t.startIndex, e)
     }
 
-    function No(t, e, n, i, r, o) {
+    function Po(t, e, n, i, r, o) {
         function a(t) {
             return (null == t || !isFinite(t) || "" === t) && (!(!_(t) || "-" === t) || void 0)
         }
@@ -13310,7 +13309,7 @@ var zfStorage = function () {
         return !1
     }
 
-    function Po(t, e) {
+    function No(t, e) {
         if (e) {
             var n = e.seiresIndex,
                 i = e.seriesId,
@@ -13426,7 +13425,7 @@ var zfStorage = function () {
                 var i = t[n];
                 if (lI.hasClass(n)) {
                     e = Dn(e);
-                    var r = Pn(i = Dn(i), e);
+                    var r = Nn(i = Dn(i), e);
                     t[n] = DI(r, function (t) {
                         return t.option && t.exist ? kI(t.exist, t.option, !0) : t.exist || t.option
                     })
@@ -13459,8 +13458,8 @@ var zfStorage = function () {
     }
 
     function Ko(t, e) {
-        var n = PI(t) && t[e],
-            i = PI(n) && n.textStyle;
+        var n = NI(t) && t[e],
+            i = NI(n) && n.textStyle;
         if (i)
             for (var r = 0, o = Zw.length; r < o; r++) {
                 var e = Zw[r];
@@ -13473,7 +13472,7 @@ var zfStorage = function () {
     }
 
     function Qo(t) {
-        if (PI(t)) {
+        if (NI(t)) {
             Zo(t), Yo(t), Ko(t, "label"), Ko(t, "upperLabel"), Ko(t, "edgeLabel"), t.emphasis && (Ko(t.emphasis, "label"), Ko(t.emphasis, "upperLabel"), Ko(t.emphasis, "edgeLabel"));
             var e = t.markPoint;
             e && (Zo(e), Jo(e));
@@ -13729,7 +13728,7 @@ var zfStorage = function () {
         return "render" !== l && a[l](e, n, i, r), eT[l]
     }
 
-    function Na(t, e, n) {
+    function Pa(t, e, n) {
         function i() {
             c = (new Date).getTime(), h = null, t.apply(a, s || [])
         }
@@ -13750,14 +13749,14 @@ var zfStorage = function () {
         }, d
     }
 
-    function Pa(t, e, n, i) {
+    function Na(t, e, n, i) {
         var r = t[e];
         if (r) {
             var o = r[nT] || r,
                 a = r[rT];
             if (r[iT] !== n || a !== i) {
                 if (null == n || !i) return t[e] = o;
-                (r = t[e] = Na(o, n, "debounce" === i))[nT] = o, r[rT] = i, r[iT] = n
+                (r = t[e] = Pa(o, n, "debounce" === i))[nT] = o, r[rT] = i, r[iT] = n
             }
             return r
         }
@@ -13953,7 +13952,7 @@ var zfStorage = function () {
     }
 
     function ts(t) {
-        for (var e = N(t).split(_T), n = [], i = 0; i < e.length; i += 2) {
+        for (var e = P(t).split(_T), n = [], i = 0; i < e.length; i += 2) {
             var r = parseFloat(e[i]),
                 o = parseFloat(e[i + 1]);
             n.push([r, o])
@@ -13978,12 +13977,12 @@ var zfStorage = function () {
             null != r[t] && h.set(e, parseFloat(r[t]))
         }), r.textBaseline && "auto" !== r.textBaseline || (r.textBaseline = "alphabetic"), "alphabetic" === r.textBaseline && (r.textBaseline = "bottom"), "start" === r.textAlign && (r.textAlign = "left"), "end" === r.textAlign && (r.textAlign = "right"), d(["lineDashOffset", "lineCap", "lineJoin", "fontWeight", "fontFamily", "fontStyle", "textAlign", "textBaseline"], function (t) {
             null != r[t] && h.set(t, r[t])
-        }), r.lineDash && (e.style.lineDash = N(r.lineDash).split(_T)), h[c] && "none" !== h[c] && (e[c] = !0), e.__inheritedStyle = r
+        }), r.lineDash && (e.style.lineDash = P(r.lineDash).split(_T)), h[c] && "none" !== h[c] && (e[c] = !0), e.__inheritedStyle = r
     }
 
     function ns(t, e) {
         var n = e && t && t.match(MT);
-        return n ? e[N(n[1])] : t
+        return n ? e[P(n[1])] : t
     }
 
     function is(t, e) {
@@ -13999,19 +13998,19 @@ var zfStorage = function () {
                     s = r[o - 1];
                 switch (i = i || xt(), s) {
                     case "translate":
-                        a = N(a).split(_T), St(i, i, [parseFloat(a[0]), parseFloat(a[1] || 0)]);
+                        a = P(a).split(_T), St(i, i, [parseFloat(a[0]), parseFloat(a[1] || 0)]);
                         break;
                     case "scale":
-                        a = N(a).split(_T), It(i, i, [parseFloat(a[0]), parseFloat(a[1] || a[0])]);
+                        a = P(a).split(_T), It(i, i, [parseFloat(a[0]), parseFloat(a[1] || a[0])]);
                         break;
                     case "rotate":
-                        a = N(a).split(_T), Mt(i, i, parseFloat(a[0]));
+                        a = P(a).split(_T), Mt(i, i, parseFloat(a[0]));
                         break;
                     case "skew":
-                        void(a = N(a).split(_T));
+                        void(a = P(a).split(_T));
                         break;
                     case "matrix":
-                        a = N(a).split(_T), i[0] = parseFloat(a[0]), i[1] = parseFloat(a[1]), i[2] = parseFloat(a[2]), i[3] = parseFloat(a[3]), i[4] = parseFloat(a[4]), i[5] = parseFloat(a[5])
+                        a = P(a).split(_T), i[0] = parseFloat(a[0]), i[1] = parseFloat(a[1]), i[2] = parseFloat(a[2]), i[3] = parseFloat(a[3]), i[4] = parseFloat(a[4]), i[5] = parseFloat(a[5])
                 }
             }
             e.setLocalTransform(i)
@@ -14064,9 +14063,9 @@ var zfStorage = function () {
             width: i.width,
             height: i.height
         });
-        this._throttledZrFlush = Na(m(o.flush, o), 17), (e = n(e)) && BI(e, !0), this._theme = e, this._chartsViews = [], this._chartsMap = {}, this._componentsViews = [], this._componentsMap = {}, this._coordSysMgr = new Ho;
+        this._throttledZrFlush = Pa(m(o.flush, o), 17), (e = n(e)) && BI(e, !0), this._theme = e, this._chartsViews = [], this._chartsMap = {}, this._componentsViews = [], this._componentsMap = {}, this._coordSysMgr = new Ho;
         var a = this._api = Cs(this);
-        _e(KT, r), _e(ZT, r), this._scheduler = new Ea(this, a, ZT, KT), fb.call(this, this._ecEventProcessor = new As), this._messageCenter = new ls, this._initEvents(), this.resize = m(this.resize, this), this._pendingActions = [], o.animation.on("frame", this._onframe, this), vs(o, this), P(this)
+        _e(KT, r), _e(ZT, r), this._scheduler = new Ea(this, a, ZT, KT), fb.call(this, this._ecEventProcessor = new As), this._messageCenter = new ls, this._initEvents(), this.resize = m(this.resize, this), this._pendingActions = [], o.animation.on("frame", this._onframe, this), vs(o, this), N(this)
     }
 
     function cs(t, e, n) {
@@ -14287,11 +14286,11 @@ var zfStorage = function () {
         return tC[Wn(t, rC)]
     }
 
-    function Ns(t, e) {
+    function Ps(t, e) {
         JT[t] = e
     }
 
-    function Ps(t) {
+    function Ns(t) {
         XT.push(t)
     }
 
@@ -14301,7 +14300,7 @@ var zfStorage = function () {
 
     function Es(t, e, n) {
         "function" == typeof e && (n = e, e = "");
-        var i = PT(t) ? t.type : [t, t = {
+        var i = NT(t) ? t.type : [t, t = {
             event: e
         }][0];
         t.event = (t.event || i).toLowerCase(), e = t.event, kT(GT.test(i) && GT.test(e)), UT[i] || (UT[i] = {
@@ -14323,7 +14322,7 @@ var zfStorage = function () {
     }
 
     function Vs(t, e, n, i, r) {
-        (NT(e) || PT(e)) && (n = e, e = i);
+        (PT(e) || NT(e)) && (n = e, e = i);
         var o = Ea.wrapStageHandler(n, r);
         return o.__prio = e, o.__raw = n, t.push(o), o
     }
@@ -14731,7 +14730,7 @@ var zfStorage = function () {
                 axisKey: "axis0",
                 stackId: CC + r
             }, t));
-            for (var o = Pl(e), s = [], r = 0; r < t.count; r++) {
+            for (var o = Nl(e), s = [], r = 0; r < t.count; r++) {
                 var l = o.axis0[CC + r];
                 l.offsetCenter = l.offset + l.width / 2, s.push(l)
             }
@@ -14746,7 +14745,7 @@ var zfStorage = function () {
         }), n
     }
 
-    function Nl(t) {
+    function Pl(t) {
         var e = [];
         return d(t, function (t) {
             var n = t.getData(),
@@ -14766,10 +14765,10 @@ var zfStorage = function () {
                 axisKey: Dl(i),
                 stackId: Al(t)
             })
-        }), Pl(e)
+        }), Nl(e)
     }
 
-    function Pl(t) {
+    function Nl(t) {
         var e = {};
         d(t, function (t, n) {
             var i = t.axisKey,
@@ -14835,7 +14834,7 @@ var zfStorage = function () {
 
     function El(t, e) {
         var n = Ll(t, e),
-            i = Nl(n),
+            i = Pl(n),
             r = {};
         d(n, function (t) {
             var e = t.getData(),
@@ -14917,7 +14916,7 @@ var zfStorage = function () {
             if (d(p, function (t) {
                     f |= t.getBaseAxis() === e.axis
                 }), f) {
-                var g = Nl(p),
+                var g = Pl(p),
                     m = Hl(a, s, e, g);
                 a = m.min, s = m.max
             }
@@ -15387,10 +15386,10 @@ var zfStorage = function () {
         }
     }
 
-    function Nu(t, e, n) {
+    function Pu(t, e, n) {
         var i, r = t.getBaseAxis(),
             o = t.getOtherAxis(r),
-            a = Pu(o, n),
+            a = Nu(o, n),
             s = r.dim,
             l = o.dim,
             u = e.mapDimension(l),
@@ -15413,7 +15412,7 @@ var zfStorage = function () {
         }
     }
 
-    function Pu(t, e) {
+    function Nu(t, e) {
         var n = 0,
             i = t.scale.getExtent();
         return "start" === e ? n = i[0] : "end" === e ? n = i[1] : i[0] > 0 ? n = i[0] : i[1] < 0 && (n = i[1]), n
@@ -15881,7 +15880,7 @@ var zfStorage = function () {
                     p = a.formattedLabel,
                     g = a.rawLabel,
                     m = r;
-                u && u[d] && u[d].textStyle && (m = new Nr(u[d].textStyle, r, e.ecModel));
+                u && u[d] && u[d].textStyle && (m = new Pr(u[d].textStyle, r, e.ecModel));
                 var v = m.getTextColor() || e.get("axisLine.lineStyle.color"),
                     y = [i.dataToCoord(d), n.labelOffset + n.labelDirection * o],
                     x = new aM({
@@ -15975,7 +15974,7 @@ var zfStorage = function () {
                 d && a(c, d.textStyle)
             }
         }
-        return t.model.getModel("axisPointer", new Nr(u, i, r))
+        return t.model.getModel("axisPointer", new Pr(u, i, r))
     }
 
     function _c(t, e) {
@@ -16091,14 +16090,14 @@ var zfStorage = function () {
             defaultText: _u(r.getData(), o),
             isRectText: !0,
             autoColor: i
-        }), Nc(t), Nc(e)
+        }), Pc(t), Pc(e)
     }
 
-    function Nc(t, e) {
+    function Pc(t, e) {
         "outside" === t.textPosition && (t.textPosition = e)
     }
 
-    function Pc(t, e, n) {
+    function Nc(t, e, n) {
         n.style.text = null, Mr(n, {
             shape: {
                 width: 0
@@ -16309,7 +16308,7 @@ var zfStorage = function () {
         return function (e, n) {
             var i = [];
             return d(Qc(e), function (r) {
-                var o = PD[r.type][t];
+                var o = ND[r.type][t];
                 o && i.push(o(e, r, n))
             }), i
         }
@@ -16528,7 +16527,7 @@ var zfStorage = function () {
         }, {
             isRectText: !0,
             useInsideStyle: !1
-        }, !0)), n.__mapOriginalZ2 = n.z2, n.z2 += PM) : (gr(n.style, i, {
+        }, !0)), n.__mapOriginalZ2 = n.z2, n.z2 += NM) : (gr(n.style, i, {
             text: i.get("show") ? a : null,
             textPosition: i.getShallow("position") || "bottom"
         }, {
@@ -16640,14 +16639,14 @@ var zfStorage = function () {
             main: "data"
         }), t.datas = t.mainData = null, zh(e, n, t), HD(n, function (n) {
             HD(e.TRANSFERABLE_METHODS, function (e) {
-                n.wrapMethod(e, v(Nh, t))
+                n.wrapMethod(e, v(Ph, t))
             })
         }), e.wrapMethod("cloneShallow", v(Oh, t)), HD(e.CHANGABLE_METHODS, function (n) {
-            e.wrapMethod(n, v(Ph, t))
+            e.wrapMethod(n, v(Nh, t))
         }), L(n[e.dataType] === e)
     }
 
-    function Nh(t, e) {
+    function Ph(t, e) {
         if (Rh(this)) {
             var n = o({}, this[GD]);
             n[this.dataType] = e, zh(e, n, t)
@@ -16655,7 +16654,7 @@ var zfStorage = function () {
         return e
     }
 
-    function Ph(t, e) {
+    function Nh(t, e) {
         return t.struct && t.struct.update(this), e
     }
 
@@ -16686,8 +16685,8 @@ var zfStorage = function () {
 
     function Vh(t, e, n) {
         this.root, this.data, this._nodes = [], this.hostModel = t, this.levelModels = f(e || [], function (e) {
-            return new Nr(e, t, t.ecModel)
-        }), this.leavesModel = new Nr(n || {}, t, t.ecModel)
+            return new Pr(e, t, t.ecModel)
+        }), this.leavesModel = new Pr(n || {}, t, t.ecModel)
     }
 
     function Fh(t, e) {
@@ -17035,7 +17034,7 @@ var zfStorage = function () {
         if (n) {
             var i;
             return d(t = t || [], function (t) {
-                var e = new Nr(t),
+                var e = new Pr(t),
                     n = e.get("color");
                 (e.get("itemStyle.color") || n && "none" !== n) && (i = !0)
             }), i || ((t[0] || (t[0] = {})).color = n.slice()), t
@@ -17198,8 +17197,8 @@ var zfStorage = function () {
                                 n.setStyle(t), dr(n, e)
                             }), e.add(n)
                         }(k, L, C && v.upperHeight), !C) {
-                        var N = p("content", ZD, h, nk);
-                        N && function (e, n) {
+                        var P = p("content", ZD, h, nk);
+                        P && function (e, n) {
                             n.dataIndex = l.dataIndex, n.seriesIndex = t.seriesIndex;
                             var i = Math.max(y - 2 * _, 0),
                                 r = Math.max(x - 2 * _, 0);
@@ -17216,7 +17215,7 @@ var zfStorage = function () {
                                 var e = ik(D);
                                 f(t, e, o, i, r), n.setStyle(t), dr(n, e)
                             }), e.add(n)
-                        }(k, N)
+                        }(k, P)
                     }
                     return k
                 }
@@ -17327,12 +17326,12 @@ var zfStorage = function () {
         return t ? e <= n : e < n
     }
 
-    function Nd(t, e, n, i, r, o) {
+    function Pd(t, e, n, i, r, o) {
         var a = t.getModel(),
             s = t.getLayout();
         if (s && !s.invisible && s.isInView) {
             var l, u = t.getModel(pk),
-                c = Pd(u, e, n[t.depth], i),
+                c = Nd(u, e, n[t.depth], i),
                 h = u.get("borderColor"),
                 f = u.get("borderColorSaturation");
             null != f && (h = Ed(f, l = Od(c))), t.setVisual("borderColor", h);
@@ -17340,13 +17339,13 @@ var zfStorage = function () {
             if (p && p.length) {
                 var g = zd(t, a, s, u, c, p);
                 d(p, function (t, e) {
-                    (t.depth >= r.length || t === r[t.depth]) && Nd(t, Vd(a, c, t, e, g, o), n, i, r, o)
+                    (t.depth >= r.length || t === r[t.depth]) && Pd(t, Vd(a, c, t, e, g, o), n, i, r, o)
                 })
             } else l = Od(c), t.setVisual("color", l)
         }
     }
 
-    function Pd(t, e, n, i) {
+    function Nd(t, e, n, i) {
         var r = o({}, e);
         return d(["color", "colorAlpha", "colorSaturation"], function (o) {
             var a = t.get(o, !0);
@@ -17639,7 +17638,7 @@ var zfStorage = function () {
     }
 
     function rf(t) {
-        var e = new Nk({
+        var e = new Pk({
             name: "line"
         });
         return of(e.shape, t), e
@@ -17934,11 +17933,11 @@ var zfStorage = function () {
         }
     }
 
-    function Nf(t, e) {
+    function Pf(t, e) {
         return Math.min(e[1], Math.max(e[0], t))
     }
 
-    function Pf(t, e, n) {
+    function Nf(t, e, n) {
         this._axesMap = R(), this._axesLayout = {}, this.dimensions = t.dimensions, this._rect, this._model = t, this._init(t, e, n)
     }
 
@@ -18416,7 +18415,7 @@ var zfStorage = function () {
         for (var r = [], o = 0; o < n.length; o++) {
             var a = n[o],
                 s = t.get(t.mapDimension(a), e);
-            Pp(s, i.getAxis(a).type) || r.push(i.dataToPoint(s, a))
+            Np(s, i.getAxis(a).type) || r.push(i.dataToPoint(s, a))
         }
         return r
     }
@@ -18441,14 +18440,14 @@ var zfStorage = function () {
         }
     }
 
-    function Np(t, e, n, i) {
+    function Pp(t, e, n, i) {
         var r = i.lineStyle;
         e.hasItemOption && (r = e.getItemModel(n).getModel("lineStyle").getLineStyle()), t.useStyle(r);
         var o = t.style;
         o.fill = null, o.stroke = e.getItemVisual(n, "color"), o.opacity = e.getItemVisual(n, "opacity"), i.smooth && (t.shape.smooth = i.smooth)
     }
 
-    function Pp(t, e) {
+    function Np(t, e) {
         return "category" === e ? null == t : null == t || isNaN(t)
     }
 
@@ -19043,10 +19042,10 @@ var zfStorage = function () {
                 hoverAnimation: c && n.get("hoverAnimation"),
                 z2: n.getShallow("z", !0) || 0
             };
-        Dg(n, o, r, i, h), Lg(t, e, r, o, a, h.boundingLength, h.pxSign, u, i, h), Ng(n, h.symbolScale, l, i, h);
+        Dg(n, o, r, i, h), Lg(t, e, r, o, a, h.boundingLength, h.pxSign, u, i, h), Pg(n, h.symbolScale, l, i, h);
         var d = h.symbolSize,
             f = n.get("symbolOffset");
-        return y(f) && (f = [Br(f[0], d[0]), Br(f[1], d[1])]), Pg(n, d, r, o, a, f, s, h.valueLineWidth, h.boundingLength, h.repeatCutLength, i, h), h
+        return y(f) && (f = [Br(f[0], d[0]), Br(f[1], d[1])]), Ng(n, d, r, o, a, f, s, h.valueLineWidth, h.boundingLength, h.repeatCutLength, i, h), h
     }
 
     function Dg(t, e, n, i, r) {
@@ -19074,15 +19073,15 @@ var zfStorage = function () {
         y(f) ? f = f.slice() : (null == f && (f = "100%"), f = [f, f]), f[h.index] = Br(f[h.index], d), f[c.index] = Br(f[c.index], i ? d : Math.abs(o)), u.symbolSize = f, (u.symbolScale = [f[0] / s, f[1] / s])[c.index] *= (l.isHorizontal ? -1 : 1) * a
     }
 
-    function Ng(t, e, n, i, r) {
-        var o = t.get(hN) || 0;
-        o && (fN.attr({
+    function Pg(t, e, n, i, r) {
+        var o = t.get(hP) || 0;
+        o && (fP.attr({
             scale: e.slice(),
             rotation: n
-        }), fN.updateTransform(), o /= fN.getLineScale(), o *= e[i.valueDim.index]), r.valueLineWidth = o
+        }), fP.updateTransform(), o /= fP.getLineScale(), o *= e[i.valueDim.index]), r.valueLineWidth = o
     }
 
-    function Pg(t, e, n, i, r, a, s, l, u, c, h, d) {
+    function Ng(t, e, n, i, r, a, s, l, u, c, h, d) {
         var f = h.categoryDim,
             p = h.valueDim,
             g = d.pxSign,
@@ -19381,7 +19380,7 @@ var zfStorage = function () {
             o = [],
             a = Number.MAX_VALUE,
             s = -1;
-        return _N(e.seriesModels, function (e, l) {
+        return _P(e.seriesModels, function (e, l) {
             var u, c, h = e.getData().mapDimension(i, !0);
             if (e.getAxisTooltipData) {
                 var d = e.getAxisTooltipData(h, t, n);
@@ -19393,7 +19392,7 @@ var zfStorage = function () {
             if (null != u && isFinite(u)) {
                 var f = t - u,
                     p = Math.abs(f);
-                p <= a && ((p < a || f >= 0 && s < 0) && (a = p, s = f, r = u, o.length = 0), _N(c, function (t) {
+                p <= a && ((p < a || f >= 0 && s < 0) && (a = p, s = f, r = u, o.length = 0), _P(c, function (t) {
                     o.push({
                         seriesIndex: e.seriesIndex,
                         dataIndexInside: t,
@@ -19446,7 +19445,7 @@ var zfStorage = function () {
 
     function im(t, e, n) {
         var i = n.axesInfo = [];
-        _N(e, function (e, n) {
+        _P(e, function (e, n) {
             var r = e.axisPointerModel.option,
                 o = t[n];
             o ? (!e.useHandle && (r.status = "show"), r.value = o.value, r.seriesDataIndices = (o.payloadBatch || []).slice()) : !e.useHandle && (r.status = "hide"), "show" === r.status && i.push({
@@ -19479,11 +19478,11 @@ var zfStorage = function () {
 
     function om(t, e, n) {
         var i = n.getZr(),
-            r = wN(i).axisPointerLastHighlights || {},
-            o = wN(i).axisPointerLastHighlights = {};
-        _N(t, function (t, e) {
+            r = wP(i).axisPointerLastHighlights || {},
+            o = wP(i).axisPointerLastHighlights = {};
+        _P(t, function (t, e) {
             var n = t.axisPointerModel.option;
-            "show" === n.status && _N(n.seriesDataIndices, function (t) {
+            "show" === n.status && _P(n.seriesDataIndices, function (t) {
                 var e = t.seriesIndex + " | " + t.dataIndex;
                 o[e] = t
             })
@@ -19526,7 +19525,7 @@ var zfStorage = function () {
     function um(t, e, n) {
         if (!$_.node) {
             var i = e.getZr();
-            SN(i).records || (SN(i).records = {}), cm(i, e), (SN(i).records[t] || (SN(i).records[t] = {})).handler = n
+            SP(i).records || (SP(i).records = {}), cm(i, e), (SP(i).records[t] || (SP(i).records[t] = {})).handler = n
         }
     }
 
@@ -19534,12 +19533,12 @@ var zfStorage = function () {
         function n(n, i) {
             t.on(n, function (n) {
                 var r = pm(e);
-                MN(SN(t).records, function (t) {
+                MP(SP(t).records, function (t) {
                     t && i(t, n, r.dispatchAction)
                 }), hm(r.pendings, e)
             })
         }
-        SN(t).initialized || (SN(t).initialized = !0, n("click", v(fm, "click")), n("mousemove", v(fm, "mousemove")), n("globalout", dm))
+        SP(t).initialized || (SP(t).initialized = !0, n("click", v(fm, "click")), n("mousemove", v(fm, "mousemove")), n("globalout", dm))
     }
 
     function hm(t, e) {
@@ -19574,14 +19573,14 @@ var zfStorage = function () {
     function gm(t, e) {
         if (!$_.node) {
             var n = e.getZr();
-            (SN(n).records || {})[t] && (SN(n).records[t] = null)
+            (SP(n).records || {})[t] && (SP(n).records[t] = null)
         }
     }
 
     function mm() {}
 
     function vm(t, e, n, i) {
-        ym(TN(n).lastProp, i) || (TN(n).lastProp = i, e ? Mr(n, i, t) : (n.stopAnimation(), n.attr(i)))
+        ym(TP(n).lastProp, i) || (TP(n).lastProp = i, e ? Mr(n, i, t) : (n.stopAnimation(), n.attr(i)))
     }
 
     function ym(t, e) {
@@ -19738,17 +19737,17 @@ var zfStorage = function () {
         return n[e.dim + "AxisIndex"] = e.index, t.getCartesian(n)
     }
 
-    function Nm(t) {
+    function Pm(t) {
         return "x" === t.dim ? 0 : 1
     }
 
-    function Pm(t) {
+    function Nm(t) {
         return t.isHorizontal() ? 0 : 1
     }
 
     function Om(t, e) {
         var n = t.getRect();
-        return [n[LN[e]], n[LN[e]] + n[NN[e]]]
+        return [n[LP[e]], n[LP[e]] + n[PP[e]]]
     }
 
     function Em(t, e, n) {
@@ -19826,11 +19825,11 @@ var zfStorage = function () {
         }
         tw.call(this);
         var o = new cM({
-            z2: zN
+            z2: zP
         });
         o.seriesIndex = e.seriesIndex;
         var a = new aM({
-            z2: BN,
+            z2: BP,
             silent: t.getModel("label").get("silent")
         });
         this.add(o), this.add(a), this.updateData(!0, t, "normal", e, n), this.on("emphasis", i).on("normal", r).on("mouseover", i).on("mouseout", r)
@@ -19854,7 +19853,7 @@ var zfStorage = function () {
     }
 
     function Gm(t, e, n) {
-        return n !== RN.NONE && (n === RN.SELF ? t === e : n === RN.ANCESTOR ? t === e || t.isAncestorOf(e) : t === e || t.isDescendantOf(e))
+        return n !== RP.NONE && (n === RP.SELF ? t === e : n === RP.ANCESTOR ? t === e || t.isAncestorOf(e) : t === e || t.isDescendantOf(e))
     }
 
     function Wm(t, e, n) {
@@ -19962,12 +19961,12 @@ var zfStorage = function () {
 
     function Qm(t, e, n, i) {
         function r(t) {
-            null == t && (t = c), v && (h = e.getItemModel(t), d = h.getModel($N), f = h.getModel(UN), p = e.getItemVisual(t, "color"), v = !1)
+            null == t && (t = c), v && (h = e.getItemModel(t), d = h.getModel($P), f = h.getModel(UP), p = e.getItemVisual(t, "color"), v = !1)
         }
         var s = t.get("renderItem"),
             l = t.coordinateSystem,
             u = {};
-        l && (u = l.prepareCustoms ? l.prepareCustoms() : ZN[l.type](l));
+        l && (u = l.prepareCustoms ? l.prepareCustoms() : ZP[l.type](l));
         var c, h, d, f, p, g = a({
                 getWidth: i.getWidth,
                 getHeight: i.getHeight,
@@ -19978,7 +19977,7 @@ var zfStorage = function () {
                 },
                 style: function (n, i) {
                     null == i && (i = c), r(i);
-                    var a = h.getModel(WN).getItemStyle();
+                    var a = h.getModel(WP).getItemStyle();
                     null != p && (a.fill = p);
                     var s = e.getItemVisual(i, "opacity");
                     return null != s && (a.opacity = s), gr(a, d, null, {
@@ -19988,7 +19987,7 @@ var zfStorage = function () {
                 },
                 styleEmphasis: function (n, i) {
                     null == i && (i = c), r(i);
-                    var a = h.getModel(jN).getItemStyle();
+                    var a = h.getModel(jP).getItemStyle();
                     return gr(a, f, null, {
                         isRectText: !0
                     }, !0), a.text = f.getShallow("show") ? A(t.getFormattedLabel(i, "emphasis"), t.getFormattedLabel(i, "normal"), _u(e, i)) : null, n && o(a, n), a
@@ -20080,7 +20079,7 @@ var zfStorage = function () {
 
     function ov(t, e) {
         var n = t && t.name;
-        return null != n ? n : qN + e
+        return null != n ? n : qP + e
     }
 
     function av(t, e) {
@@ -20246,7 +20245,7 @@ var zfStorage = function () {
 
     function Tv(t) {
         var e = "left " + t + "s cubic-bezier(0.23, 1, 0.32, 1),top " + t + "s cubic-bezier(0.23, 1, 0.32, 1)";
-        return f(lP, function (t) {
+        return f(lN, function (t) {
             return t + "transition:" + e
         }).join(";")
     }
@@ -20255,7 +20254,7 @@ var zfStorage = function () {
         var e = [],
             n = t.get("fontSize"),
             i = t.getTextColor();
-        return i && e.push("color:" + i), e.push("font:" + t.getFont()), n && e.push("line-height:" + Math.round(3 * n / 2) + "px"), aP(["decoration", "align"], function (n) {
+        return i && e.push("color:" + i), e.push("font:" + t.getFont()), n && e.push("line-height:" + Math.round(3 * n / 2) + "px"), aN(["decoration", "align"], function (n) {
             var i = t.get(n);
             i && e.push("text-" + n + ":" + i)
         }), e.join(";")
@@ -20267,9 +20266,9 @@ var zfStorage = function () {
             i = t.get("backgroundColor"),
             r = t.getModel("textStyle"),
             o = t.get("padding");
-        return n && e.push(Tv(n)), i && ($_.canvasSupported ? e.push("background-Color:" + i) : (e.push("background-Color:#" + jt(i)), e.push("filter:alpha(opacity=70)"))), aP(["width", "color", "radius"], function (n) {
+        return n && e.push(Tv(n)), i && ($_.canvasSupported ? e.push("background-Color:" + i) : (e.push("background-Color:#" + jt(i)), e.push("filter:alpha(opacity=70)"))), aN(["width", "color", "radius"], function (n) {
             var i = "border-" + n,
-                r = sP(i),
+                r = sN(i),
                 o = t.get(r);
             null != o && e.push(i + ":" + o + ("color" === n ? "" : "px"))
         }), e.push(Cv(r)), null != o && e.push("padding:" + XM(o).join("px ") + "px"), e.join(";") + ";"
@@ -20300,18 +20299,18 @@ var zfStorage = function () {
     function Lv(t) {
         for (var e = t.pop(); t.length;) {
             var n = t.pop();
-            n && (Nr.isInstance(n) && (n = n.get("tooltip", !0)), "string" == typeof n && (n = {
+            n && (Pr.isInstance(n) && (n = n.get("tooltip", !0)), "string" == typeof n && (n = {
                 formatter: n
-            }), e = new Nr(n, e, e.ecModel))
+            }), e = new Pr(n, e, e.ecModel))
         }
         return e
     }
 
-    function Nv(t, e) {
+    function Pv(t, e) {
         return t.dispatchAction || m(e.dispatchAction, e)
     }
 
-    function Pv(t, e, n, i, r, o, a) {
+    function Nv(t, e, n, i, r, o, a) {
         var s = n.getOuterSize(),
             l = s.width,
             u = s.height;
@@ -20570,9 +20569,9 @@ var zfStorage = function () {
             return t.prototype.__hidden = t.prototype, new t
         }
         var o = {};
-        return MP(e, function (e) {
+        return MN(e, function (e) {
             var a = o[e] = r();
-            MP(t[e], function (t, r) {
+            MN(t[e], function (t, r) {
                 if (ck.isValidType(r)) {
                     var o = {
                         type: r,
@@ -20697,8 +20696,8 @@ var zfStorage = function () {
         var i = this._targetInfoList = [],
             r = {},
             o = dy(e, t);
-        TP(NP, function (t, e) {
-            (!n || !n.include || CP(n.include, e) >= 0) && t(o, i, r)
+        TN(PN, function (t, e) {
+            (!n || !n.include || CN(n.include, e) >= 0) && t(o, i, r)
         })
     }
 
@@ -20708,7 +20707,7 @@ var zfStorage = function () {
 
     function dy(t, e) {
         return Fn(t, e, {
-            includeMainTypes: kP
+            includeMainTypes: kN
         })
     }
 
@@ -20742,17 +20741,17 @@ var zfStorage = function () {
     function vy(t, e, n, i, r) {
         if (r) {
             var o = t.getZr();
-            o[VP] || (o[BP] || (o[BP] = yy), Pa(o, BP, n, e)(t, i))
+            o[VN] || (o[BN] || (o[BN] = yy), Na(o, BN, n, e)(t, i))
         }
     }
 
     function yy(t, e) {
         if (!t.isDisposed()) {
             var n = t.getZr();
-            n[VP] = !0, t.dispatchAction({
+            n[VN] = !0, t.dispatchAction({
                 type: "brushSelect",
                 batch: e
-            }), n[VP] = !1
+            }), n[VN] = !1
         }
     }
 
@@ -20767,7 +20766,7 @@ var zfStorage = function () {
         var e = t.brushSelector;
         if (_(e)) {
             var n = [];
-            return d(IP, function (t, i) {
+            return d(IN, function (t, i) {
                 n[i] = function (n, i, r, o) {
                     var a = i.getItemLayout(n);
                     return t[e](a, r, o)
@@ -20776,7 +20775,7 @@ var zfStorage = function () {
         }
         if (x(e)) {
             var i = {};
-            return d(IP, function (t, n) {
+            return d(IN, function (t, n) {
                 i[n] = e
             }), i
         }
@@ -20790,7 +20789,7 @@ var zfStorage = function () {
 
     function wy(t) {
         var e = t.selectors = {};
-        return d(IP[t.brushType], function (n, i) {
+        return d(IN[t.brushType], function (n, i) {
             e[i] = function (i) {
                 return n(i, e, t)
             }
@@ -20806,7 +20805,7 @@ var zfStorage = function () {
             brushType: t.brushType,
             brushMode: t.brushMode,
             transformable: t.transformable,
-            brushStyle: new Nr(t.brushStyle).getItemStyle(),
+            brushStyle: new Pr(t.brushStyle).getItemStyle(),
             removeOnClick: t.removeOnClick,
             z: t.z
         }, e, !0)
@@ -20817,11 +20816,11 @@ var zfStorage = function () {
     }
 
     function Ty(t, e) {
-        WP[t] = e
+        WN[t] = e
     }
 
     function Cy(t) {
-        return WP[t]
+        return WN[t]
     }
 
     function Ay(t, e, n) {
@@ -20851,11 +20850,11 @@ var zfStorage = function () {
         })
     }
 
-    function Ny(t) {
-        return l(XP, t) >= 0
+    function Py(t) {
+        return l(XN, t) >= 0
     }
 
-    function Py(t, e, n) {
+    function Ny(t, e, n) {
         function i(t, e) {
             return l(e.nodes, t) >= 0
         }
@@ -20895,9 +20894,9 @@ var zfStorage = function () {
 
     function Oy(t, e, n) {
         var i = [1 / 0, -1 / 0];
-        return KP(n, function (t) {
+        return KN(n, function (t) {
             var n = t.getData();
-            n && KP(n.mapDimension(e, !0), function (t) {
+            n && KN(n.mapDimension(e, !0), function (t) {
                 var e = n.getApproximateExtent(t);
                 e[0] < i[0] && (i[0] = e[0]), e[1] > i[1] && (i[1] = e[1])
             })
@@ -20929,7 +20928,7 @@ var zfStorage = function () {
     function zy(t) {
         var e = t._minMaxSpan = {},
             n = t._dataZoomModel;
-        KP(["min", "max"], function (i) {
+        KN(["min", "max"], function (i) {
             e[i + "Span"] = n.get(i + "Span");
             var r = n.get(i + "ValueSpan");
             if (null != r && (e[i + "ValueSpan"] = r, null != (r = t.getAxisModel().axis.scale.parse(r)))) {
@@ -20987,7 +20986,7 @@ var zfStorage = function () {
             count: 0
         }).controller = Uy(t, o), o.dispatchAction = v(Zy, t)), !o.dataZoomInfos[i] && o.count++, o.dataZoomInfos[i] = e;
         var a = Xy(o.dataZoomInfos);
-        o.controller.enable(a.controlType, a.opt), o.controller.setPointerChecker(e.containsPoint), Pa(o, "dispatchAction", e.dataZoomModel.get("throttle", !0), "fixRate")
+        o.controller.enable(a.controlType, a.opt), o.controller.setPointerChecker(e.containsPoint), Na(o, "dispatchAction", e.dataZoomModel.get("throttle", !0), "fixRate")
     }
 
     function Wy(t, e) {
@@ -21440,22 +21439,22 @@ var zfStorage = function () {
         return r.initData(s, null, l), r.hasItemOption = !0, r
     }
 
-    function Nx(t) {
+    function Px(t) {
         var e = t.type,
             n = {
                 number: "value",
                 time: "time"
             };
-        if (n[e] && (t.axisType = n[e], delete t.type), Px(t), Ox(t, "controlPosition")) {
+        if (n[e] && (t.axisType = n[e], delete t.type), Nx(t), Ox(t, "controlPosition")) {
             var i = t.controlStyle || (t.controlStyle = {});
             Ox(i, "position") || (i.position = t.controlPosition), "none" !== i.position || Ox(i, "show") || (i.show = !1, delete i.position), delete t.controlPosition
         }
         d(t.data || [], function (t) {
-            b(t) && !y(t) && (!Ox(t, "value") && Ox(t, "name") && (t.value = t.name), Px(t))
+            b(t) && !y(t) && (!Ox(t, "value") && Ox(t, "name") && (t.value = t.name), Nx(t))
         })
     }
 
-    function Px(t) {
+    function Nx(t) {
         var e = t.itemStyle || (t.itemStyle = {}),
             n = e.emphasis || (e.emphasis = {}),
             i = t.label || t.label || {},
@@ -21933,16 +21932,16 @@ var zfStorage = function () {
         A_.call(this, t, e, ["filter"], "__filter_in_use__", "_shadowDom")
     }
 
-    function N_(t) {
+    function P_(t) {
         return t && (t.shadowBlur || t.shadowOffsetX || t.shadowOffsetY || t.textShadowBlur || t.textShadowOffsetX || t.textShadowOffsetY)
     }
 
-    function P_(t) {
+    function N_(t) {
         return parseInt(t, 10)
     }
 
     function O_(t) {
-        return t instanceof Ni ? yR : t instanceof pn ? xR : t instanceof aM ? _R : yR
+        return t instanceof Pi ? yR : t instanceof pn ? xR : t instanceof aM ? _R : yR
     }
 
     function E_(t, e) {
@@ -22117,8 +22116,8 @@ var zfStorage = function () {
             slice: D,
             normalizeCssArray: k,
             assert: L,
-            trim: N,
-            setAsPrimitive: P,
+            trim: P,
+            setAsPrimitive: N,
             isPrimitive: O,
             createHashMap: R,
             concatArray: z,
@@ -22648,29 +22647,29 @@ var zfStorage = function () {
             this._paused = !1
         }
     };
-    var Nb = function () {
+    var Pb = function () {
             this.head = null, this.tail = null, this._len = 0
         },
-        Pb = Nb.prototype;
-    Pb.insert = function (t) {
+        Nb = Pb.prototype;
+    Nb.insert = function (t) {
         var e = new Ob(t);
         return this.insertEntry(e), e
-    }, Pb.insertEntry = function (t) {
+    }, Nb.insertEntry = function (t) {
         this.head ? (this.tail.next = t, t.prev = this.tail, t.next = null, this.tail = t) : this.head = this.tail = t, this._len++
-    }, Pb.remove = function (t) {
+    }, Nb.remove = function (t) {
         var e = t.prev,
             n = t.next;
         e ? e.next = n : this.head = n, n ? n.prev = e : this.tail = e, t.next = t.prev = null, this._len--
-    }, Pb.len = function () {
+    }, Nb.len = function () {
         return this._len
-    }, Pb.clear = function () {
+    }, Nb.clear = function () {
         this.head = this.tail = null, this._len = 0
     };
     var Ob = function (t) {
             this.value = t, this.next, this.prev
         },
         Eb = function (t) {
-            this._list = new Nb, this._map = {}, this._maxSize = t || 10, this._lastRemovedEntry = null
+            this._list = new Pb, this._map = {}, this._maxSize = t || 10, this._lastRemovedEntry = null
         },
         Rb = Eb.prototype;
     Rb.put = function (t, e) {
@@ -23921,11 +23920,11 @@ var zfStorage = function () {
             return null != m.position && (v.position = t.position = m.position), null != m.rotation && (v.rotation = t.rotation = m.rotation), null != m.scale && (v.scale = t.scale = m.scale), v
         }
     };
-    var Nw = function (t) {
+    var Pw = function (t) {
         t = t || {}, this.stage = t.stage || {}, this.onframe = t.onframe || function () {}, this._clips = [], this._running = !1, this._time, this._pausedTime, this._pauseStart, this._paused = !1, fb.call(this)
     };
-    Nw.prototype = {
-        constructor: Nw,
+    Pw.prototype = {
+        constructor: Pw,
         addClip: function (t) {
             this._clips.push(t)
         },
@@ -23980,8 +23979,8 @@ var zfStorage = function () {
             var n = new jb(t, (e = e || {}).loop, e.getter, e.setter);
             return this.addAnimator(n), n
         }
-    }, c(Nw, fb);
-    var Pw = ["click", "dblclick", "mousewheel", "mouseout", "mouseup", "mousedown", "mousemove", "contextmenu"],
+    }, c(Pw, fb);
+    var Nw = ["click", "dblclick", "mousewheel", "mouseout", "mouseup", "mousedown", "mousemove", "contextmenu"],
         Ow = ["touchstart", "touchend", "touchmove"],
         Ew = {
             pointerdown: 1,
@@ -23989,7 +23988,7 @@ var zfStorage = function () {
             pointermove: 1,
             pointerout: 1
         },
-        Rw = f(Pw, function (t) {
+        Rw = f(Nw, function (t) {
             var e = t.replace("mouse", "pointer");
             return Ew[e] ? e : t
         }),
@@ -24035,7 +24034,7 @@ var zfStorage = function () {
     });
     var Bw = In.prototype;
     Bw.dispose = function () {
-        for (var t = Pw.concat(Ow), e = 0; e < t.length; e++) {
+        for (var t = Nw.concat(Ow), e = 0; e < t.length; e++) {
             var n = t[e];
             ht(this.dom, bn(n), this._handlers[n])
         }
@@ -24059,7 +24058,7 @@ var zfStorage = function () {
             var a = new Fw[o](e, r, n, t);
             this.storage = r, this.painter = a;
             var s = $_.node || $_.worker ? null : new In(a.getViewportRoot());
-            this.handler = new bb(r, a, s, a.root), this.animation = new Nw({
+            this.handler = new bb(r, a, s, a.root), this.animation = new Pw({
                 stage: {
                     update: m(this.flush, this)
                 }
@@ -24264,8 +24263,8 @@ var zfStorage = function () {
         DS = Math.max,
         kS = Math.cos,
         LS = Math.sin,
-        NS = Math.sqrt,
-        PS = Math.abs,
+        PS = Math.sqrt,
+        NS = Math.abs,
         OS = "undefined" != typeof Float32Array,
         ES = function (t) {
             this._saveData = !t, this._saveData && (this.data = []), this._ctx = null
@@ -24284,7 +24283,7 @@ var zfStorage = function () {
         _dashIdx: 0,
         _dashSum: 0,
         setScale: function (t, e) {
-            this._ux = PS(1 / Ub / t) || 0, this._uy = PS(1 / Ub / e) || 0
+            this._ux = NS(1 / Ub / t) || 0, this._uy = NS(1 / Ub / e) || 0
         },
         getContext: function () {
             return this._ctx
@@ -24296,7 +24295,7 @@ var zfStorage = function () {
             return this.addData(SS.M, t, e), this._ctx && this._ctx.moveTo(t, e), this._x0 = t, this._y0 = e, this._xi = t, this._yi = e, this
         },
         lineTo: function (t, e) {
-            var n = PS(t - this._xi) > this._ux || PS(e - this._yi) > this._uy || this._len < 5;
+            var n = NS(t - this._xi) > this._ux || NS(e - this._yi) > this._uy || this._len < 5;
             return this.addData(SS.L, t, e), this._ctx && n && (this._needsDash() ? this._dashedLineTo(t, e) : this._ctx.lineTo(t, e)), n && (this._xi = t, this._yi = e), this
         },
         bezierCurveTo: function (t, e, n, i, r, o) {
@@ -24380,12 +24379,12 @@ var zfStorage = function () {
                 u = this._yi,
                 c = t - l,
                 h = e - u,
-                d = NS(c * c + h * h),
+                d = PS(c * c + h * h),
                 f = l,
                 p = u,
                 g = a.length;
             for (c /= d, h /= d, o < 0 && (o = r + o), f -= (o %= r) * c, p -= o * h; c > 0 && f <= t || c < 0 && f >= t || 0 === c && (h > 0 && p <= e || h < 0 && p >= e);) f += c * (n = a[i = this._dashIdx]), p += h * n, this._dashIdx = (i + 1) % g, c > 0 && f < l || c < 0 && f > l || h > 0 && p < u || h < 0 && p > u || s[i % 2 ? "moveTo" : "lineTo"](c >= 0 ? AS(f, t) : DS(f, t), h >= 0 ? AS(p, e) : DS(p, e));
-            c = f - t, h = p - e, this._dashOffset = -NS(c * c + h * h)
+            c = f - t, h = p - e, this._dashOffset = -PS(c * c + h * h)
         },
         _dashedBezierTo: function (t, e, n, i, r, o) {
             var a, s, l, u, c, h = this._dashSum,
@@ -24399,10 +24398,10 @@ var zfStorage = function () {
                 x = this._dashIdx,
                 _ = f.length,
                 b = 0;
-            for (d < 0 && (d = h + d), d %= h, a = 0; a < 1; a += .1) s = v(g, t, n, r, a + .1) - v(g, t, n, r, a), l = v(m, e, i, o, a + .1) - v(m, e, i, o, a), y += NS(s * s + l * l);
+            for (d < 0 && (d = h + d), d %= h, a = 0; a < 1; a += .1) s = v(g, t, n, r, a + .1) - v(g, t, n, r, a), l = v(m, e, i, o, a + .1) - v(m, e, i, o, a), y += PS(s * s + l * l);
             for (; x < _ && !((b += f[x]) > d); x++);
             for (a = (b - d) / y; a <= 1;) u = v(g, t, n, r, a), c = v(m, e, i, o, a), x % 2 ? p.moveTo(u, c) : p.lineTo(u, c), a += f[x] / y, x = (x + 1) % _;
-            x % 2 != 0 && p.lineTo(r, o), s = r - u, l = o - c, this._dashOffset = -NS(s * s + l * l)
+            x % 2 != 0 && p.lineTo(r, o), s = r - u, l = o - c, this._dashOffset = -PS(s * s + l * l)
         },
         _dashedQuadraticTo: function (t, e, n, i) {
             var r = n,
@@ -24459,7 +24458,7 @@ var zfStorage = function () {
                         e = i = s[h++], n = r = s[h++], t.moveTo(i, r);
                         break;
                     case SS.L:
-                        o = s[h++], a = s[h++], (PS(o - i) > l || PS(a - r) > u || h === c - 1) && (t.lineTo(o, a), i = o, r = a);
+                        o = s[h++], a = s[h++], (NS(o - i) > l || NS(a - r) > u || h === c - 1) && (t.lineTo(o, a), i = o, r = a);
                         break;
                     case SS.C:
                         t.bezierCurveTo(s[h++], s[h++], s[h++], s[h++], s[h++], s[h++]), i = s[h - 2], r = s[h - 1];
@@ -24501,8 +24500,8 @@ var zfStorage = function () {
         WS = fw.prototype.getCanvasPattern,
         jS = Math.abs,
         $S = new ES((!0));
-    Ni.prototype = {
-        constructor: Ni,
+    Pi.prototype = {
+        constructor: Pi,
         type: "path",
         __dirtyPath: !0,
         strokeContainThreshold: 5,
@@ -24596,9 +24595,9 @@ var zfStorage = function () {
             var t = this.transform;
             return t && jS(t[0] - 1) > 1e-10 && jS(t[3] - 1) > 1e-10 ? Math.sqrt(jS(t[0] * t[3] - t[2] * t[1])) : 1
         }
-    }, Ni.extend = function (t) {
+    }, Pi.extend = function (t) {
         var e = function (e) {
-            Ni.call(this, e), t.style && this.style.extendFrom(t.style, !1);
+            Pi.call(this, e), t.style && this.style.extendFrom(t.style, !1);
             var n = t.shape;
             if (n) {
                 this.shape = this.shape || {};
@@ -24607,10 +24606,10 @@ var zfStorage = function () {
             }
             t.init && t.init.call(this, e)
         };
-        u(e, Ni);
+        u(e, Pi);
         for (var n in t) "style" !== n && "shape" !== n && (e.prototype[n] = t[n]);
         return e
-    }, u(Ni, fn);
+    }, u(Pi, fn);
     var US = ES.CMD,
         qS = [
             [],
@@ -24695,7 +24694,7 @@ var zfStorage = function () {
             return this._rect
         }
     }, u(aM, fn);
-    var sM = Ni.extend({
+    var sM = Pi.extend({
             type: "circle",
             shape: {
                 cx: 0,
@@ -24731,7 +24730,7 @@ var zfStorage = function () {
                     for (var l = 0; l < lM.length; l++) i[lM[l][0]] = lM[l][2]
             } : t
         },
-        cM = Ni.extend({
+        cM = Pi.extend({
             type: "sector",
             shape: {
                 cx: 0,
@@ -24742,7 +24741,7 @@ var zfStorage = function () {
                 endAngle: 2 * Math.PI,
                 clockwise: !0
             },
-            brush: uM(Ni.prototype.brush),
+            brush: uM(Pi.prototype.brush),
             buildPath: function (t, e) {
                 var n = e.cx,
                     i = e.cy,
@@ -24756,7 +24755,7 @@ var zfStorage = function () {
                 t.moveTo(u * r + n, c * r + i), t.lineTo(u * o + n, c * o + i), t.arc(n, i, o, a, s, !l), t.lineTo(Math.cos(s) * r + n, Math.sin(s) * r + i), 0 !== r && t.arc(n, i, r, s, a, l), t.closePath()
             }
         }),
-        hM = Ni.extend({
+        hM = Pi.extend({
             type: "ring",
             shape: {
                 cx: 0,
@@ -24818,7 +24817,7 @@ var zfStorage = function () {
             }
             return n && l.push(l.shift()), l
         },
-        pM = Ni.extend({
+        pM = Pi.extend({
             type: "polygon",
             shape: {
                 points: null,
@@ -24829,7 +24828,7 @@ var zfStorage = function () {
                 Vi(t, e, !0)
             }
         }),
-        gM = Ni.extend({
+        gM = Pi.extend({
             type: "polyline",
             shape: {
                 points: null,
@@ -24846,7 +24845,7 @@ var zfStorage = function () {
         }),
         mM = Math.round,
         vM = {},
-        yM = Ni.extend({
+        yM = Pi.extend({
             type: "rect",
             shape: {
                 r: 0,
@@ -24861,7 +24860,7 @@ var zfStorage = function () {
             }
         }),
         xM = {},
-        _M = Ni.extend({
+        _M = Pi.extend({
             type: "line",
             shape: {
                 x1: 0,
@@ -24886,7 +24885,7 @@ var zfStorage = function () {
             }
         }),
         bM = [],
-        wM = Ni.extend({
+        wM = Pi.extend({
             type: "bezier-curve",
             shape: {
                 x1: 0,
@@ -24921,7 +24920,7 @@ var zfStorage = function () {
                 return X(e, e)
             }
         }),
-        SM = Ni.extend({
+        SM = Pi.extend({
             type: "arc",
             shape: {
                 cx: 0,
@@ -24947,7 +24946,7 @@ var zfStorage = function () {
                 t.moveTo(l * r + n, u * r + i), t.arc(n, i, r, o, a, !s)
             }
         }),
-        MM = Ni.extend({
+        MM = Pi.extend({
             type: "compound",
             shape: {
                 paths: null
@@ -24967,7 +24966,7 @@ var zfStorage = function () {
                 for (var t = this.shape.paths || [], e = 0; e < t.length; e++) t[e].__dirtyPath = !1
             },
             getBoundingRect: function () {
-                return this._updatePathDirty(), Ni.prototype.getBoundingRect.call(this)
+                return this._updatePathDirty(), Pi.prototype.getBoundingRect.call(this)
             }
         }),
         IM = function (t) {
@@ -25039,14 +25038,14 @@ var zfStorage = function () {
     var DM = Math.round,
         kM = Math.max,
         LM = Math.min,
-        NM = {},
-        PM = 1,
+        PM = {},
+        NM = 1,
         OM = function (t, e) {
             for (var n = [], i = t.length, r = 0; r < i; r++) {
                 var o = t[r];
                 o.path || o.createPathProxy(), o.__dirtyPath && o.buildPath(o.path, o.shape, !0), n.push(o.path)
             }
-            var a = new Ni(e);
+            var a = new Pi(e);
             return a.createPathProxy(), a.buildPath = function (t) {
                 t.appendPath(n);
                 var e = t.getContext();
@@ -25056,7 +25055,7 @@ var zfStorage = function () {
         EM = R(),
         RM = 0,
         zM = (Object.freeze || Object)({
-            Z2_EMPHASIS_LIFT: PM,
+            Z2_EMPHASIS_LIFT: NM,
             extendShape: $i,
             extendPath: function (t, e) {
                 return zi(t, e)
@@ -25162,14 +25161,14 @@ var zfStorage = function () {
         },
         GM = c,
         WM = Vn();
-    Nr.prototype = {
-        constructor: Nr,
+    Pr.prototype = {
+        constructor: Pr,
         init: null,
         mergeOption: function (t) {
             i(this.option, t, !0)
         },
         get: function (t, e) {
-            return null == t ? this.option : Pr(this.option, this.parsePath(t), !e && Or(this, t))
+            return null == t ? this.option : Nr(this.option, this.parsePath(t), !e && Or(this, t))
         },
         getShallow: function (t, e) {
             var n = this.option,
@@ -25178,8 +25177,8 @@ var zfStorage = function () {
             return null == i && r && (i = r.getShallow(t)), i
         },
         getModel: function (t, e) {
-            var n, i = null == t ? this.option : Pr(this.option, t = this.parsePath(t));
-            return e = e || (n = Or(this, t)) && n.getModel(t), new Nr(i, e, this.ecModel)
+            var n, i = null == t ? this.option : Nr(this.option, t = this.parsePath(t));
+            return e = e || (n = Or(this, t)) && n.getModel(t), new Pr(i, e, this.ecModel)
         },
         isEmpty: function () {
             return null == this.option
@@ -25201,7 +25200,7 @@ var zfStorage = function () {
                 if (this.parentModel) return this.parentModel.isAnimationEnabled()
             }
         }
-    }, Zn(Nr), Xn(Nr), GM(Nr, eS), GM(Nr, iS), GM(Nr, VM), GM(Nr, HM);
+    }, Zn(Pr), Xn(Pr), GM(Pr, eS), GM(Pr, iS), GM(Pr, VM), GM(Pr, HM);
     var jM = 0,
         $M = 1e-4,
         UM = 9007199254740991,
@@ -25283,7 +25282,7 @@ var zfStorage = function () {
             }
         }),
         sI = Vn(),
-        lI = Nr.extend({
+        lI = Pr.extend({
             type: "component",
             id: "",
             name: "",
@@ -25296,7 +25295,7 @@ var zfStorage = function () {
             uid: null,
             layoutMode: null,
             $constructor: function (t, e, n, i) {
-                Nr.call(this, t, e, n, i), this.uid = Er("ec_cpt_model")
+                Pr.call(this, t, e, n, i), this.uid = Er("ec_cpt_model")
             },
             init: function (t, e, n, i) {
                 this.mergeDefaultAndTheme(t, n)
@@ -25500,9 +25499,9 @@ var zfStorage = function () {
     }, Xn(_o);
     var wI = Vn(),
         SI = "\0_ec_inner",
-        MI = Nr.extend({
+        MI = Pr.extend({
             init: function (t, e, n, i) {
-                n = n || {}, this.option = null, this._theme = new Nr(n), this._optionManager = i
+                n = n || {}, this.option = null, this._theme = new Pr(n), this._optionManager = i
             },
             setOption: function (t, e) {
                 L(!(SI in t), "please use chart.getOption()"), this._optionManager.setOption(t, e), this.resetOption(null)
@@ -25534,7 +25533,7 @@ var zfStorage = function () {
                     null != t && (lI.hasClass(r) ? r && a.push(r) : e[r] = null == e[r] ? n(t) : i(e[r], t, !0))
                 }), lI.topologicalTravel(a, lI.getAllClassMainTypes(), function (n, i) {
                     var a = Dn(t[n]),
-                        s = Pn(r.get(n), a);
+                        s = Nn(r.get(n), a);
                     On(s), d(s, function (t, e) {
                         var i = t.option;
                         b(i) && (t.keyInfo.mainType = n, t.keyInfo.subType = zo(n, i, t.exist))
@@ -25681,7 +25680,7 @@ var zfStorage = function () {
                     n.push(e)
                 }), lI.topologicalTravel(n, lI.getAllClassMainTypes(), function (n, i) {
                     d(e.get(n), function (e) {
-                        ("series" !== n || !Po(e, t)) && e.restoreData()
+                        ("series" !== n || !No(e, t)) && e.restoreData()
                     })
                 })
             }
@@ -25720,7 +25719,7 @@ var zfStorage = function () {
         constructor: Go,
         setOption: function (t, e) {
             t && d(Dn(t.series), function (t) {
-                t && t.data && S(t.data) && P(t.data)
+                t && t.data && S(t.data) && N(t.data)
             }), t = AI(t, !0);
             var n = this._optionBackup,
                 i = Wo.call(this, t, e, !n);
@@ -25752,37 +25751,37 @@ var zfStorage = function () {
             })), this._currentMediaIndices = o, a
         }
     };
-    var NI = d,
-        PI = b,
+    var PI = d,
+        NI = b,
         OI = ["areaStyle", "lineStyle", "nodeStyle", "linkStyle", "chordStyle", "label", "labelLine"],
         EI = function (t, e) {
-            NI(ta(t.series), function (t) {
-                PI(t) && Qo(t)
+            PI(ta(t.series), function (t) {
+                NI(t) && Qo(t)
             });
             var n = ["xAxis", "yAxis", "radiusAxis", "angleAxis", "singleAxis", "parallelAxis", "radar"];
-            e && n.push("valueAxis", "categoryAxis", "logAxis", "timeAxis"), NI(n, function (e) {
-                NI(ta(t[e]), function (t) {
+            e && n.push("valueAxis", "categoryAxis", "logAxis", "timeAxis"), PI(n, function (e) {
+                PI(ta(t[e]), function (t) {
                     t && (Ko(t, "axisLabel"), Ko(t.axisPointer, "label"))
                 })
-            }), NI(ta(t.parallel), function (t) {
+            }), PI(ta(t.parallel), function (t) {
                 var e = t && t.parallelAxisDefault;
                 Ko(e, "axisLabel"), Ko(e && e.axisPointer, "label")
-            }), NI(ta(t.calendar), function (t) {
+            }), PI(ta(t.calendar), function (t) {
                 Xo(t, "itemStyle"), Ko(t, "dayLabel"), Ko(t, "monthLabel"), Ko(t, "yearLabel")
-            }), NI(ta(t.radar), function (t) {
+            }), PI(ta(t.radar), function (t) {
                 Ko(t, "name")
-            }), NI(ta(t.geo), function (t) {
-                PI(t) && (Jo(t), NI(ta(t.regions), function (t) {
+            }), PI(ta(t.geo), function (t) {
+                NI(t) && (Jo(t), PI(ta(t.regions), function (t) {
                     Jo(t)
                 }))
-            }), NI(ta(t.timeline), function (t) {
+            }), PI(ta(t.timeline), function (t) {
                 Jo(t), Xo(t, "label"), Xo(t, "itemStyle"), Xo(t, "controlStyle", !0);
                 var e = t.data;
                 y(e) && d(e, function (t) {
                     b(t) && (Xo(t, "label"), Xo(t, "itemStyle"))
                 })
-            }), NI(ta(t.toolbox), function (t) {
-                Xo(t, "iconStyle"), NI(t.feature, function (t) {
+            }), PI(ta(t.toolbox), function (t) {
+                Xo(t, "iconStyle"), PI(t.feature, function (t) {
                     Xo(t, "iconStyle")
                 })
             }), Ko(ea(t.axisPointer), "label"), Ko(ea(t.tooltip).axisPointer, "label")
@@ -25915,7 +25914,7 @@ var zfStorage = function () {
             keyedColumns: ha,
             original: function (t, e, n, i) {
                 var r = t && (null == t.value ? t : t.value);
-                return !this._rawData.pure && Nn(t) && (this.hasItemOption = !0), da(r instanceof Array ? r[i] : r, this._dimensionInfos[e])
+                return !this._rawData.pure && Pn(t) && (this.hasItemOption = !0), da(r instanceof Array ? r[i] : r, this._dimensionInfos[e])
             },
             typedArray: function (t, e, n, i) {
                 return t[i]
@@ -26788,7 +26787,7 @@ var zfStorage = function () {
     }), XI.extend({
         type: "dataset"
     });
-    var xT = Ni.extend({
+    var xT = Pi.extend({
             type: "ellipse",
             shape: {
                 cx: 0,
@@ -26821,7 +26820,7 @@ var zfStorage = function () {
         for (var s = n.firstChild; s;) this._parseNode(s, i), s = s.nextSibling;
         var l, u;
         if (r) {
-            var c = N(r).split(_T);
+            var c = P(r).split(_T);
             c.length >= 4 && (l = {
                 x: parseFloat(c[0] || 0),
                 y: parseFloat(c[1] || 0),
@@ -26933,7 +26932,7 @@ var zfStorage = function () {
                 return Qa(e, i), es(t, i, this._defs), i
             },
             polyline: function (t, e) {
-                var n = new Ni;
+                var n = new Pi;
                 Qa(e, n), es(t, n, this._defs);
                 var i = t.getAttribute("points");
                 return i && (i = ts(i)), new gM({
@@ -27040,8 +27039,8 @@ var zfStorage = function () {
         },
         kT = L,
         LT = d,
-        NT = x,
-        PT = b,
+        PT = x,
+        NT = b,
         OT = lI.parseClassType,
         ET = {
             zrender: "4.0.6"
@@ -27090,7 +27089,7 @@ var zfStorage = function () {
         return this._zr
     }, WT.setOption = function (t, e, n) {
         var i;
-        if (PT(e) && (n = e.lazyUpdate, i = e.silent, e = e.notMerge), this[FT] = !0, !this._model || e) {
+        if (NT(e) && (n = e.lazyUpdate, i = e.silent, e = e.notMerge), this[FT] = !0, !this._model || e) {
             var r = new Go(this._api),
                 o = this._theme,
                 a = this._model = new MI(null, null, o, r);
@@ -27269,7 +27268,7 @@ var zfStorage = function () {
             this[FT] = !0, n && hs(this), jT.update.call(this), this[FT] = !1, gs.call(this, i), ms.call(this, i)
         }
     }, WT.showLoading = function (t, e) {
-        if (PT(t) && (e = t, t = ""), t = t || "default", this.hideLoading(), QT[t]) {
+        if (NT(t) && (e = t, t = ""), t = t || "default", this.hideLoading(), QT[t]) {
             var n = QT[t](this._api, e),
                 i = this._zr;
             this._loadingFX = n, i.add(n)
@@ -27280,7 +27279,7 @@ var zfStorage = function () {
         var e = o({}, t);
         return e.type = qT[t.type], e
     }, WT.dispatchAction = function (t, e) {
-        PT(e) || (e = {
+        NT(e) || (e = {
             silent: !!e
         }), UT[t.type] && this._model && (this[FT] ? this._pendingActions.push(t) : (ps.call(this, t, e.silent), e.flush ? this._zr.flush(!0) : !1 !== e.flush && $_.browser.weChat && this._throttledZrFlush(), gs.call(this, e.silent), ms.call(this, e.silent)))
     }, WT.appendData = function (t) {
@@ -27402,7 +27401,7 @@ var zfStorage = function () {
         iC = new Date - 0,
         rC = "_echarts_instance_",
         oC = ks;
-    Bs(2e3, oT), Ps(BI), Os(5e3, function (t) {
+    Bs(2e3, oT), Ns(BI), Os(5e3, function (t) {
         var e = R();
         t.eachSeries(function (t) {
             var n = t.get("stack");
@@ -27496,7 +27495,7 @@ var zfStorage = function () {
         type: "downplay",
         event: "downplay",
         update: "downplay"
-    }, B), Ns("light", mT), Ns("dark", yT);
+    }, B), Ps("light", mT), Ps("dark", yT);
     var aC = {};
     Us.prototype = {
         constructor: Us,
@@ -27870,7 +27869,7 @@ var zfStorage = function () {
         return r._count = f, r._indices = d, r.getRawIndex = rl, r
     }, yC.getItemModel = function (t) {
         var e = this.hostModel;
-        return new Nr(this.getRawDataItem(t), e, e && e.ecModel)
+        return new Pr(this.getRawDataItem(t), e, e && e.ecModel)
     }, yC.diff = function (t) {
         var e = this;
         return new Us(t ? t.getIndices() : [], this.getIndices(), function (e) {
@@ -28108,7 +28107,7 @@ var zfStorage = function () {
                         a = e.mapDimension(i.dim),
                         s = r.isHorizontal(),
                         l = s ? 0 : 1,
-                        u = Ol(Nl([t]), i, t).width;
+                        u = Ol(Pl([t]), i, t).width;
                     return u > .5 || (u = .5), {
                         progress: function (t, e) {
                             for (var i, c = new AC(2 * t.count), h = [], d = [], f = 0; null != (i = t.next());) d[l] = e.get(o, i), d[1 - l] = e.get(a, i), h = n.dataToPoint(d, null, h), c[f++] = h[0], c[f++] = h[1];
@@ -28125,8 +28124,8 @@ var zfStorage = function () {
         },
         kC = TC.prototype,
         LC = Math.ceil,
-        NC = Math.floor,
-        PC = function (t, e, n, i) {
+        PC = Math.floor,
+        NC = function (t, e, n, i) {
             for (; n < i;) {
                 var r = n + i >>> 1;
                 t[r][1] < e ? n = r + 1 : i = r
@@ -28148,7 +28147,7 @@ var zfStorage = function () {
                 }
                 this.niceTicks(t.splitNumber, t.minInterval, t.maxInterval);
                 var i = this._interval;
-                t.fixMin || (e[0] = Vr(NC(e[0] / i) * i)), t.fixMax || (e[1] = Vr(LC(e[1] / i) * i))
+                t.fixMin || (e[0] = Vr(PC(e[0] / i) * i)), t.fixMax || (e[1] = Vr(LC(e[1] / i) * i))
             },
             niceTicks: function (t, e, n) {
                 t = t || 10;
@@ -28157,12 +28156,12 @@ var zfStorage = function () {
                     o = r / t;
                 null != e && o < e && (o = e), null != n && o > n && (o = n);
                 var a = EC.length,
-                    s = PC(EC, o, 0, a),
+                    s = NC(EC, o, 0, a),
                     l = EC[Math.min(s, a - 1)],
                     u = l[1];
                 "year" === l[0] && (u *= Yr(r / u / t, !0));
                 var c = this.getSetting("useUTC") ? 0 : 60 * new Date(+i[0] || +i[1]).getTimezoneOffset() * 1e3,
-                    h = [Math.round(LC((i[0] - c) / u) * u + c), Math.round(NC((i[1] - c) / u) * u + c)];
+                    h = [Math.round(LC((i[0] - c) / u) * u + c), Math.round(PC((i[1] - c) / u) * u + c)];
                 Tl(h, i), this._stepLvl = l, this._interval = u, this._niceExtent = h
             },
             parse: function (t) {
@@ -28460,7 +28459,7 @@ var zfStorage = function () {
             dataStack: QC,
             createScale: function (t, e) {
                 var n = e;
-                Nr.isInstance(e) || c(n = new Nr(e), $C);
+                Pr.isInstance(e) || c(n = new Pr(e), $C);
                 var i = Wl(n);
                 return i.setExtent(t[0], t[1]), Gl(i, n), i
             },
@@ -28813,7 +28812,7 @@ var zfStorage = function () {
         }) : e.removeAll()
     };
     var mA = function (t, e, n, i, r, o, a, s) {
-            for (var l = Eu(t, e), u = [], c = [], h = [], d = [], f = [], p = [], g = [], m = Nu(r, e, a), v = Nu(o, t, s), y = 0; y < l.length; y++) {
+            for (var l = Eu(t, e), u = [], c = [], h = [], d = [], f = [], p = [], g = [], m = Pu(r, e, a), v = Pu(o, t, s), y = 0; y < l.length; y++) {
                 var x = l[y],
                     _ = !0;
                 switch (x.cmd) {
@@ -28851,7 +28850,7 @@ var zfStorage = function () {
         bA = [],
         wA = [],
         SA = [],
-        MA = Ni.extend({
+        MA = Pi.extend({
             type: "ec-polyline",
             shape: {
                 points: [],
@@ -28864,7 +28863,7 @@ var zfStorage = function () {
                 fill: null,
                 stroke: "#000"
             },
-            brush: uM(Ni.prototype.brush),
+            brush: uM(Pi.prototype.brush),
             buildPath: function (t, e) {
                 var n = e.points,
                     i = 0,
@@ -28877,7 +28876,7 @@ var zfStorage = function () {
                 for (; i < r;) i += zu(t, n, i, r, r, 1, o.min, o.max, e.smooth, e.smoothMonotone, e.connectNulls) + 1
             }
         }),
-        IA = Ni.extend({
+        IA = Pi.extend({
             type: "ec-polygon",
             shape: {
                 points: [],
@@ -28888,7 +28887,7 @@ var zfStorage = function () {
                 smoothMonotone: null,
                 connectNulls: !1
             },
-            brush: uM(Ni.prototype.brush),
+            brush: uM(Pi.prototype.brush),
             buildPath: function (t, e) {
                 var n = e.points,
                     i = e.stackedOnPoints,
@@ -28930,7 +28929,7 @@ var zfStorage = function () {
                 m = t.get("animation"),
                 v = !l.isEmpty(),
                 y = l.get("origin"),
-                x = ju(i, o, Nu(i, o, y)),
+                x = ju(i, o, Pu(i, o, y)),
                 _ = t.get("showSymbol"),
                 b = _ && !c && Yu(t, o, i),
                 w = this._data;
@@ -29253,7 +29252,7 @@ var zfStorage = function () {
         toLocalCoord: null,
         toGlobalCoord: null
     }, u(LA, oA);
-    var NA = {
+    var PA = {
             show: !0,
             zlevel: 0,
             z: 0,
@@ -29318,8 +29317,8 @@ var zfStorage = function () {
                 }
             }
         },
-        PA = {};
-    PA.categoryAxis = i({
+        NA = {};
+    NA.categoryAxis = i({
         boundaryGap: !0,
         deduplication: null,
         splitLine: {
@@ -29332,17 +29331,17 @@ var zfStorage = function () {
         axisLabel: {
             interval: "auto"
         }
-    }, NA), PA.valueAxis = i({
+    }, PA), NA.valueAxis = i({
         boundaryGap: [0, 0],
         splitNumber: 5
-    }, NA), PA.timeAxis = a({
+    }, PA), NA.timeAxis = a({
         scale: !0,
         min: "dataMin",
         max: "dataMax"
-    }, PA.valueAxis), PA.logAxis = a({
+    }, NA.valueAxis), NA.logAxis = a({
         scale: !0,
         logBase: 10
-    }, PA.valueAxis);
+    }, NA.valueAxis);
     var OA = ["value", "category", "time", "log"],
         EA = function (t, e, n, o) {
             d(OA, function (a) {
@@ -29363,7 +29362,7 @@ var zfStorage = function () {
                     getOrdinalMeta: function () {
                         return this.__ordinalMeta
                     },
-                    defaultOption: r([{}, PA[a + "Axis"], o], !0)
+                    defaultOption: r([{}, NA[a + "Axis"], o], !0)
                 })
             }), lI.registerSubTypeDefaulter(t + "Axis", v(n, t))
         },
@@ -29870,7 +29869,7 @@ var zfStorage = function () {
                 z2: -1
             }))
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         t.xAxis && t.yAxis && !t.grid && (t.grid = {})
     }), Bs(TA("line", "circle", "line")), zs(CA("line")), Os(VT.PROCESSOR.STATISTIC, function (t) {
         return {
@@ -29961,7 +29960,7 @@ var zfStorage = function () {
             }
         },
         tD = ["itemStyle", "barBorderWidth"];
-    o(Nr.prototype, QA), js({
+    o(Pr.prototype, QA), js({
         type: "bar",
         render: function (t, e, n) {
             this._updateDrawMode(t);
@@ -30004,7 +30003,7 @@ var zfStorage = function () {
                 } else r.remove(l)
             }).remove(function (t) {
                 var e = a.getItemGraphicEl(t);
-                "cartesian2d" === s.type ? e && Pc(t, u, e) : e && Oc(t, u, e)
+                "cartesian2d" === s.type ? e && Nc(t, u, e) : e && Oc(t, u, e)
             }).execute(), this._data = o
         },
         _renderLarge: function (t, e, n) {
@@ -30021,7 +30020,7 @@ var zfStorage = function () {
             var e = this.group,
                 n = this._data;
             t && t.get("animation") && n && !this._isLargeDraw ? n.eachItemGraphicEl(function (e) {
-                "sector" === e.type ? Oc(e.dataIndex, t, e) : Pc(e.dataIndex, t, e)
+                "sector" === e.type ? Oc(e.dataIndex, t, e) : Nc(e.dataIndex, t, e)
             }) : e.removeAll(), this._data = null
         }
     });
@@ -30083,7 +30082,7 @@ var zfStorage = function () {
                 }
             }
         },
-        iD = Ni.extend({
+        iD = Pi.extend({
             type: "largeBar",
             shape: {
                 points: []
@@ -30807,7 +30806,7 @@ var zfStorage = function () {
             "radar" === t.get("coordinateSystem") && (t.coordinateSystem = n[t.get("radarIndex") || 0])
         }), n
     }, Ho.register("radar", qc);
-    var mD = PA.valueAxis,
+    var mD = NA.valueAxis,
         vD = (Hs({
             type: "radar",
             optionUpdated: function () {
@@ -30843,7 +30842,7 @@ var zfStorage = function () {
                             var v = f.name;
                             f.name = d.replace("{value}", null != v ? v : "")
                         } else "function" == typeof d && (f.name = d(f.name, f));
-                        var y = o(new Nr(f, null, this.ecModel), $C);
+                        var y = o(new Pr(f, null, this.ecModel), $C);
                         return y.mainType = "radar", y.componentIndex = this.componentIndex, y
                     }, this);
                 this.getIndicatorModels = function () {
@@ -31139,7 +31138,7 @@ var zfStorage = function () {
                 })
             }
         })
-    }), Os(fD("radar")), Ps(function (t) {
+    }), Os(fD("radar")), Ns(function (t) {
         var e = t.polar;
         if (e) {
             y(e) || (e = [e]);
@@ -31326,21 +31325,21 @@ var zfStorage = function () {
                 }
             }
         },
-        ND = Vn(),
-        PD = {
+        PD = Vn(),
+        ND = {
             geoJSON: LD,
             svg: {
                 load: function (t, e) {
-                    var n = ND(e).originRoot;
+                    var n = PD(e).originRoot;
                     if (n) return {
                         root: n,
-                        boundingRect: ND(e).boundingRect
+                        boundingRect: PD(e).boundingRect
                     };
                     var i = Kc(e);
-                    return ND(e).originRoot = i.root, ND(e).boundingRect = i.boundingRect, i
+                    return PD(e).originRoot = i.root, PD(e).boundingRect = i.boundingRect, i
                 },
                 makeGraphic: function (t, e, n) {
-                    var i = ND(e),
+                    var i = PD(e),
                         r = i.rootMap || (i.rootMap = R()),
                         o = r.get(n);
                     if (o) return o;
@@ -31349,7 +31348,7 @@ var zfStorage = function () {
                     return i.originRootHostKey ? o = Kc(e, s).root : (i.originRootHostKey = n, o = a), r.set(n, o)
                 },
                 removeGraphic: function (t, e, n) {
-                    var i = ND(e),
+                    var i = PD(e),
                         r = i.rootMap;
                     r && r.removeKey(n), n === i.originRootHostKey && (i.originRootHostKey = null)
                 }
@@ -31361,7 +31360,7 @@ var zfStorage = function () {
                     r = R(),
                     o = R();
                 return d(Qc(t), function (a) {
-                    var s = PD[a.type].load(t, a);
+                    var s = ND[a.type].load(t, a);
                     d(s.regions, function (t) {
                         var n = t.name;
                         e && e.hasOwnProperty(n) && (t = t.cloneShallow(n = e[n])), i.push(t), r.set(n, t), o.set(n, t.center)
@@ -31664,7 +31663,7 @@ var zfStorage = function () {
                                     r: 3
                                 },
                                 silent: !0,
-                                z2: 8 + (l ? 0 : PM + 1)
+                                z2: 8 + (l ? 0 : NM + 1)
                             });
                         if (!l) {
                             var c = t.mainSeries.getData(),
@@ -31930,7 +31929,7 @@ var zfStorage = function () {
                 }), t[0].get("mapValueCalculation")), i = 0; i < t.length; i++) t[i].originalData = t[i].getData();
             for (i = 0; i < t.length; i++) t[i].seriesGroup = t, t[i].needsDrawMap = 0 === i && !t[i].getHostGeoModel(), t[i].setData(n.cloneShallow()), t[i].mainSeries = t[0]
         })
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         var e = [];
         d(t.series, function (t) {
             t && "map" === t.type && (e.push(t), t.map = t.map || t.mapType, a(t, t.mapLocation))
@@ -33015,7 +33014,7 @@ var zfStorage = function () {
                 var r = t.getData().tree,
                     o = r.root,
                     a = t.getModel(pk);
-                o.isRemoved() || Nd(o, {}, f(r.levelModels, function (t) {
+                o.isRemoved() || Pd(o, {}, f(r.levelModels, function (t) {
                     return t ? t.get(pk) : null
                 }), a, t.getViewRoot().getAncestors(), t)
             }
@@ -33250,11 +33249,11 @@ var zfStorage = function () {
                         return e && (e.parentModel = t.parentModel, t.parentModel = e), t
                     });
                     var o = r.getModel("edgeLabel"),
-                        a = new Nr({
+                        a = new Pr({
                             label: o.option
                         }, o.parentModel, e),
                         s = r.getModel("emphasis.edgeLabel"),
-                        l = new Nr({
+                        l = new Pr({
                             emphasis: {
                                 label: s.option
                             }
@@ -33357,7 +33356,7 @@ var zfStorage = function () {
         }),
         kk = _M.prototype,
         Lk = wM.prototype,
-        Nk = $i({
+        Pk = $i({
             type: "ec-line",
             style: {
                 stroke: "#000",
@@ -33384,7 +33383,7 @@ var zfStorage = function () {
                 return X(n, n)
             }
         }),
-        Pk = ["fromSymbol", "toSymbol"],
+        Nk = ["fromSymbol", "toSymbol"],
         Ok = af.prototype;
     Ok.beforeUpdate = function () {
         var t = this,
@@ -33439,7 +33438,7 @@ var zfStorage = function () {
             name: "label",
             lineLabelOriginalOpacity: 1
         });
-        this.add(o), d(Pk, function (n) {
+        this.add(o), d(Nk, function (n) {
             var i = nf(n, t, e);
             this.add(i), this[ef(n)] = t.getItemVisual(e, n)
         }, this), this._updateCommonStl(t, e, n)
@@ -33449,7 +33448,7 @@ var zfStorage = function () {
             o = t.getItemLayout(e),
             a = {
                 shape: {}
-            }; of (a.shape, o), Mr(r, a, i, e), d(Pk, function (n) {
+            }; of (a.shape, o), Mr(r, a, i, e), d(Nk, function (n) {
             var i = t.getItemVisual(e, n),
                 r = ef(n);
             if (this[r] !== i) {
@@ -33477,7 +33476,7 @@ var zfStorage = function () {
             fill: "none",
             stroke: h,
             opacity: f
-        }, o)), r.hoverStyle = s, d(Pk, function (t) {
+        }, o)), r.hoverStyle = s, d(Nk, function (t) {
             var e = this.childOfName(t);
             e && (e.setColor(h), e.setStyle({
                 opacity: f
@@ -34041,7 +34040,7 @@ var zfStorage = function () {
             }
         }
     });
-    var qk = Ni.extend({
+    var qk = Pi.extend({
             type: "echartsGaugePointer",
             shape: {
                 angle: 0,
@@ -34124,7 +34123,7 @@ var zfStorage = function () {
                     if (m.get("show")) {
                         var k = Mf(Vr(T / v * (f - d) + d), m.get("formatter")),
                             L = m.get("distance"),
-                            N = i(T / v);
+                            P = i(T / v);
                         l.add(new aM({
                             style: gr({}, m, {
                                 text: k,
@@ -34133,13 +34132,13 @@ var zfStorage = function () {
                                 textVerticalAlign: A < -.4 ? "top" : A > .4 ? "bottom" : "middle",
                                 textAlign: C < -.4 ? "left" : C > .4 ? "right" : "center"
                             }, {
-                                autoColor: N
+                                autoColor: P
                             }),
                             silent: !0
                         }))
                     }
                     if (g.get("show") && T !== v) {
-                        for (var P = 0; P <= y; P++) {
+                        for (var N = 0; N <= y; N++) {
                             var C = Math.cos(b),
                                 A = Math.sin(b),
                                 O = new _M({
@@ -34153,7 +34152,7 @@ var zfStorage = function () {
                                     style: I
                                 });
                             "auto" === I.stroke && O.setStyle({
-                                stroke: i((T + P / y) / v)
+                                stroke: i((T + N / y) / v)
                             }), l.add(O), b += S
                         }
                         b -= S
@@ -34466,14 +34465,14 @@ var zfStorage = function () {
         }
     }, u(Jk, oA);
     var Qk = function (t, e, n, i, r, o) {
-            e[0] = Nf(e[0], n), e[1] = Nf(e[1], n), t = t || 0;
+            e[0] = Pf(e[0], n), e[1] = Pf(e[1], n), t = t || 0;
             var a = n[1] - n[0];
-            null != r && (r = Nf(r, [0, a])), null != o && (o = Math.max(o, null != r ? r : 0)), "all" === i && (r = o = Math.abs(e[1] - e[0]), i = 0);
+            null != r && (r = Pf(r, [0, a])), null != o && (o = Math.max(o, null != r ? r : 0)), "all" === i && (r = o = Math.abs(e[1] - e[0]), i = 0);
             var s = Lf(e, i);
             e[i] += t;
             var l = r || 0,
                 u = n.slice();
-            s.sign < 0 ? u[0] += l : u[1] -= l, e[i] = Nf(e[i], u), c = Lf(e, i), null != r && (c.sign !== s.sign || c.span < r) && (e[1 - i] = e[i] + s.sign * r);
+            s.sign < 0 ? u[0] += l : u[1] -= l, e[i] = Pf(e[i], u), c = Lf(e, i), null != r && (c.sign !== s.sign || c.span < r) && (e[1 - i] = e[i] + s.sign * r);
             var c = Lf(e, i);
             return null != o && c.span > o && (e[1 - i] = e[i] + c.sign * o), e
         },
@@ -34484,9 +34483,9 @@ var zfStorage = function () {
         rL = Math.ceil,
         oL = Vr,
         aL = Math.PI;
-    Pf.prototype = {
+    Nf.prototype = {
         type: "parallel",
-        constructor: Pf,
+        constructor: Nf,
         _init: function (t, e, n) {
             var i = t.dimensions,
                 r = t.parallelAxisIndex;
@@ -34671,7 +34670,7 @@ var zfStorage = function () {
         create: function (t, e) {
             var n = [];
             return t.eachComponent("parallel", function (i, r) {
-                var o = new Pf(i, t, e);
+                var o = new Nf(i, t, e);
                 o.name = "parallel_" + r, o.resize(i, e), i.coordinateSystem = o, o.model = i, n.push(o)
             }), t.eachSeries(function (e) {
                 if ("parallel" === e.get("coordinateSystem")) {
@@ -35039,7 +35038,7 @@ var zfStorage = function () {
         render: function (t, e, n) {
             this._model = t, this._api = n, this._handlers || (this._handlers = {}, d(CL, function (t, e) {
                 n.getZr().on(e, this._handlers[e] = m(t, this))
-            }, this)), Pa(this, "_throttledDispatchExpand", t.get("axisExpandRate"), "fixRate")
+            }, this)), Na(this, "_throttledDispatchExpand", t.get("axisExpandRate"), "fixRate")
         },
         dispose: function (t, e) {
             d(this._handlers, function (t, n) {
@@ -35083,7 +35082,7 @@ var zfStorage = function () {
             }
         }
     };
-    Ps(function (t) {
+    Ns(function (t) {
         Df(t), kf(t)
     }), ZI.extend({
         type: "series.parallel",
@@ -35140,7 +35139,7 @@ var zfStorage = function () {
                     l = s.dimensions,
                     u = Lp(t);
                 if (o.diff(a).add(function (t) {
-                        Np(kp(o, r, t, l, s), o, t, u)
+                        Pp(kp(o, r, t, l, s), o, t, u)
                     }).update(function (e, n) {
                         var r = a.getItemGraphicEl(n),
                             c = Dp(o, e, l, s);
@@ -35148,7 +35147,7 @@ var zfStorage = function () {
                             shape: {
                                 points: c
                             }
-                        }, i && !1 === i.animation ? null : t, e), Np(r, o, e, u)
+                        }, i && !1 === i.animation ? null : t, e), Pp(r, o, e, u)
                     }).remove(function (t) {
                         var e = a.getItemGraphicEl(t);
                         r.remove(e)
@@ -35169,7 +35168,7 @@ var zfStorage = function () {
             incrementalRender: function (t, e, n) {
                 for (var i = e.getData(), r = e.coordinateSystem, o = r.dimensions, a = Lp(e), s = t.start; s < t.end; s++) {
                     var l = kp(i, this._dataGroup, s, o, r);
-                    l.incremental = !0, Np(l, i, s, a)
+                    l.incremental = !0, Pp(l, i, s, a)
                 }
             },
             dispose: function () {},
@@ -35282,8 +35281,8 @@ var zfStorage = function () {
             }
         }),
         LL = ["itemStyle", "opacity"],
-        NL = ["lineStyle", "opacity"],
-        PL = $i({
+        PL = ["lineStyle", "opacity"],
+        NL = $i({
             shape: {
                 x1: 0,
                 y1: 0,
@@ -35316,7 +35315,7 @@ var zfStorage = function () {
                 c = t.getData("edge"),
                 h = t.get("orient");
             this._model = t, o.removeAll(), o.attr("position", [a.x, a.y]), r.eachEdge(function (e) {
-                var n = new PL;
+                var n = new NL;
                 n.dataIndex = e.dataIndex, n.seriesIndex = t.seriesIndex, n.dataType = "edge";
                 var i, r, a, u, d, f, p, g, m = e.getModel("lineStyle"),
                     v = m.get("curveness"),
@@ -35423,19 +35422,19 @@ var zfStorage = function () {
                 if (o.eachNode(function (t) {
                         Ep(t, LL, .1)
                     }), o.eachEdge(function (t) {
-                        Ep(t, NL, .1)
+                        Ep(t, PL, .1)
                     }), u) {
                     Rp(u, LL);
                     var h = s.get("focusNodeAdjacency");
                     "outEdges" === h ? d(u.outEdges, function (t) {
-                        t.dataIndex < 0 || (Rp(t, NL), Rp(t.node2, LL))
+                        t.dataIndex < 0 || (Rp(t, PL), Rp(t.node2, LL))
                     }) : "inEdges" === h ? d(u.inEdges, function (t) {
-                        t.dataIndex < 0 || (Rp(t, NL), Rp(t.node1, LL))
+                        t.dataIndex < 0 || (Rp(t, PL), Rp(t.node1, LL))
                     }) : "allEdges" === h && d(u.edges, function (t) {
-                        t.dataIndex < 0 || (Rp(t, NL), Rp(t.node1, LL), Rp(t.node2, LL))
+                        t.dataIndex < 0 || (Rp(t, PL), Rp(t.node1, LL), Rp(t.node2, LL))
                     })
                 }
-                c && (Rp(c, NL), Rp(c.node1, LL), Rp(c.node2, LL))
+                c && (Rp(c, PL), Rp(c.node1, LL), Rp(c.node2, LL))
             }
         },
         unfocusNodeAdjacency: function (t, e, n, i) {
@@ -35443,7 +35442,7 @@ var zfStorage = function () {
             r.eachNode(function (t) {
                 Ep(t, LL)
             }), r.eachEdge(function (t) {
-                Ep(t, NL)
+                Ep(t, PL)
             })
         }
     }), Es({
@@ -35622,7 +35621,7 @@ var zfStorage = function () {
                 })
             },
             dispose: B
-        }), Ni.extend({
+        }), Pi.extend({
             type: "boxplotBoxPath",
             shape: {},
             buildPath: function (t, e) {
@@ -35779,7 +35778,7 @@ var zfStorage = function () {
                 this.group.removeAll(), this._data = null
             },
             dispose: B
-        }), Ni.extend({
+        }), Pi.extend({
             type: "normalCandlestickBox",
             shape: {},
             buildPath: function (t, e) {
@@ -35787,7 +35786,7 @@ var zfStorage = function () {
                 this.__simpleBox ? (t.moveTo(n[4][0], n[4][1]), t.lineTo(n[6][0], n[6][1])) : (t.moveTo(n[0][0], n[0][1]), t.lineTo(n[1][0], n[1][1]), t.lineTo(n[2][0], n[2][1]), t.lineTo(n[3][0], n[3][1]), t.closePath(), t.moveTo(n[4][0], n[4][1]), t.lineTo(n[5][0], n[5][1]), t.moveTo(n[6][0], n[6][1]), t.lineTo(n[7][0], n[7][1]))
             }
         })),
-        jL = Ni.extend({
+        jL = Pi.extend({
             type: "largeCandlestickBox",
             shape: {},
             buildPath: function (t, e) {
@@ -35915,7 +35914,7 @@ var zfStorage = function () {
                 }
             }
         };
-    Ps(function (t) {
+    Ns(function (t) {
         t && y(t.series) && d(t.series, function (t) {
             b(t) && "k" === t.type && (t.type = "candlestick")
         })
@@ -36038,22 +36037,22 @@ var zfStorage = function () {
         dispose: function () {}
     }), Bs(TA("effectScatter", "circle")), zs(CA("effectScatter"));
     var QL = "undefined" == typeof Uint32Array ? Array : Uint32Array,
-        tN = "undefined" == typeof Float64Array ? Array : Float64Array,
-        eN = ZI.extend({
+        tP = "undefined" == typeof Float64Array ? Array : Float64Array,
+        eP = ZI.extend({
             type: "series.lines",
             dependencies: ["grid", "polar"],
             visualColorAccessPath: "lineStyle.color",
             init: function (t) {
                 t.data = t.data || [], yg(t);
                 var e = this._processFlatCoordsArray(t.data);
-                this._flatCoords = e.flatCoords, this._flatCoordsOffset = e.flatCoordsOffset, e.flatCoords && (t.data = new Float32Array(e.count)), eN.superApply(this, "init", arguments)
+                this._flatCoords = e.flatCoords, this._flatCoordsOffset = e.flatCoordsOffset, e.flatCoords && (t.data = new Float32Array(e.count)), eP.superApply(this, "init", arguments)
             },
             mergeOption: function (t) {
                 if (t.data = t.data || [], yg(t), t.data) {
                     var e = this._processFlatCoordsArray(t.data);
                     this._flatCoords = e.flatCoords, this._flatCoordsOffset = e.flatCoordsOffset, e.flatCoords && (t.data = new Float32Array(e.count))
                 }
-                eN.superApply(this, "mergeOption", arguments)
+                eP.superApply(this, "mergeOption", arguments)
             },
             appendData: function (t) {
                 var e = this._processFlatCoordsArray(t.data);
@@ -36077,7 +36076,7 @@ var zfStorage = function () {
             _processFlatCoordsArray: function (t) {
                 var e = 0;
                 if (this._flatCoords && (e = this._flatCoords.length), "number" == typeof t[0]) {
-                    for (var n = t.length, i = new QL(n), r = new tN(n), o = 0, a = 0, s = 0, l = 0; l < n;) {
+                    for (var n = t.length, i = new QL(n), r = new tP(n), o = 0, a = 0, s = 0, l = 0; l < n;) {
                         s++;
                         var u = t[l++];
                         i[a++] = o + e, i[a++] = u;
@@ -36160,10 +36159,10 @@ var zfStorage = function () {
                 }
             }
         }),
-        nN = xg.prototype;
-    nN.createLine = function (t, e, n) {
+        nP = xg.prototype;
+    nP.createLine = function (t, e, n) {
         return new af(t, e, n)
-    }, nN._updateEffectSymbol = function (t, e) {
+    }, nP._updateEffectSymbol = function (t, e) {
         var n = t.getItemModel(e).getModel("effect"),
             i = n.get("symbolSize"),
             r = n.get("symbol");
@@ -36171,7 +36170,7 @@ var zfStorage = function () {
         var o = n.get("color") || t.getItemVisual(e, "color"),
             a = this.childAt(1);
         this._symbolType !== r && (this.remove(a), (a = Jl(r, -.5, -.5, 1, 1, o)).z2 = 100, a.culling = !0, this.add(a)), a && (a.setStyle("shadowColor", o), a.setStyle(n.getItemStyle(["color"])), a.attr("scale", i), a.setColor(o), a.attr("scale", i), this._symbolType = r, this._updateEffectAnimation(t, n, e))
-    }, nN._updateEffectAnimation = function (t, e, n) {
+    }, nP._updateEffectAnimation = function (t, e, n) {
         var i = this.childAt(1);
         if (i) {
             var r = this,
@@ -36198,13 +36197,13 @@ var zfStorage = function () {
             }
             this._period = a, this._loop = s
         }
-    }, nN.getLineLength = function (t) {
+    }, nP.getLineLength = function (t) {
         return ub(t.__p1, t.__cp1) + ub(t.__cp1, t.__p2)
-    }, nN.updateAnimationPoints = function (t, e) {
+    }, nP.updateAnimationPoints = function (t, e) {
         t.__p1 = e[0], t.__p2 = e[1], t.__cp1 = e[2] || [(e[0][0] + e[1][0]) / 2, (e[0][1] + e[1][1]) / 2]
-    }, nN.updateData = function (t, e, n) {
+    }, nP.updateData = function (t, e, n) {
         this.childAt(0).updateData(t, e, n), this._updateEffectSymbol(t, e)
-    }, nN.updateSymbolPosition = function (t) {
+    }, nP.updateSymbolPosition = function (t) {
         var e = t.__p1,
             n = t.__p2,
             i = t.__cp1,
@@ -36216,13 +36215,13 @@ var zfStorage = function () {
         var l = s(e[0], i[0], n[0], r),
             u = s(e[1], i[1], n[1], r);
         t.rotation = -Math.atan2(u, l) - Math.PI / 2, t.ignore = !1
-    }, nN.updateLayout = function (t, e) {
+    }, nP.updateLayout = function (t, e) {
         this.childAt(0).updateLayout(t, e);
         var n = t.getItemModel(e).getModel("effect");
         this._updateEffectAnimation(t, n, e)
     }, u(xg, tw);
-    var iN = _g.prototype;
-    iN._createPolyline = function (t, e, n) {
+    var iP = _g.prototype;
+    iP._createPolyline = function (t, e, n) {
         var i = t.getItemLayout(e),
             r = new gM({
                 shape: {
@@ -36230,14 +36229,14 @@ var zfStorage = function () {
                 }
             });
         this.add(r), this._updateCommonStl(t, e, n)
-    }, iN.updateData = function (t, e, n) {
+    }, iP.updateData = function (t, e, n) {
         var i = t.hostModel;
         Mr(this.childAt(0), {
             shape: {
                 points: t.getItemLayout(e)
             }
         }, i, e), this._updateCommonStl(t, e, n)
-    }, iN._updateCommonStl = function (t, e, n) {
+    }, iP._updateCommonStl = function (t, e, n) {
         var i = this.childAt(0),
             r = t.getItemModel(e),
             o = t.getItemVisual(e, "color"),
@@ -36248,13 +36247,13 @@ var zfStorage = function () {
             fill: "none",
             stroke: o
         }, s)), i.hoverStyle = l, dr(this)
-    }, iN.updateLayout = function (t, e) {
+    }, iP.updateLayout = function (t, e) {
         this.childAt(0).setShape("points", t.getItemLayout(e))
     }, u(_g, tw);
-    var rN = bg.prototype;
-    rN.createLine = function (t, e, n) {
+    var rP = bg.prototype;
+    rP.createLine = function (t, e, n) {
         return new _g(t, e, n)
-    }, rN.updateAnimationPoints = function (t, e) {
+    }, rP.updateAnimationPoints = function (t, e) {
         this._points = e;
         for (var n = [0], i = 0, r = 1; r < e.length; r++) {
             var o = e[r - 1],
@@ -36265,9 +36264,9 @@ var zfStorage = function () {
             for (r = 0; r < n.length; r++) n[r] /= i;
             this._offsets = n, this._length = i
         }
-    }, rN.getLineLength = function (t) {
+    }, rP.getLineLength = function (t) {
         return this._length
-    }, rN.updateSymbolPosition = function (t) {
+    }, rP.updateSymbolPosition = function (t) {
         var e = t.__t,
             n = this._points,
             i = this._offsets,
@@ -36287,7 +36286,7 @@ var zfStorage = function () {
             t.rotation = -Math.atan2(l, s) - Math.PI / 2, this._lastFrame = a, this._lastFramePercent = e, t.ignore = !1
         }
     }, u(bg, xg);
-    var oN = $i({
+    var oP = $i({
             shape: {
                 polyline: !1,
                 curveness: 0,
@@ -36341,30 +36340,30 @@ var zfStorage = function () {
                 return -1
             }
         }),
-        aN = wg.prototype;
-    aN.isPersistent = function () {
+        aP = wg.prototype;
+    aP.isPersistent = function () {
         return !this._incremental
-    }, aN.updateData = function (t) {
+    }, aP.updateData = function (t) {
         this.group.removeAll();
-        var e = new oN({
+        var e = new oP({
             rectHover: !0,
             cursor: "default"
         });
         e.setShape({
             segs: t.getLayout("linesPoints")
         }), this._setCommon(e, t), this.group.add(e), this._incremental = null
-    }, aN.incrementalPrepareUpdate = function (t) {
+    }, aP.incrementalPrepareUpdate = function (t) {
         this.group.removeAll(), this._clearIncremental(), t.count() > 5e5 ? (this._incremental || (this._incremental = new ji({
             silent: !0
         })), this.group.add(this._incremental)) : this._incremental = null
-    }, aN.incrementalUpdate = function (t, e) {
-        var n = new oN;
+    }, aP.incrementalUpdate = function (t, e) {
+        var n = new oP;
         n.setShape({
             segs: e.getLayout("linesPoints")
         }), this._setCommon(n, e, !!this._incremental), this._incremental ? this._incremental.addDisplayable(n, !0) : (n.rectHover = !0, n.cursor = "default", n.__startIndex = t.start, this.group.add(n))
-    }, aN.remove = function () {
+    }, aP.remove = function () {
         this._clearIncremental(), this._incremental = null, this.group.removeAll()
-    }, aN._setCommon = function (t, e, n) {
+    }, aP._setCommon = function (t, e, n) {
         var i = e.hostModel;
         t.setShape({
             polyline: i.get("polyline"),
@@ -36376,11 +36375,11 @@ var zfStorage = function () {
             var n = t.findDataIndex(e.offsetX, e.offsetY);
             n > 0 && (t.dataIndex = n + t.__startIndex)
         }))
-    }, aN._clearIncremental = function () {
+    }, aP._clearIncremental = function () {
         var t = this._incremental;
         t && t.clearDisplaybles()
     };
-    var sN = {
+    var sP = {
         seriesType: "lines",
         plan: KI(),
         reset: function (t) {
@@ -36448,7 +36447,7 @@ var zfStorage = function () {
             if (!this._finished || r.large || r.progressiveRender) return {
                 update: !0
             };
-            var o = sN.reset(t);
+            var o = sP.reset(t);
             o.progress && o.progress({
                 start: 0,
                 end: i.count()
@@ -36473,25 +36472,25 @@ var zfStorage = function () {
         },
         dispose: function () {}
     });
-    var lN = "lineStyle.opacity".split("."),
-        uN = {
+    var lP = "lineStyle.opacity".split("."),
+        uP = {
             seriesType: "lines",
             reset: function (t, e, n) {
                 var i = Sg(t.get("symbol")),
                     r = Sg(t.get("symbolSize")),
                     o = t.getData();
-                return o.setVisual("fromSymbol", i && i[0]), o.setVisual("toSymbol", i && i[1]), o.setVisual("fromSymbolSize", r && r[0]), o.setVisual("toSymbolSize", r && r[1]), o.setVisual("opacity", t.get(lN)), {
+                return o.setVisual("fromSymbol", i && i[0]), o.setVisual("toSymbol", i && i[1]), o.setVisual("fromSymbolSize", r && r[0]), o.setVisual("toSymbolSize", r && r[1]), o.setVisual("opacity", t.get(lP)), {
                     dataEach: o.hasItemOption ? function (t, e) {
                         var n = t.getItemModel(e),
                             i = Sg(n.getShallow("symbol", !0)),
                             r = Sg(n.getShallow("symbolSize", !0)),
-                            o = n.get(lN);
+                            o = n.get(lP);
                         i[0] && t.setItemVisual(e, "fromSymbol", i[0]), i[1] && t.setItemVisual(e, "toSymbol", i[1]), r[0] && t.setItemVisual(e, "fromSymbolSize", r[0]), r[1] && t.setItemVisual(e, "toSymbolSize", r[1]), t.setItemVisual(e, "opacity", o)
                     } : null
                 }
             }
         };
-    zs(sN), Bs(uN), ZI.extend({
+    zs(sP), Bs(uP), ZI.extend({
         type: "series.heatmap",
         getInitialData: function (t, e) {
             return ml(this.getSource(), this, {
@@ -36657,7 +36656,7 @@ var zfStorage = function () {
         },
         dispose: function () {}
     });
-    var cN = KA.extend({
+    var cP = KA.extend({
             type: "series.pictorialBar",
             dependencies: ["grid"],
             defaultOption: {
@@ -36677,11 +36676,11 @@ var zfStorage = function () {
                 hoverAnimation: !1
             },
             getInitialData: function (t) {
-                return t.stack = null, cN.superApply(this, "getInitialData", arguments)
+                return t.stack = null, cP.superApply(this, "getInitialData", arguments)
             }
         }),
-        hN = ["itemStyle", "borderWidth"],
-        dN = [{
+        hP = ["itemStyle", "borderWidth"],
+        dP = [{
             xy: "x",
             wh: "width",
             index: 0,
@@ -36692,7 +36691,7 @@ var zfStorage = function () {
             index: 1,
             posDesc: ["top", "bottom"]
         }],
-        fN = new sM;
+        fP = new sM;
     js({
         type: "pictorialBar",
         render: function (t, e, n) {
@@ -36714,8 +36713,8 @@ var zfStorage = function () {
                         [l.y, l.y + l.height]
                     ],
                     isHorizontal: s,
-                    valueDim: dN[+s],
-                    categoryDim: dN[1 - s]
+                    valueDim: dP[+s],
+                    categoryDim: dP[1 - s]
                 };
             return r.diff(o).add(function (t) {
                 if (r.hasValue(t)) {
@@ -36746,11 +36745,11 @@ var zfStorage = function () {
             }) : n.removeAll()
         }
     }), zs(v(El, "pictorialBar")), Bs(TA("pictorialBar", "roundRect"));
-    var pN = function (t, e, n, i, r) {
+    var pP = function (t, e, n, i, r) {
         oA.call(this, t, e, n), this.type = i || "value", this.position = r || "bottom", this.orient = null
     };
-    pN.prototype = {
-        constructor: pN,
+    pP.prototype = {
+        constructor: pP,
         model: null,
         isHorizontal: function () {
             var t = this.position;
@@ -36761,13 +36760,13 @@ var zfStorage = function () {
         },
         toGlobalCoord: null,
         toLocalCoord: null
-    }, u(pN, oA), Kg.prototype = {
+    }, u(pP, oA), Kg.prototype = {
         type: "singleAxis",
         axisPointerEnabled: !0,
         constructor: Kg,
         _init: function (t, e, n) {
             var i = this.dimension,
-                r = new pN(i, Wl(t), [0, 0], t.get("type"), t.get("position")),
+                r = new pP(i, Wl(t), [0, 0], t.get("type"), t.get("position")),
                 o = "category" === r.type;
             r.onBand = o && t.get("boundaryGap"), r.inverse = t.get("inverse"), r.orient = t.get("orient"), t.axis = r, r.model = t, r.coordinateSystem = this, this._axis = r
         },
@@ -36868,8 +36867,8 @@ var zfStorage = function () {
         },
         dimensions: Kg.prototype.dimensions
     });
-    var gN = ["axisLine", "axisTickLabel", "axisName"],
-        mN = UA.extend({
+    var gP = ["axisLine", "axisTickLabel", "axisName"],
+        mP = UA.extend({
             type: "singleAxis",
             axisPointerClass: "SingleAxisPointer",
             render: function (t, e, n, i) {
@@ -36877,7 +36876,7 @@ var zfStorage = function () {
                 r.removeAll();
                 var o = Jg(t),
                     a = new HA(t, o);
-                d(gN, a.add, a), r.add(a.getGroup()), t.get("splitLine.show") && this._splitLine(t), mN.superCall(this, "render", t, e, n, i)
+                d(gP, a.add, a), r.add(a.getGroup()), t.get("splitLine.show") && this._splitLine(t), mP.superCall(this, "render", t, e, n, i)
             },
             _splitLine: function (t) {
                 var e = t.axis;
@@ -36917,7 +36916,7 @@ var zfStorage = function () {
                 }
             }
         }),
-        vN = lI.extend({
+        vP = lI.extend({
             type: "singleAxis",
             layoutMode: "box",
             axis: null,
@@ -36926,7 +36925,7 @@ var zfStorage = function () {
                 return this
             }
         }),
-        yN = {
+        yP = {
             left: "5%",
             top: "5%",
             right: "5%",
@@ -36963,10 +36962,10 @@ var zfStorage = function () {
                 }
             }
         };
-    i(vN.prototype, $C), EA("single", vN, function (t, e) {
+    i(vP.prototype, $C), EA("single", vP, function (t, e) {
         return e.type || (e.data ? "category" : "value")
-    }, yN);
-    var xN = function (t, e) {
+    }, yP);
+    var xP = function (t, e) {
             var n, i = [],
                 r = t.seriesIndex;
             if (null == r || !(n = e.getSeriesByIndex(r))) return {
@@ -36992,10 +36991,10 @@ var zfStorage = function () {
                 el: s
             }
         },
-        _N = d,
-        bN = v,
-        wN = Vn(),
-        SN = (Hs({
+        _P = d,
+        bP = v,
+        wP = Vn(),
+        SP = (Hs({
             type: "axisPointer",
             coordSysAxesInfo: null,
             defaultOption: {
@@ -37046,8 +37045,8 @@ var zfStorage = function () {
                 }
             }
         }), Vn()),
-        MN = d,
-        IN = Gs({
+        MP = d,
+        IP = Gs({
             type: "axisPointer",
             render: function (t, e, n) {
                 var i = e.getComponent("tooltip"),
@@ -37062,15 +37061,15 @@ var zfStorage = function () {
                 })
             },
             remove: function (t, e) {
-                gm(e.getZr(), "axisPointer"), IN.superApply(this._model, "remove", arguments)
+                gm(e.getZr(), "axisPointer"), IP.superApply(this._model, "remove", arguments)
             },
             dispose: function (t, e) {
-                gm("axisPointer", e), IN.superApply(this._model, "dispose", arguments)
+                gm("axisPointer", e), IP.superApply(this._model, "dispose", arguments)
             }
         }),
-        TN = Vn(),
-        CN = n,
-        AN = m;
+        TP = Vn(),
+        CP = n,
+        AP = m;
     (mm.prototype = {
         _group: null,
         _lastGraphicKey: null,
@@ -37129,24 +37128,24 @@ var zfStorage = function () {
         createPointerEl: function (t, e, n, i) {
             var r = e.pointer;
             if (r) {
-                var o = TN(t).pointerEl = new zM[r.type](CN(e.pointer));
+                var o = TP(t).pointerEl = new zM[r.type](CP(e.pointer));
                 t.add(o)
             }
         },
         createLabelEl: function (t, e, n, i) {
             if (e.label) {
-                var r = TN(t).labelEl = new yM(CN(e.label));
+                var r = TP(t).labelEl = new yM(CP(e.label));
                 t.add(r), xm(r, i)
             }
         },
         updatePointerEl: function (t, e, n) {
-            var i = TN(t).pointerEl;
+            var i = TP(t).pointerEl;
             i && (i.setStyle(e.pointer.style), n(i, {
                 shape: e.pointer.shape
             }))
         },
         updateLabelEl: function (t, e, n, i) {
-            var r = TN(t).labelEl;
+            var r = TP(t).labelEl;
             r && (r.setStyle(e.label.style), n(r, {
                 shape: e.label.shape,
                 position: e.label.position
@@ -37167,14 +37166,14 @@ var zfStorage = function () {
                     onmousemove: function (t) {
                         mb(t.event)
                     },
-                    onmousedown: AN(this._onHandleDragMove, this, 0, 0),
-                    drift: AN(this._onHandleDragMove, this),
-                    ondragend: AN(this._onHandleDragEnd, this)
+                    onmousedown: AP(this._onHandleDragMove, this, 0, 0),
+                    drift: AP(this._onHandleDragMove, this),
+                    ondragend: AP(this._onHandleDragEnd, this)
                 }), n.add(i)), bm(i, e, !1);
                 var s = ["color", "borderColor", "borderWidth", "opacity", "shadowColor", "shadowBlur", "shadowOffsetX", "shadowOffsetY"];
                 i.setStyle(r.getItemStyle(null, s));
                 var l = r.get("size");
-                y(l) || (l = [l, l]), i.attr("scale", [l[0] / 2, l[1] / 2]), Pa(this, "_doDispatchAxisPointer", r.get("throttle") || 0, "fixRate"), this._moveHandleToValue(t, a)
+                y(l) || (l = [l, l]), i.attr("scale", [l[0] / 2, l[1] / 2]), Na(this, "_doDispatchAxisPointer", r.get("throttle") || 0, "fixRate"), this._moveHandleToValue(t, a)
             }
         },
         _moveHandleToValue: function (t, e) {
@@ -37185,7 +37184,7 @@ var zfStorage = function () {
             if (n) {
                 this._dragging = !0;
                 var i = this.updateHandleTransform(_m(n), [t, e], this._axisModel, this._axisPointerModel);
-                this._payloadInfo = i, n.stopAnimation(), n.attr(_m(i)), TN(n).lastProp = null, this._doDispatchAxisPointer()
+                this._payloadInfo = i, n.stopAnimation(), n.attr(_m(i)), TP(n).lastProp = null, this._doDispatchAxisPointer()
             }
         },
         _doDispatchAxisPointer: function () {
@@ -37231,7 +37230,7 @@ var zfStorage = function () {
             }
         }
     }).constructor = mm, Zn(mm);
-    var DN = mm.extend({
+    var DP = mm.extend({
             makeElOption: function (t, e, n, i, r) {
                 var o = n.axis,
                     a = o.grid,
@@ -37240,7 +37239,7 @@ var zfStorage = function () {
                     u = o.toGlobalCoord(o.dataToCoord(e, !0));
                 if (s && "none" !== s) {
                     var c = wm(i),
-                        h = kN[s](o, u, l, c);
+                        h = kP[s](o, u, l, c);
                     h.style = c, t.graphicKey = h.type, t.pointer = h
                 }
                 Cm(e, t, kc(a.model, n), n, i, r)
@@ -37278,9 +37277,9 @@ var zfStorage = function () {
                 }
             }
         }),
-        kN = {
+        kP = {
             line: function (t, e, n, i) {
-                var r = Am([e, n[0]], [e, n[1]], Nm(t));
+                var r = Am([e, n[0]], [e, n[1]], Pm(t));
                 return Yi({
                     shape: r,
                     style: i
@@ -37294,11 +37293,11 @@ var zfStorage = function () {
                     o = n[1] - n[0];
                 return {
                     type: "Rect",
-                    shape: Dm([e - r / 2, n[0]], [r, o], Nm(t))
+                    shape: Dm([e - r / 2, n[0]], [r, o], Pm(t))
                 }
             }
         };
-    UA.registerAxisPointerClass("CartesianAxisPointer", DN), Ps(function (t) {
+    UA.registerAxisPointerClass("CartesianAxisPointer", DP), Ns(function (t) {
         if (t) {
             (!t.axisPointer || 0 === t.axisPointer.length) && (t.axisPointer = {});
             var e = t.axisPointer.link;
@@ -37317,7 +37316,7 @@ var zfStorage = function () {
             a = t.dispatchAction || m(n.dispatchAction, n),
             s = e.getComponent("axisPointer").coordSysAxesInfo;
         if (s) {
-            lm(r) && (r = xN({
+            lm(r) && (r = xP({
                 seriesIndex: o.seriesIndex,
                 dataIndex: o.dataIndex
             }, e).point);
@@ -37332,12 +37331,12 @@ var zfStorage = function () {
                     map: {}
                 },
                 g = {
-                    showPointer: bN(em, f),
-                    showTooltip: bN(nm, p)
+                    showPointer: bP(em, f),
+                    showTooltip: bP(nm, p)
                 };
-            _N(s.coordSysMap, function (t, e) {
+            _P(s.coordSysMap, function (t, e) {
                 var n = l || t.containPoint(r);
-                _N(s.coordSysAxesInfo[e], function (t, e) {
+                _P(s.coordSysAxesInfo[e], function (t, e) {
                     var i = t.axis,
                         o = am(u, t);
                     if (!h && n && (!u || o)) {
@@ -37347,32 +37346,32 @@ var zfStorage = function () {
                 })
             });
             var v = {};
-            return _N(c, function (t, e) {
+            return _P(c, function (t, e) {
                 var n = t.linkGroup;
-                n && !f[e] && _N(n.axesInfo, function (e, i) {
+                n && !f[e] && _P(n.axesInfo, function (e, i) {
                     var r = f[i];
                     if (e !== t && r) {
                         var o = r.value;
                         n.mapper && (o = t.axis.scale.parse(n.mapper(o, sm(e), sm(t)))), v[t.key] = o
                     }
                 })
-            }), _N(v, function (t, e) {
+            }), _P(v, function (t, e) {
                 Qg(c[e], t, g, !0, d)
             }), im(f, c, d), rm(p, r, t, a), om(c, 0, n), d
         }
     });
-    var LN = ["x", "y"],
-        NN = ["width", "height"],
-        PN = mm.extend({
+    var LP = ["x", "y"],
+        PP = ["width", "height"],
+        NP = mm.extend({
             makeElOption: function (t, e, n, i, r) {
                 var o = n.axis,
                     a = o.coordinateSystem,
-                    s = Om(a, 1 - Pm(o)),
+                    s = Om(a, 1 - Nm(o)),
                     l = a.dataToPoint(e)[0],
                     u = i.get("type");
                 if (u && "none" !== u) {
                     var c = wm(i),
-                        h = ON[u](o, l, s, c);
+                        h = OP[u](o, l, s, c);
                     h.style = c, t.graphicKey = h.type, t.pointer = h
                 }
                 Cm(e, t, Jg(n), n, i, r)
@@ -37389,7 +37388,7 @@ var zfStorage = function () {
             updateHandleTransform: function (t, e, n, i) {
                 var r = n.axis,
                     o = r.coordinateSystem,
-                    a = Pm(r),
+                    a = Nm(r),
                     s = Om(o, a),
                     l = t.position;
                 l[a] += e[a], l[a] = Math.min(s[1], l[a]), l[a] = Math.max(s[0], l[a]);
@@ -37406,9 +37405,9 @@ var zfStorage = function () {
                 }
             }
         }),
-        ON = {
+        OP = {
             line: function (t, e, n, i) {
-                var r = Am([e, n[0]], [e, n[1]], Pm(t));
+                var r = Am([e, n[0]], [e, n[1]], Nm(t));
                 return Yi({
                     shape: r,
                     style: i
@@ -37422,19 +37421,19 @@ var zfStorage = function () {
                     o = n[1] - n[0];
                 return {
                     type: "Rect",
-                    shape: Dm([e - r / 2, n[0]], [r, o], Pm(t))
+                    shape: Dm([e - r / 2, n[0]], [r, o], Nm(t))
                 }
             }
         };
-    UA.registerAxisPointerClass("SingleAxisPointer", PN), Gs({
+    UA.registerAxisPointerClass("SingleAxisPointer", NP), Gs({
         type: "single"
     });
-    var EN = ZI.extend({
+    var EP = ZI.extend({
         type: "series.themeRiver",
         dependencies: ["singleAxis"],
         nameMap: null,
         init: function (t) {
-            EN.superApply(this, "init", arguments), this.legendDataProvider = function () {
+            EP.superApply(this, "init", arguments), this.legendDataProvider = function () {
                 return this.getRawData()
             }
         },
@@ -37731,16 +37730,16 @@ var zfStorage = function () {
             t && (t === e || e.contains(t)) || (this._viewRoot = e)
         }
     });
-    var RN = {
+    var RP = {
             NONE: "none",
             DESCENDANT: "descendant",
             ANCESTOR: "ancestor",
             SELF: "self"
         },
-        zN = 2,
-        BN = 4,
-        VN = Vm.prototype;
-    VN.updateData = function (t, e, n, r, s) {
+        zP = 2,
+        BP = 4,
+        VP = Vm.prototype;
+    VP.updateData = function (t, e, n, r, s) {
         this.node = e, e.piece = this, r = r || this._seriesModel, s = s || this._ecModel;
         var l = this.childAt(0);
         l.dataIndex = e.dataIndex;
@@ -37770,20 +37769,20 @@ var zfStorage = function () {
             this._initEvents(l, e, r, m)
         }
         this._seriesModel = r || this._seriesModel, this._ecModel = s || this._ecModel
-    }, VN.onEmphasis = function (t) {
+    }, VP.onEmphasis = function (t) {
         var e = this;
         this.node.hostTree.root.eachNode(function (n) {
-            n.piece && (e.node === n ? n.piece.updateData(!1, n, "emphasis") : Gm(n, e.node, t) ? n.piece.childAt(0).trigger("highlight") : t !== RN.NONE && n.piece.childAt(0).trigger("downplay"))
+            n.piece && (e.node === n ? n.piece.updateData(!1, n, "emphasis") : Gm(n, e.node, t) ? n.piece.childAt(0).trigger("highlight") : t !== RP.NONE && n.piece.childAt(0).trigger("downplay"))
         })
-    }, VN.onNormal = function () {
+    }, VP.onNormal = function () {
         this.node.hostTree.root.eachNode(function (t) {
             t.piece && t.piece.updateData(!1, t, "normal")
         })
-    }, VN.onHighlight = function () {
+    }, VP.onHighlight = function () {
         this.updateData(!1, this.node, "highlight")
-    }, VN.onDownplay = function () {
+    }, VP.onDownplay = function () {
         this.updateData(!1, this.node, "downplay")
-    }, VN._updateLabel = function (t, e, n) {
+    }, VP._updateLabel = function (t, e, n) {
         function i(t) {
             var e = a.get(t);
             return null == e ? o.get(t) : e
@@ -37823,7 +37822,7 @@ var zfStorage = function () {
         var w = i("rotate"),
             S = 0;
         "radial" === w ? (S = -p) < -Math.PI / 2 && (S += Math.PI) : "tangential" === w ? (S = Math.PI / 2 - p) > Math.PI / 2 ? S -= Math.PI : S < -Math.PI / 2 && (S += Math.PI) : "number" == typeof w && (S = w * Math.PI / 180), d.attr("rotation", S)
-    }, VN._initEvents = function (t, e, n, i) {
+    }, VP._initEvents = function (t, e, n, i) {
         t.off("mouseover").off("mouseout").off("emphasis").off("normal");
         var r = this,
             o = function () {
@@ -37932,9 +37931,9 @@ var zfStorage = function () {
             }
         }
     });
-    var FN = "sunburstRootToNode";
+    var FP = "sunburstRootToNode";
     Es({
-        type: FN,
+        type: FP,
         update: "updateView"
     }, function (t, e) {
         e.eachComponent({
@@ -37942,16 +37941,16 @@ var zfStorage = function () {
             subType: "sunburst",
             query: t
         }, function (e, n) {
-            var i = ld(t, [FN], e);
+            var i = ld(t, [FP], e);
             if (i) {
                 var r = e.getViewRoot();
                 r && (t.direction = cd(r, i.node) ? "rollUp" : "drillDown"), e.resetViewRoot(i.node)
             }
         })
     });
-    var HN = "sunburstHighlight";
+    var HP = "sunburstHighlight";
     Es({
-        type: HN,
+        type: HP,
         update: "updateView"
     }, function (t, e) {
         e.eachComponent({
@@ -37959,7 +37958,7 @@ var zfStorage = function () {
             subType: "sunburst",
             query: t
         }, function (e, n) {
-            var i = ld(t, [HN], e);
+            var i = ld(t, [HP], e);
             i && (t.highlight = i.node)
         })
     }), Es({
@@ -37974,7 +37973,7 @@ var zfStorage = function () {
             t.unhighlight = !0
         })
     });
-    var GN = Math.PI / 180;
+    var GP = Math.PI / 180;
     Bs(v(uD, "sunburst")), zs(v(function (t, e, n, i) {
         e.eachSeriesByType(t, function (t) {
             var e = t.get("center"),
@@ -37987,8 +37986,8 @@ var zfStorage = function () {
                 l = Br(e[1], o),
                 u = Br(i[0], a / 2),
                 c = Br(i[1], a / 2),
-                h = -t.get("startAngle") * GN,
-                f = t.get("minAngle") * GN,
+                h = -t.get("startAngle") * GP,
+                f = t.get("minAngle") * GP,
                 p = t.getData().tree.root,
                 g = t.getViewRoot(),
                 m = g.depth,
@@ -38055,12 +38054,12 @@ var zfStorage = function () {
             A(g, h)
         })
     }, "sunburst")), Os(v(fD, "sunburst"));
-    var WN = ["itemStyle"],
-        jN = ["emphasis", "itemStyle"],
-        $N = ["label"],
-        UN = ["emphasis", "label"],
-        qN = "e\0\0",
-        ZN = {
+    var WP = ["itemStyle"],
+        jP = ["emphasis", "itemStyle"],
+        $P = ["label"],
+        UP = ["emphasis", "label"],
+        qP = "e\0\0",
+        ZP = {
             cartesian2d: function (t) {
                 var e = t.grid.getRect();
                 return {
@@ -38217,7 +38216,7 @@ var zfStorage = function () {
                 if (n.name === r) return !0;
             return !1
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         var e = t.graphic;
         y(e) ? e[0] && e[0].elements ? t.graphic = [t.graphic[0]] : t.graphic = [{
             elements: e
@@ -38225,7 +38224,7 @@ var zfStorage = function () {
             elements: [e]
         }])
     });
-    var XN = Hs({
+    var XP = Hs({
         type: "graphic",
         defaultOption: {
             elements: [],
@@ -38234,7 +38233,7 @@ var zfStorage = function () {
         _elOptionsToUpdate: null,
         mergeOption: function (t) {
             var e = this.option.elements;
-            this.option.elements = null, XN.superApply(this, "mergeOption", arguments), this.option.elements = e
+            this.option.elements = null, XP.superApply(this, "mergeOption", arguments), this.option.elements = e
         },
         optionUpdated: function (t, e) {
             var n = this.option,
@@ -38242,7 +38241,7 @@ var zfStorage = function () {
                 r = n.elements = e ? [] : n.elements,
                 o = [];
             this._flatten(i, o);
-            var a = Pn(r, o);
+            var a = Nn(r, o);
             On(a);
             var s = this._elOptionsToUpdate = [];
             d(a, function (t, e) {
@@ -38322,7 +38321,7 @@ var zfStorage = function () {
             this._clear()
         }
     });
-    var YN = Hs({
+    var YP = Hs({
         type: "legend.plain",
         dependencies: ["series"],
         layoutMode: {
@@ -38333,7 +38332,7 @@ var zfStorage = function () {
             this.mergeDefaultAndTheme(t, n), t.selected = t.selected || {}
         },
         mergeOption: function (t) {
-            YN.superCall(this, "mergeOption", t)
+            YP.superCall(this, "mergeOption", t)
         },
         optionUpdated: function () {
             this._updateData(this.ecModel);
@@ -38365,7 +38364,7 @@ var zfStorage = function () {
             var i = f(this.get("data") || e, function (t) {
                 return "string" != typeof t && "number" != typeof t || (t = {
                     name: t
-                }), new Nr(t, this, this.ecModel)
+                }), new Pr(t, this, this.ecModel)
             }, this);
             this._data = i
         },
@@ -38416,14 +38415,14 @@ var zfStorage = function () {
         }
     });
     Es("legendToggleSelect", "legendselectchanged", v(xv, "toggleSelected")), Es("legendSelect", "legendselected", v(xv, "select")), Es("legendUnSelect", "legendunselected", v(xv, "unSelect"));
-    var KN = v,
-        JN = d,
-        QN = tw,
-        tP = Gs({
+    var KP = v,
+        JP = d,
+        QP = tw,
+        tN = Gs({
             type: "legend.plain",
             newlineDisabled: !1,
             init: function () {
-                this.group.add(this._contentGroup = new QN), this._backgroundEl, this._isFirstRender = !0
+                this.group.add(this._contentGroup = new QP), this._backgroundEl, this._isFirstRender = !0
             },
             getContentGroup: function () {
                 return this._contentGroup
@@ -38458,7 +38457,7 @@ var zfStorage = function () {
                     s = [];
                 n.eachRawSeries(function (t) {
                     !t.get("legendHoverLink") && s.push(t.id)
-                }), JN(e.getData(), function (l, u) {
+                }), JP(e.getData(), function (l, u) {
                     var c = l.get("name");
                     if (this.newlineDisabled || "" !== c && "\n" !== c) {
                         var h = n.getSeriesByName(c)[0];
@@ -38469,17 +38468,17 @@ var zfStorage = function () {
                                 "function" == typeof f && (f = f(h.getDataParams(0)));
                                 var p = d.getVisual("legendSymbol") || "roundRect",
                                     g = d.getVisual("symbol");
-                                this._createItem(c, u, l, e, p, g, t, f, a).on("click", KN(wv, c, i)).on("mouseover", KN(Sv, h.name, null, i, s)).on("mouseout", KN(Mv, h.name, null, i, s)), o.set(c, !0)
+                                this._createItem(c, u, l, e, p, g, t, f, a).on("click", KP(wv, c, i)).on("mouseover", KP(Sv, h.name, null, i, s)).on("mouseout", KP(Mv, h.name, null, i, s)), o.set(c, !0)
                             } else n.eachRawSeries(function (n) {
                                 if (!o.get(c) && n.legendDataProvider) {
                                     var r = n.legendDataProvider(),
                                         h = r.indexOfName(c);
                                     if (h < 0) return;
                                     var d = r.getItemVisual(h, "color");
-                                    this._createItem(c, u, l, e, "roundRect", null, t, d, a).on("click", KN(wv, c, i)).on("mouseover", KN(Sv, null, c, i, s)).on("mouseout", KN(Mv, null, c, i, s)), o.set(c, !0)
+                                    this._createItem(c, u, l, e, "roundRect", null, t, d, a).on("click", KP(wv, c, i)).on("mouseover", KP(Sv, null, c, i, s)).on("mouseout", KP(Mv, null, c, i, s)), o.set(c, !0)
                                 }
                             }, this)
-                    } else r.add(new QN({
+                    } else r.add(new QP({
                         newline: !0
                     }))
                 }, this)
@@ -38490,7 +38489,7 @@ var zfStorage = function () {
                     d = i.get("inactiveColor"),
                     f = i.get("symbolKeepAspect"),
                     p = i.isSelected(t),
-                    g = new QN,
+                    g = new QP,
                     m = n.getModel("textStyle"),
                     v = n.get("icon"),
                     y = n.getModel("tooltip"),
@@ -38555,7 +38554,7 @@ var zfStorage = function () {
     }), lI.registerSubTypeDefaulter("legend", function () {
         return "plain"
     });
-    var eP = YN.extend({
+    var eN = YP.extend({
             type: "legend.scroll",
             setScrollDataIndex: function (t) {
                 this.option.scrollDataIndex = t
@@ -38580,10 +38579,10 @@ var zfStorage = function () {
             },
             init: function (t, e, n, i) {
                 var r = go(t);
-                eP.superCall(this, "init", t, e, n, i), Iv(this, t, r)
+                eN.superCall(this, "init", t, e, n, i), Iv(this, t, r)
             },
             mergeOption: function (t, e) {
-                eP.superCall(this, "mergeOption", t, e), Iv(this, this.option, t)
+                eN.superCall(this, "mergeOption", t, e), Iv(this, this.option, t)
             },
             getOrient: function () {
                 return "vertical" === this.get("orient") ? {
@@ -38595,17 +38594,17 @@ var zfStorage = function () {
                 }
             }
         }),
-        nP = tw,
-        iP = ["width", "height"],
-        rP = ["x", "y"],
-        oP = tP.extend({
+        nN = tw,
+        iN = ["width", "height"],
+        rN = ["x", "y"],
+        oN = tN.extend({
             type: "legend.scroll",
             newlineDisabled: !0,
             init: function () {
-                oP.superCall(this, "init"), this._currentIndex = 0, this.group.add(this._containerGroup = new nP), this._containerGroup.add(this.getContentGroup()), this.group.add(this._controllerGroup = new nP), this._showController
+                oN.superCall(this, "init"), this._currentIndex = 0, this.group.add(this._containerGroup = new nN), this._containerGroup.add(this.getContentGroup()), this.group.add(this._controllerGroup = new nN), this._showController
             },
             resetInner: function () {
-                oP.superCall(this, "resetInner"), this._controllerGroup.removeAll(), this._containerGroup.removeClipPath(), this._containerGroup.__rectSize = null
+                oN.superCall(this, "resetInner"), this._controllerGroup.removeAll(), this._containerGroup.removeClipPath(), this._containerGroup.__rectSize = null
             },
             renderInner: function (t, e, n, i) {
                 function r(t, n) {
@@ -38621,7 +38620,7 @@ var zfStorage = function () {
                     l.name = t, a.add(l)
                 }
                 var o = this;
-                oP.superCall(this, "renderInner", t, e, n, i);
+                oN.superCall(this, "renderInner", t, e, n, i);
                 var a = this._controllerGroup,
                     s = e.get("pageIconSize", !0);
                 y(s) || (s = [s, s]), r("pagePrev", 0);
@@ -38642,9 +38641,9 @@ var zfStorage = function () {
                     o = this._containerGroup,
                     a = this._controllerGroup,
                     s = t.getOrient().index,
-                    l = iP[s],
-                    u = iP[1 - s],
-                    c = rP[1 - s];
+                    l = iN[s],
+                    u = iN[1 - s],
+                    c = rN[1 - s];
                 oI(t.get("orient"), r, t.get("itemGap"), s ? n.width : null, s ? null : n.height), oI("horizontal", a, t.get("pageButtonItemGap", !0));
                 var h = r.getBoundingRect(),
                     d = a.getBoundingRect(),
@@ -38723,8 +38722,8 @@ var zfStorage = function () {
                     r = this.getContentGroup(),
                     o = this._containerGroup.__rectSize,
                     a = t.getOrient().index,
-                    s = iP[a],
-                    l = rP[a],
+                    s = iN[a],
+                    l = rN[a],
                     u = this._findTargetItemIndex(i),
                     c = r.children(),
                     h = c[u],
@@ -38803,9 +38802,9 @@ var zfStorage = function () {
             }
         }
     });
-    var aP = d,
-        sP = to,
-        lP = ["", "-webkit-", "-moz-", "-o-"];
+    var aN = d,
+        sN = to,
+        lN = ["", "-webkit-", "-moz-", "-o-"];
     Dv.prototype = {
         constructor: Dv,
         _enterable: !0,
@@ -38924,10 +38923,10 @@ var zfStorage = function () {
             return this.getSize()
         }
     };
-    var uP = m,
-        cP = d,
-        hP = Br,
-        dP = new yM({
+    var uN = m,
+        cN = d,
+        hN = Br,
+        dN = new yM({
             shape: {
                 x: -1,
                 y: -1,
@@ -38954,7 +38953,7 @@ var zfStorage = function () {
         },
         _initGlobalListener: function () {
             var t = this._tooltipModel.get("triggerOn");
-            um("itemTooltip", this._api, uP(function (e, n, i) {
+            um("itemTooltip", this._api, uN(function (e, n, i) {
                 "none" !== t && (t.indexOf(e) >= 0 ? this._tryShow(n, i) : "leave" === e && this._hide(i))
             }, this))
         },
@@ -38974,11 +38973,11 @@ var zfStorage = function () {
         },
         manuallyShowTip: function (t, e, n, i) {
             if (i.from !== this.uid && !$_.node) {
-                var r = Nv(i, n);
+                var r = Pv(i, n);
                 this._ticket = "";
                 var o = i.dataByCoordSys;
                 if (i.tooltip && null != i.x && null != i.y) {
-                    var a = dP;
+                    var a = dN;
                     a.position = [i.x, i.y], a.update(), a.tooltip = i.tooltip, this._tryShow({
                         offsetX: i.x,
                         offsetY: i.y,
@@ -38994,7 +38993,7 @@ var zfStorage = function () {
                 }, r);
                 else if (null != i.seriesIndex) {
                     if (this._manuallyAxisShowTip(t, e, n, i)) return;
-                    var s = xN(i, e),
+                    var s = xP(i, e),
                         l = s.point[0],
                         u = s.point[1];
                     null != l && null != u && this._tryShow({
@@ -39019,7 +39018,7 @@ var zfStorage = function () {
         },
         manuallyHideTip: function (t, e, n, i) {
             var r = this._tooltipContent;
-            !this._alwaysShowContent && this._tooltipModel && r.hideLater(this._tooltipModel.get("hideDelay")), this._lastX = this._lastY = null, i.from !== this.uid && this._hide(Nv(i, n))
+            !this._alwaysShowContent && this._tooltipModel && r.hideLater(this._tooltipModel.get("hideDelay")), this._lastX = this._lastY = null, i.from !== this.uid && this._hide(Pv(i, n))
         },
         _manuallyAxisShowTip: function (t, e, n, i) {
             var r = i.seriesIndex,
@@ -39057,8 +39056,8 @@ var zfStorage = function () {
                 u = this._renderMode,
                 c = this._newLine,
                 h = {};
-            cP(t, function (t) {
-                cP(t.dataByAxis, function (t) {
+            cN(t, function (t) {
+                cN(t.dataByAxis, function (t) {
                     var e = n.getComponent(t.axisDim + "Axis", t.axisIndex),
                         r = t.value,
                         o = [];
@@ -39124,7 +39123,7 @@ var zfStorage = function () {
                     formatter: r
                 }
             }
-            var o = new Nr(i, this._tooltipModel, this._ecModel),
+            var o = new Pr(i, this._tooltipModel, this._ecModel),
                 a = o.get("content"),
                 s = Math.random();
             this._showOrMove(o, function () {
@@ -39142,7 +39141,7 @@ var zfStorage = function () {
                 var h = e;
                 if (c && "string" == typeof c) h = no(c, n, !0);
                 else if ("function" == typeof c) {
-                    var d = uP(function (e, i) {
+                    var d = uN(function (e, i) {
                         e === this._ticket && (u.setContent(i, l, t), this._updatePosition(t, a, r, o, u, n, s))
                     }, this);
                     this._ticket = i, h = c(n, i, d)
@@ -39161,7 +39160,7 @@ var zfStorage = function () {
             if (a && d.applyTransform(a.transform), "function" == typeof e && (e = e([n, i], o, r.el, d, {
                     viewSize: [s, l],
                     contentSize: u.slice()
-                })), y(e)) n = hP(e[0], s), i = hP(e[1], l);
+                })), y(e)) n = hN(e[0], s), i = hN(e[1], l);
             else if (b(e)) {
                 e.width = u[0], e.height = u[1];
                 var f = co(e, {
@@ -39169,7 +39168,7 @@ var zfStorage = function () {
                     height: l
                 });
                 n = f.x, i = f.y, c = null, h = null
-            } else "string" == typeof e && a ? (n = (p = Ev(e, d, u))[0], i = p[1]) : (n = (p = Pv(n, i, r, s, l, c ? null : 20, h ? null : 20))[0], i = p[1]);
+            } else "string" == typeof e && a ? (n = (p = Ev(e, d, u))[0], i = p[1]) : (n = (p = Nv(n, i, r, s, l, c ? null : 20, h ? null : 20))[0], i = p[1]);
             if (c && (n -= Rv(c) ? u[0] / 2 : "right" === c ? u[0] : 0), h && (i -= Rv(h) ? u[1] / 2 : "bottom" === h ? u[1] : 0), t.get("confine")) {
                 var p = Ov(n, i, r, s, l);
                 n = p[0], i = p[1]
@@ -39179,14 +39178,14 @@ var zfStorage = function () {
         _updateContentNotChangedOnAxis: function (t) {
             var e = this._lastDataByCoordSys,
                 n = !!e && e.length === t.length;
-            return n && cP(e, function (e, i) {
+            return n && cN(e, function (e, i) {
                 var r = e.dataByAxis || {},
                     o = (t[i] || {}).dataByAxis || [];
-                (n &= r.length === o.length) && cP(r, function (t, e) {
+                (n &= r.length === o.length) && cN(r, function (t, e) {
                     var i = o[e] || {},
                         r = t.seriesDataIndices || [],
                         a = i.seriesDataIndices || [];
-                    (n &= t.value === i.value && t.axisType === i.axisType && t.axisId === i.axisId && r.length === a.length) && cP(r, function (t, e) {
+                    (n &= t.value === i.value && t.axisType === i.axisType && t.axisId === i.axisId && r.length === a.length) && cN(r, function (t, e) {
                         var i = a[e];
                         n &= t.seriesIndex === i.seriesIndex && t.dataIndex === i.dataIndex
                     })
@@ -39218,7 +39217,7 @@ var zfStorage = function () {
         dataToRadius: oA.prototype.dataToCoord,
         radiusToData: oA.prototype.coordToData
     }, u(Fv, oA);
-    var fP = Vn();
+    var fN = Vn();
     Hv.prototype = {
         constructor: Hv,
         pointToData: function (t, e) {
@@ -39240,19 +39239,19 @@ var zfStorage = function () {
                 u = Math.max(l.height, 7) / s;
             isNaN(u) && (u = 1 / 0);
             var c = Math.max(0, Math.floor(u)),
-                h = fP(t.model),
+                h = fN(t.model),
                 d = h.lastAutoInterval,
                 f = h.lastTickCount;
             return null != d && null != f && Math.abs(d - c) <= 1 && Math.abs(f - r) <= 1 && d > c ? c = d : (h.lastTickCount = r, h.lastAutoInterval = c), c
         }
     }, u(Hv, oA);
-    var pP = function (t) {
+    var pN = function (t) {
         this.name = t || "", this.cx = 0, this.cy = 0, this._radiusAxis = new Fv, this._angleAxis = new Hv, this._radiusAxis.polar = this._angleAxis.polar = this
     };
-    pP.prototype = {
+    pN.prototype = {
         type: "polar",
         axisPointerEnabled: !0,
-        constructor: pP,
+        constructor: pN,
         dimensions: ["radius", "angle"],
         model: null,
         containPoint: function (t) {
@@ -39320,7 +39319,7 @@ var zfStorage = function () {
             return [Math.cos(n) * e + this.cx, -Math.sin(n) * e + this.cy]
         }
     };
-    var gP = lI.extend({
+    var gN = lI.extend({
         type: "polarAxis",
         axis: null,
         getCoordSysModel: function () {
@@ -39331,8 +39330,8 @@ var zfStorage = function () {
             })[0]
         }
     });
-    i(gP.prototype, $C);
-    var mP = {
+    i(gN.prototype, $C);
+    var mN = {
         angle: {
             startAngle: 90,
             clockwise: !0,
@@ -39345,7 +39344,7 @@ var zfStorage = function () {
             splitNumber: 5
         }
     };
-    EA("angle", gP, Gv, mP.angle), EA("radius", gP, Gv, mP.radius), Hs({
+    EA("angle", gN, Gv, mN.angle), EA("radius", gN, Gv, mN.radius), Hs({
         type: "polar",
         dependencies: ["polarAxis", "angleAxis"],
         coordinateSystem: null,
@@ -39362,12 +39361,12 @@ var zfStorage = function () {
             radius: "80%"
         }
     });
-    var vP = {
-        dimensions: pP.prototype.dimensions,
+    var vN = {
+        dimensions: pN.prototype.dimensions,
         create: function (t, e) {
             var n = [];
             return t.eachComponent("polar", function (t, i) {
-                var r = new pP(i);
+                var r = new pN(i);
                 r.update = jv;
                 var o = r.getRadiusAxis(),
                     a = r.getAngleAxis(),
@@ -39386,8 +39385,8 @@ var zfStorage = function () {
             }), n
         }
     };
-    Ho.register("polar", vP);
-    var yP = ["axisLine", "axisLabel", "axisTick", "splitLine", "splitArea"];
+    Ho.register("polar", vN);
+    var yN = ["axisLine", "axisLabel", "axisTick", "splitLine", "splitArea"];
     UA.extend({
         type: "angleAxis",
         axisPointerClass: "PolarAxisPointer",
@@ -39400,7 +39399,7 @@ var zfStorage = function () {
                     s = f(i.getViewLabels(), function (t) {
                         return (t = n(t)).coord = i.dataToCoord(t.tickValue), t
                     });
-                Zv(s), Zv(a), d(yP, function (e) {
+                Zv(s), Zv(a), d(yN, function (e) {
                     !t.get(e + ".show") || i.scale.isBlank() && "axisLine" !== e || this["_" + e](t, r, a, o, s)
                 }, this)
             }
@@ -39447,7 +39446,7 @@ var zfStorage = function () {
                     f = e.cy,
                     p = Math.abs(h[0] - d) / c < .3 ? "center" : h[0] > d ? "left" : "right",
                     g = Math.abs(h[1] - f) / c < .3 ? "middle" : h[1] > f ? "top" : "bottom";
-                o && o[u] && o[u].textStyle && (l = new Nr(o[u].textStyle, a, a.ecModel));
+                o && o[u] && o[u].textStyle && (l = new Pr(o[u].textStyle, a, a.ecModel));
                 var m = new aM({
                     silent: !0
                 });
@@ -39510,8 +39509,8 @@ var zfStorage = function () {
             }
         }
     });
-    var xP = ["axisLine", "axisTickLabel", "axisName"],
-        _P = ["splitLine", "splitArea"];
+    var xN = ["axisLine", "axisTickLabel", "axisName"],
+        _N = ["splitLine", "splitArea"];
     UA.extend({
         type: "radiusAxis",
         axisPointerClass: "PolarAxisPointer",
@@ -39525,7 +39524,7 @@ var zfStorage = function () {
                     s = n.getExtent(),
                     l = Xv(i, t, a),
                     u = new HA(t, l);
-                d(xP, u.add, u), this.group.add(u.getGroup()), d(_P, function (e) {
+                d(xN, u.add, u), this.group.add(u.getGroup()), d(_N, function (e) {
                     t.get(e + ".show") && !n.scale.isBlank() && this["_" + e](t, i, a, s, o)
                 }, this)
             }
@@ -39583,7 +39582,7 @@ var zfStorage = function () {
             }
         }
     });
-    var bP = mm.extend({
+    var bN = mm.extend({
             makeElOption: function (t, e, n, i, r) {
                 var o = n.axis;
                 "angle" === o.dim && (this.animationThreshold = Math.PI / 18);
@@ -39593,13 +39592,13 @@ var zfStorage = function () {
                 var u = i.get("type");
                 if (u && "none" !== u) {
                     var c = wm(i),
-                        h = wP[u](o, s, a, l, c);
+                        h = wN[u](o, s, a, l, c);
                     h.style = c, t.graphicKey = h.type, t.pointer = h
                 }
                 Sm(t, n, i, r, Yv(e, n, 0, s, i.get("label.margin")))
             }
         }),
-        wP = {
+        wN = {
             line: function (t, e, n, i, r) {
                 return "angle" === t.dim ? {
                     type: "Line",
@@ -39625,7 +39624,7 @@ var zfStorage = function () {
                 }
             }
         };
-    UA.registerAxisPointerClass("PolarAxisPointer", bP), zs(v(function (t, e, n) {
+    UA.registerAxisPointerClass("PolarAxisPointer", bN), zs(v(function (t, e, n) {
         n.getWidth(), n.getHeight();
         var i = {},
             r = Vv(g(e.getSeriesByType(t), function (t) {
@@ -39663,8 +39662,8 @@ var zfStorage = function () {
                             Math.abs(D) < f && (D = (D < 0 ? -1 : 1) * f), I = M, T = M + D, A = (C = k - l) - u, v && (i[a][w][S] = T)
                         } else {
                             var L = c.dataToAngle(b, !0) - y,
-                                N = o.dataToRadius(w);
-                            Math.abs(L) < p && (L = (L < 0 ? -1 : 1) * p), T = (I = N + l) + u, C = M, A = M + L, v && (i[a][w][S] = A)
+                                P = o.dataToRadius(w);
+                            Math.abs(L) < p && (L = (L < 0 ? -1 : 1) * p), T = (I = P + l) + u, C = M, A = M + L, v && (i[a][w][S] = A)
                         }
                         e.setItemLayout(x, {
                             cx: h,
@@ -39691,7 +39690,7 @@ var zfStorage = function () {
             var t = this.option,
                 e = this;
             t.regions = FD.getFilledRegions(t.regions, t.map, t.nameMap), this._optionModelMap = p(t.regions || [], function (t, n) {
-                return n.name && t.set(n.name, new Nr(n, e)), t
+                return n.name && t.set(n.name, new Pr(n, e)), t
             }, R()), this.updateSelectedMap(t.regions)
         },
         defaultOption: {
@@ -39728,7 +39727,7 @@ var zfStorage = function () {
             regions: []
         },
         getRegionModel: function (t) {
-            return this._optionModelMap.get(t) || new Nr(null, this, this.ecModel)
+            return this._optionModelMap.get(t) || new Pr(null, this, this.ecModel)
         },
         getFormattedLabel: function (t, e) {
             var n = this.getRegionModel(t).get("label." + e + ".formatter"),
@@ -39768,9 +39767,9 @@ var zfStorage = function () {
         type: "geoUnSelect",
         event: "geounselected"
     });
-    var SP = ["rect", "polygon", "keep", "clear"],
-        MP = d,
-        IP = {
+    var SN = ["rect", "polygon", "keep", "clear"],
+        MN = d,
+        IN = {
             lineX: ry(0),
             lineY: ry(1),
             rect: {
@@ -39797,42 +39796,42 @@ var zfStorage = function () {
                 }
             }
         },
-        TP = d,
-        CP = l,
-        AP = v,
-        DP = ["dataToPoint", "pointToData"],
-        kP = ["grid", "xAxis", "yAxis", "geo", "graph", "polar", "radiusAxis", "angleAxis", "bmap"],
-        LP = cy.prototype;
-    LP.setOutputRanges = function (t, e) {
+        TN = d,
+        CN = l,
+        AN = v,
+        DN = ["dataToPoint", "pointToData"],
+        kN = ["grid", "xAxis", "yAxis", "geo", "graph", "polar", "radiusAxis", "angleAxis", "bmap"],
+        LN = cy.prototype;
+    LN.setOutputRanges = function (t, e) {
         this.matchOutputRanges(t, e, function (t, e, n) {
             if ((t.coordRanges || (t.coordRanges = [])).push(e), !t.coordRange) {
                 t.coordRange = e;
-                var i = EP[t.brushType](0, n, e);
+                var i = EN[t.brushType](0, n, e);
                 t.__rangeOffset = {
-                    offset: RP[t.brushType](i.values, t.range, [1, 1]),
+                    offset: RN[t.brushType](i.values, t.range, [1, 1]),
                     xyMinMax: i.xyMinMax
                 }
             }
         })
-    }, LP.matchOutputRanges = function (t, e, n) {
-        TP(t, function (t) {
+    }, LN.matchOutputRanges = function (t, e, n) {
+        TN(t, function (t) {
             var i = this.findTargetInfo(t, e);
             i && !0 !== i && d(i.coordSyses, function (i) {
-                var r = EP[t.brushType](1, i, t.range);
+                var r = EN[t.brushType](1, i, t.range);
                 n(t, r.values, i, e)
             })
         }, this)
-    }, LP.setInputRanges = function (t, e) {
-        TP(t, function (t) {
+    }, LN.setInputRanges = function (t, e) {
+        TN(t, function (t) {
             var n = this.findTargetInfo(t, e);
             if (t.range = t.range || [], n && !0 !== n) {
                 t.panelId = n.panelId;
-                var i = EP[t.brushType](0, n.coordSys, t.coordRange),
+                var i = EN[t.brushType](0, n.coordSys, t.coordRange),
                     r = t.__rangeOffset;
-                t.range = r ? RP[t.brushType](i.values, r.offset, gy(i.xyMinMax, r.xyMinMax)) : i.values
+                t.range = r ? RN[t.brushType](i.values, r.offset, gy(i.xyMinMax, r.xyMinMax)) : i.values
             }
         }, this)
-    }, LP.makePanelOpts = function (t, e) {
+    }, LN.makePanelOpts = function (t, e) {
         return f(this._targetInfoList, function (n) {
             var i = n.getPanelRect();
             return {
@@ -39843,22 +39842,22 @@ var zfStorage = function () {
                 getLinearBrushOtherExtent: xp(i)
             }
         })
-    }, LP.controlSeries = function (t, e, n) {
+    }, LN.controlSeries = function (t, e, n) {
         var i = this.findTargetInfo(t, n);
-        return !0 === i || i && CP(i.coordSyses, e.coordinateSystem) >= 0
-    }, LP.findTargetInfo = function (t, e) {
+        return !0 === i || i && CN(i.coordSyses, e.coordinateSystem) >= 0
+    }, LN.findTargetInfo = function (t, e) {
         for (var n = this._targetInfoList, i = dy(e, t), r = 0; r < n.length; r++) {
             var o = n[r],
                 a = t.panelId;
             if (a) {
                 if (o.panelId === a) return o
             } else
-                for (r = 0; r < PP.length; r++)
-                    if (PP[r](i, o)) return o
+                for (r = 0; r < NN.length; r++)
+                    if (NN[r](i, o)) return o
         }
         return !0
     };
-    var NP = {
+    var PN = {
             grid: function (t, e) {
                 var n = t.xAxisModels,
                     i = t.yAxisModels,
@@ -39866,33 +39865,33 @@ var zfStorage = function () {
                     o = R(),
                     a = {},
                     s = {};
-                (n || i || r) && (TP(n, function (t) {
+                (n || i || r) && (TN(n, function (t) {
                     var e = t.axis.grid.model;
                     o.set(e.id, e), a[e.id] = !0
-                }), TP(i, function (t) {
+                }), TN(i, function (t) {
                     var e = t.axis.grid.model;
                     o.set(e.id, e), s[e.id] = !0
-                }), TP(r, function (t) {
+                }), TN(r, function (t) {
                     o.set(t.id, t), a[t.id] = !0, s[t.id] = !0
                 }), o.each(function (t) {
                     var r = t.coordinateSystem,
                         o = [];
-                    TP(r.getCartesians(), function (t, e) {
-                        (CP(n, t.getAxis("x").model) >= 0 || CP(i, t.getAxis("y").model) >= 0) && o.push(t)
+                    TN(r.getCartesians(), function (t, e) {
+                        (CN(n, t.getAxis("x").model) >= 0 || CN(i, t.getAxis("y").model) >= 0) && o.push(t)
                     }), e.push({
                         panelId: "grid--" + t.id,
                         gridModel: t,
                         coordSysModel: t,
                         coordSys: o[0],
                         coordSyses: o,
-                        getPanelRect: OP.grid,
+                        getPanelRect: ON.grid,
                         xAxisDeclared: a[t.id],
                         yAxisDeclared: s[t.id]
                     })
                 }))
             },
             geo: function (t, e) {
-                TP(t.geoModels, function (t) {
+                TN(t.geoModels, function (t) {
                     var n = t.coordinateSystem;
                     e.push({
                         panelId: "geo--" + t.id,
@@ -39900,12 +39899,12 @@ var zfStorage = function () {
                         coordSysModel: t,
                         coordSys: n,
                         coordSyses: [n],
-                        getPanelRect: OP.geo
+                        getPanelRect: ON.geo
                     })
                 })
             }
         },
-        PP = [function (t, e) {
+        NN = [function (t, e) {
             var n = t.xAxisModel,
                 i = t.yAxisModel,
                 r = t.gridModel;
@@ -39914,7 +39913,7 @@ var zfStorage = function () {
             var n = t.geoModel;
             return n && n === e.geoModel
         }],
-        OP = {
+        ON = {
             grid: function () {
                 return this.coordSys.grid.getRect().clone()
             },
@@ -39924,12 +39923,12 @@ var zfStorage = function () {
                 return e.applyTransform(Tr(t)), e
             }
         },
-        EP = {
-            lineX: AP(fy, 0),
-            lineY: AP(fy, 1),
+        EN = {
+            lineX: AN(fy, 0),
+            lineY: AN(fy, 1),
             rect: function (t, e, n) {
-                var i = e[DP[t]]([n[0][0], n[1][0]]),
-                    r = e[DP[t]]([n[0][1], n[1][1]]),
+                var i = e[DN[t]]([n[0][0], n[1][0]]),
+                    r = e[DN[t]]([n[0][1], n[1][1]]),
                     o = [hy([i[0], r[0]]), hy([i[1], r[1]])];
                 return {
                     values: o,
@@ -39943,16 +39942,16 @@ var zfStorage = function () {
                 ];
                 return {
                     values: f(n, function (n) {
-                        var r = e[DP[t]](n);
+                        var r = e[DN[t]](n);
                         return i[0][0] = Math.min(i[0][0], r[0]), i[1][0] = Math.min(i[1][0], r[1]), i[0][1] = Math.max(i[0][1], r[0]), i[1][1] = Math.max(i[1][1], r[1]), r
                     }),
                     xyMinMax: i
                 }
             }
         },
-        RP = {
-            lineX: AP(py, 0),
-            lineY: AP(py, 1),
+        RN = {
+            lineX: AN(py, 0),
+            lineY: AN(py, 1),
             rect: function (t, e, n) {
                 return [
                     [t[0][0] - n[0] * e[0][0], t[0][1] - n[0] * e[0][1]],
@@ -39965,11 +39964,11 @@ var zfStorage = function () {
                 })
             }
         },
-        zP = ["inBrush", "outOfBrush"],
-        BP = "__ecBrushSelect",
-        VP = "__ecInBrushSelectEvent",
-        FP = VT.VISUAL.BRUSH;
-    zs(FP, function (t, e, n) {
+        zN = ["inBrush", "outOfBrush"],
+        BN = "__ecBrushSelect",
+        VN = "__ecInBrushSelectEvent",
+        FN = VT.VISUAL.BRUSH;
+    zs(FN, function (t, e, n) {
         t.eachComponent({
             mainType: "brush"
         }, function (e) {
@@ -39977,7 +39976,7 @@ var zfStorage = function () {
                 brushType: !1
             }), (e.brushTargetManager = new cy(e.option, t)).setInputRanges(e.areas, t)
         })
-    }), Bs(FP, function (t, e, i) {
+    }), Bs(FN, function (t, e, i) {
         var r, o, s = [];
         t.eachComponent({
             mainType: "brush"
@@ -40025,10 +40024,10 @@ var zfStorage = function () {
             i || (r = g.throttleType, o = g.throttleDelay);
             var w = f(e.areas, function (t) {
                     return wy(a({
-                        boundingRect: HP[t.brushType](t)
+                        boundingRect: HN[t.brushType](t)
                     }, t))
                 }),
-                S = ty(e.option, zP, function (t) {
+                S = ty(e.option, zN, function (t) {
                     t.mappingMethod = "fixed"
                 });
             y(m) && d(m, function (t) {
@@ -40052,11 +40051,11 @@ var zfStorage = function () {
                     } : function (t) {
                         return xy(i, r, o, t) ? (n.dataIndex.push(o.getRawIndex(t)), "inBrush") : "outOfBrush"
                     };
-                (l(e) ? b : u(r)) && ny(zP, S, o, a)
+                (l(e) ? b : u(r)) && ny(zN, S, o, a)
             })
         }), vy(e, r, o, s, i)
     });
-    var HP = {
+    var HN = {
             lineX: B,
             lineY: B,
             rect: function (t) {
@@ -40074,7 +40073,7 @@ var zfStorage = function () {
                 return e && Sy(e)
             }
         },
-        GP = ["#ddd"];
+        GN = ["#ddd"];
     Hs({
         type: "brush",
         dependencies: ["geo", "grid", "xAxis", "yAxis", "parallel", "series"],
@@ -40107,7 +40106,7 @@ var zfStorage = function () {
             !e && ey(n, t, ["inBrush", "outOfBrush"]);
             var i = n.inBrush = n.inBrush || {};
             n.outOfBrush = n.outOfBrush || {
-                color: GP
+                color: GN
             }, i.hasOwnProperty("liftZ") || (i.liftZ = 5)
         },
         setAreas: function (t) {
@@ -40155,8 +40154,8 @@ var zfStorage = function () {
         event: "brushSelected",
         update: "none"
     }, function () {});
-    var WP = {},
-        jP = aT.toolbox.brush;
+    var WN = {},
+        jN = aT.toolbox.brush;
     Ay.defaultOption = {
         show: !0,
         type: ["rect", "polygon", "lineX", "lineY", "keep", "clear"],
@@ -40168,10 +40167,10 @@ var zfStorage = function () {
             keep: "M4,10.5V1h10.3 M20.7,1h6.1 M33,1h6.1 M55.4,10.5V1H45.2 M4,17.3v6.6 M55.6,17.3v6.6 M4,30.5V40h10.3 M20.7,40 h6.1 M33,40h6.1 M55.4,30.5V40H45.2 M21,18.9h62.9v48.6H21V18.9z",
             clear: "M22,14.7l30.9,31 M52.9,14.7L22,45.7 M4.7,16.8V4.2h13.1 M26,4.2h7.8 M41.6,4.2h7.8 M70.3,16.8V4.2H57.2 M4.7,25.9v8.6 M70.3,25.9v8.6 M4.7,43.2v12.6h13.1 M26,55.8h7.8 M41.6,55.8h7.8 M70.3,43.2v12.6H57.2"
         },
-        title: n(jP.title)
+        title: n(jN.title)
     };
-    var $P = Ay.prototype;
-    $P.render = $P.updateView = function (t, e, n) {
+    var $N = Ay.prototype;
+    $N.render = $N.updateView = function (t, e, n) {
         var i, r, o;
         e.eachComponent({
             mainType: "brush"
@@ -40180,14 +40179,14 @@ var zfStorage = function () {
         }), this._brushType = i, this._brushMode = r, d(t.get("type", !0), function (e) {
             t.setIconStatus(e, ("keep" === e ? "multiple" === r : "clear" === e ? o : e === i) ? "emphasis" : "normal")
         })
-    }, $P.getIcons = function () {
+    }, $N.getIcons = function () {
         var t = this.model,
             e = t.get("icon", !0),
             n = {};
         return d(t.get("type", !0), function (t) {
             e[t] && (n[t] = e[t])
         }), n
-    }, $P.onclick = function (t, e, n) {
+    }, $N.onclick = function (t, e, n) {
         var i = this._brushType,
             r = this._brushMode;
         "clear" === n ? (e.dispatchAction({
@@ -40205,7 +40204,7 @@ var zfStorage = function () {
                 brushMode: "keep" === n ? "multiple" === r ? "single" : "multiple" : r
             }
         })
-    }, Ty("brush", Ay), Ps(function (t, e) {
+    }, Ty("brush", Ay), Ns(function (t, e) {
         var n = t && t.brush;
         if (y(n) || (n = n ? [n] : []), n.length) {
             var i = [];
@@ -40220,7 +40219,7 @@ var zfStorage = function () {
             var o = r.feature || (r.feature = {}),
                 a = o.brush || (o.brush = {}),
                 s = a.type || (a.type = []);
-            s.push.apply(s, i), Jv(s), e && !s.length && s.push.apply(s, SP)
+            s.push.apply(s, i), Jv(s), e && !s.length && s.push.apply(s, SN)
         }
     }), Dy.prototype = {
         constructor: Dy,
@@ -40385,7 +40384,7 @@ var zfStorage = function () {
             "calendar" === t.get("coordinateSystem") && (t.coordinateSystem = n[t.get("calendarIndex") || 0])
         }), n
     }, Ho.register("calendar", Dy);
-    var UP = lI.extend({
+    var UN = lI.extend({
             type: "calendar",
             coordinateSystem: null,
             defaultOption: {
@@ -40438,17 +40437,17 @@ var zfStorage = function () {
             },
             init: function (t, e, n, i) {
                 var r = go(t);
-                UP.superApply(this, "init", arguments), Ly(t, r)
+                UN.superApply(this, "init", arguments), Ly(t, r)
             },
             mergeOption: function (t, e) {
-                UP.superApply(this, "mergeOption", arguments), Ly(this.option, t)
+                UN.superApply(this, "mergeOption", arguments), Ly(this.option, t)
             }
         }),
-        qP = {
+        qN = {
             EN: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             CN: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
         },
-        ZP = {
+        ZN = {
             EN: ["S", "M", "T", "W", "T", "F", "S"],
             CN: ["日", "一", "二", "三", "四", "五", "六"]
         };
@@ -40595,7 +40594,7 @@ var zfStorage = function () {
                     s = i.get("position"),
                     l = i.get("align"),
                     u = [this._tlpoints, this._blpoints];
-                _(r) && (r = qP[r.toUpperCase()] || []);
+                _(r) && (r = qN[r.toUpperCase()] || []);
                 var c = "start" === s ? 0 : 1,
                     h = "horizontal" === e ? 0 : 1;
                 a = "start" === s ? -a : a;
@@ -40646,7 +40645,7 @@ var zfStorage = function () {
                     l = r.get("nameMap"),
                     u = r.get("margin"),
                     c = a.getFirstDayOfWeek();
-                _(l) && (l = ZP[l.toUpperCase()] || []);
+                _(l) && (l = ZN[l.toUpperCase()] || []);
                 var h = a.getNextNDay(e.end.time, 7 - e.lweek).time,
                     d = [a.getCellWidth(), a.getCellHeight()];
                 u = Br(u, d["horizontal" === n ? 0 : 1]), "start" === s && (h = a.getNextNDay(e.start.time, -(7 + e.fweek)).time, u = -u);
@@ -40769,8 +40768,8 @@ var zfStorage = function () {
     }), lI.registerSubTypeDefaulter("dataZoom", function () {
         return "slider"
     });
-    var XP = ["cartesian2d", "polar", "singleAxis"],
-        YP = function (t, e) {
+    var XN = ["cartesian2d", "polar", "singleAxis"],
+        YN = function (t, e) {
             var n = f(t = t.slice(), so),
                 i = f(e = (e || []).slice(), so);
             return function (r, o) {
@@ -40783,13 +40782,13 @@ var zfStorage = function () {
                 })
             }
         }(["x", "y", "z", "radius", "angle", "single"], ["axisIndex", "axis", "index", "id"]),
-        KP = d,
-        JP = Fr,
-        QP = function (t, e, n, i) {
+        KN = d,
+        JN = Fr,
+        QN = function (t, e, n, i) {
             this._dimName = t, this._axisIndex = e, this._valueWindow, this._percentWindow, this._dataExtent, this._minMaxSpan, this.ecModel = i, this._dataZoomModel = n
         };
-    QP.prototype = {
-        constructor: QP,
+    QN.prototype = {
+        constructor: QN,
         hostedBy: function (t) {
             return this._dataZoomModel === t
         },
@@ -40803,7 +40802,7 @@ var zfStorage = function () {
             var t = [],
                 e = this.ecModel;
             return e.eachSeries(function (n) {
-                if (Ny(n.get("coordinateSystem"))) {
+                if (Py(n.get("coordinateSystem"))) {
                     var i = this._dimName,
                         r = e.queryComponents({
                             mainType: i + "Axis",
@@ -40837,15 +40836,15 @@ var zfStorage = function () {
                 r = [0, 100],
                 o = [t.start, t.end],
                 a = [];
-            return KP(["startValue", "endValue"], function (e) {
+            return KN(["startValue", "endValue"], function (e) {
                 a.push(null != t[e] ? n.parse(t[e]) : null)
-            }), KP([0, 1], function (t) {
+            }), KN([0, 1], function (t) {
                 var s = a[t],
                     l = o[t];
                 "percent" === i[t] ? (null == l && (l = r[t]), s = n.parse(zr(l, r, e, !0))) : l = zr(s, e, r, !0), a[t] = s, o[t] = l
             }), {
-                valueWindow: JP(a),
-                percentWindow: JP(o)
+                valueWindow: JN(a),
+                percentWindow: JN(o)
             }
         },
         reset: function (t) {
@@ -40868,7 +40867,7 @@ var zfStorage = function () {
                     r = this.getTargetSeriesModels(),
                     o = t.get("filterMode"),
                     a = this._valueWindow;
-                "none" !== o && KP(r, function (t) {
+                "none" !== o && KN(r, function (t) {
                     var e = t.getData(),
                         r = e.mapDimension(i, !0);
                     r.length && ("weakFilter" === o ? e.filterSelf(function (t) {
@@ -40881,7 +40880,7 @@ var zfStorage = function () {
                             u && (o = !0), c && (n = !0), h && (i = !0)
                         }
                         return o && n && i
-                    }) : KP(r, function (i) {
+                    }) : KN(r, function (i) {
                         if ("empty" === o) t.setData(e.map(i, function (t) {
                             return n(t) ? t : NaN
                         }));
@@ -40889,7 +40888,7 @@ var zfStorage = function () {
                             var r = {};
                             r[i] = a, e.selectRange(r)
                         }
-                    }), KP(r, function (t) {
+                    }), KN(r, function (t) {
                         e.setApproximateExtent(a, t)
                     }))
                 })
@@ -40897,7 +40896,7 @@ var zfStorage = function () {
         }
     };
     var tO = d,
-        eO = YP,
+        eO = YN,
         nO = Hs({
             type: "dataZoom",
             dependencies: ["xAxis", "yAxis", "zAxis", "radiusAxis", "angleAxis", "singleAxis", "series"],
@@ -40941,7 +40940,7 @@ var zfStorage = function () {
                 var t = this._axisProxies;
                 this.eachTargetAxis(function (e, n, i, r) {
                     var o = this.dependentModels[e.axis][n],
-                        a = o.__dzAxisProxy || (o.__dzAxisProxy = new QP(e.name, n, this, r));
+                        a = o.__dzAxisProxy || (o.__dzAxisProxy = new QN(e.name, n, this, r));
                     t[e.name + "_" + n] = a
                 }, this)
             },
@@ -41151,7 +41150,7 @@ var zfStorage = function () {
                 this._displayables = {}, this._orient, this._range, this._handleEnds, this._size, this._handleWidth, this._handleHeight, this._location, this._dragging, this._dataShadowInfo, this.api = e
             },
             render: function (t, e, n, i) {
-                dO.superApply(this, "render", arguments), Pa(this, "_dispatchZoomAction", this.dataZoomModel.get("throttle"), "fixRate"), this._orient = t.get("orient"), !1 !== this.dataZoomModel.get("show") ? (i && "dataZoom" === i.type && i.from === this.uid || this._buildView(), this._updateView()) : this.group.removeAll()
+                dO.superApply(this, "render", arguments), Na(this, "_dispatchZoomAction", this.dataZoomModel.get("throttle"), "fixRate"), this._orient = t.get("orient"), !1 !== this.dataZoomModel.get("show") ? (i && "dataZoom" === i.type && i.from === this.uid || this._buildView(), this._updateView()) : this.group.removeAll()
             },
             remove: function () {
                 dO.superApply(this, "remove", arguments), Oa(this, "_dispatchZoomAction")
@@ -41648,7 +41647,7 @@ var zfStorage = function () {
             })
         }
     }), Es("dataZoom", function (t, e) {
-        var n = Py(m(e.eachComponent, e, "dataZoom"), YP, function (t, e) {
+        var n = Ny(m(e.eachComponent, e, "dataZoom"), YN, function (t, e) {
                 return t.get(e.axisIndex)
             }),
             i = [];
@@ -41928,7 +41927,7 @@ var zfStorage = function () {
             getVisualMeta: DO
         }),
         LO = [20, 140],
-        NO = kO.extend({
+        PO = kO.extend({
             type: "visualMap.continuous",
             defaultOption: {
                 align: "auto",
@@ -41942,12 +41941,12 @@ var zfStorage = function () {
                 hoverLinkOnHandle: null
             },
             optionUpdated: function (t, e) {
-                NO.superApply(this, "optionUpdated", arguments), this.resetExtent(), this.resetVisual(function (t) {
+                PO.superApply(this, "optionUpdated", arguments), this.resetExtent(), this.resetVisual(function (t) {
                     t.mappingMethod = "linear", t.dataExtent = this.getExtent()
                 }), this._resetRange()
             },
             resetItemSize: function () {
-                NO.superApply(this, "resetItemSize", arguments);
+                PO.superApply(this, "resetItemSize", arguments);
                 var t = this.itemSize;
                 "horizontal" === this._orient && t.reverse(), (null == t[0] || isNaN(t[0])) && (t[0] = LO[0]), (null == t[1] || isNaN(t[1])) && (t[1] = LO[1])
             },
@@ -42005,7 +42004,7 @@ var zfStorage = function () {
                 }
             }
         }),
-        PO = Gs({
+        NO = Gs({
             type: "visualMap",
             autoPositionValues: {
                 left: 1,
@@ -42076,7 +42075,7 @@ var zfStorage = function () {
         zO = Math.max,
         BO = 12,
         VO = 6,
-        FO = PO.extend({
+        FO = NO.extend({
             type: "visualMap.continuous",
             init: function () {
                 FO.superApply(this, "init", arguments), this._shapes = {}, this._dataInterval = [], this._handleEnds = [], this._orient, this._useHandle, this._hoverLinkDataIndices = [], this._dragging, this._hovering
@@ -42423,7 +42422,7 @@ var zfStorage = function () {
         }, function (e) {
             e.setSelected(t.selected)
         })
-    }), Ps(xO);
+    }), Ns(xO);
     var HO = kO.extend({
             type: "visualMap.piecewise",
             defaultOption: {
@@ -42647,7 +42646,7 @@ var zfStorage = function () {
                 }, this)
             }
         };
-    PO.extend({
+    NO.extend({
         type: "visualMap.piecewise",
         doRender: function () {
             var t = this.group;
@@ -42752,7 +42751,7 @@ var zfStorage = function () {
                 selected: r
             })
         }
-    }), Ps(xO);
+    }), Ns(xO);
     var WO = Qr,
         jO = eo,
         $O = Hs({
@@ -42877,7 +42876,7 @@ var zfStorage = function () {
                 })
             }), l.__keep = !0, l.group.silent = e.get("silent") || t.get("silent")
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         t.markPoint = t.markPoint || {}
     }), $O.extend({
         type: "markLine",
@@ -42989,7 +42988,7 @@ var zfStorage = function () {
                 })
             }), u.__keep = !0, u.group.silent = e.get("silent") || t.get("silent")
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         t.markLine = t.markLine || {}
     }), $O.extend({
         type: "markArea",
@@ -43097,7 +43096,7 @@ var zfStorage = function () {
                 }), dr(t, {}), t.dataModel = e
             }), u.__data = c, u.group.silent = e.get("silent") || t.get("silent")
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         t.markArea = t.markArea || {}
     }), lI.registerSubTypeDefaulter("timeline", function () {
         return "slider"
@@ -43571,10 +43570,10 @@ var zfStorage = function () {
                 from: this.uid
             })
         }
-    }), Ps(function (t) {
+    }), Ns(function (t) {
         var e = t && t.timeline;
         y(e) || (e = e ? [e] : []), d(e, function (t) {
-            t && Nx(t)
+            t && Px(t)
         })
     });
     var oE = Hs({
@@ -43621,7 +43620,7 @@ var zfStorage = function () {
             function r(r, a) {
                 var s, h = c[r],
                     d = c[a],
-                    f = new Nr(l[h], t, t.ecModel);
+                    f = new Pr(l[h], t, t.ecModel);
                 if (h && !d) {
                     if (Vx(h)) s = {
                         model: f,
@@ -44047,7 +44046,7 @@ var zfStorage = function () {
             from: this.uid,
             batch: e
         })
-    }, Ty("dataZoom", r_), Ps(function (t) {
+    }, Ty("dataZoom", r_), Ns(function (t) {
         function e(t, e) {
             if (e) {
                 var r = t + "Index",
@@ -44113,8 +44112,8 @@ var zfStorage = function () {
         DE = Math.round,
         kE = Math.sqrt,
         LE = Math.abs,
-        NE = Math.cos,
-        PE = Math.sin,
+        PE = Math.cos,
+        NE = Math.sin,
         OE = Math.max;
     if (!$_.canvasSupported) {
         var EE = 21600,
@@ -44249,15 +44248,15 @@ var zfStorage = function () {
                                 D = p[o++],
                                 k = p[o++],
                                 L = p[o++] + T,
-                                N = p[o++] + L + T;
+                                P = p[o++] + L + T;
                             o++;
-                            var P = p[o++],
-                                O = C + NE(L) * D,
-                                E = A + PE(L) * k,
-                                y = C + NE(N) * D,
-                                x = A + PE(N) * k,
-                                R = P ? " wa " : " at ";
-                            Math.abs(O - y) < 1e-4 && (Math.abs(N - L) > .01 ? P && (O += .0125) : Math.abs(E - A) < 1e-4 ? P && O < C || !P && O > C ? x -= .0125 : x += .0125 : P && E < A || !P && E > A ? y += .0125 : y -= .0125), f.push(R, DE(((C - D) * M + w) * EE - RE), ",", DE(((A - k) * I + S) * EE - RE), ",", DE(((C + D) * M + w) * EE - RE), ",", DE(((A + k) * I + S) * EE - RE), ",", DE((O * M + w) * EE - RE), ",", DE((E * I + S) * EE - RE), ",", DE((y * M + w) * EE - RE), ",", DE((x * I + S) * EE - RE)), a = y, s = x;
+                            var N = p[o++],
+                                O = C + PE(L) * D,
+                                E = A + NE(L) * k,
+                                y = C + PE(P) * D,
+                                x = A + NE(P) * k,
+                                R = N ? " wa " : " at ";
+                            Math.abs(O - y) < 1e-4 && (Math.abs(P - L) > .01 ? N && (O += .0125) : Math.abs(E - A) < 1e-4 ? N && O < C || !N && O > C ? x -= .0125 : x += .0125 : N && E < A || !N && E > A ? y += .0125 : y -= .0125), f.push(R, DE(((C - D) * M + w) * EE - RE), ",", DE(((A - k) * I + S) * EE - RE), ",", DE(((C + D) * M + w) * EE - RE), ",", DE(((A + k) * I + S) * EE - RE), ",", DE((O * M + w) * EE - RE), ",", DE((E * I + S) * EE - RE), ",", DE((y * M + w) * EE - RE), ",", DE((x * I + S) * EE - RE)), a = y, s = x;
                             break;
                         case AE.R:
                             var z = XE[0],
@@ -44277,7 +44276,7 @@ var zfStorage = function () {
                 }
                 return f.join("")
             };
-        Ni.prototype.brushVML = function (t) {
+        Pi.prototype.brushVML = function (t) {
             var e = this.style,
                 n = this._vmlEl;
             n || (n = u_("shape"), zE(n), this._vmlEl = n), ZE(n, "fill", e, this), ZE(n, "stroke", e, this);
@@ -44294,9 +44293,9 @@ var zfStorage = function () {
             }
             var l = this.path || (this.path = new ES);
             this.__dirtyPath && (l.beginPath(), l.subPixelOptimize = !1, this.buildPath(l, this.shape), l.toStatic(), this.__dirtyPath = !1), n.path = YE(l, this.transform), n.style.zIndex = GE(this.zlevel, this.z, this.z2), FE(t, n), null != e.text ? this.drawRectText(t, this.getBoundingRect()) : this.removeRectText(t)
-        }, Ni.prototype.onRemove = function (t) {
+        }, Pi.prototype.onRemove = function (t) {
             HE(t, this._vmlEl), this.removeRectText(t)
-        }, Ni.prototype.onAdd = function (t) {
+        }, Pi.prototype.onAdd = function (t) {
             FE(t, this._vmlEl), this.appendRectText(t)
         };
         var KE = function (t) {
@@ -44344,25 +44343,25 @@ var zfStorage = function () {
                     k.push("M11=", x[0] / w, ",", "M12=", x[2] / S, ",", "M21=", x[1] / w, ",", "M22=", x[3] / S, ",", "Dx=", DE(u * w + x[4]), ",", "Dy=", DE(c * S + x[5])), _.padding = "0 " + DE(A) + "px " + DE(D) + "px 0", _.filter = "progid:DXImageTransform.Microsoft.Matrix(" + k.join("") + ", SizingMethod=clip)"
                 } else x && (u = u * w + x[4], c = c * S + x[5]), _.filter = "", _.left = DE(u) + "px", _.top = DE(c) + "px";
                 var L = this._imageEl,
-                    N = this._cropEl;
+                    P = this._cropEl;
                 L || (L = CE.createElement("div"), this._imageEl = L);
-                var P = L.style;
+                var N = L.style;
                 if (v) {
-                    if (e && n) P.width = DE(w * e * h / f) + "px", P.height = DE(S * n * d / p) + "px";
+                    if (e && n) N.width = DE(w * e * h / f) + "px", N.height = DE(S * n * d / p) + "px";
                     else {
                         var O = new Image,
                             E = this;
                         O.onload = function () {
-                            O.onload = null, e = O.width, n = O.height, P.width = DE(w * e * h / f) + "px", P.height = DE(S * n * d / p) + "px", E._imageWidth = e, E._imageHeight = n, E._imageSrc = r
+                            O.onload = null, e = O.width, n = O.height, N.width = DE(w * e * h / f) + "px", N.height = DE(S * n * d / p) + "px", E._imageWidth = e, E._imageHeight = n, E._imageSrc = r
                         }, O.src = r
                     }
-                    N || ((N = CE.createElement("div")).style.overflow = "hidden", this._cropEl = N);
-                    var R = N.style;
-                    R.width = DE((h + g * h / f) * w), R.height = DE((d + m * d / p) * S), R.filter = "progid:DXImageTransform.Microsoft.Matrix(Dx=" + -g * h / f * w + ",Dy=" + -m * d / p * S + ")", N.parentNode || y.appendChild(N), L.parentNode !== N && N.appendChild(L)
-                } else P.width = DE(w * h) + "px", P.height = DE(S * d) + "px", y.appendChild(L), N && N.parentNode && (y.removeChild(N), this._cropEl = null);
+                    P || ((P = CE.createElement("div")).style.overflow = "hidden", this._cropEl = P);
+                    var R = P.style;
+                    R.width = DE((h + g * h / f) * w), R.height = DE((d + m * d / p) * S), R.filter = "progid:DXImageTransform.Microsoft.Matrix(Dx=" + -g * h / f * w + ",Dy=" + -m * d / p * S + ")", P.parentNode || y.appendChild(P), L.parentNode !== P && P.appendChild(L)
+                } else N.width = DE(w * h) + "px", N.height = DE(S * d) + "px", y.appendChild(L), P && P.parentNode && (y.removeChild(P), this._cropEl = null);
                 var z = "",
                     B = i.opacity;
-                B < 1 && (z += ".Alpha(opacity=" + DE(100 * B) + ") "), z += "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + r + ", SizingMethod=scale)", P.filter = z, y.style.zIndex = GE(this.zlevel, this.z, this.z2), FE(t, y), null != i.text && this.drawRectText(t, this.getBoundingRect())
+                B < 1 && (z += ".Alpha(opacity=" + DE(100 * B) + ") "), z += "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + r + ", SizingMethod=scale)", N.filter = z, y.style.zIndex = GE(this.zlevel, this.z, this.z2), FE(t, y), null != i.text && this.drawRectText(t, this.getBoundingRect())
             }
         }, pn.prototype.onRemove = function (t) {
             HE(t, this._vmlEl), this._vmlEl = null, this._cropEl = null, this._imageEl = null, this.removeRectText(t)
@@ -44402,7 +44401,7 @@ var zfStorage = function () {
                 width: JE.offsetWidth
             }
         });
-        for (var iR = new de, rR = [Aw, fn, pn, Ni, aM], oR = 0; oR < rR.length; oR++) {
+        for (var iR = new de, rR = [Aw, fn, pn, Pi, aM], oR = 0; oR < rR.length; oR++) {
             var aR = rR[oR].prototype;
             aR.drawRectText = function (t, e, n, i) {
                 var r = this.style;
@@ -44751,7 +44750,7 @@ var zfStorage = function () {
             })
         }
     }, A_.prototype.getSvgProxy = function (t) {
-        return t instanceof Ni ? yR : t instanceof pn ? xR : t instanceof aM ? _R : yR
+        return t instanceof Pi ? yR : t instanceof pn ? xR : t instanceof aM ? _R : yR
     }, A_.prototype.getTextSvgElement = function (t) {
         return t.__textSvgEl
     }, A_.prototype.getSvgElement = function (t) {
@@ -44833,7 +44832,7 @@ var zfStorage = function () {
             t._dom && A_.prototype.markUsed.call(e, t._dom), t._textDom && A_.prototype.markUsed.call(e, t._textDom)
         })
     }, u(L_, A_), L_.prototype.addWithoutUpdate = function (t, e) {
-        if (e && N_(e.style)) {
+        if (e && P_(e.style)) {
             var n, i = e.style;
             i._shadowDom ? (n = i._shadowDom, this.getDefs(!0).contains(i._shadowDom) || this.addDom(n)) : n = this.add(e), this.markUsed(e);
             var r = n.getAttribute("id");
@@ -44845,7 +44844,7 @@ var zfStorage = function () {
         return n._shadowDomId = n._shadowDomId || this.nextId++, e.setAttribute("id", "zr" + this._zrId + "-shadow-" + n._shadowDomId), this.updateDom(t, e), this.addDom(e), e
     }, L_.prototype.update = function (t, e) {
         var n = e.style;
-        if (N_(n)) {
+        if (P_(n)) {
             var i = this;
             A_.prototype.update.call(this, e, function (t) {
                 i.updateDom(e, t._shadowDom)
@@ -44972,7 +44971,7 @@ var zfStorage = function () {
             if (null != e[n] && "auto" !== e[n]) return parseFloat(e[n]);
             var a = this.root,
                 s = document.defaultView.getComputedStyle(a);
-            return (a[i] || P_(s[n]) || P_(a.style[n])) - (P_(s[r]) || 0) - (P_(s[o]) || 0) | 0
+            return (a[i] || N_(s[n]) || N_(a.style[n])) - (N_(s[r]) || 0) - (N_(s[o]) || 0) | 0
         },
         dispose: function () {
             this.root.innerHTML = "", this._svgRoot = this._viewport = this.storage = null
@@ -45004,7 +45003,7 @@ var zfStorage = function () {
         "string" == typeof t ? t = tC[t] : t instanceof us || (t = Ls(t)), t instanceof us && !t.isDisposed() && t.dispose()
     }, t.getInstanceByDom = Ls, t.getInstanceById = function (t) {
         return tC[t]
-    }, t.registerTheme = Ns, t.registerPreprocessor = Ps, t.registerProcessor = Os, t.registerPostUpdate = function (t) {
+    }, t.registerTheme = Ps, t.registerPreprocessor = Ns, t.registerProcessor = Os, t.registerPostUpdate = function (t) {
         YT.push(t)
     }, t.registerAction = Es, t.registerCoordinateSystem = Rs, t.getCoordinateSystemDimensions = function (t) {
         var e = Ho.get(t);
@@ -45019,7 +45018,7 @@ var zfStorage = function () {
             geoJson: e[0].geoJSON,
             specialAreas: e[0].specialAreas
         }
-    }, t.dataTool = aC, t.zrender = Ww, t.number = ZM, t.format = eI, t.throttle = Na, t.helper = tA, t.matrix = Sb, t.vector = hb, t.color = Gb, t.parseGeoJSON = nA, t.parseGeoJson = aA, t.util = sA, t.graphic = lA, t.List = vC, t.Model = Nr, t.Axis = oA, t.env = $_
+    }, t.dataTool = aC, t.zrender = Ww, t.number = ZM, t.format = eI, t.throttle = Pa, t.helper = tA, t.matrix = Sb, t.vector = hb, t.color = Gb, t.parseGeoJSON = nA, t.parseGeoJson = aA, t.util = sA, t.graphic = lA, t.List = vC, t.Model = Pr, t.Axis = oA, t.env = $_
 });
 var KeyEventMap = {
         Digit1: "1",
@@ -45190,9 +45189,9 @@ var KeyEventMap = {
             $("#voice-sel").hasClass("on") && new Audio("./media/keyup.mp3").play();
             var n = $("#" + Keyboard.getKeyId(e));
             if (e.match(/win/i)) {
-                for (var i in l) n = $("#" + Keyboard.getKeyId(l[i])), n.attr("class", "pressed"), a(l[i], "CapsLock" === l[i] ? "OFF" : "KeyUp");
-                l = []
-            } else n.attr("class", "pressed"), a(e, "CapsLock" === e ? "OFF" : "KeyUp"), l = l.filter(function (t) {
+                for (var i in u) n = $("#" + Keyboard.getKeyId(u[i])), n.attr("class", "pressed"), s(u[i], "CapsLock" === u[i] ? "OFF" : "KeyUp");
+                u = []
+            } else n.attr("class", "pressed"), s(e, "CapsLock" === e ? "OFF" : "KeyUp"), u = u.filter(function (t) {
                 return e !== t
             });
             return !1
@@ -45206,40 +45205,52 @@ var KeyEventMap = {
                 if (n.length) {
                     var i = "active" === n.attr("class");
                     if (i) return !1;
-                    n.attr("class", "active"), l.push(e), a(e, "CapsLock" === e ? "ON" : "KeyDown")
+                    n.attr("class", "active"), u.push(e), s(e, "CapsLock" === e ? "ON" : "KeyDown")
                 }
-                return r(e), c.push((new Date).getTime()), !1
+                return r(e), h.push((new Date).getTime()), !1
             }
         }
 
         function r(t) {
-            historyKeys.push(t), "ZFNB" !== historyKeys.slice(-12).join("").toUpperCase() && "2021SpaceALLSpaceTHESpaceBEST" !== historyKeys.slice(-29).join("") || o()
+            historyKeys.push(t);
+            var e = historyKeys.slice(-15).join("").toLowerCase();
+            e.indexOf("ilove") !== -1 && a(e.slice(e.indexOf("ilove")))
         }
 
-        function o() {
-            $.ajax({
-                url: "/api/refresh/xmas-avatar",
+        function o(t) {
+            for (var e = "", n = 0; n < t.length; n++) e += t.charCodeAt(n).toString(16);
+            return e
+        }
+
+        function a(t) {
+            var e = o(t),
+                n = ["696c6f7665676d6b", "696c6f76656a746b", "696c6f76656b6b62", "696c6f76656c656c656c6162"];
+            n.indexOf(e) !== -1 && $.ajax({
+                url: "/api/check-event-keyword",
                 method: "POST",
-                dataType: "json"
+                dataType: "json",
+                data: {
+                    key: t
+                }
             }).done(function (t) {
-                alert(t.msg)
+                0 === t.ok && alert(t.msg)
             })
         }
 
-        function a(t, e) {
+        function s(t, e) {
             t.match(/^(.+)win$/i) && (t = "SYS");
             var n = t.match(/^Num(.+)$/i);
-            n && (t = n[1]), n = t.match(/^.(alt|shift|ctrl)$/i), n && (t = n[1]), $(".log-list .item").length >= 8 && $(".log-list .item").first().remove(), $(".log-list").append('<div class="item">' + s() + '<span class="btn">' + t + "</span><b>" + e + "</b></div>")
+            n && (t = n[1]), n = t.match(/^.(alt|shift|ctrl)$/i), n && (t = n[1]), $(".log-list .item").length >= 8 && $(".log-list .item").first().remove(), $(".log-list").append('<div class="item"><span class="time">' + l() + '</span></span><span class="btn">' + t + "</span><b>" + e + "</b></div>")
         }
 
-        function s() {
+        function l() {
             var t = new Date;
-            return t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds() + "." + parseInt(t.getMilliseconds() / 100)
+            return t.getHours() + ":" + t.getMinutes().toString().padStart(2, "0") + ":" + t.getSeconds().toString().padStart(2, "0") + "." + parseInt(t.getMilliseconds() / 100)
         }
-        var l = [],
-            u = {},
-            c = [];
-        return u.init = function () {
+        var u = [],
+            c = {},
+            h = [];
+        return c.init = function () {
             var n = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             n || alert("为获得最佳使用体验，请使用Chrome浏览器");
             const i = 13;
@@ -45700,12 +45711,14 @@ var KeyEventMap = {
                 }
             });
             a.loadLayout(), a.loadTheme(), e()
-        }, u.getKeyId = t, u.getClickHistory = function () {
+        }, c.getKeyId = t, c.clearHistory = function () {
+            h = [], u = [], $(".log-list .item").remove(), $(".pressed").attr("class", ""), $(".active").attr("class", "")
+        }, c.getClickHistory = function () {
             var t = new Date;
-            return c = c.filter(function (e) {
+            return h = h.filter(function (e) {
                 return e > t.getTime() - 5e3
             })
-        }, u
+        }, c
     }(),
     AmpChart = function () {
         function t() {
@@ -45791,6 +45804,7 @@ $(function () {
     var t = zfStorage.getItem("kb-tester-voice");
     t || $("#voice-sel").removeClass("on"), $("#voice-sel").on("click", function () {
         $(this).toggleClass("on"), zfStorage.setItem("kb-tester-voice", $("#voice-sel").hasClass("on"))
+    }), $(".reset-history").on("click", function () {
+        Keyboard.clearHistory()
     })
 });
-//# sourceMappingURL=kb_test.js.map
