@@ -44,6 +44,7 @@
         margin: 0 auto;
         border: #474747;
         border-style: solid;
+        border-radius: 8px;
     }
 
     #grant-button {
@@ -98,6 +99,7 @@
         margin: 0 auto;
         border: #007e77;
         border-style: solid;
+        border-radius: 8px;
     }
 
     #grant-button {
