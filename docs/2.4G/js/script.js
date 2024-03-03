@@ -17,6 +17,7 @@ const filters = [
 	productId: 0x1024, // Glab
 }
 ];
+var cmsisdap=false;
 
 
 //授权设备
@@ -40,6 +41,7 @@ async function ListDevices() {
 	const devices_list = await navigator.hid.getDevices();
 	if (!devices_list.length) {
 		console.log("No Device Connected");
+		document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 		document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
 		return null;
 	}
@@ -56,6 +58,7 @@ async function OpenDevice() {
 	const devices_list = await navigator.hid.getDevices();
 	if (!devices_list.length) {
 		console.log("No Device Connected");
+		document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 		document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 		return null;
 	} else {
@@ -87,6 +90,7 @@ async function CloseDevice() {
 		}
 	}
 	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 	document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
 }
 
@@ -104,6 +108,7 @@ async function EnterUSBISP() {
 		}
 	}
 	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 	document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
 }
 
@@ -123,6 +128,7 @@ async function ResetKeyboard() {
 		}
 	}
 	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 	document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
 }
 
@@ -143,10 +149,12 @@ async function GetKeyboardInfo() {
 //检测CMSIS-DAP是否开启
 async function CheckCMSISDAP() {
     const devices_list = await navigator.hid.getDevices();
+    cmsisdap=false;
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName == "CMSIS-DAP") {
             console.log("CMSIS-DAP启用 :", devices_list[i]);
             document.getElementById('consoleinfo').innerHTML = "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
+            cmsisdap = true;
             return null;
         }
     }
@@ -167,6 +175,7 @@ async function EnterCMSISDAP() {
 		}
 	}
 	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
 	document.getElementById('consoleinfo').innerHTML +="无设备连接" + '<br>';
 }
 
@@ -184,6 +193,10 @@ async function senddata(device, data) {
 			var builddata = parseInt("0x" +inputdata[15].toString(16) + inputdata[14].toString(16) + inputdata[13].toString(16) + inputdata[12].toString(16)).toString(10);
 			var newDate = new Date();
 			newDate.setTime(builddata * 1000);
+			document.getElementById('consoleinfo').innerHTML ="📃" + device.productName + ' 的信息：<br>';
+			if (cmsisdap) {
+				document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
+			}
 			document.getElementById('consoleinfo').innerHTML +="已绑定设备数量：" + inputdata[20] + '<br>';
 			document.getElementById('consoleinfo').innerHTML +="已绑定管道索引值：" + (inputdata[21]/2).toString(2).padStart(7, "0") + '<br>';
             document.getElementById('consoleinfo').innerHTML +="当前连接设备数量：" + inputdata[27] + '<br>';
