@@ -1,4 +1,4 @@
-// Part of https://todbot.github.io/blink1-webhid/
+// 2.4G Receiver Control
 
 document.getElementById('grant-button').addEventListener('click', GrantDevice); //授权设备
 //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
@@ -219,7 +219,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 await devices[i].open();
                 console.log("DOMContentLoaded & Opened Device :", devices[i]);
                 document.getElementById('consoleinfo').innerHTML += "🔌自动连接设备: " + devices[i].productName + '<br>';
-                setTimeout(GetKeyboardInfo, 1000);
+                setTimeout(GetKeyboardInfo, 500);
+                setInterval(GetKeyboardInfo, 5000);
             }
         }
 
@@ -234,8 +235,9 @@ if ("hid" in navigator) {
         if (device.productName == "Glab 2.4G Receiver") {
             document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
             document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备接入" + '<br>';
-            OpenDevice();
-            setTimeout(GetKeyboardInfo, 1000);
+            OpenDevice().then(GetKeyboardInfo)
+            //setTimeout(GetKeyboardInfo, 1000);
+            setInterval(GetKeyboardInfo,5000);
         }
     });
 
