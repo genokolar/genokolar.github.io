@@ -190,7 +190,7 @@ async function senddata(device, data) {
 			console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
 			//console.log(`已绑定设备数量：`, inputdata[20]);
 			//console.log(`绑定设备索引：`, inputdata[21]);
-			var builddata = parseInt("0x" +inputdata[15].toString(16) + inputdata[14].toString(16) + inputdata[13].toString(16) + inputdata[12].toString(16)).toString(10);
+			var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
 			var newDate = new Date();
 			newDate.setTime(builddata * 1000);
 			document.getElementById('consoleinfo').innerHTML ="📃" + device.productName + ' 的信息：<br>';
