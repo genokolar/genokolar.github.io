@@ -1,14 +1,14 @@
 // 2.4G Receiver Control
 
-document.getElementById('grant-button').addEventListener('click', GrantDevice); //授权设备
+document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevice); //授权设备
 //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
 //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
 //document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-document.getElementById('send-button1').addEventListener('click', EnterUSBISP); //发送命令：进入USB ISP
-document.getElementById('send-button4').addEventListener('click', EnterCMSISDAP); //发送命令：进入CMSIS-DAP
-document.getElementById('send-button2').addEventListener('click', ResetKeyboard); //发送命令：重置键盘
-document.getElementById('send-button3').addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
+document.getElementsByName('enterusbisp')[0].addEventListener('click', EnterUSBISP); //发送命令：进入USB ISP
+document.getElementsByName('entercmsisdap')[0].addEventListener('click', EnterCMSISDAP); //发送命令：进入CMSIS-DAP
+document.getElementsByName('resetkeyboard')[0].addEventListener('click', ResetKeyboard); //发送命令：重置键盘
+document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
 
 //设置过滤器
 const filters = [
@@ -18,6 +18,7 @@ const filters = [
 }
 ];
 var cmsisdap=false;
+var info;
 
 
 //授权设备
@@ -149,14 +150,17 @@ async function GetKeyboardInfo() {
 //检测CMSIS-DAP是否开启
 async function CheckCMSISDAP() {
     const devices_list = await navigator.hid.getDevices();
-    cmsisdap=false;
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName == "CMSIS-DAP") {
             console.log("CMSIS-DAP启用 :", devices_list[i]);
             document.getElementById('consoleinfo').innerHTML = "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
+			document.getElementsByName('entercmsisdap')[0].innerHTML = "禁用CMSSIS-DAP"
             cmsisdap = true;
             return null;
-        }
+        } else {
+			document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
+			cmsisdap = false;
+		}
     }
 }
 
@@ -165,12 +169,16 @@ async function EnterCMSISDAP() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Glab")) {
-			const outputReportData = new Uint8Array([0xf2]);
-			await senddata(devices_list[i], outputReportData)
+			if (cmsisdap) {
+				const outputReportData = new Uint8Array([0xf3]);
+				await senddata(devices_list[i], outputReportData)
+			} else {
+				const outputReportData = new Uint8Array([0xf2]);
+				await senddata(devices_list[i], outputReportData)
+			}
 			console.log("EnterCMSISDAP():", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML ="🔹操作信息：" +'<br>';
-			document.getElementById('consoleinfo').innerHTML +="允许固件刷写:" + devices_list[i].productName + '<br>';
-			document.getElementById('consoleinfo').innerHTML +="刷写完成后，请重新拔插接收器以便重置状态" + '<br>';
+			document.getElementById('consoleinfo').innerHTML +="固件刷写开关:" + devices_list[i].productName + '<br>';
 			return null;
 		}
 	}
@@ -210,17 +218,23 @@ async function senddata(device, data) {
 	}
 }
 
+//刷新数据任务
+async function refreshdata() {
+	info = setInterval(GetKeyboardInfo,5000);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     let devices = await navigator.hid.getDevices();
     if (devices.length) {
         document.getElementById('consoleinfo').innerHTML += "已接入授权HID设备" + '<br>';
         for (var i = 0; i < devices.length; i++) {
             if (devices[i].productName == "Glab 2.4G Receiver") {
+
                 await devices[i].open();
                 console.log("DOMContentLoaded & Opened Device :", devices[i]);
                 document.getElementById('consoleinfo').innerHTML += "🔌自动连接设备: " + devices[i].productName + '<br>';
-                setTimeout(GetKeyboardInfo, 500);
-                setInterval(GetKeyboardInfo, 5000);
+                setTimeout(GetKeyboardInfo, 100);
+                refreshdata();
             }
         }
 
@@ -237,7 +251,7 @@ if ("hid" in navigator) {
             document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备接入" + '<br>';
             OpenDevice().then(GetKeyboardInfo)
             //setTimeout(GetKeyboardInfo, 1000);
-            setInterval(GetKeyboardInfo,5000);
+            refreshdata();
         }
     });
 
@@ -246,6 +260,7 @@ if ("hid" in navigator) {
         console.log(`HID设备断开: ${device.productName}`);
         document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
         document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
+		clearInterval(info);
     });
 
     //监听授权设备的报告
