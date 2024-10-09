@@ -34,7 +34,7 @@
     }
 
     .console {
-        width: 48em;
+        width: 35em;
         height: 18em;
         color: #696969;
         background-color: #232b2c;
@@ -91,7 +91,7 @@
     }
 
     .console {
-        width: 48em;
+        width: 35em;
         height: 18em;
         color: #6d6d6d;
         background-color: #e5e5e5;
@@ -287,11 +287,11 @@ h1 {
 
 
 .button {
-    margin-top: 15px;
+    margin-top: 30px;
     text-align:center;
 }
 
 .info {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align:center;
 }

@@ -8,7 +8,7 @@ document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevi
 document.getElementsByName('enterusbisp')[0].addEventListener('click', EnterUSBISP); //发送命令：进入USB ISP
 document.getElementsByName('entercmsisdap')[0].addEventListener('click', EnterCMSISDAP); //发送命令：进入CMSIS-DAP
 document.getElementsByName('resetkeyboard')[0].addEventListener('click', ResetKeyboard); //发送命令：重置键盘
-document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
+//document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
 
 //设置过滤器
 const filters = [
