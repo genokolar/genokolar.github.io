@@ -34,14 +34,8 @@
     }
 
     .console {
-        width: 35em;
-        height: 18em;
         color: #696969;
         background-color: #232b2c;
-        display: block;
-        text-align: left;
-        padding: 10px 5px 0px 5px;
-        margin: 0 auto;
         border: #616161;
         border-style: solid;
         border-radius: 8px;
@@ -91,14 +85,8 @@
     }
 
     .console {
-        width: 35em;
-        height: 18em;
         color: #6d6d6d;
         background-color: #e5e5e5;
-        display: block;
-        text-align: left;
-        padding: 10px 5px 0px 5px;
-        margin: 0 auto;
         border: rgb(255 255 255 / 90%);
         border-style: solid;
         border-radius: 8px;
@@ -294,4 +282,13 @@ h1 {
 .info {
     margin-top: 20px;
     text-align:center;
+}
+
+.console {
+    width: 35em;
+    height: 12em;
+    display: block;
+    text-align: left;
+    padding: 15px 5px 0px 12px;
+    margin: 0 auto;
 }
