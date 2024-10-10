@@ -32,7 +32,8 @@ async function GrantDevice() {
 		if (devices_list[i].productName.includes("Lotlab")) {
 			console.log("GrantDevice():", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML +="授权设备:" + devices_list[i].productName + '<br>';
-			OpenDevice();
+			OpenDevice().then(GetKeyboardInfo);
+			refreshdata();
 			return null;
 		}
 	}
