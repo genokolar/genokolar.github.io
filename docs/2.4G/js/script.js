@@ -201,6 +201,7 @@ async function EnterCMSISDAP() {
 			console.log("EnterCMSISDAP():", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "固件刷写开关:" + devices_list[i].productName + '<br>';
+			setTimeout(GetKeyboardInfo, 500);
 			return null;
 		}
 	}
