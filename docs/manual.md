@@ -137,7 +137,7 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 | 关机     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>~</kbd>或<kbd>Backspace</kbd>       |手动进入关机模式。新版固件将<kbd>ESC</kbd>更换成了<kbd>Backspace</kbd>。<br>关机后需要插入USB线 或 短按背部多功能按钮开机。<br>长期不用或携带外出建议关机。 |
 | 有线/无线状态切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在USB有线和无线同时工作时，可以切换有线/无线连接模式。<br>如未同时使用USB有线和无线，按键无效。 |
 | 无线模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd>        |在键盘支持BLE5.0与2.4G无线两种无线模式时，在两种模式之间切换。 |
-| 无线收发模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>J</kbd>        |当处于2.4G无线模式时，可在键盘支持2.4G接收和2.4G发送两种无线收发模式时，在两种模式之间切换。 |
+| 无线收发模式切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>J</kbd>        |最新固件中，当处于2.4G无线模式时，可在2.4G接收 [接收器] 和2.4G发送 [键盘] 两种2.4G无线模式之间切换。 |
 | 切换蓝牙设备/无线接收器     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>        |可以在已配对的蓝牙设备/无线接收器之间进行切换，<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>代表不同蓝牙连接通道/无线接收器 |
 | 重启蓝牙广播<br>2.4G无线配对     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>        | 蓝牙模式：重新开启蓝牙广播，用于手动进行连接或切换设备后配对。<br>2.4G无线模式：发起配对通讯，与2.4G接收器进行配对。|
 | 进入DFU     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>B</kbd>        |重启到DFU刷机模式。<br>也可长按PCB背部多功能按钮4秒以上后松手重启到DFU刷机模式。 |
