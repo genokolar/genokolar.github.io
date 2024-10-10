@@ -18,8 +18,9 @@ const filters = [
 	productId: 0x0514, // GT
 }
 ];
-var cmsisdap=false;
+
 var info;
+const reportId = 0x3f;
 
 
 //============================================连接键盘=========================================================
@@ -72,6 +73,20 @@ async function OpenDevice() {
 				return devices_list[i];
 			} else if (devices_list[i].productName.includes("Lotlab")) {
 				await devices_list[i].open();
+				devices_list[i].oninputreport = ({device, reportId, data}) => {
+					const inputdata = new Uint8Array(data.buffer);
+					console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+					//console.log(`已绑定设备数量：`, inputdata[20]);
+					//console.log(`绑定设备索引：`, inputdata[21]);
+					var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+					var newDate = new Date();
+					newDate.setTime(builddata * 1000);
+					document.getElementById('consoleinfo').innerHTML ="📃" + device.productName + ' 的信息：<br>';
+		
+					document.getElementById('consoleinfo').innerHTML +="固件SDK版本：" + inputdata[11] + '<br>';	
+					document.getElementById('consoleinfo').innerHTML +="固件版本信息：" + (inputdata[11].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[10].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[9].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[8].toString(16).toUpperCase()).slice(-2) + '<br>';
+					document.getElementById('consoleinfo').innerHTML +="固件编译日期：" + newDate.toLocaleString () + '<br>';			
+				};
 				console.log("OpenDevice():", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
 				//return devices_list[i];
@@ -106,7 +121,7 @@ async function RGBLIGHT_TOGGLE() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
 			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x00]);
-			await senddata(devices_list[i], outputReportData);
+			await devices_list[i].sendReport(reportId, outputReportData)
 			console.log("RGBLIGHT_TOGGLE", devices_list[i]);
 			return null;
 		}
@@ -122,7 +137,7 @@ async function RGBLIGHT_MODE_INCREASE() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
 			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x01]);
-			await senddata(devices_list[i], outputReportData);
+			await devices_list[i].sendReport(reportId, outputReportData)
 			console.log("RGBLIGHT_MODE_INCREASE", devices_list[i]);
 			return null;
 		}
@@ -139,7 +154,7 @@ async function SWITCH_ESB() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
 			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x02]);
-			await senddata(devices_list[i], outputReportData);
+			await devices_list[i].sendReport(reportId, outputReportData)
 			console.log("SWITCH_ESB:", devices_list[i]);
 			setTimeout(GetKeyboardInfo, 1000);
             return null;
@@ -156,7 +171,7 @@ async function SWITCH_WIRELESS() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
 			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x02]);
-			await senddata(devices_list[i], outputReportData)
+			await devices_list[i].sendReport(reportId, outputReportData)
 			console.log("SWITCH_WIRELESS:", devices_list[i])
 			return null;
 		}
@@ -183,26 +198,8 @@ async function GetKeyboardInfo() {
 //发送数据
 async function senddata(device, data) {
 	if (!device) return;
-	const reportId = 0x3f;
 	try {
 		await device.sendReport(reportId, data);
-		device.oninputreport = ({device, reportId, data}) => {
-			const inputdata = new Uint8Array(data.buffer);
-			console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
-			//console.log(`已绑定设备数量：`, inputdata[20]);
-			//console.log(`绑定设备索引：`, inputdata[21]);
-			var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-			var newDate = new Date();
-			newDate.setTime(builddata * 1000);
-			document.getElementById('consoleinfo').innerHTML ="📃" + device.productName + ' 的信息：<br>';
-			if (cmsisdap) {
-				document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
-			}
-
-			document.getElementById('consoleinfo').innerHTML +="固件SDK版本：" + inputdata[11] + '<br>';	
-			document.getElementById('consoleinfo').innerHTML +="固件版本信息：" + (inputdata[11].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[10].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[9].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[8].toString(16).toUpperCase()).slice(-2) + '<br>';
-			document.getElementById('consoleinfo').innerHTML +="固件编译日期：" + newDate.toLocaleString () + '<br>';			
-		};
 	} catch (error) {
 		console.error('SendReport: Failed:', error);
 		document.getElementById('consoleinfo').innerHTML +='SendReport: Failed:' + error + '<br>';
@@ -214,6 +211,8 @@ async function refreshdata() {
 	info = setInterval(GetKeyboardInfo,5000);
 }
 
+
+//=======================================================================监听器部分=====================
 document.addEventListener('DOMContentLoaded', async () => {
     let devices = await navigator.hid.getDevices();
     if (devices.length) {
@@ -251,12 +250,6 @@ if ("hid" in navigator) {
         document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
         document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
         clearInterval(info);
-    });
-
-    //监听授权设备的报告
-    navigator.hid.addEventListener("inputreport", event => {
-        const { data, device, reportId } = event;
-        console.log(`收到inputreport数据: ${data}.`);
     });
 } else {
     document.getElementById('consoleinfo').innerHTML = "🔺提示信息：" + '<br>';
