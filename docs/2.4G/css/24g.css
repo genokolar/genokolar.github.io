@@ -7,6 +7,14 @@
  * https://github.com/fians/Waves/blob/master/LICENSE 
  */
 
+/* 阿里云字体。 */
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: "Alimama FangYuanTi VF";
+    src: url("../fonts/AlimamaFangYuanTiVF-Thin.woff2") format("woff2");
+    font-display: swap;
+}
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +27,7 @@
         background-image: linear-gradient(to bottom , #202020, #252525,#2e2e2e, #272727, #202020);
         color: rgb(196, 196, 196);
         margin: 0px;
+        font-family: "Alimama FangYuanTi VF";
     }
     a {
         color: rgb(196, 196, 196);
@@ -45,16 +54,19 @@
     #grant-button {
         color: rgb(180 180 180);
         background: rgb(86 21 21);
+        font-family: "Alimama FangYuanTi VF";
     }
 
     #send-button1, #send-button4 {
         color: rgb(180 180 180);
         background: rgb(38 67 77);
+        font-family: "Alimama FangYuanTi VF";
     }
 
     #send-button2, #send-button3 {
         color: rgb(180 180 180);
         background: rgb(47 77 60);
+        font-family: "Alimama FangYuanTi VF";
     }
 }
 
@@ -69,6 +81,7 @@
         background-image: linear-gradient(to bottom , #dddddd, #e8e8e8,#efefef, #e8e8e8, #dddddd);
         color: rgb(116, 116, 116);
         margin: 0px;
+        font-family: "Alimama FangYuanTi VF";
     }
 
     a {
@@ -96,16 +109,19 @@
     #grant-button {
         color: rgb(255, 255, 255);
         background: rgb(206, 25, 79);
+        font-family: "Alimama FangYuanTi VF";
     }
     
     #send-button1, #send-button4 {
         color: rgb(255, 255, 255);
         background: #1aa5d3;
+        font-family: "Alimama FangYuanTi VF";
     }
 
     #send-button2, #send-button3 {
         color: rgb(255, 255, 255);
         background: rgb(17, 175, 167);
+        font-family: "Alimama FangYuanTi VF";
     }
 }
 
