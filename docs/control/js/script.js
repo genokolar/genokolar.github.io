@@ -5,10 +5,17 @@ document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevi
 //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
 //document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); //发送命令
-document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); //发送命令
 document.getElementsByName('switchwireless')[0].addEventListener('click', SWITCH_WIRELESS); //发送命令
 document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); //发送命令
+document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); //发送命令
+document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); //发送命令
+document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); //发送命令
+document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); //发送命令
+document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); //发送命令
+document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); //发送命令
+document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); //发送命令
+document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); //发送命令
+document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); //发送命令
 //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
 
 //设置过滤器
@@ -37,6 +44,13 @@ async function GrantDevice() {
 			refreshdata();
 			return null;
 		}
+		if (devices_list[i].productName == "") {
+			console.log("GrantDevice():", devices_list[i]);
+			document.getElementById('consoleinfo').innerHTML = "⌨️授权无线设备" + '<br>';
+			OpenDevice().then(GetKeyboardInfo);
+			refreshdata();
+			return null;
+		}
 	}
 }
 
@@ -52,7 +66,7 @@ async function ListDevices() {
 	}
 	console.log("ListDevices():", devices_list);
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName.includes("Lotlab")) {
+		if (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == "")) {
 			document.getElementById('consoleinfo').innerHTML += "已授权设备:" + devices_list[i].productName + '<br>';
 		}
 	}
@@ -68,7 +82,7 @@ async function OpenDevice() {
 		return null;
 	} else {
 		for (var i = 0; i < devices_list.length; i++) {
-			if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == ""))) {
 				document.getElementById('consoleinfo').innerHTML += "设备已经连接，请勿重复点击" + '<br>';
 				return devices_list[i];
 			} else if (devices_list[i].productName.includes("Lotlab")) {
@@ -89,6 +103,11 @@ async function OpenDevice() {
 				};
 				console.log("OpenDevice():", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
+				//return devices_list[i];
+			} else if (devices_list[i].productName == "") {
+				await devices_list[i].open();
+				console.log("OpenDevice():", devices_list[i]);
+				document.getElementById('consoleinfo').innerHTML = "⌨️已连接无线设备" + '<br>';
 				//return devices_list[i];
 			}
 		}
@@ -123,6 +142,11 @@ async function RGBLIGHT_TOGGLE() {
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_TOGGLE", devices_list[i]);
 			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x00]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_TOGGLE", devices_list[i]);
+			return null;
 		}
 	}
 	console.log("No Device Connected");
@@ -139,6 +163,158 @@ async function RGBLIGHT_MODE_INCREASE() {
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_MODE_INCREASE", devices_list[i]);
 			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x01]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_MODE_INCREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_MODE_DECREASE
+async function RGBLIGHT_MODE_DECREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_MODE_DECREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_MODE_DECREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_HUE_INCREASE
+async function RGBLIGHT_HUE_INCREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x03]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_HUE_INCREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x03]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_HUE_INCREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_HUE_DECREASE
+async function RGBLIGHT_HUE_DECREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x04]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_HUE_DECREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x04]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_HUE_DECREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_SAT_INCREASE
+async function RGBLIGHT_SAT_INCREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x05]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_SAT_INCREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x05]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_SAT_INCREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_SAT_DECREASE
+async function RGBLIGHT_SAT_DECREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x06]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_SAT_DECREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x06]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_SAT_DECREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_VAL_INCREASE
+async function RGBLIGHT_VAL_INCREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x07]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_VAL_INCREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x07]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_VAL_INCREASE", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：RGBLIGHT_VAL_DECREASE
+async function RGBLIGHT_VAL_DECREASE() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x08]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_VAL_DECREASE", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x04, 0x08]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("RGBLIGHT_VAL_DECREASE", devices_list[i]);
+			return null;
 		}
 	}
 	console.log("No Device Connected");
@@ -151,11 +327,22 @@ async function RGBLIGHT_MODE_INCREASE() {
 async function SWITCH_ESB() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+		if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == ""))) {
 			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x02]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("SWITCH_ESB:", devices_list[i]);
 			setTimeout(GetKeyboardInfo, 500);
+			return null;
+		}
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x04, 0x02, 0x14, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x14, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB:", devices_list[i]);
 			return null;
 		}
 	}
@@ -169,9 +356,14 @@ async function SWITCH_WIRELESS() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x02]);
+			const outputReportData = new Uint8Array([0x04, 0x02, 0x13, 0x02]);
 			await senddata(devices_list[i], outputReportData);
-			console.log("SWITCH_WIRELESS:", devices_list[i])
+			console.log("SWITCH_WIRELESS:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x13, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_WIRELESS:", devices_list[i]);
 			return null;
 		}
 	}
@@ -199,6 +391,7 @@ async function senddata(device, data) {
 	if (!device) return;
 	try {
 		await device.sendReport(reportId, data);
+		console.log('SendReport:', reportId, data);
 	} catch (error) {
 		console.error('SendReport: Failed:', error);
 	}
@@ -219,7 +412,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 			if (devices[i].productName.includes("Lotlab")) {
 				OpenDevice().then(GetKeyboardInfo);
 				console.log("DOMContentLoaded & Opened Device :", devices[i]);
-				document.getElementById('consoleinfo').innerHTML += "🔌自动连接设备: " + devices[i].productName + '<br>';
+				document.getElementById('consoleinfo').innerHTML += "🔌自动连接有线设备: " + devices[i].productName + '<br>';
+				refreshdata();
+			}
+			if (devices[i].productName == "") {
+				OpenDevice().then(GetKeyboardInfo);
+				console.log("DOMContentLoaded & Opened Device :", devices[i]);
+				document.getElementById('consoleinfo').innerHTML += "🔌自动连接无线设备: " + devices[i].productName + '<br>';
 				refreshdata();
 			}
 		}
@@ -238,14 +437,23 @@ if ("hid" in navigator) {
 			OpenDevice().then(GetKeyboardInfo)
 			refreshdata();
 		}
+		if (device.productName == "") {
+			document.getElementById('consoleinfo').innerHTML = "🔌已授权无线设备接入" + '<br>';
+			OpenDevice().then(GetKeyboardInfo)
+			refreshdata();
+		}
 	});
 
 	//监听HID授权设备的断开，并提示
 	navigator.hid.addEventListener('disconnect', ({ device }) => {
 		console.log(`HID设备断开: ${device.productName}`);
-		if (device.productName.includes("Lotlab")) {
+		if (device.productName.includes("Lotlab") || (device.productName == "")) {
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
+			clearInterval(info);
+		}
+		if (device.productName == "") {
+			document.getElementById('consoleinfo').innerHTML = "🔌已授权无线设备断开" + '<br>';
 			clearInterval(info);
 		}
 	});
