@@ -327,15 +327,8 @@ async function RGBLIGHT_VAL_DECREASE() {
 async function SWITCH_ESB() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == ""))) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x02]);
-			await senddata(devices_list[i], outputReportData);
-			console.log("SWITCH_ESB:", devices_list[i]);
-			setTimeout(GetKeyboardInfo, 500);
-			return null;
-		}
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x04, 0x02, 0x14, 0x02]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x02]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("SWITCH_ESB:", devices_list[i]);
 			return null;
@@ -356,7 +349,7 @@ async function SWITCH_WIRELESS() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x04, 0x02, 0x13, 0x02]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x02]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("SWITCH_WIRELESS:", devices_list[i]);
 			return null;
