@@ -138,12 +138,12 @@ async function RGBLIGHT_TOGGLE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x00]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x00]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_TOGGLE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x00]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x00]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_TOGGLE", devices_list[i]);
 			return null;
@@ -159,12 +159,12 @@ async function RGBLIGHT_MODE_INCREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x01]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x01]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_MODE_INCREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x01]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x01]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_MODE_INCREASE", devices_list[i]);
 			return null;
@@ -180,12 +180,12 @@ async function RGBLIGHT_MODE_DECREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x02]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x02]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_MODE_DECREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x02]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x02]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_MODE_DECREASE", devices_list[i]);
 			return null;
@@ -201,12 +201,12 @@ async function RGBLIGHT_HUE_INCREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x03]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x03]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_HUE_INCREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x03]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x03]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_HUE_INCREASE", devices_list[i]);
 			return null;
@@ -222,12 +222,12 @@ async function RGBLIGHT_HUE_DECREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x04]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x04]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_HUE_DECREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x04]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x04]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_HUE_DECREASE", devices_list[i]);
 			return null;
@@ -243,12 +243,12 @@ async function RGBLIGHT_SAT_INCREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x05]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x05]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_SAT_INCREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x05]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x05]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_SAT_INCREASE", devices_list[i]);
 			return null;
@@ -264,12 +264,12 @@ async function RGBLIGHT_SAT_DECREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x06]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x06]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_SAT_DECREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x06]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x06]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_SAT_DECREASE", devices_list[i]);
 			return null;
@@ -285,12 +285,12 @@ async function RGBLIGHT_VAL_INCREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x07]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x07]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_VAL_INCREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x07]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x07]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_VAL_INCREASE", devices_list[i]);
 			return null;
@@ -306,12 +306,12 @@ async function RGBLIGHT_VAL_DECREASE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x04, 0x08]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x05, 0x08]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_VAL_DECREASE", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x04, 0x08]);
+			const outputReportData = new Uint8Array([0x02, 0x05, 0x08]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("RGBLIGHT_VAL_DECREASE", devices_list[i]);
 			return null;
