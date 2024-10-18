@@ -15,7 +15,7 @@
 
 ### Windows/Linux/MacOS等系统
 
-一、访问[百度网盘](https://pan.quark.cn/s/5ad4827075c6)下载本地服务端。 
+一、访问[下载页面](down/download.md)下载本地服务端。 
 
 二、请根据您使用的操作系统下载对应的配置工具：
 
