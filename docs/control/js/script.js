@@ -5,8 +5,13 @@ document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevi
 //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
 //document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-document.getElementsByName('switchwireless')[0].addEventListener('click', SWITCH_WIRELESS); //发送命令
+document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); //发送命令
 document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); //发送命令
+document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); //发送命令
+document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); //发送命令
+document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); //发送命令
+document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); //发送命令
+document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); //发送命令
 document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); //发送命令
 document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); //发送命令
 document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); //发送命令
@@ -132,7 +137,7 @@ async function CloseDevice() {
 }
 
 
-//====================================================================================控制按键==================================
+//====================================================================================RGB控制按键==================================
 //发送数据处理函数：RGBLIGHT_TOGGLE
 async function RGBLIGHT_TOGGLE() {
 	const devices_list = await navigator.hid.getDevices();
@@ -322,18 +327,18 @@ async function RGBLIGHT_VAL_DECREASE() {
 	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 }
 
-
+//=========================================================================模式控制按钮===============================================
 //发送数据处理函数：SWITCH_ESB
 async function SWITCH_ESB() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x02]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x00]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("SWITCH_ESB:", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x14, 0x02]);
+			const outputReportData = new Uint8Array([0x02, 0x13, 0x00]);
 			await senddata(devices_list[i], outputReportData);
 			console.log("SWITCH_ESB:", devices_list[i]);
 			return null;
@@ -344,19 +349,124 @@ async function SWITCH_ESB() {
 	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 }
 
-//发送数据处理函数：SWITCH_WIRELESS
-async function SWITCH_WIRELESS() {
+//发送数据处理函数：SWITCH_BLE
+async function SWITCH_BLE() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
-			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x02]);
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x13, 0x01]);
 			await senddata(devices_list[i], outputReportData);
-			console.log("SWITCH_WIRELESS:", devices_list[i]);
+			console.log("SWITCH_BLE:", devices_list[i]);
 			return null;
 		} else if (devices_list[i].opened && devices_list[i].productName == "") {
-			const outputReportData = new Uint8Array([0x02, 0x13, 0x02]);
+			const outputReportData = new Uint8Array([0x02, 0x13, 0x01]);
 			await senddata(devices_list[i], outputReportData);
-			console.log("SWITCH_WIRELESS:", devices_list[i]);
+			console.log("SWITCH_BLE:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：SWITCH_ESB_TX
+async function SWITCH_ESB_TX() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x00]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB_TX:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x14, 0x00]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB_TX:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：SWITCH_ESB_RX
+async function SWITCH_ESB_RX() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x14, 0x01]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB_RX:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x14, 0x01]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_ESB_RX:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：SWITCH_BT1
+async function SWITCH_BT1() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x01, 0x08]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT1:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x01, 0x08]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT1:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：SWITCH_BT2
+async function SWITCH_BT2() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x01, 0x09]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT2:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x01, 0x09]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT2:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：SWITCH_BT3
+async function SWITCH_BT3() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x01, 0x0A]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT3:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x01, 0x0A]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SWITCH_BT3:", devices_list[i]);
 			return null;
 		}
 	}
