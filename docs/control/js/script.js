@@ -1,6 +1,9 @@
 // Part of https://todbot.github.io/blink1-webhid/
 
 document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevice); //授权设备
+document.getElementsByName('systemoff')[0].addEventListener('click', SYSTEMOFF); //授权设备
+document.getElementsByName('indicatorlight')[0].addEventListener('click', TOGGLE_INDICATOR_LIGHT); //授权设备
+document.getElementsByName('bootcheck')[0].addEventListener('click', BOOTCHECK); //授权设备
 //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
 //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
 //document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
@@ -9,6 +12,8 @@ document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE)
 document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); //发送命令
 document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); //发送命令
 document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); //发送命令
+document.getElementsByName('readv')[0].addEventListener('click', READV); //发送命令
+document.getElementsByName('rebond')[0].addEventListener('click', REBOND); //发送命令
 document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); //发送命令
 document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); //发送命令
 document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); //发送命令
@@ -22,6 +27,9 @@ document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SA
 document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); //发送命令
 document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); //发送命令
 //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
+
+// 获取元素
+var LINKCTRLElement = document.getElementById('linkctrl');
 
 //设置过滤器
 const filters = [
@@ -44,7 +52,7 @@ async function GrantDevice() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].productName.includes("Lotlab")) {
 			console.log("GrantDevice():", devices_list[i]);
-			document.getElementById('consoleinfo').innerHTML += "授权设备:" + devices_list[i].productName + '<br>';
+			document.getElementById('consoleinfo').innerHTML = "⌨️授权有线设备:" + devices_list[i].productName + '<br>';
 			OpenDevice().then(GetKeyboardInfo);
 			refreshdata();
 			return null;
@@ -65,7 +73,7 @@ async function ListDevices() {
 	const devices_list = await navigator.hid.getDevices();
 	if (!devices_list.length) {
 		console.log("No Device Connected");
-		document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+		
 		document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 		return null;
 	}
@@ -82,16 +90,21 @@ async function OpenDevice() {
 	const devices_list = await navigator.hid.getDevices();
 	if (!devices_list.length) {
 		console.log("No Device Connected");
-		document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+		
 		document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 		return null;
 	} else {
 		for (var i = 0; i < devices_list.length; i++) {
-			if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == ""))) {
-				document.getElementById('consoleinfo').innerHTML += "设备已经连接，请勿重复点击" + '<br>';
+			if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+				document.getElementById('consoleinfo').innerHTML = "设备已经连接，请勿重复点击" + '<br>';
+				return devices_list[i];
+			} else if (devices_list[i].opened && devices_list[i].productName == "") {
+				document.getElementById('consoleinfo').innerHTML = "无线设备已经连接，请勿重复点击" + '<br>';
 				return devices_list[i];
 			} else if (devices_list[i].productName.includes("Lotlab")) {
 				await devices_list[i].open();
+				// 显示RGB控制元素
+				LINKCTRLElement.style.display = 'block';
 				devices_list[i].oninputreport = ({ device, reportId, data }) => {
 					const inputdata = new Uint8Array(data.buffer);
 					console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
@@ -107,10 +120,12 @@ async function OpenDevice() {
 					document.getElementById('consoleinfo').innerHTML += "固件编译日期：" + newDate.toLocaleString() + '<br>';
 				};
 				console.log("OpenDevice():", devices_list[i]);
-				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
+				document.getElementById('consoleinfo').innerHTML += "⌨️已连接设备:" + devices_list[i].productName + '<br>';
 				//return devices_list[i];
 			} else if (devices_list[i].productName == "") {
 				await devices_list[i].open();
+				// 隐藏RGB控制元素
+				LINKCTRLElement.style.display = 'none';
 				console.log("OpenDevice():", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML = "⌨️已连接无线设备" + '<br>';
 				//return devices_list[i];
@@ -132,8 +147,68 @@ async function CloseDevice() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
+}
+
+//====================================================================================键盘控制按键==================================
+//发送数据处理函数：SYSTEMOFF
+async function SYSTEMOFF() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x12, 0x00]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SYSTEMOFF", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x12, 0x00]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("SYSTEMOFF", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：TOGGLE_INDICATOR_LIGHT
+async function TOGGLE_INDICATOR_LIGHT() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x12, 0x01]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("TOGGLE_INDICATOR_LIGHT", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x12, 0x01]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("TOGGLE_INDICATOR_LIGHT", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：BOOTCHECK
+async function BOOTCHECK() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x12, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("BOOTCHECK", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x12, 0x02]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("BOOTCHECK", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+	document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 
@@ -155,8 +230,7 @@ async function RGBLIGHT_TOGGLE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_INCREASE
@@ -176,8 +250,7 @@ async function RGBLIGHT_MODE_INCREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_DECREASE
@@ -197,8 +270,7 @@ async function RGBLIGHT_MODE_DECREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_INCREASE
@@ -218,8 +290,7 @@ async function RGBLIGHT_HUE_INCREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_DECREASE
@@ -239,8 +310,7 @@ async function RGBLIGHT_HUE_DECREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_INCREASE
@@ -260,8 +330,7 @@ async function RGBLIGHT_SAT_INCREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_DECREASE
@@ -281,8 +350,7 @@ async function RGBLIGHT_SAT_DECREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_INCREASE
@@ -302,8 +370,7 @@ async function RGBLIGHT_VAL_INCREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_DECREASE
@@ -323,8 +390,7 @@ async function RGBLIGHT_VAL_DECREASE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //=========================================================================模式控制按钮===============================================
@@ -345,8 +411,7 @@ async function SWITCH_ESB() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_BLE
@@ -366,8 +431,7 @@ async function SWITCH_BLE() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_ESB_TX
@@ -387,8 +451,7 @@ async function SWITCH_ESB_TX() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_ESB_RX
@@ -408,8 +471,47 @@ async function SWITCH_ESB_RX() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：READV
+async function READV() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x01, 0x0B]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("READV:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x01, 0x0B]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("READV:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
+}
+
+//发送数据处理函数：REBOND
+async function REBOND() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+			const outputReportData = new Uint8Array([0x40, 0x02, 0x01, 0x07]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("REBOND:", devices_list[i]);
+			return null;
+		} else if (devices_list[i].opened && devices_list[i].productName == "") {
+			const outputReportData = new Uint8Array([0x02, 0x01, 0x07]);
+			await senddata(devices_list[i], outputReportData);
+			console.log("REBOND:", devices_list[i]);
+			return null;
+		}
+	}
+	console.log("No Device Connected");
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_BT1
@@ -429,8 +531,7 @@ async function SWITCH_BT1() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_BT2
@@ -450,8 +551,7 @@ async function SWITCH_BT2() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：SWITCH_BT3
@@ -471,8 +571,7 @@ async function SWITCH_BT3() {
 		}
 	}
 	console.log("No Device Connected");
-	document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
+		document.getElementById('consoleinfo').innerHTML = "无设备连接" + '<br>';
 }
 
 //发送数据处理函数：获取键盘信息
@@ -521,7 +620,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			if (devices[i].productName == "") {
 				OpenDevice().then(GetKeyboardInfo);
 				console.log("DOMContentLoaded & Opened Device :", devices[i]);
-				document.getElementById('consoleinfo').innerHTML += "🔌自动连接无线设备: " + devices[i].productName + '<br>';
+				document.getElementById('consoleinfo').innerHTML += "🔌自动连接无线设备 ";
 				refreshdata();
 			}
 		}
@@ -535,13 +634,13 @@ if ("hid" in navigator) {
 	navigator.hid.addEventListener('connect', ({ device }) => {
 		console.log(`HID设备连接: ${device.productName}`);
 		if (device.productName.includes("Lotlab")) {
-			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备接入" + '<br>';
+			
+			document.getElementById('consoleinfo').innerHTML = "🔌HID设备接入" + '<br>';
 			OpenDevice().then(GetKeyboardInfo)
 			refreshdata();
 		}
 		if (device.productName == "") {
-			document.getElementById('consoleinfo').innerHTML = "🔌已授权无线设备接入" + '<br>';
+			document.getElementById('consoleinfo').innerHTML = "🔌无线设备接入" + '<br>';
 			OpenDevice().then(GetKeyboardInfo)
 			refreshdata();
 		}
@@ -551,12 +650,12 @@ if ("hid" in navigator) {
 	navigator.hid.addEventListener('disconnect', ({ device }) => {
 		console.log(`HID设备断开: ${device.productName}`);
 		if (device.productName.includes("Lotlab") || (device.productName == "")) {
-			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
+			
+			document.getElementById('consoleinfo').innerHTML = "⌨️HID设备已断开" + '<br>';
 			clearInterval(info);
 		}
 		if (device.productName == "") {
-			document.getElementById('consoleinfo').innerHTML = "🔌已授权无线设备断开" + '<br>';
+			document.getElementById('consoleinfo').innerHTML = "⌨️无线设备已断开" + '<br>';
 			clearInterval(info);
 		}
 	});

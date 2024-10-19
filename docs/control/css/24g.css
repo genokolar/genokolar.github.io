@@ -61,12 +61,14 @@
         color: rgb(180 180 180);
         background: rgb(38 67 77);
         font-family: "Alimama FangYuanTi VF";
+        font-size: smaller;
     }
 
     #send-button2, #send-button3 {
         color: rgb(180 180 180);
         background: rgb(47 77 60);
         font-family: "Alimama FangYuanTi VF";
+        font-size: smaller;
     }
 }
 
@@ -116,12 +118,14 @@
         color: rgb(255, 255, 255);
         background: #1aa5d3;
         font-family: "Alimama FangYuanTi VF";
+        font-size: smaller;
     }
 
     #send-button2, #send-button3 {
         color: rgb(255, 255, 255);
         background: rgb(17, 175, 167);
         font-family: "Alimama FangYuanTi VF";
+        font-size: smaller;
     }
 }
 
@@ -291,12 +295,13 @@ h1 {
 
 
 .button {
-    margin-top: 30px;
+    margin-top: 10px;
     text-align:center;
 }
 
 .info {
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align:center;
 }
 
