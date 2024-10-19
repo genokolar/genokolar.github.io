@@ -108,16 +108,15 @@ async function OpenDevice() {
 				devices_list[i].oninputreport = ({ device, reportId, data }) => {
 					const inputdata = new Uint8Array(data.buffer);
 					console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
-					//console.log(`已绑定设备数量：`, inputdata[20]);
-					//console.log(`绑定设备索引：`, inputdata[21]);
-					var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-					var newDate = new Date();
-					newDate.setTime(builddata * 1000);
-					document.getElementById('consoleinfo').innerHTML = "📃" + device.productName + ' 的信息：<br>';
-
-					document.getElementById('consoleinfo').innerHTML += "固件SDK版本：" + inputdata[11] + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "固件版本信息：" + (inputdata[11].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[10].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[9].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[8].toString(16).toUpperCase()).slice(-2) + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "固件编译日期：" + newDate.toLocaleString() + '<br>';
+					if (inputdata.length == 63) {
+						var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+						var newDate = new Date();
+						newDate.setTime(builddata * 1000);
+						document.getElementById('consoleinfo').innerHTML = "📃" + device.productName + ' 的信息：<br>';
+						document.getElementById('consoleinfo').innerHTML += "固件SDK版本：" + inputdata[11] + '<br>';
+						document.getElementById('consoleinfo').innerHTML += "固件版本信息：" + (inputdata[11].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[10].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[9].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[8].toString(16).toUpperCase()).slice(-2) + '<br>';
+						document.getElementById('consoleinfo').innerHTML += "固件编译日期：" + newDate.toLocaleString() + '<br>';
+					}
 				};
 				console.log("OpenDevice():", devices_list[i]);
 				document.getElementById('consoleinfo').innerHTML += "⌨️已连接设备:" + devices_list[i].productName + '<br>';
