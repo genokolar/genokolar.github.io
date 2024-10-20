@@ -608,7 +608,6 @@ async function refreshdata() {
 document.addEventListener('DOMContentLoaded', async () => {
 	let devices = await navigator.hid.getDevices();
 	if (devices.length) {
-		document.getElementById('consoleinfo').innerHTML += "已接入授权HID设备" + '<br>';
 		for (var i = 0; i < devices.length; i++) {
 			if (devices[i].productName.includes("Lotlab")) {
 				OpenDevice().then(GetKeyboardInfo);
