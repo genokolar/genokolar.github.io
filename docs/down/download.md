@@ -18,7 +18,7 @@ hide:
 | :------------:|  ------------| :------------: |
 | <b> 键盘主控完整固件</b> <br>（nRF52系列芯片）|  <b>2024.10.18更新：<br> 修正特定情况下的问题，初步实现BLE HID控制键盘功能</b>  | <a href="https://down.glab.online:5550/Glab3.1/" class="button">🌍官网下载</a> <br> <a href="http://down6.glab.online:5550/Glab3.1/" class="button">🌏仅IPv6官网</a> <br><a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">🧱Github发布页</a>|
 | <b>USB固件</b><br>（CH55x芯片） | <b>2024.10.18更新：<br> 增强可关机持续USB供电的电脑关机重启的兼容 </b>  |<a href="https://down.glab.online:5550/ch554" class="button">🌍官方下载</a> <br> <a href="http://down6.glab.online:5550/ch554" class="button">🌏仅IPv6官网 </a> <br><a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button">🧱Github发布页</a>|
-| <b>2.4G接收器固件</b><br>（含USB及主固件） | <b>2024.10.09更新：<br>固件大幅度精简优化 <br>优化主机休眠唤醒功能，支持关闭CMSIS-DAP模式 </b> <br> 建议及时更新固件获得更好体验。 |<a href="https://down.glab.online:5550/receiver" class="button">🌍官方下载</a> <br> <a href="http://down6.glab.online:5550/receiver" class="button">🌏仅IPv6官网</a>|
+| <b>2.4G接收器固件</b><br>（含USB及主固件） | <b>2024.10.20更新：<br>固件大幅度精简优化 <br>优化主机休眠唤醒功能，支持关闭CMSIS-DAP模式 </b> <br> 建议及时更新固件获得更好体验。 |<a href="https://down.glab.online:5550/receiver" class="button">🌍官方下载</a> <br> <a href="http://down6.glab.online:5550/receiver" class="button">🌏仅IPv6官网</a>|
 
 
 
