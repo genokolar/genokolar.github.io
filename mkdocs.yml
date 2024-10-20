@@ -159,7 +159,7 @@ extra:
 #页面导航    
 nav:
     - 主页: index.md
-    - 帮助文档:
+    - 文档:
       - 用户手册:
         - 相关概述: summary.md
         - 使用说明: manual.md
@@ -176,7 +176,7 @@ nav:
         - 键帽高度: knowledge/keycapheight.md
         - 轴体类型: knowledge/axisswitch.md
         - 组装键盘: pdf/怎么组装键盘.pdf
-    - 产品信息:
+    - 产品:
       - 2.4G接收器: keyboard/receiver.md
       - GT Volta9: keyboard/volta9.md
       - GT PAD: keyboard/gt-pad.md
@@ -188,13 +188,14 @@ nav:
       - Omega45: keyboard/omega45.md
       - GT BLE60: keyboard/gt_ble60.md
       - Farad69: keyboard/farad69.md
-    - 更新下载: 
+    - 下载: 
       - 相关下载: down/download.md
       - 更新日志: changelog.md
     - 信息公告: blog/info.md
-    - 淘宝店铺: https://glab.taobao.com
     - 接收器控制: 2.4G/index.html
+    - 键盘控制: control/index.html
     - 键盘测试: keytest/index.html
+    - 淘宝店: https://glab.taobao.com
 
 
-copyright: <a href=https://glab.online/>键圈欢乐多</a> - <a href=http://beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2021-2025 Glab.online
+copyright: <a href=https://glab.online/>键圈欢乐多</a> - <a href=http://beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2024-2027 Glab.online
