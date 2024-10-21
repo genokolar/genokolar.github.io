@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>键盘控制器</title>
+  <meta name="description" content="Glab系列键盘在线控制面板.">
+  <meta name="author" content="Geno">
+  <link rel="icon" href="app.png">
+  <meta charset=utf-8>
+  <script type="module" src="./js/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/control.css">
+</head>
+
+<body>
+  <h1>Glab键盘控制面板</h1>
+
+
+  <div class="text">
+    初次连接的设备需要先授权，授权后的设备方可连接控制<br />
+    蓝牙连接每次都需要重新授权，蓝牙断联后也需要重新授权<br />
+  </div>
+  <div class="info">
+      <span class="console" id="consoleinfo"><br> </span>
+  </div>
+  <div class="button" id="devicectrl">
+    <button name="grantdevice" id="grant-button" class="btn float-buttons waves-effect waves-button waves-float" title="授权访问设备权限"> 授权设备 </button>
+    <!-- <button id="list-button" class="btn float-buttons waves-effect waves-button waves-float" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
+    <button id="connect-button" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
+    <button id="disconnect-button" class="btn float-button-light waves-effect waves-button waves-float waves-light" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="断开Lotlab设备连接"> 断开连接 </button>
+    <button name="getkeyboardinfo" id="send-button3" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="发送命令获取接收器信息"> 获取信息 </button> -->
+    <button name="systemoff" id="send-button1" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="使键盘关机"> 键盘关机 </button>
+    <button name="indicatorlight" id="send-button1" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="开关指示灯"> 指示灯 </button>
+    <button name="bootcheck" id="send-button1" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="切换是否需要启动按钮"> 启动按钮 </button>
+  </div>
+  <div class="button" id="linkctrl">
+      <button name="switchble" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换到蓝牙模式"> 蓝牙模式 </button>
+      <button name="switchesb" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换2.4G模式"> 2.4G模式 </button>
+      <button name="switchesbtx" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换2.4G的发送模式（键盘）"> 2.4G发送 </button>
+      <button name="switchesbrx" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换2.4G的接收模式（接收器）"> 2.4G接收 </button>
+      <button name="rebond" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘蓝牙广播或2.4G配对"> 广播配对 </button>
+      <button name="readv" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘解除蓝牙或2.4G配对"> 解除配对 </button>
+      <button name="switchbt1" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换蓝牙或2.4G通道一"> 通道一 </button>
+      <button name="switchbt2" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换蓝牙或2.4G通道二"> 通道二 </button>
+      <button name="switchbt3" id="send-button2" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="键盘切换蓝牙或2.4G通道三"> 通道三 </button>
+  </div>
+  <div class="button" id="rgbctrl">
+      <button name="rgbtoggle" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光开关"> 灯光开关 </button>
+      <button name="rgbmodeinc" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光模式+"> 模式+ </button>
+      <button name="rgbmodedec" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光模式-"> 模式- </button>
+      <button name="rgbhueinc" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光色相+"> 色相+ </button>
+      <button name="rgbhuedec" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光色相-"> 色相- </button>
+      <button name="rgbsatinc" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光饱和度+"> 饱和度+ </button>
+      <button name="rgbsatdec" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光饱和度-"> 饱和度- </button>
+      <button name="rgbvalinc" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光色调+"> 亮度+ </button>
+      <button name="rgbvaldec" id="send-button4" class="btn float-button-light waves-effect waves-button waves-float waves-light"  title="RGB灯光色调-"> 亮度- </button>
+  </div>
+  <div class="footer">
+    <div class="copyright"> <a href="https://glab.online/">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+  </div>
+</body>
+
+</html>

@@ -1,315 +1,214 @@
-/*!
- * Waves v0.7.2
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
- */
+:root {
+    /* 定义全局样式变量 */
+    --background-color: #ffffff;
+    --header-background-color: #0b8ec2;
+    --header-text-color: #ffffff;
+    --tab-background-color: #f0f0f0;
+    --tab-text-color: #333;
+    --tab-button-hover-color: #e0e0e0;
+    --tab-button-active-color: #d0d0d0;
+    --button-background-color: #0b8ec2;
+    --button-text-color: #fff;
+    --tab-content-background-color: #fafafa;
+    --help-text-color: #333;
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* 阿里云字体。 */
-/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-@font-face {
-    font-family: "Alimama FangYuanTi VF";
-    src: url("../fonts/AlimamaFangYuanTiVF-Thin.woff2") format("woff2");
-    font-display: swap;
+.dark-theme {
+    /* 定义暗色主题样式变量 */
+    --background-color: #333;
+    --header-background-color: #014b55;
+    --tab-background-color: #444;
+    --tab-text-color: #eee;
+    --tab-button-hover-color: #7f8b8b;
+    --tab-button-active-color: #636d6d;
+    --button-background-color: #014b55;
+    --button-text-color: #ccc;
+    --tab-content-background-color: #444;
+    --help-text-color: #eee;
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.18);
 }
 
 
+/* 基本样式 */
 
-@media (prefers-color-scheme: dark) {
-    
-    html {
-        background-color:#202020;
-    }
-
-    body {
-        background-image: linear-gradient(to bottom , #202020, #252525,#2e2e2e, #272727, #202020);
-        color: rgb(196, 196, 196);
-        margin: 0px;
-        font-family: "Alimama FangYuanTi VF";
-    }
-    a {
-        color: rgb(196, 196, 196);
-        text-decoration: none;
-    }
-    a:visited {
-        color: rgb(196, 196, 196);
-        text-decoration: none;
-    }
-    a:hover {
-        color: rgb(0, 171, 223);
-        text-decoration: none;
-    }
-
-    .console {
-        color: #696969;
-        background-color: #232b2c;
-        border: #616161;
-        border-style: solid;
-        border-radius: 8px;
-        box-shadow: 3px 3px 7px rgb(18 18 18 / 80%);
-    }
-
-    #grant-button {
-        color: rgb(180 180 180);
-        background: rgb(86 21 21);
-        font-family: "Alimama FangYuanTi VF";
-    }
-
-    #send-button1, #send-button4 {
-        color: rgb(180 180 180);
-        background: rgb(38 67 77);
-        font-family: "Alimama FangYuanTi VF";
-        font-size: smaller;
-    }
-
-    #send-button2, #send-button3 {
-        color: rgb(180 180 180);
-        background: rgb(47 77 60);
-        font-family: "Alimama FangYuanTi VF";
-        font-size: smaller;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-
-    html {
-        background-color:#dddddd;
-        overflow: hidden;
-    }
-
-    body {
-        background-image: linear-gradient(to bottom , #dddddd, #e8e8e8,#efefef, #e8e8e8, #dddddd);
-        color: rgb(116, 116, 116);
-        margin: 0px;
-        font-family: "Alimama FangYuanTi VF";
-    }
-
-    a {
-        color: rgb(116, 116, 116);
-        text-decoration: none;
-    }
-    a:visited {
-        color: rgb(116, 116, 116);
-        text-decoration: none;
-    }
-    a:hover {
-        color: rgb(17, 175, 167);
-        text-decoration: none;
-    }
-
-    .console {
-        color: #6d6d6d;
-        background-color: #e5e5e5;
-        border: rgb(255 255 255 / 90%);
-        border-style: solid;
-        border-radius: 8px;
-        box-shadow: 3px 3px 6px rgb(24 24 24 / 35%);
-    }
-
-    #grant-button {
-        color: rgb(255, 255, 255);
-        background: rgb(206, 25, 79);
-        font-family: "Alimama FangYuanTi VF";
-    }
-    
-    #send-button1, #send-button4 {
-        color: rgb(255, 255, 255);
-        background: #1aa5d3;
-        font-family: "Alimama FangYuanTi VF";
-        font-size: smaller;
-    }
-
-    #send-button2, #send-button3 {
-        color: rgb(255, 255, 255);
-        background: rgb(17, 175, 167);
-        font-family: "Alimama FangYuanTi VF";
-        font-size: smaller;
-    }
-}
-
-.waves-effect {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent
-}
-
-.waves-effect .waves-ripple {
-    position: absolute;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-top: -50px;
-    margin-left: -50px;
-    opacity: 0;
-    background: rgba(0, 0, 0, .2);
-    background: -webkit-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -o-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -moz-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-    -o-transition: all .5s ease-out;
-    transition: all .5s ease-out;
-    -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property: -moz-transform, opacity;
-    -o-transition-property: -o-transform, opacity;
-    transition-property: transform, opacity;
-    -webkit-transform: scale(0) translate(0, 0);
-    -moz-transform: scale(0) translate(0, 0);
-    -ms-transform: scale(0) translate(0, 0);
-    -o-transform: scale(0) translate(0, 0);
-    transform: scale(0) translate(0, 0);
-    pointer-events: none
-}
-
-.waves-effect.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, .4);
-    background: -webkit-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -o-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -moz-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%)
-}
-
-.waves-effect.waves-classic .waves-ripple {
-    background: rgba(0, 0, 0, .2)
-}
-
-.waves-effect.waves-classic.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, .4)
-}
-
-.waves-notransition {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -o-transition: none !important;
-    transition: none !important
-}
-
-.waves-button,
-.waves-circle {
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #000 100%)
-}
-
-.waves-button,
-.waves-button:hover,
-.waves-button:visited,
-.waves-button-input {
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: none;
-    outline: 0;
-    color: inherit;
-    background-color: transparent;
-    font-size: 1em;
-    line-height: 1em;
-    text-align: center;
-    text-decoration: none;
-    z-index: 1
-}
-
-.waves-button {
-    padding: .85em 1.1em;
-    border-radius: .2em
-}
-
-.waves-button-input {
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", 'Arial', sans-serif;
+    background-color: var(--background-color);
     margin: 0;
-    padding: .85em 1.1em
+    padding: 20px;
+    transition: background-color 0.3s;
 }
 
-.waves-input-wrapper {
-    border-radius: .2em;
-    vertical-align: bottom
-}
-
-.waves-input-wrapper.waves-button {
-    padding: 0
-}
-
-.waves-input-wrapper .waves-button-input {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 1
-}
-
-.waves-circle {
-    text-align: center;
-    width: 2.5em;
-    height: 2.5em;
-    line-height: 2.5em;
-    border-radius: 50%
-}
-
-.waves-float {
-    -webkit-mask-image: none;
-    -webkit-box-shadow: 0 1px 1.5px 1px rgba(0, 0, 0, .12);
-    box-shadow: 0 1px 1.5px 1px rgba(0, 0, 0, .12);
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    -o-transition: all 300ms;
-    transition: all 300ms
-}
-
-.waves-float:active {
-    -webkit-box-shadow: 0 8px 20px 1px rgba(0, 0, 0, .3);
-    box-shadow: 0 8px 20px 1px rgba(0, 0, 0, .3)
-}
-
-.waves-block {
-    display: block
-}
-
-a.waves-effect .waves-ripple {
-    z-index: -1
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: var(--box-shadow-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
 }
 
 
-h1 {
-    text-align: center;
+/* 媒体查询 - 最大宽度 600px */
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 95%;
+        padding: 10px;
+    }
+    .tab button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }
 
-.footer {
-    margin-top: 25px;
-    text-align:center;
+
+/* 媒体查询 - 最大宽度 800px */
+
+@media (max-width: 800px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+    .tab button {
+        padding: 12px;
+        font-size: 16px;
+    }
+    .button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+.header {
+    /* 定义头部样式 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-info {
+    /* 定义头部信息样式 */
+    display: flex;
+    align-items: center;
+}
+
+.header-info i {
+    /* 定义头部信息图标样式 */
+    margin-right: 8px;
+}
+
+.tab {
+    /* 定义标签页样式 */
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: var(--tab-background-color);
+    margin-top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab button {
+    /* 定义标签页按钮样式 */
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: background-color 0.3s;
+    font-size: 17px;
+    color: var(--tab-text-color);
+    width: auto;
+    text-align: left;
+    float: left;
+    /* 使按钮横向排列 */
+}
+
+.tab button:hover {
+    /* 定义标签页按钮悬停样式 */
+    background-color: var(--tab-button-hover-color);
+}
+
+.tab button.active {
+    /* 定义标签页按钮激活样式 */
+    background-color: var(--tab-button-active-color);
+}
+
+.tab-content {
+    /* 定义标签页内容样式 */
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: var(--tab-content-background-color);
+    transition: background-color 0.3s;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content.active {
+    /* 定义激活的标签页内容样式 */
+    display: block;
+}
+
+.button {
+    /* 定义按钮样式 */
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.button:hover {
+    /* 定义按钮悬停样式 */
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.status {
+    /* 定义状态样式 */
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.status i {
+    /* 定义状态图标样式 */
+    margin-right: 5px;
+}
+
+.theme-button {
+    /* 定义主题切换按钮样式 */
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: var(--button-text-color);
+}
+
+.theme-button:hover {
+    /* 定义主题切换按钮悬停样式 */
+    opacity: 0.8;
 }
 
 .text {
-    margin-top: 15px;
-    text-align:center;
-}
-
-
-.button {
-    margin-top: 10px;
-    text-align:center;
-}
-
-.info {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align:center;
-}
-
-.console {
-    width: 35em;
-    height: 12em;
-    display: block;
-    text-align: left;
-    padding: 15px 5px 0px 12px;
-    margin: 0 auto;
+    /* 定义帮助信息样式 */
+    color: var(--help-text-color);
 }
