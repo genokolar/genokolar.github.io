@@ -280,6 +280,12 @@ async function SYSTEMOFF() {
     sendcmd(cmd);
 }
 
+//发送数据处理函数：SLEEP
+async function SLEEP() {
+    cmd = new Uint8Array([0x02, 0x00, 0x00]);
+    sendcmd(cmd);
+}
+
 //发送数据处理函数：TOGGLE_INDICATOR_LIGHT
 async function TOGGLE_INDICATOR_LIGHT() {
     cmd = new Uint8Array([0x02, 0x12, 0x01]);
@@ -349,6 +355,12 @@ async function RGBLIGHT_VAL_DECREASE() {
 }
 
 //=========================================================================模式控制按钮===============================================
+//发送数据处理函数：SWITCH_USB
+async function SWITCH_USB() {
+    cmd = new Uint8Array([0x02, 0x01, 0x00]);
+    sendcmd(cmd);
+}
+
 //发送数据处理函数：SWITCH_ESB
 async function SWITCH_ESB() {
     cmd = new Uint8Array([0x02, 0x13, 0x00]);
@@ -408,12 +420,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     //==========================获取元素====================
     document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevice); //授权设备
     document.getElementsByName('systemoff')[0].addEventListener('click', SYSTEMOFF); //授权设备
+    document.getElementsByName('sleep')[0].addEventListener('click', SLEEP); //授权设备
     document.getElementsByName('indicatorlight')[0].addEventListener('click', TOGGLE_INDICATOR_LIGHT); //授权设备
     document.getElementsByName('bootcheck')[0].addEventListener('click', BOOTCHECK); //授权设备
     //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
     //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
     document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
+    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); //发送命令
     document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); //发送命令
     document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); //发送命令
     document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); //发送命令
