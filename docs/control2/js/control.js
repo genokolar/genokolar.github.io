@@ -107,14 +107,14 @@ async function GrantDevice() {
             await devices_list[i].open();
             device_opened = true;
             refreshdata();
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线已连接');
+            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
             // 显示RGB控制元素
             LINKCTRLElement.style.display = 'block';
             console.log("OpenDevice():", devices_list[i]);
         } else if (devices_list[i].productName == "" && !device_opened) {
             await devices_list[i].open();
             device_opened = true;
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线已连接');
+            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
             // 隐藏RGB控制元素
             LINKCTRLElement.style.display = 'none';
             console.log("OpenDevice():", devices_list[i]);
@@ -150,14 +150,24 @@ async function OpenDevice() {
                     await devices_list[i].open();
                     device_opened = true;
                     refreshdata();
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线已连接');
+                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
                     // 显示RGB控制元素
                     LINKCTRLElement.style.display = 'block';
                     console.log("OpenDevice():", devices_list[i]);
+                    devices_list[i].oninputreport = ({ device, reportId, data }) => {
+                        const inputdata = new Uint8Array(data.buffer);
+                        console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+                        if (inputdata[0] == 0) {
+                            var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+                            var newDate = new Date();
+                            newDate.setTime(builddata * 1000);
+                            updateHeaderStatus('', 'device-text', '', newDate.toLocaleString());
+                        }
+                    };
                 } else if (devices_list[i].productName == "" && !device_opened) {
                     await devices_list[i].open();
                     device_opened = true;
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线已连接');
+                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
                     console.log("OpenDevice():", devices_list[i]);
@@ -176,6 +186,11 @@ async function CloseDevice() {
             await devices_list[i].close();
             device_opened = false;
             console.log("CloseDevice():", devices_list[i]);
+            //如果断开的是有线设备，则停掉定时刷新任务
+            if (devices_list[i].productName.includes("Lotlab")) {
+                clearInterval(info);
+                refreshing = false;
+            }
         }
     }
     Check_Opend();
@@ -203,27 +218,27 @@ async function GetKeyboardInfo() {
 }
 
 
-
 //发送数据
 async function sendcmd(data) {
     const devices_list = await navigator.hid.getDevices();
-    for (var i = 0; i < devices_list.length; i++) {
+    for (let i = 0; i < devices_list.length; i++) {
         if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
             try {
-                await devices_list[i].sendReport(reportId, data.unshift(0x40));
-                console.log('SendReport:', reportId, data.unshift(0x40));
+                const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
+                await devices_list[i].sendReport(reportId, newData);
+                console.log('SendReport:', reportId, newData);
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
-            return null;
-        } else if (devices_list[i].opened && devices_list[i].productName == "") {
+            return;
+        } else if (devices_list[i].opened && devices_list[i].productName === "") {
             try {
                 await devices_list[i].sendReport(reportId, data);
                 console.log('SendReport:', reportId, data);
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
-            return null;
+            return;
         }
     }
 }
@@ -234,16 +249,17 @@ async function Check_Opend() {
         // 有设备打开状态，检测断开的设备是什么
         if (devices_list[i].opened) {
             if (devices_list[i].productName.includes("Lotlab") && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线已连接');
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
                 // 显示RGB控制元素
                 LINKCTRLElement.style.display = 'block';
             } else if (devices_list[i].productName == "" && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线已连接');
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
                 // 隐藏RGB控制元素
                 LINKCTRLElement.style.display = 'none';
             }
         } else {
             updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
+            updateHeaderStatus('', 'device-text', '', '固件日期');
             device_opened = false;
         }
     }

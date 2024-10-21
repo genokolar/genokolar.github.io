@@ -31,7 +31,7 @@
 /* 基本样式 */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "PingFang SC", "Microsoft YaHei", 'Arial', sans-serif;
     background-color: var(--background-color);
     margin: 0;
     padding: 20px;
@@ -173,6 +173,7 @@ body {
     outline: none;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
 }
 
 .button:hover {
