@@ -245,6 +245,9 @@ async function sendcmd(data) {
 //检测是否打来设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
+        updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
+        updateHeaderStatus('', 'device-text', '', '固件日期');
+        device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
         // 有设备打开状态，检测断开的设备是什么
         if (devices_list[i].opened) {
@@ -257,11 +260,8 @@ async function Check_Opend() {
                 // 隐藏RGB控制元素
                 LINKCTRLElement.style.display = 'none';
             }
-        } else {
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
-            updateHeaderStatus('', 'device-text', '', '固件日期');
-            device_opened = false;
-        }
+            device_opened = true;
+        } 
     }
 }
 //刷新数据任务
