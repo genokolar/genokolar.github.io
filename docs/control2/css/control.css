@@ -11,6 +11,7 @@
     --button-text-color: #fff;
     --tab-content-background-color: #fafafa;
     --help-text-color: #333;
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dark-theme {
@@ -25,6 +26,7 @@
     --button-text-color: #ccc;
     --tab-content-background-color: #444;
     --help-text-color: #eee;
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -42,7 +44,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-color);
     border-radius: 8px;
     background-color: var(--background-color);
 }
