@@ -31,16 +31,16 @@
 
         <div class="tab">
             <button class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
-            <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button id="linkctrl" class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
             <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
             <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-hands-helping"></i> 帮助 </button>
         </div>
 
         <div id="Tab1" class="tab-content">
-            <button name="grantdevice" id="grant-button" class="button" title="授权访问设备权限"> 授权设备 </button>
+            <button name="grantdevice" id="grant-button" class="button" style="background: rgb(176, 0, 0)"title="授权访问设备权限或连接设备"> 连接设备 </button>
+            <button id="disconnect-button" class="button" style="background: rgb(176, 0, 0)" title="断开Lotlab设备连接"> 断开连接 </button>
             <!-- <button id="list-button" class="button" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
                 <button id="connect-button" class="button" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
-                <button id="disconnect-button" class="button" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="断开Lotlab设备连接"> 断开连接 </button>
                 <button name="getkeyboardinfo" id="send-button3" class="button"  title="发送命令获取接收器信息"> 获取信息 </button> -->
             <button name="systemoff" id="send-button1" class="button" title="使键盘关机"> 键盘关机 </button>
             <button name="indicatorlight" id="send-button1" class="button" title="开关指示灯"> 指示灯 </button>
@@ -73,7 +73,7 @@
 
         <div id="Tab4" class="tab-content">
             <div class="text">
-                初次连接的设备需要先授权，授权后的设备方可连接控制<br /> 蓝牙连接每次都需要重新授权，蓝牙断联后也需要重新授权
+                初次连接的设备需要先授权并连接，授权后的设备接入可自动连接<br /> 蓝牙连接每次都需要重新授权连接，蓝牙断联后也需要重新授权连接
                 <br />
             </div>
 
