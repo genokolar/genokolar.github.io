@@ -12,6 +12,7 @@
     --tab-content-background-color: #fafafa;
     --help-text-color: #333;
     --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --content-border-color: 1px solid #ccc;
 }
 
 .dark-theme {
@@ -27,6 +28,7 @@
     --tab-content-background-color: #444;
     --help-text-color: #eee;
     --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.18);
+    --content-border-color: 1px solid #555;
 }
 
 
@@ -111,7 +113,7 @@ body {
 .tab {
     /* 定义标签页样式 */
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: var(--content-border-color);
     background-color: var(--tab-background-color);
     margin-top: 20px;
     border-top-left-radius: 8px;
@@ -149,13 +151,14 @@ body {
     /* 定义标签页内容样式 */
     display: none;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: var(--content-border-color);
     border-top: none;
     background-color: var(--tab-content-background-color);
     transition: background-color 0.3s;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 110px;
 }
 
 .tab-content.active {
@@ -176,6 +179,7 @@ body {
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-weight: 600;
+    min-width: 96px;
 }
 
 .button:hover {
