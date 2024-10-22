@@ -85,6 +85,24 @@ function updateHeaderStatus(iconid, textid, iconClass, text) {
     }
 }
 
+// 返回数据为1的位号
+function findSingleOneBit(data) {
+    for (let i = 7; i > 0; i--) {
+        if ((data & (1 << i)) !== 0) {
+            return i; // 直接返回第一个找到的1的位置
+        }
+    }
+    return 0; // 如果没有找到1，返回-1
+}
+
+//将状态栏设置为默认状态
+async function default_status() {
+    updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
+    updateHeaderStatus('', 'device-text', '', '固件日期');
+    updateHeaderStatus('', 'battery-text', '', '电量');
+    updateHeaderStatus('', 'layer-text', '', '激活层');
+}
+
 
 //设置过滤器
 const filters = [{
@@ -107,17 +125,17 @@ async function GrantDevice() {
             await devices_list[i].open();
             device_opened = true;
             refreshdata();
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
+            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
             // 显示RGB控制元素
             LINKCTRLElement.style.display = 'block';
-            console.log("OpenDevice():", devices_list[i]);
+            console.log("Grant & Open Device:", devices_list[i]);
         } else if (devices_list[i].productName == "" && !device_opened) {
             await devices_list[i].open();
             device_opened = true;
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
+            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
             // 隐藏RGB控制元素
             LINKCTRLElement.style.display = 'none';
-            console.log("OpenDevice():", devices_list[i]);
+            console.log("Grant & Open Device:", devices_list[i]);
         }
     }
 }
@@ -137,42 +155,43 @@ async function ListDevices() {
 }
 
 //连接设备【先授权，后连接GT 2.4G Receiver】
-async function OpenDevice() {
+async function OpenDevice(opendevice) {
     if (!device_opened) {
         const devices_list = await navigator.hid.getDevices();
         if (!devices_list.length) {
             console.log("No Device Connected");
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
+            default_status();
             return null;
         } else {
-            for (var i = 0; i < devices_list.length; i++) {
-                if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
-                    await devices_list[i].open();
+                if (opendevice.productName.includes("Lotlab") && !device_opened) {
+                    await opendevice.open();
                     device_opened = true;
                     refreshdata();
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
+                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
                     // 显示RGB控制元素
                     LINKCTRLElement.style.display = 'block';
-                    console.log("OpenDevice():", devices_list[i]);
-                    devices_list[i].oninputreport = ({ device, reportId, data }) => {
+                    console.log("Open Device:", opendevice);
+                    opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
                         console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
                         if (inputdata[0] == 0) {
                             var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
                             var newDate = new Date();
                             newDate.setTime(builddata * 1000);
-                            updateHeaderStatus('', 'device-text', '', newDate.toLocaleString());
+                            var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+                            updateHeaderStatus('', 'device-text', '', formattedDate);
+                            updateHeaderStatus('', 'battery-text', '', inputdata[20].toLocaleString() + '%');
+                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
                         }
                     };
-                } else if (devices_list[i].productName == "" && !device_opened) {
-                    await devices_list[i].open();
+                } else if (opendevice.productName == "" && !device_opened) {
+                    await opendevice.open();
                     device_opened = true;
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
+                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
-                    console.log("OpenDevice():", devices_list[i]);
+                    console.log("Open Device:", opendevice);
                 }
-            }
         }
     }
 }
@@ -245,23 +264,22 @@ async function sendcmd(data) {
 //检测是否打来设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
-        updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
-        updateHeaderStatus('', 'device-text', '', '固件日期');
-        device_opened = false;
+    default_status();
+    device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
         // 有设备打开状态，检测断开的设备是什么
         if (devices_list[i].opened) {
             if (devices_list[i].productName.includes("Lotlab") && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '有线连接');
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
                 // 显示RGB控制元素
                 LINKCTRLElement.style.display = 'block';
             } else if (devices_list[i].productName == "" && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '无线连接');
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
                 // 隐藏RGB控制元素
                 LINKCTRLElement.style.display = 'none';
             }
             device_opened = true;
-        } 
+        }
     }
 }
 //刷新数据任务
@@ -447,7 +465,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); //发送命令
     document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); //发送命令
     //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
-    OpenDevice().then(GetKeyboardInfo);
+    console.log("DOMContentLoaded");
+    const devices_list = await navigator.hid.getDevices();
+        if (devices_list.length) {
+            for (var i = 0; i < devices_list.length; i++) {
+                OpenDevice(devices_list[i]).then(GetKeyboardInfo);
+            }
+        } else {
+            console.log("No Device online");
+        }
 });
 
 
@@ -457,10 +483,9 @@ if ("hid" in navigator) {
         console.log(`HID设备连接: ${device.productName}`);
         //优先连接有线设备
         if (device.productName.includes("Lotlab")) {
-            OpenDevice().then(GetKeyboardInfo)
-        }
-        if (device.productName == "") {
-            OpenDevice().then(GetKeyboardInfo)
+            OpenDevice(device).then(GetKeyboardInfo)
+        } else if (device.productName == "") {
+            OpenDevice(device).then(GetKeyboardInfo)
         }
     });
 
