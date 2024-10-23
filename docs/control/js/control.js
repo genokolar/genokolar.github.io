@@ -99,7 +99,7 @@ function findSingleOneBit(data) {
 async function default_status() {
     updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
     updateHeaderStatus('', 'device-text', '', '固件日期');
-    updateHeaderStatus('', 'battery-text', '', '电量');
+    updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
     updateHeaderStatus('', 'layer-text', '', '激活层');
 }
 
@@ -133,7 +133,7 @@ async function GrantDevice() {
             await devices_list[i].open();
             device_opened = true;
             refreshdata();
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
+            updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
             // 隐藏RGB控制元素
             LINKCTRLElement.style.display = 'none';
             console.log("Grant & Open Device:", devices_list[i]);
@@ -180,8 +180,18 @@ async function OpenDevice(opendevice) {
                             var newDate = new Date();
                             newDate.setTime(builddata * 1000);
                             var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+                            let battery_icon = 'fas fa-battery-full'
+                            if (inputdata[20] < 90 && inputdata[20] >= 75){
+                                battery_icon = 'fas fa-battery-three-quarters'
+                            } else if (inputdata[20] < 75 && inputdata[20] >= 50){
+                                 battery_icon = 'fas fa-battery-half'
+                            } else if (inputdata[20] < 50 && inputdata[20] >= 25){
+                                battery_icon = 'fas fa-battery-quarter'
+                            } else if (inputdata[20] < 25){
+                                battery_icon = 'fas fa-battery-empty'
+                            }
                             updateHeaderStatus('', 'device-text', '', formattedDate);
-                            updateHeaderStatus('', 'battery-text', '', inputdata[20].toLocaleString() + '%');
+                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
                         }
                     };
@@ -189,7 +199,7 @@ async function OpenDevice(opendevice) {
                     await opendevice.open();
                     device_opened = true;
                     refreshdata();
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
+                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
                     console.log("Open Device:", opendevice);
@@ -201,8 +211,18 @@ async function OpenDevice(opendevice) {
                             var newDate = new Date();
                             newDate.setTime(builddata * 1000);
                             var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+                            let battery_icon = 'fas fa-battery-full'
+                            if (inputdata[10] < 90 && inputdata[10] >= 75){
+                                battery_icon = 'fas fa-battery-three-quarters'
+                            } else if (inputdata[10] < 75 && inputdata[10] >= 50){
+                                 battery_icon = 'fas fa-battery-half'
+                            } else if (inputdata[10] < 50 && inputdata[10] >= 25){
+                                battery_icon = 'fas fa-battery-quarter'
+                            } else if (inputdata[10] < 25){
+                                battery_icon = 'fas fa-battery-empty'
+                            }
                             updateHeaderStatus('', 'device-text', '', formattedDate);
-                            updateHeaderStatus('', 'battery-text', '', inputdata[10].toLocaleString() + '%');
+                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[10].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[11] | inputdata[12]) + 1);
                         }
                     };
@@ -220,13 +240,9 @@ async function CloseDevice() {
             await devices_list[i].close();
             device_opened = false;
             console.log("CloseDevice():", devices_list[i]);
-            //断开设备的同时，停掉定时刷新任务
-            clearInterval(info);
-            refreshing = false;
         }
     }
     Check_Opend();
-    console.log("No Device Connected");
 }
 
 //===================================================状态处理、数据处理================================
@@ -279,7 +295,6 @@ async function sendcmd(data) {
 //检测是否打来设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
-    default_status();
     device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
         // 有设备打开状态，检测断开的设备是什么
@@ -289,12 +304,20 @@ async function Check_Opend() {
                 // 显示RGB控制元素
                 LINKCTRLElement.style.display = 'block';
             } else if (devices_list[i].productName == "" && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
                 // 隐藏RGB控制元素
                 LINKCTRLElement.style.display = 'none';
             }
             device_opened = true;
         }
+    }
+    if(!device_opened){
+        //所有设备断开，停掉定时刷新任务
+        clearInterval(info);
+        refreshing = false;
+        //恢复状态栏
+        default_status();
+        console.log("No Device Connected");
     }
 }
 //刷新数据任务
@@ -563,9 +586,6 @@ if ("hid" in navigator) {
     //监听HID授权设备的断开，并提示
     navigator.hid.addEventListener('disconnect', ({ device }) => {
         console.log(`HID设备断开: ${device.productName}`);
-        //断开设备，停掉定时刷新任务,坚持是否有设备在线
-        clearInterval(info);
-        refreshing = false;
         Check_Opend();
     });
 } else {
