@@ -132,6 +132,7 @@ async function GrantDevice() {
         } else if (devices_list[i].productName == "" && !device_opened) {
             await devices_list[i].open();
             device_opened = true;
+            refreshdata();
             updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
             // 隐藏RGB控制元素
             LINKCTRLElement.style.display = 'none';
@@ -173,7 +174,7 @@ async function OpenDevice(opendevice) {
                     console.log("Open Device:", opendevice);
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
-                        console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+                        console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
                         if (inputdata[0] == 0) {
                             var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
                             var newDate = new Date();
@@ -187,13 +188,23 @@ async function OpenDevice(opendevice) {
                 } else if (opendevice.productName == "" && !device_opened) {
                     await opendevice.open();
                     device_opened = true;
+                    refreshdata();
                     updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', '蓝牙');
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
                     console.log("Open Device:", opendevice);
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
-                        console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+                        console.log(`BLE InputReport ${reportId} from ${device.productName}:`, inputdata);
+                        if (inputdata[0] == 0) {
+                            var builddata = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2) + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2)).toString(10);
+                            var newDate = new Date();
+                            newDate.setTime(builddata * 1000);
+                            var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+                            updateHeaderStatus('', 'device-text', '', formattedDate);
+                            updateHeaderStatus('', 'battery-text', '', inputdata[10].toLocaleString() + '%');
+                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[11] | inputdata[12]) + 1);
+                        }
                     };
                 }
         }
@@ -227,7 +238,7 @@ async function CloseDevice() {
 async function GetKeyboardInfo() {
     const devices_list = await navigator.hid.getDevices();
     for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "")) {
             const outputReportData = new Uint8Array([0x20]);
             try {
                 await devices_list[i].sendReport(reportId, outputReportData);
@@ -259,6 +270,7 @@ async function sendcmd(data) {
             try {
                 await devices_list[i].sendReport(reportId, data);
                 console.log('SendReport:', reportId, data);
+                GetKeyboardInfo(); //发送命令后及时获取信息
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
@@ -530,7 +542,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const devices_list = await navigator.hid.getDevices();
         if (devices_list.length) {
             for (var i = 0; i < devices_list.length; i++) {
-                OpenDevice(devices_list[i]).then(GetKeyboardInfo);
+                OpenDevice(devices_list[i]);
             }
         } else {
             console.log("No Device online");
@@ -544,9 +556,9 @@ if ("hid" in navigator) {
         console.log(`HID设备连接: ${device.productName}`);
         //优先连接有线设备
         if (device.productName.includes("Lotlab")) {
-            OpenDevice(device).then(GetKeyboardInfo)
+            OpenDevice(device)
         } else if (device.productName == "") {
-            OpenDevice(device).then(GetKeyboardInfo)
+            OpenDevice(device)
         }
     });
 
