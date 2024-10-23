@@ -191,6 +191,10 @@ async function OpenDevice(opendevice) {
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
                     console.log("Open Device:", opendevice);
+                    opendevice.oninputreport = ({ device, reportId, data }) => {
+                        const inputdata = new Uint8Array(data.buffer);
+                        console.log(`Input report ${reportId} from ${device.productName}:`, inputdata);
+                    };
                 }
         }
     }
@@ -246,6 +250,7 @@ async function sendcmd(data) {
                 const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
                 console.log('SendReport:', reportId, newData);
+                GetKeyboardInfo(); //发送命令后及时获取信息
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
@@ -433,6 +438,54 @@ async function SWITCH_BT3() {
     sendcmd(cmd);
 }
 
+//==========================层操作===============================
+//发送数据处理函数：LAYER1
+async function defaultlayer1() {
+    cmd = new Uint8Array([0x02, 0x12, 0x03]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER2
+async function defaultlayer2() {
+    cmd = new Uint8Array([0x02, 0x12, 0x04]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER3
+async function defaultlayer3() {
+    cmd = new Uint8Array([0x02, 0x12, 0x05]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER4
+async function defaultlayer4() {
+    cmd = new Uint8Array([0x02, 0x12, 0x06]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER5
+async function defaultlayer5() {
+    cmd = new Uint8Array([0x02, 0x12, 0x07]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER6
+async function defaultlayer6() {
+    cmd = new Uint8Array([0x02, 0x12, 0x08]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER7
+async function defaultlayer7() {
+    cmd = new Uint8Array([0x02, 0x12, 0x09]);
+    sendcmd(cmd);
+}
+
+//发送数据处理函数：LAYER8
+async function defaultlayer8() {
+    cmd = new Uint8Array([0x02, 0x12, 0x0A]);
+    sendcmd(cmd);
+}
 //=======================================================================监听器部分=====================
 document.addEventListener('DOMContentLoaded', async () => {
     //==========================获取元素====================
@@ -445,26 +498,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
     document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); //发送命令
-    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); //发送命令
-    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); //发送命令
-    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); //发送命令
-    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); //发送命令
-    document.getElementsByName('readv')[0].addEventListener('click', READV); //发送命令
-    document.getElementsByName('rebond')[0].addEventListener('click', REBOND); //发送命令
-    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); //发送命令
-    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); //发送命令
-    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); //发送命令
-    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); //发送命令
-    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); //发送命令
-    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); //发送命令
-    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); //发送命令
-    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); //发送命令
-    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); //发送命令
-    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); //发送命令
-    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); //发送命令
-    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); //发送命令
-    //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); //发送命令：获取键盘信息
+    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); 
+    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); 
+    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); 
+    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); 
+    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); 
+    document.getElementsByName('readv')[0].addEventListener('click', READV); 
+    document.getElementsByName('rebond')[0].addEventListener('click', REBOND); 
+    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); 
+    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); 
+    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); 
+    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); 
+    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); 
+    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); 
+    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); 
+    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); 
+    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); 
+    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); 
+    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); 
+    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); 
+    document.getElementsByName('defaultlayer1')[0].addEventListener('click', defaultlayer1);
+    document.getElementsByName('defaultlayer2')[0].addEventListener('click', defaultlayer2);
+    document.getElementsByName('defaultlayer3')[0].addEventListener('click', defaultlayer3);
+    document.getElementsByName('defaultlayer4')[0].addEventListener('click', defaultlayer4);
+    document.getElementsByName('defaultlayer5')[0].addEventListener('click', defaultlayer5);
+    document.getElementsByName('defaultlayer6')[0].addEventListener('click', defaultlayer6);
+    document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
+    document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
+    //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
     console.log("DOMContentLoaded");
     const devices_list = await navigator.hid.getDevices();
         if (devices_list.length) {
