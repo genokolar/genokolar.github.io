@@ -220,11 +220,9 @@ async function CloseDevice() {
             await devices_list[i].close();
             device_opened = false;
             console.log("CloseDevice():", devices_list[i]);
-            //如果断开的是有线设备，则停掉定时刷新任务
-            if (devices_list[i].productName.includes("Lotlab")) {
-                clearInterval(info);
-                refreshing = false;
-            }
+            //断开设备的同时，停掉定时刷新任务
+            clearInterval(info);
+            refreshing = false;
         }
     }
     Check_Opend();
@@ -565,11 +563,9 @@ if ("hid" in navigator) {
     //监听HID授权设备的断开，并提示
     navigator.hid.addEventListener('disconnect', ({ device }) => {
         console.log(`HID设备断开: ${device.productName}`);
-        //如果断开的是有线设备，则停掉定时刷新任务
-        if (device.productName.includes("Lotlab")) {
-            clearInterval(info);
-            refreshing = false;
-        }
+        //断开设备，停掉定时刷新任务,坚持是否有设备在线
+        clearInterval(info);
+        refreshing = false;
         Check_Opend();
     });
 } else {
