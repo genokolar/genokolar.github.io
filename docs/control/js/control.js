@@ -98,9 +98,12 @@ function findSingleOneBit(data) {
 //将状态栏设置为默认状态
 async function default_status() {
     updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
-    updateHeaderStatus('', 'device-text', '', '固件日期');
-    updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
+    updateHeaderStatus('', 'mode-text', '', '输出端');
     updateHeaderStatus('', 'layer-text', '', '激活层');
+    updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
+    updateHeaderStatus('', 'device-text', '', '固件日期');
+
+
 }
 
 
@@ -180,6 +183,17 @@ async function OpenDevice(opendevice) {
                             } else if (inputdata[20] < 25){
                                 battery_icon = 'fas fa-battery-empty'
                             }
+                            let mode_info = '输出端'
+                            if(inputdata[31] & (1 << 7)) {
+                                mode_info = 'USB'
+                            } else if((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5)) ) {
+                                mode_info = '无线接收'
+                            } else if((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
+                                mode_info = '无线'
+                            } else if(!(inputdata[31] & (1 << 6))) {
+                                mode_info = '蓝牙'
+                            }
+                            updateHeaderStatus('', 'mode-text', '', mode_info);
                             updateHeaderStatus('', 'device-text', '', formattedDate);
                             updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
@@ -211,6 +225,13 @@ async function OpenDevice(opendevice) {
                             } else if (inputdata[10] < 25){
                                 battery_icon = 'fas fa-battery-empty'
                             }
+                            let mode_info = '输出端'
+                            if(inputdata[17] & (1 << 7)) {
+                                mode_info = 'USB'
+                            } else if(!(inputdata[17] & (1 << 6))) {
+                                mode_info = '蓝牙'
+                            }
+                            updateHeaderStatus('', 'mode-text', '', mode_info);
                             updateHeaderStatus('', 'device-text', '', formattedDate);
                             updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[10].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[11] | inputdata[12]) + 1);
