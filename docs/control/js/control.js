@@ -122,20 +122,10 @@ async function GrantDevice() {
     });
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
-            await devices_list[i].open();
-            device_opened = true;
-            refreshdata();
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
-            // 显示RGB控制元素
-            LINKCTRLElement.style.display = 'block';
+            OpenDevice(devices_list[i]);
             console.log("Grant & Open Device:", devices_list[i]);
         } else if (devices_list[i].productName == "" && !device_opened) {
-            await devices_list[i].open();
-            device_opened = true;
-            refreshdata();
-            updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
-            // 隐藏RGB控制元素
-            LINKCTRLElement.style.display = 'none';
+            OpenDevice(devices_list[i]);
             console.log("Grant & Open Device:", devices_list[i]);
         }
     }
