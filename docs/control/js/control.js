@@ -1,6 +1,16 @@
 var LINKCTRLElement = document.getElementById('linkctrl');
 let refreshing = false;
 let device_opened = false;
+//设置过滤器
+const filters = [{
+    vendorId: 0x1209, // GT
+    productId: 0x0514, // GT
+}];
+
+var info;
+const reportId = 0x3f;
+
+//===========================页面更新操作部分====================================
 
 // 切换标签页内容的函数
 function openTab(evt, tabName) {
@@ -63,13 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 默认打开第一个标签页
-document.addEventListener("DOMContentLoaded", function () {
-    var firstTabLink = document.getElementsByClassName("tablinks")[0];
-    if (firstTabLink) {
-        firstTabLink.click();
-    }
-});
 
 // 更新头部状态的函数
 function updateHeaderStatus(iconid, textid, iconClass, text) {
@@ -85,16 +88,6 @@ function updateHeaderStatus(iconid, textid, iconClass, text) {
     }
 }
 
-// 返回数据为1的位号
-function findSingleOneBit(data) {
-    for (let i = 7; i > 0; i--) {
-        if ((data & (1 << i)) !== 0) {
-            return i; // 直接返回第一个找到的1的位置
-        }
-    }
-    return 0; // 如果没有找到1，返回-1
-}
-
 //将状态栏设置为默认状态
 async function default_status() {
     updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
@@ -107,15 +100,84 @@ async function default_status() {
 }
 
 
-//设置过滤器
-const filters = [{
-    vendorId: 0x1209, // GT
-    productId: 0x0514, // GT
-}];
+//=======================================================================监听器部分=====================
+document.addEventListener('DOMContentLoaded', async () => {
+    // 默认打开第一个标签页
+    var firstTabLink = document.getElementsByClassName("tablinks")[0];
+    if (firstTabLink) {
+        firstTabLink.click();
+    }
+    //==========================获取元素====================
+    document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevice); //授权设备
+    document.getElementsByName('systemoff')[0].addEventListener('click', SYSTEMOFF); //授权设备
+    document.getElementsByName('sleep')[0].addEventListener('click', SLEEP); //授权设备
+    document.getElementsByName('indicatorlight')[0].addEventListener('click', TOGGLE_INDICATOR_LIGHT); //授权设备
+    document.getElementsByName('bootcheck')[0].addEventListener('click', BOOTCHECK); //授权设备
+    //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
+    //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
+    document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-var info;
-const reportId = 0x3f;
+    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); 
+    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); 
+    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); 
+    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); 
+    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); 
+    document.getElementsByName('readv')[0].addEventListener('click', READV); 
+    document.getElementsByName('rebond')[0].addEventListener('click', REBOND); 
+    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); 
+    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); 
+    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); 
+    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); 
+    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); 
+    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); 
+    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); 
+    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); 
+    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); 
+    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); 
+    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); 
+    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); 
+    document.getElementsByName('defaultlayer1')[0].addEventListener('click', defaultlayer1);
+    document.getElementsByName('defaultlayer2')[0].addEventListener('click', defaultlayer2);
+    document.getElementsByName('defaultlayer3')[0].addEventListener('click', defaultlayer3);
+    document.getElementsByName('defaultlayer4')[0].addEventListener('click', defaultlayer4);
+    document.getElementsByName('defaultlayer5')[0].addEventListener('click', defaultlayer5);
+    document.getElementsByName('defaultlayer6')[0].addEventListener('click', defaultlayer6);
+    document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
+    document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
+    //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
+    console.log("DOMContentLoaded");
+    const devices_list = await navigator.hid.getDevices();
+        if (devices_list.length) {
+            for (var i = 0; i < devices_list.length; i++) {
+                OpenDevice(devices_list[i]);
+            }
+        } else {
+            console.log("No Device online");
+        }
+});
 
+
+if ("hid" in navigator) {
+    //监听HID授权设备的接入，并连接设备
+    navigator.hid.addEventListener('connect', ({ device }) => {
+        console.log(`HID设备连接: ${device.productName}`);
+        //优先连接有线设备
+        if (device.productName.includes("Lotlab")) {
+            OpenDevice(device)
+        } else if (device.productName == "") {
+            OpenDevice(device)
+        }
+    });
+
+    //监听HID授权设备的断开，并提示
+    navigator.hid.addEventListener('disconnect', ({ device }) => {
+        console.log(`HID设备断开: ${device.productName}`);
+        Check_Opend();
+    });
+} else {
+    //document.getElementById('consoleinfo').innerHTML = "🔺提示信息：" + '<br>';
+    //document.getElementById('consoleinfo').innerHTML += "您的浏览器不支持WebHID，请使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
+}
 
 //============================================连接键盘=========================================================
 //授权设备
@@ -257,7 +319,15 @@ async function CloseDevice() {
 }
 
 //===================================================状态处理、数据处理================================
-
+// 返回数据为1的位号
+function findSingleOneBit(data) {
+    for (let i = 7; i > 0; i--) {
+        if ((data & (1 << i)) !== 0) {
+            return i; // 直接返回第一个找到的1的位置
+        }
+    }
+    return 0; // 如果没有找到1，返回-1
+}
 
 //发送数据处理函数：获取键盘信息
 async function GetKeyboardInfo() {
@@ -331,6 +401,7 @@ async function Check_Opend() {
         console.log("No Device Connected");
     }
 }
+
 //刷新数据任务
 async function refreshdata() {
     if (!refreshing) {
@@ -529,77 +600,4 @@ async function defaultlayer7() {
 async function defaultlayer8() {
     cmd = new Uint8Array([0x02, 0x12, 0x0A]);
     sendcmd(cmd);
-}
-//=======================================================================监听器部分=====================
-document.addEventListener('DOMContentLoaded', async () => {
-    //==========================获取元素====================
-    document.getElementsByName('grantdevice')[0].addEventListener('click', GrantDevice); //授权设备
-    document.getElementsByName('systemoff')[0].addEventListener('click', SYSTEMOFF); //授权设备
-    document.getElementsByName('sleep')[0].addEventListener('click', SLEEP); //授权设备
-    document.getElementsByName('indicatorlight')[0].addEventListener('click', TOGGLE_INDICATOR_LIGHT); //授权设备
-    document.getElementsByName('bootcheck')[0].addEventListener('click', BOOTCHECK); //授权设备
-    //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
-    //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
-    document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
-
-    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); 
-    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); 
-    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); 
-    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); 
-    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); 
-    document.getElementsByName('readv')[0].addEventListener('click', READV); 
-    document.getElementsByName('rebond')[0].addEventListener('click', REBOND); 
-    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); 
-    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); 
-    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); 
-    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); 
-    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); 
-    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); 
-    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); 
-    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); 
-    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); 
-    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); 
-    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); 
-    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); 
-    document.getElementsByName('defaultlayer1')[0].addEventListener('click', defaultlayer1);
-    document.getElementsByName('defaultlayer2')[0].addEventListener('click', defaultlayer2);
-    document.getElementsByName('defaultlayer3')[0].addEventListener('click', defaultlayer3);
-    document.getElementsByName('defaultlayer4')[0].addEventListener('click', defaultlayer4);
-    document.getElementsByName('defaultlayer5')[0].addEventListener('click', defaultlayer5);
-    document.getElementsByName('defaultlayer6')[0].addEventListener('click', defaultlayer6);
-    document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
-    document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
-    //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
-    console.log("DOMContentLoaded");
-    const devices_list = await navigator.hid.getDevices();
-        if (devices_list.length) {
-            for (var i = 0; i < devices_list.length; i++) {
-                OpenDevice(devices_list[i]);
-            }
-        } else {
-            console.log("No Device online");
-        }
-});
-
-
-if ("hid" in navigator) {
-    //监听HID授权设备的接入，并连接设备
-    navigator.hid.addEventListener('connect', ({ device }) => {
-        console.log(`HID设备连接: ${device.productName}`);
-        //优先连接有线设备
-        if (device.productName.includes("Lotlab")) {
-            OpenDevice(device)
-        } else if (device.productName == "") {
-            OpenDevice(device)
-        }
-    });
-
-    //监听HID授权设备的断开，并提示
-    navigator.hid.addEventListener('disconnect', ({ device }) => {
-        console.log(`HID设备断开: ${device.productName}`);
-        Check_Opend();
-    });
-} else {
-    //document.getElementById('consoleinfo').innerHTML = "🔺提示信息：" + '<br>';
-    //document.getElementById('consoleinfo').innerHTML += "您的浏览器不支持WebHID，请使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
 }
