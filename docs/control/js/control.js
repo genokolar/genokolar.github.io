@@ -355,20 +355,11 @@ async function GetKeyboardInfo() {
 async function sendcmd(data) {
     const devices_list = await navigator.hid.getDevices();
     for (let i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && devices_list[i].productName.includes("Lotlab")) {
+        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "") ) {
             try {
                 const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
                 console.log('SendReport:', reportId, newData);
-                GetKeyboardInfo(); //发送命令后及时获取信息
-            } catch (error) {
-                console.error('SendReport: Failed:', error);
-            }
-            return;
-        } else if (devices_list[i].opened && devices_list[i].productName === "") {
-            try {
-                await devices_list[i].sendReport(reportId, data);
-                console.log('SendReport:', reportId, data);
                 GetKeyboardInfo(); //发送命令后及时获取信息
             } catch (error) {
                 console.error('SendReport: Failed:', error);
