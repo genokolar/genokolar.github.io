@@ -271,32 +271,36 @@ async function OpenDevice(opendevice) {
                     console.log("Open Device:", opendevice);
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
-                        console.log(`BLE InputReport ${reportId} from ${device.productName}:`, inputdata);
+                        console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
                         if (inputdata[0] == 0) {
-                            var builddata = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2) + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2)).toString(10);
+                            var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
                             var newDate = new Date();
                             newDate.setTime(builddata * 1000);
                             var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
                             let battery_icon = 'fas fa-battery-full'
-                            if (inputdata[10] < 90 && inputdata[10] >= 75){
+                            if (inputdata[20] < 90 && inputdata[20] >= 75){
                                 battery_icon = 'fas fa-battery-three-quarters'
-                            } else if (inputdata[10] < 75 && inputdata[10] >= 50){
+                            } else if (inputdata[20] < 75 && inputdata[20] >= 50){
                                  battery_icon = 'fas fa-battery-half'
-                            } else if (inputdata[10] < 50 && inputdata[10] >= 25){
+                            } else if (inputdata[20] < 50 && inputdata[20] >= 25){
                                 battery_icon = 'fas fa-battery-quarter'
-                            } else if (inputdata[10] < 25){
+                            } else if (inputdata[20] < 25){
                                 battery_icon = 'fas fa-battery-empty'
                             }
                             let mode_info = '输出端'
-                            if(inputdata[17] & (1 << 7)) {
+                            if(inputdata[31] & (1 << 7)) {
                                 mode_info = 'USB'
-                            } else if(!(inputdata[17] & (1 << 6))) {
+                            } else if((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5)) ) {
+                                mode_info = '无线接收'
+                            } else if((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
+                                mode_info = '无线'
+                            } else if(!(inputdata[31] & (1 << 6))) {
                                 mode_info = '蓝牙'
                             }
                             updateHeaderStatus('', 'mode-text', '', mode_info);
                             updateHeaderStatus('', 'device-text', '', formattedDate);
-                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[10].toLocaleString() + '%');
-                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[11] | inputdata[12]) + 1);
+                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
+                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
                         }
                     };
                 }
