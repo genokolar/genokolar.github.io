@@ -1,6 +1,54 @@
+// 检查浏览器是否支持通知
+if (!("Notification" in window)) {
+    alert("此浏览器不支持桌面通知");
+  } else {
+    console.log("桌面通知是支持的。");
+  }
+  
+  // 请求用户授权接收通知的函数
+  function requestNotificationPermission() {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        console.log("通知权限已获得");
+        // 用户已授权，可以发送通知
+        showNotification('已授权', "通知权限已获得");
+      } else {
+        console.log("通知权限被拒绝");
+      }
+    });
+  }
+  
+  // 发送通知的函数
+  async function showNotification(title, tips) {
+    const notification = new Notification(title, {
+      body: tips,
+      icon: "app.png" // 可以指定一个图标的路径
+    });
+  
+    // 通知点击事件
+    notification.onclick = function() {
+      console.log("通知被点击了");
+      // 这里可以打开新页面或者执行其他操作
+    };
+  
+    // 通知显示一段时间后自动关闭
+    setTimeout(notification.close.bind(notification), 5000);
+  }
+  
+  // 绑定按钮点击事件来请求通知权限
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.getElementById("notificationButton");
+    if (button) {
+      button.addEventListener("click", requestNotificationPermission);
+    }
+  });
+
+
 var LINKCTRLElement = document.getElementById('linkctrl');
 let refreshing = false;
 let device_opened = false;
+let layer = 1;
+
 //设置过滤器
 const filters = [{
     vendorId: 0x1209, // GT
@@ -259,6 +307,10 @@ async function OpenDevice(opendevice) {
                             updateHeaderStatus('', 'device-text', '', formattedDate);
                             updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+                            if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer){
+                                layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+                                showNotification('激活层更改', '当前激活层为层' + layer);
+                            }
                         }
                     };
                 } else if (opendevice.productName == "" && !device_opened) {
@@ -301,6 +353,10 @@ async function OpenDevice(opendevice) {
                             updateHeaderStatus('', 'device-text', '', formattedDate);
                             updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
                             updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+                            if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer){
+                                layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+                                showNotification('激活层更改', '当前激活层为层' + layer);
+                            }
                         }
                     };
                 }

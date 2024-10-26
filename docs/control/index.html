@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>键盘控制器</title>
+    <title>键盘控制</title>
     <meta name="description" content="Glab系列键盘在线控制面板.">
     <meta name="author" content="Geno">
     <link rel="icon" href="app.png">
@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./css/control.css">
+    <link rel="manifest" href="./manifest.json">
 </head>
 
 <body>
@@ -45,6 +46,7 @@
             <button name="systemoff" id="send-button1" class="button" title="使键盘关机"> 键盘关机 </button>
             <button name="sleep" id="send-button1" class="button" title="使键盘睡眠"> 键盘睡眠 </button>
             <button name="bootcheck" id="send-button1" class="button" title="切换是否需要启动按钮"> 启动按钮 </button>
+            <button id="notificationButton" name="bootcheck" class="button" title="允许通知键盘重要操作通知">允许通知</button>
         </div>
 
         <div id="Tab2" class="tab-content">
@@ -98,6 +100,11 @@
     </div>
 
     <script type="text/javascript" src="./js/control.js"></script>
+    <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+        }
+    </script>
 </body>
 
 </html>
