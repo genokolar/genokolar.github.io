@@ -8,7 +8,9 @@ self.addEventListener('install', event => {
           './index.html',
           './css/control.css',
           './js/control.js',
-          './app.png'
+          './app.png',
+          './css/all.min.css',
+          './fonts/fa-solid-900.woff2'
       ]);
   })());
 });
