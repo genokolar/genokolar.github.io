@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>键盘测试页</title>
+    <title>键盘测试</title>
     <meta name="keywords" content="键盘测试,按键测试,键盘验证,键圈欢乐多">
     <meta name="description" content="在线键盘测试工具">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./img/keytest.png" />
     <link type="text/css" rel="stylesheet" href="./css/kb_test.css">
     <script type="text/javascript" src="./js/kb_test.js"></script>
-
+    <link rel="manifest" href="./manifest.json">
     <link rel="prefetch" href="./media/keyup.mp3">
     <link rel="prefetch" href="./media/keydown.mp3">
 </head>
@@ -494,6 +494,11 @@
 
         </svg>
     </div>
+    <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+        }
+    </script>
 </body>
 
 </html>
