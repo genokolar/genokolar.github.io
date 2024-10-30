@@ -16,7 +16,7 @@ hide:
 
 | 下载内容   | 说明  | 下载地址 |
 | :------------:|  ------------| :------------: |
-| <b> 键盘主控完整固件</b> <br>（nRF52系列芯片）|  <b>2024.10.24更新：<br> 支持层控制命令,支持蓝牙返回信息。 <br> 支持返回电量、激活层、输出状态等更多键盘信息。</b>  | <a href="https://down.glab.online:5550/Glab3.1/" class="button">🌍官网下载</a> <br> <a href="http://down6.glab.online:5550/Glab3.1/" class="button">🌏仅IPv6官网</a> <br><a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">🧱Github发布页</a>|
+| <b> 键盘主控完整固件</b> <br>（nRF52系列芯片）|  <b>2024.10.30更新：</b> <br> 支持更多控制命令,支持蓝牙返回信息与HID通讯。 <br> 优化模式切换，优化休眠唤醒流程和启动按键功能<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="https://down.glab.online:5550/Glab3.1/" class="button">🌍官网下载</a> <br> <a href="http://down6.glab.online:5550/Glab3.1/" class="button">🌏仅IPv6官网</a> <br><a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button">🧱Github发布页</a>|
 | <b>USB固件</b><br>（CH55x芯片） | <b>2024.10.18更新：<br> 增强可关机持续USB供电的电脑关机重启的兼容 </b>  |<a href="https://down.glab.online:5550/ch554" class="button">🌍官方下载</a> <br> <a href="http://down6.glab.online:5550/ch554" class="button">🌏仅IPv6官网 </a> <br><a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button">🧱Github发布页</a>|
 | <b>2.4G接收器固件</b><br>（含USB及主固件） | <b>2024.10.20更新：<br>固件大幅度精简优化 <br>优化主机休眠唤醒功能，支持关闭CMSIS-DAP模式 </b> <br> 建议及时更新固件获得更好体验。 |<a href="https://down.glab.online:5550/receiver" class="button">🌍官方下载</a> <br> <a href="http://down6.glab.online:5550/receiver" class="button">🌏仅IPv6官网</a>|
 
@@ -26,7 +26,7 @@ hide:
 
 | 下载内容   | 说明  | 下载地址 |
 | :------------:|  ------------| :------------: |
-| 烧录工具 | USB固件及键盘主控固件烧录工具1.2.2.0版。<br>操作系统仅限Winodws，且需高于Windows 7 SP1。 | <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe" class="button">🌍32位官网下载</a><br><a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0_x64.exe" class="button">🌍64位官网下载</a><br><a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe" class="button">🌏仅IPv6官网</a><br><a href="https://pan.quark.cn/s/f522c75494dc" class="button">🗂️夸克网盘下载</a> |
+| 烧录工具 | USB固件及键盘主控固件烧录工具1.2.2.0版。<br>操作系统仅限Winodws，且需高于Windows 7 SP1。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe" class="button">🌍32位官网下载</a><br><a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0_x64.exe" class="button">🌍64位官网下载</a><br><a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe" class="button">🌏仅IPv6官网</a><br><a href="https://pan.quark.cn/s/f522c75494dc" class="button">🗂️夸克网盘下载</a> |
 | 配置工具（绿色版） | 配置工具本地服务端，必须开启才能配置键盘<br>版本：1.0.6.1 - 支持：Windows/Linux/Mac OS<br>支持离线使用（访问http://localhost:5000）<br> 2024年10月07日更新 | <a href="https://down.glab.online:5550/lkb-configurator" class="button">🌍官方下载</a><br><a href="http://down6.glab.online:5550/lkb-configurator" class="button">🌏仅IPv6官网</a><br><a href="https://pan.quark.cn/s/19130cbaec72" class="button">🗂️夸克网盘下载</a><br><a href="https://github.com/Lotlab/lkb-configurator/releases" class="button">🧱Github发布页</a> |
 | CMSIS-DAP烧录工具 | 键盘主控完整固件的烧录脚本<br> 可更新整个键盘主控，可作为键盘修复工具| <a href="https://down.glab.online:5550/Glab3.1/cmsis.php" class="button" title="可直接刷写固件的刷写包">🌍官方下载</a> |
 | 接收器控制工具 | 2.4G接收器控制面板，用于无法访问在线网站时离线使用<br>仅限Windows 64位使用 |<a href="https://down.glab.online:5550/receiver//ControlPanel 1.0.1.exe" class="button">🌍官方下载</a><br><a href="http://down6.glab.online:5550/receiver//ControlPanel 1.0.1.exe" class="button">🌏仅IPv6官网</a>|
@@ -36,7 +36,7 @@ hide:
 
 | 下载内容   | 说明  | 下载地址 |
 | ------------|  ------------| ------------ |
-| 键盘的定位板文件 | 各个键盘的定位板图纸，可用于自己定制定位板或外壳 |<a href="https://down.glab.online:5550/dxf" class="button">🌍官方下载</a> <br> <a href="https://pan.quark.cn/s/1d8c704f258b" class="button">🗂️夸克网盘下载</a>|
+| 键盘的定位板文件 | 各个键盘的定位板图纸，可用于自己定制定位板或外壳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<a href="https://down.glab.online:5550/dxf" class="button">🌍官方下载</a> <br> <a href="https://pan.quark.cn/s/1d8c704f258b" class="button">🗂️夸克网盘下载</a>|
 | GT PAD 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 <br> 定位板与外壳 Rev.A与Rev.B通用|<a href="https://pan.quark.cn/s/06f954c7961b" class="button">🗂️夸克网盘下载</a>|
 | GT Volta9 开源文件 | 定位板制造文件、外壳3D图纸等硬件开源文件 | <a href="https://pan.quark.cn/s/1083e26f2c6f" class="button">🗂️夸克网盘下载</a>|
 
