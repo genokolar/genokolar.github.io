@@ -1,5 +1,5 @@
 {
-    "name": "键盘控制面板",
+    "name": "键盘控制",
     "short_name": "KeyCtrl",
     "start_url": ".",
     "display": "standalone",
