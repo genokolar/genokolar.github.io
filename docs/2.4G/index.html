@@ -9,6 +9,7 @@
   <meta charset=utf-8>
   <script type="module" src="./js/script.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/24g.css">
+  <link rel="manifest" href="./manifest.json">
 </head>
 
 <body>
@@ -35,6 +36,11 @@
   <div class="footer">
     <div class="copyright"> <a href="https://glab.online/">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
   </div>
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+    }
+  </script>
 </body>
 
 </html>
