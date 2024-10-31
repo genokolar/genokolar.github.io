@@ -278,40 +278,7 @@ async function OpenDevice(opendevice) {
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
                         console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                        if (inputdata[0] == 0) {
-                            var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-                            var newDate = new Date();
-                            newDate.setTime(builddata * 1000);
-                            var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
-                            let battery_icon = 'fas fa-battery-full'
-                            if (inputdata[20] < 90 && inputdata[20] >= 75){
-                                battery_icon = 'fas fa-battery-three-quarters'
-                            } else if (inputdata[20] < 75 && inputdata[20] >= 50){
-                                 battery_icon = 'fas fa-battery-half'
-                            } else if (inputdata[20] < 50 && inputdata[20] >= 25){
-                                battery_icon = 'fas fa-battery-quarter'
-                            } else if (inputdata[20] < 25){
-                                battery_icon = 'fas fa-battery-empty'
-                            }
-                            let mode_info = '输出端'
-                            if(inputdata[31] & (1 << 7)) {
-                                mode_info = 'USB'
-                            } else if((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5)) ) {
-                                mode_info = '无线接收'
-                            } else if((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
-                                mode_info = '无线'
-                            } else if(!(inputdata[31] & (1 << 6))) {
-                                mode_info = '蓝牙'
-                            }
-                            updateHeaderStatus('', 'mode-text', '', mode_info);
-                            updateHeaderStatus('', 'device-text', '', formattedDate);
-                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
-                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-                            if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer){
-                                layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-                                showNotification('激活层更改', '当前激活层为层' + layer);
-                            }
-                        }
+                        update_statebar(inputdata);
                     };
                 } else if (opendevice.productName == "" && !device_opened) {
                     await opendevice.open();
@@ -324,40 +291,7 @@ async function OpenDevice(opendevice) {
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
                         console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                        if (inputdata[0] == 0) {
-                            var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-                            var newDate = new Date();
-                            newDate.setTime(builddata * 1000);
-                            var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
-                            let battery_icon = 'fas fa-battery-full'
-                            if (inputdata[20] < 90 && inputdata[20] >= 75){
-                                battery_icon = 'fas fa-battery-three-quarters'
-                            } else if (inputdata[20] < 75 && inputdata[20] >= 50){
-                                 battery_icon = 'fas fa-battery-half'
-                            } else if (inputdata[20] < 50 && inputdata[20] >= 25){
-                                battery_icon = 'fas fa-battery-quarter'
-                            } else if (inputdata[20] < 25){
-                                battery_icon = 'fas fa-battery-empty'
-                            }
-                            let mode_info = '输出端'
-                            if(inputdata[31] & (1 << 7)) {
-                                mode_info = 'USB'
-                            } else if((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5)) ) {
-                                mode_info = '无线接收'
-                            } else if((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
-                                mode_info = '无线'
-                            } else if(!(inputdata[31] & (1 << 6))) {
-                                mode_info = '蓝牙'
-                            }
-                            updateHeaderStatus('', 'mode-text', '', mode_info);
-                            updateHeaderStatus('', 'device-text', '', formattedDate);
-                            updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
-                            updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-                            if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer){
-                                layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-                                showNotification('激活层更改', '当前激活层为层' + layer);
-                            }
-                        }
+                        update_statebar(inputdata);
                     };
                 }
         }
@@ -450,6 +384,54 @@ async function Check_Opend() {
         //恢复状态栏
         default_status();
         console.log("No Device Connected");
+    }
+}
+
+//刷新数据任务
+async function update_statebar(inputdata) {
+    if (inputdata[0] == 0) {
+        var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+        var newDate = new Date();
+        newDate.setTime(builddata * 1000);
+        var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+        let battery_icon = 'fas fa-battery-full'
+        if (inputdata[20] < 90 && inputdata[20] >= 75) {
+            battery_icon = 'fas fa-battery-three-quarters'
+        } else if (inputdata[20] < 75 && inputdata[20] >= 50) {
+            battery_icon = 'fas fa-battery-half'
+        } else if (inputdata[20] < 50 && inputdata[20] >= 25) {
+            battery_icon = 'fas fa-battery-quarter'
+        } else if (inputdata[20] < 25) {
+            battery_icon = 'fas fa-battery-empty'
+        }
+        let mode_info = '输出端'
+        if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
+            mode_info = '无线接收'
+        } else if ((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
+            if ((inputdata[31] & (1 << 0))) {
+                mode_info = '无线一'
+            } else if ((inputdata[31] & (1 << 1))) {
+                mode_info = '无线二'
+            } else if ((inputdata[31] & (1 << 2))) {
+                mode_info = '无线三'
+            }
+        } else if (!(inputdata[31] & (1 << 6))) {
+            if ((inputdata[31] & (1 << 0))) {
+                mode_info = '蓝牙一'
+            } else if ((inputdata[31] & (1 << 1))) {
+                mode_info = '蓝牙二'
+            } else if ((inputdata[31] & (1 << 2))) {
+                mode_info = '蓝牙三'
+            }
+        }
+        updateHeaderStatus('', 'mode-text', '', mode_info);
+        updateHeaderStatus('', 'device-text', '', formattedDate);
+        updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
+        updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+        if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
+            layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+            showNotification('激活层更改', '当前激活层为层' + layer);
+        }
     }
 }
 
