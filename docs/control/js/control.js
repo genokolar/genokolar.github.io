@@ -4,6 +4,30 @@ const filters = [{
     productId: 0x0514, // GT
 }];
 
+//设备信息表 定义设备数组及其供应商ID 和产品ID
+const devices = [
+    { name: 'BLE60 D', vendor: 0x4366, product: 0x0311 },
+    { name: 'Omega45 C&D', vendor: 0x4366, product: 0x0312 },
+    { name: 'Farad69 A', vendor: 0x4366, product: 0x0313 },
+    { name: 'Omega50 A', vendor: 0x4366, product: 0x0314 },
+    { name: 'BLE60 E', vendor: 0x4366, product: 0x0315 },
+    { name: 'Farad69 B', vendor: 0x4366, product: 0x0316 },
+    { name: 'Omega64', vendor: 0x4366, product: 0x0317 },
+    { name: 'Omega84', vendor: 0x4366, product: 0x0318 },
+    { name: 'Newhope64 A', vendor: 0x4366, product: 0x0319 },
+    { name: 'GTPAD', vendor: 0x4366, product: 0x031A },
+    { name: 'BLE60 F&G', vendor: 0x4366, product: 0x031B },
+    { name: 'Omega50 B&C', vendor: 0x4366, product: 0x031C },
+    { name: 'Farad69 C&D', vendor: 0x4366, product: 0x031D },
+    { name: 'Omega45 E&F', vendor: 0x4366, product: 0x031E },
+    { name: 'Planck A', vendor: 0x4366, product: 0x031F },
+    { name: 'Omega40 A', vendor: 0x4366, product: 0x0320 },
+    { name: 'Volta9', vendor: 0x4366, product: 0x0321 },
+    { name: 'Newhope64 B', vendor: 0x4366, product: 0x0322 },
+    { name: 'Planck B', vendor: 0x4366, product: 0x0323 },
+    { name: 'HAL67 A', vendor: 0x4366, product: 0x0324 },
+];
+
 let refreshing = false;
 let device_opened = false;
 let layer = 1;
@@ -17,47 +41,47 @@ var LINKCTRLElement = document.getElementById('linkctrl');
 // 检查浏览器是否支持通知
 if (!("Notification" in window)) {
     alert("此浏览器不支持桌面通知");
-  } else {
+} else {
     consolelog("桌面通知是支持的。");
-  }
-  
-  // 请求用户授权接收通知的函数
-  function requestNotificationPermission() {
+}
+
+// 请求用户授权接收通知的函数
+function requestNotificationPermission() {
     Notification.requestPermission().then(permission => {
-      if (permission === "granted") {
-        consolelog("通知权限已获得");
-        // 用户已授权，可以发送通知
-        showNotification('已授权', "通知权限已获得");
-      } else {
-        consolelog("通知权限被拒绝");
-      }
+        if (permission === "granted") {
+            consolelog("通知权限已获得");
+            // 用户已授权，可以发送通知
+            showNotification('已授权', "通知权限已获得");
+        } else {
+            consolelog("通知权限被拒绝");
+        }
     });
-  }
-  
-  // 发送通知的函数
-  async function showNotification(title, tips) {
+}
+
+// 发送通知的函数
+async function showNotification(title, tips) {
     const notification = new Notification(title, {
-      body: tips,
-      icon: "app.png" // 可以指定一个图标的路径
+        body: tips,
+        icon: "app.png" // 可以指定一个图标的路径
     });
-  
+
     // 通知点击事件
-    notification.onclick = function() {
-      consolelog("通知被点击了");
-      // 这里可以打开新页面或者执行其他操作
+    notification.onclick = function () {
+        consolelog("通知被点击了");
+        // 这里可以打开新页面或者执行其他操作
     };
-  
+
     // 通知显示一段时间后自动关闭
     setTimeout(notification.close.bind(notification), 5000);
-  }
-  
-  // 绑定按钮点击事件来请求通知权限
-  document.addEventListener("DOMContentLoaded", function() {
+}
+
+// 绑定按钮点击事件来请求通知权限
+document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("notificationButton");
     if (button) {
-      button.addEventListener("click", requestNotificationPermission);
+        button.addEventListener("click", requestNotificationPermission);
     }
-  });
+});
 
 //===========================页面更新操作部分====================================
 
@@ -146,9 +170,9 @@ async function default_status() {
     updateHeaderStatus('', 'device-text', '', '固件日期');
 }
 
-function consolelog(Logtxt,...args) {
+function consolelog(Logtxt, ...args) {
     if (Logenable) {
-        console.log(Logtxt,...args);
+        console.log(Logtxt, ...args);
     }
 }
 
@@ -169,25 +193,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
     document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
-    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB); 
-    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE); 
-    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB); 
-    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX); 
-    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX); 
-    document.getElementsByName('readv')[0].addEventListener('click', READV); 
-    document.getElementsByName('rebond')[0].addEventListener('click', REBOND); 
-    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1); 
-    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2); 
-    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3); 
-    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE); 
-    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE); 
-    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE); 
-    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE); 
-    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE); 
-    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE); 
-    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE); 
-    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE); 
-    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE); 
+    document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB);
+    document.getElementsByName('switchble')[0].addEventListener('click', SWITCH_BLE);
+    document.getElementsByName('switchesb')[0].addEventListener('click', SWITCH_ESB);
+    document.getElementsByName('switchesbtx')[0].addEventListener('click', SWITCH_ESB_TX);
+    document.getElementsByName('switchesbrx')[0].addEventListener('click', SWITCH_ESB_RX);
+    document.getElementsByName('readv')[0].addEventListener('click', READV);
+    document.getElementsByName('rebond')[0].addEventListener('click', REBOND);
+    document.getElementsByName('switchbt1')[0].addEventListener('click', SWITCH_BT1);
+    document.getElementsByName('switchbt2')[0].addEventListener('click', SWITCH_BT2);
+    document.getElementsByName('switchbt3')[0].addEventListener('click', SWITCH_BT3);
+    document.getElementsByName('rgbtoggle')[0].addEventListener('click', RGBLIGHT_TOGGLE);
+    document.getElementsByName('rgbmodeinc')[0].addEventListener('click', RGBLIGHT_MODE_INCREASE);
+    document.getElementsByName('rgbmodedec')[0].addEventListener('click', RGBLIGHT_MODE_DECREASE);
+    document.getElementsByName('rgbhueinc')[0].addEventListener('click', RGBLIGHT_HUE_INCREASE);
+    document.getElementsByName('rgbhuedec')[0].addEventListener('click', RGBLIGHT_HUE_DECREASE);
+    document.getElementsByName('rgbsatinc')[0].addEventListener('click', RGBLIGHT_SAT_INCREASE);
+    document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE);
+    document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE);
+    document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE);
     document.getElementsByName('defaultlayer1')[0].addEventListener('click', defaultlayer1);
     document.getElementsByName('defaultlayer2')[0].addEventListener('click', defaultlayer2);
     document.getElementsByName('defaultlayer3')[0].addEventListener('click', defaultlayer3);
@@ -199,13 +223,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
     consolelog("DOMContentLoaded");
     const devices_list = await navigator.hid.getDevices();
-        if (devices_list.length) {
-            for (var i = 0; i < devices_list.length; i++) {
-                OpenDevice(devices_list[i]);
-            }
-        } else {
-            consolelog("No Device online");
+    if (devices_list.length) {
+        for (var i = 0; i < devices_list.length; i++) {
+            OpenDevice(devices_list[i]);
         }
+    } else {
+        consolelog("No Device online");
+    }
 });
 
 
@@ -286,33 +310,33 @@ async function OpenDevice(opendevice) {
             default_status();
             return null;
         } else {
-                if (opendevice.productName.includes("Lotlab") && !device_opened) {
-                    await opendevice.open();
-                    device_opened = true;
-                    refreshdata();
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
-                    // 显示RGB控制元素
-                    LINKCTRLElement.style.display = 'block';
-                    consolelog("Open Device:", opendevice);
-                    opendevice.oninputreport = ({ device, reportId, data }) => {
-                        const inputdata = new Uint8Array(data.buffer);
-                        consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                        update_statebar(inputdata);
-                    };
-                } else if (opendevice.productName == "" && !device_opened) {
-                    await opendevice.open();
-                    device_opened = true;
-                    refreshdata();
-                    updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
-                    // 隐藏RGB控制元素
-                    LINKCTRLElement.style.display = 'none';
-                    consolelog("Open Device:", opendevice);
-                    opendevice.oninputreport = ({ device, reportId, data }) => {
-                        const inputdata = new Uint8Array(data.buffer);
-                        consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                        update_statebar(inputdata);
-                    };
-                }
+            if (opendevice.productName.includes("Lotlab") && !device_opened) {
+                await opendevice.open();
+                device_opened = true;
+                refreshdata();
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
+                // 显示RGB控制元素
+                LINKCTRLElement.style.display = 'block';
+                consolelog("Open Device:", opendevice);
+                opendevice.oninputreport = ({ device, reportId, data }) => {
+                    const inputdata = new Uint8Array(data.buffer);
+                    consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
+                    update_statebar(inputdata);
+                };
+            } else if (opendevice.productName == "" && !device_opened) {
+                await opendevice.open();
+                device_opened = true;
+                refreshdata();
+                updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
+                // 隐藏RGB控制元素
+                LINKCTRLElement.style.display = 'none';
+                consolelog("Open Device:", opendevice);
+                opendevice.oninputreport = ({ device, reportId, data }) => {
+                    const inputdata = new Uint8Array(data.buffer);
+                    consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
+                    update_statebar(inputdata);
+                };
+            }
         }
     }
 }
@@ -342,6 +366,15 @@ function findSingleOneBit(data) {
     return 0; // 如果没有找到1，返回-1
 }
 
+function getDeviceName(vendorId, productId) {
+    for (const device of devices) {
+        if (device.vendor === vendorId && device.product === productId) {
+            return device.name;
+        }
+    }
+    return 'X Device';
+}
+
 //发送数据处理函数：获取键盘信息
 async function GetKeyboardInfo() {
     const devices_list = await navigator.hid.getDevices();
@@ -364,7 +397,7 @@ async function GetKeyboardInfo() {
 async function sendcmd(data) {
     const devices_list = await navigator.hid.getDevices();
     for (let i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "") ) {
+        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "")) {
             try {
                 const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
@@ -396,7 +429,7 @@ async function Check_Opend() {
             device_opened = true;
         }
     }
-    if(!device_opened){
+    if (!device_opened) {
         //所有设备断开，停掉定时刷新任务
         clearInterval(info);
         refreshing = false;
@@ -409,10 +442,10 @@ async function Check_Opend() {
 //刷新数据任务
 async function update_statebar(inputdata) {
     if (inputdata[0] == 0) {
-        var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-        var newDate = new Date();
-        newDate.setTime(builddata * 1000);
-        var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+        //var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+        //var newDate = new Date();
+        //newDate.setTime(builddata * 1000);
+        //var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
         let battery_icon = 'fas fa-battery-full'
         if (inputdata[20] < 90 && inputdata[20] >= 75) {
             battery_icon = 'fas fa-battery-three-quarters'
@@ -443,15 +476,19 @@ async function update_statebar(inputdata) {
                 mode_info = '蓝牙三'
             }
         }
+        const vendorId = parseInt("0x" + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2));
+        const productId = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2));
+        const deviceName = getDeviceName(vendorId, productId);
+
         updateHeaderStatus('', 'mode-text', '', mode_info);
-        updateHeaderStatus('', 'device-text', '', formattedDate);
+        updateHeaderStatus('', 'device-text', '', deviceName);
         updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
         updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
         if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
             layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
             showNotification('激活层更改', '当前激活层为层' + layer);
         }
-    } else if (inputdata[0] == 0x05){  //收到键盘接收出错错误的数据包
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
         GetKeyboardInfo();             //立刻重新获取键盘信息
     }
 }
