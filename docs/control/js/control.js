@@ -1,19 +1,35 @@
+//设置过滤器
+const filters = [{
+    vendorId: 0x1209, // GT
+    productId: 0x0514, // GT
+}];
+
+let refreshing = false;
+let device_opened = false;
+let layer = 1;
+let Logenable = false;
+let info;
+const reportId = 0x3f;
+
+var LINKCTRLElement = document.getElementById('linkctrl');
+
+
 // 检查浏览器是否支持通知
 if (!("Notification" in window)) {
     alert("此浏览器不支持桌面通知");
   } else {
-    console.log("桌面通知是支持的。");
+    consolelog("桌面通知是支持的。");
   }
   
   // 请求用户授权接收通知的函数
   function requestNotificationPermission() {
     Notification.requestPermission().then(permission => {
       if (permission === "granted") {
-        console.log("通知权限已获得");
+        consolelog("通知权限已获得");
         // 用户已授权，可以发送通知
         showNotification('已授权', "通知权限已获得");
       } else {
-        console.log("通知权限被拒绝");
+        consolelog("通知权限被拒绝");
       }
     });
   }
@@ -27,7 +43,7 @@ if (!("Notification" in window)) {
   
     // 通知点击事件
     notification.onclick = function() {
-      console.log("通知被点击了");
+      consolelog("通知被点击了");
       // 这里可以打开新页面或者执行其他操作
     };
   
@@ -42,21 +58,6 @@ if (!("Notification" in window)) {
       button.addEventListener("click", requestNotificationPermission);
     }
   });
-
-
-var LINKCTRLElement = document.getElementById('linkctrl');
-let refreshing = false;
-let device_opened = false;
-let layer = 1;
-
-//设置过滤器
-const filters = [{
-    vendorId: 0x1209, // GT
-    productId: 0x0514, // GT
-}];
-
-var info;
-const reportId = 0x3f;
 
 //===========================页面更新操作部分====================================
 
@@ -143,10 +144,13 @@ async function default_status() {
     updateHeaderStatus('', 'layer-text', '', '激活层');
     updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
     updateHeaderStatus('', 'device-text', '', '固件日期');
-
-
 }
 
+function consolelog(Logtxt,...args) {
+    if (Logenable) {
+        console.log(Logtxt,...args);
+    }
+}
 
 //=======================================================================监听器部分=====================
 document.addEventListener('DOMContentLoaded', async () => {
@@ -193,14 +197,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
     document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
     //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
-    console.log("DOMContentLoaded");
+    consolelog("DOMContentLoaded");
     const devices_list = await navigator.hid.getDevices();
         if (devices_list.length) {
             for (var i = 0; i < devices_list.length; i++) {
                 OpenDevice(devices_list[i]);
             }
         } else {
-            console.log("No Device online");
+            consolelog("No Device online");
         }
 });
 
@@ -208,7 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 if ("hid" in navigator) {
     //监听HID授权设备的接入，并连接设备
     navigator.hid.addEventListener('connect', ({ device }) => {
-        console.log(`HID设备连接: ${device.productName}`);
+        consolelog(`HID设备连接: ${device.productName}`);
         //优先连接有线设备
         if (device.productName.includes("Lotlab")) {
             OpenDevice(device)
@@ -219,7 +223,7 @@ if ("hid" in navigator) {
 
     //监听HID授权设备的断开，并提示
     navigator.hid.addEventListener('disconnect', ({ device }) => {
-        console.log(`HID设备断开: ${device.productName}`);
+        consolelog(`HID设备断开: ${device.productName}`);
         Check_Opend();
     });
 } else {
@@ -242,7 +246,7 @@ async function GrantDevice() {
             if (link_devices_list[i].opened) {
                 await link_devices_list[i].close();
                 device_opened = false;
-                console.log("Close Device:", link_devices_list[i]);
+                consolelog("Close Device:", link_devices_list[i]);
             }
         }
 
@@ -251,10 +255,10 @@ async function GrantDevice() {
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
             OpenDevice(devices_list[i]);
-            console.log("Grant & Open Device:", devices_list[i]);
+            consolelog("Grant & Open Device:", devices_list[i]);
         } else if (devices_list[i].productName == "" && !device_opened) {
             OpenDevice(devices_list[i]);
-            console.log("Grant & Open Device:", devices_list[i]);
+            consolelog("Grant & Open Device:", devices_list[i]);
         }
     }
 }
@@ -264,10 +268,10 @@ async function GrantDevice() {
 async function ListDevices() {
     const devices_list = await navigator.hid.getDevices();
     if (!devices_list.length) {
-        console.log("No Device Connected");
+        consolelog("No Device Connected");
         return null;
     }
-    console.log("ListDevices():", devices_list);
+    consolelog("ListDevices():", devices_list);
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == "")) { }
     }
@@ -278,7 +282,7 @@ async function OpenDevice(opendevice) {
     if (!device_opened) {
         const devices_list = await navigator.hid.getDevices();
         if (!devices_list.length) {
-            console.log("No Device Connected");
+            consolelog("No Device Connected");
             default_status();
             return null;
         } else {
@@ -289,10 +293,10 @@ async function OpenDevice(opendevice) {
                     updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
                     // 显示RGB控制元素
                     LINKCTRLElement.style.display = 'block';
-                    console.log("Open Device:", opendevice);
+                    consolelog("Open Device:", opendevice);
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
-                        console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
+                        consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
                         update_statebar(inputdata);
                     };
                 } else if (opendevice.productName == "" && !device_opened) {
@@ -302,10 +306,10 @@ async function OpenDevice(opendevice) {
                     updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
                     // 隐藏RGB控制元素
                     LINKCTRLElement.style.display = 'none';
-                    console.log("Open Device:", opendevice);
+                    consolelog("Open Device:", opendevice);
                     opendevice.oninputreport = ({ device, reportId, data }) => {
                         const inputdata = new Uint8Array(data.buffer);
-                        console.log(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
+                        consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
                         update_statebar(inputdata);
                     };
                 }
@@ -321,7 +325,7 @@ async function CloseDevice() {
         if (devices_list[i].opened) {
             await devices_list[i].close();
             device_opened = false;
-            console.log("CloseDevice():", devices_list[i]);
+            consolelog("CloseDevice():", devices_list[i]);
         }
     }
     Check_Opend();
@@ -346,11 +350,11 @@ async function GetKeyboardInfo() {
             const outputReportData = new Uint8Array([0x20]);
             try {
                 await devices_list[i].sendReport(reportId, outputReportData);
-                console.log('SendReport:', reportId, outputReportData);
+                consolelog('SendReport:', reportId, outputReportData);
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
-            console.log("GetKeyboardInfo():", devices_list[i]);
+            consolelog("GetKeyboardInfo():", devices_list[i]);
         }
     }
 }
@@ -364,7 +368,7 @@ async function sendcmd(data) {
             try {
                 const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
-                console.log('SendReport:', reportId, newData);
+                consolelog('SendReport:', reportId, newData);
                 GetKeyboardInfo(); //发送命令后及时获取信息
             } catch (error) {
                 console.error('SendReport: Failed:', error);
@@ -398,7 +402,7 @@ async function Check_Opend() {
         refreshing = false;
         //恢复状态栏
         default_status();
-        console.log("No Device Connected");
+        consolelog("No Device Connected");
     }
 }
 
