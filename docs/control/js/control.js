@@ -167,7 +167,7 @@ async function default_status() {
     updateHeaderStatus('', 'mode-text', '', '输出端');
     updateHeaderStatus('', 'layer-text', '', '激活层');
     updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
-    updateHeaderStatus('', 'device-text', '', '固件日期');
+    updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-out-alt', '设备名称');
 }
 
 function consolelog(Logtxt, ...args) {
@@ -481,7 +481,7 @@ async function update_statebar(inputdata) {
         const deviceName = getDeviceName(vendorId, productId);
 
         updateHeaderStatus('', 'mode-text', '', mode_info);
-        updateHeaderStatus('', 'device-text', '', deviceName);
+        updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-in-alt', deviceName);
         updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
         updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
         if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
