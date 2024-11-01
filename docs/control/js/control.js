@@ -233,6 +233,21 @@ async function GrantDevice() {
     let devices_list = await navigator.hid.requestDevice({
         filters
     });
+
+    //如果新选了设备，先断开所有设备
+    if (devices_list) {
+        const link_devices_list = await navigator.hid.getDevices();
+        if (!link_devices_list) return null;
+        for (var i = 0; i < link_devices_list.length; i++) {
+            if (link_devices_list[i].opened) {
+                await link_devices_list[i].close();
+                device_opened = false;
+                console.log("Close Device:", link_devices_list[i]);
+            }
+        }
+
+    }
+    //遍历设备，并打开符合条件的设备
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
             OpenDevice(devices_list[i]);
@@ -432,6 +447,8 @@ async function update_statebar(inputdata) {
             layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
             showNotification('激活层更改', '当前激活层为层' + layer);
         }
+    } else if (inputdata[0] == 0x05){  //收到键盘接收出错错误的数据包
+        GetKeyboardInfo();             //立刻重新获取键盘信息
     }
 }
 
