@@ -1,6 +1,7 @@
 const CACHE_NAME = `2.4G-Receiver-Glab-v1`;
+const CURRENT_CACHE_VERSION = 1; // 当前缓存版本
 
-// Use the install event to pre-cache all initial resources.
+// 使用 install 事件预缓存所有初始资源
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
@@ -13,25 +14,40 @@ self.addEventListener('install', event => {
   })());
 });
 
+// 使用 activate 事件处理缓存更新
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    // 获取所有缓存名称
+    const cacheNames = await caches.keys();
+
+    // 遍历所有缓存名称，删除旧版本的缓存
+    cacheNames.forEach(cacheName => {
+      if (cacheName !== CACHE_NAME) {
+        caches.delete(cacheName);
+      }
+    });
+  })());
+});
+
 self.addEventListener('fetch', event => {
   event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
 
-    // Get the resource from the cache.
+    // 从缓存中获取资源
     const cachedResponse = await cache.match(event.request);
     if (cachedResponse) {
       return cachedResponse;
     } else {
-        try {
-          // If the resource was not in the cache, try the network.
-          const fetchResponse = await fetch(event.request);
+      try {
+        // 如果资源不在缓存中，尝试从网络获取
+        const fetchResponse = await fetch(event.request);
 
-          // Save the resource in the cache and return it.
-          cache.put(event.request, fetchResponse.clone());
-          return fetchResponse;
-        } catch (e) {
-          // The network failed.
-        }
+        // 将新获取的资源添加到缓存中
+        cache.put(event.request, fetchResponse.clone());
+        return fetchResponse;
+      } catch (e) {
+        // 网络请求失败
+      }
     }
   })());
 });
