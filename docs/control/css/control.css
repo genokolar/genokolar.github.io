@@ -60,7 +60,7 @@ li {
 }
 
 .container {
-    max-width: 702px;
+    max-width: 750px;
     margin: 0 auto;
     padding: 20px;
     box-shadow: var(--box-shadow-color);
@@ -71,17 +71,55 @@ li {
 
 /* 媒体查询 - 最大宽度 600px */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+    body{
+        padding: 3px;
+        font-size: 12px;
+    }
     .container {
-        max-width: 95%;
+        max-width: 100%;
     }
     .tab button {
         padding: 10px;
+        font-size: 12px;
     }
     .button {
-        padding: 8px 16px;
+        padding: 3px 3px;
+        margin: 0px;
+        font-size: 10px;
+        max-width: fit-content;
+        min-width: 64px;
+        max-height: 32px;
+    }
+    .status {
+        margin-left: 8px;
+    }
+    .tab button {
+        font-size: 12px;
     }
 }
+
+@media (min-width: 801px) {
+    .container {
+        max-width: 800px;
+    }
+    .button {
+        padding: 10px 10px;
+        margin: 5px;
+        font-weight: 600;
+        min-width: 96px;
+        max-width: 112px;
+        max-height: 38px;
+    }
+    .tab button {
+        font-size: 17px;
+    }
+    .status {
+        margin-left: 15px;
+    }
+}
+
+
 
 .header {
     /* 定义头部样式 */
@@ -125,7 +163,6 @@ li {
     cursor: pointer;
     padding: 14px 16px;
     transition: background-color 0.3s;
-    font-size: 17px;
     font-weight: 500;
     color: var(--tab-button-font-color);
     width: auto;
@@ -172,8 +209,6 @@ li {
 
 .button {
     /* 定义按钮样式 */
-    padding: 10px 10px;
-    margin: 5px;
     border: none;
     border-radius: 5px;
     background-color: var(--button-background-color);
@@ -182,12 +217,7 @@ li {
     outline: none;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    font-weight: 600;
-    min-width: 96px;
-    max-width: 112px;
     text-align: center;
-    max-height: 38px;
 }
 
 .button:hover {
@@ -199,7 +229,6 @@ li {
 .status {
     /* 定义状态样式 */
     display: inline-block;
-    margin-left: 20px;
 }
 
 .status i {
