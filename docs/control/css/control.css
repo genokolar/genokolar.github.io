@@ -4,13 +4,16 @@
     --header-background-color: #0b8ec2;
     --header-text-color: #ffffff;
     --tab-background-color: #f0f0f0;
-    --tab-text-color: #333;
-    --tab-button-hover-color: #e0e0e0;
-    --tab-button-active-color: #d0d0d0;
+    --tab-text-color: #4a4a4a;
+    --tab-button-hover-color: #d0d0d0;
+    --tab-button-active-color: #e0e0e0;
+    --tab-button-active-font-color: #2e92bc;
+    --tab-button-font-color :#888;
     --button-background-color: #0b8ec2;
+    --button-hover-background-color: #0675a1;
     --button-text-color: #fff;
     --tab-content-background-color: #fafafa;
-    --help-text-color: #333;
+    --help-text-color: #4a4a4a;
     --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1);
     --content-border-color: 1px solid #ccc;
 }
@@ -19,27 +22,41 @@
     /* 定义暗色主题样式变量 */
     --background-color: #333;
     --header-background-color: #014b55;
-    --tab-background-color: #444;
+    --tab-background-color: #4f4f4f;
     --tab-text-color: #eee;
-    --tab-button-hover-color: #7f8b8b;
-    --tab-button-active-color: #636d6d;
+    --tab-button-hover-color: #8b8b8b;
+    --tab-button-active-color: #666666;
+    --tab-button-active-font-color: #004f5a;
+    --tab-button-font-color :#888;
     --button-background-color: #014b55;
+    --button-hover-background-color: #025d69;
     --button-text-color: #ccc;
     --tab-content-background-color: #444;
     --help-text-color: #eee;
     --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.18);
-    --content-border-color: 1px solid #555;
+    --content-border-color: 1px solid #5f5f5f;
 }
 
 
 /* 基本样式 */
 
 body {
-    font-family: "PingFang SC", "Microsoft YaHei", 'Arial', sans-serif;
+    font-family: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", 'Arial', sans-serif;
     background-color: var(--background-color);
     margin: 0;
     padding: 20px;
     transition: background-color 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 10px 0;
+    color: var(--tab-text-color);
+}
+
+li {
+    padding: 5px 0;
 }
 
 .container {
@@ -109,7 +126,8 @@ body {
     padding: 14px 16px;
     transition: background-color 0.3s;
     font-size: 17px;
-    color: var(--tab-text-color);
+    font-weight: 500;
+    color: var(--tab-button-font-color);
     width: auto;
     text-align: left;
     float: left;
@@ -124,6 +142,7 @@ body {
 .tab button.active {
     /* 定义标签页按钮激活样式 */
     background-color: var(--tab-button-active-color);
+    color: var(--tab-button-active-font-color);
 }
 
 .tab-content {
@@ -137,17 +156,23 @@ body {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-height: 110px;
+    /* display: flex; */
+    gap: 10px;
+    min-height: 150px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
 }
 
 .tab-content.active {
     /* 定义激活的标签页内容样式 */
-    display: block;
+    display: flex;
 }
 
 .button {
     /* 定义按钮样式 */
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin: 5px;
     border: none;
     border-radius: 5px;
@@ -157,13 +182,17 @@ body {
     outline: none;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
     font-weight: 600;
     min-width: 96px;
+    max-width: 112px;
+    text-align: center;
+    max-height: 38px;
 }
 
 .button:hover {
     /* 定义按钮悬停样式 */
-    background-color: #0056b3;
+    background-color: var(--button-hover-background-color);
     transform: translateY(-2px);
 }
 
@@ -194,4 +223,30 @@ body {
 .text {
     /* 定义帮助信息样式 */
     color: var(--help-text-color);
+}
+
+.text-content {
+    flex: 1;
+    margin: 10px 10px 10px 50px;
+    min-width: 120px;
+}
+
+.button-content {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 需单独设定样式的元素 */
+div #help.text  {
+    justify-content: left;
+}
+
+label.device-info {
+    padding: 0;
+    margin: 0;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--tab-text-color)
 }

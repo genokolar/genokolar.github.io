@@ -38,15 +38,26 @@
         </div>
 
         <div id="Tab1" class="tab-content">
-            <button name="grantdevice" id="grant-button" class="button" style="background: rgb(176, 0, 0)" title="授权访问设备权限或连接设备"> 连接设备 </button>
-            <button id="disconnect-button" class="button" style="background: rgb(176, 0, 0)" title="断开Lotlab设备连接"> 断开连接 </button>
-            <!-- <button id="list-button" class="button" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
-                <button id="connect-button" class="button" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
-                <button name="getkeyboardinfo" id="send-button3" class="button"  title="发送命令获取接收器信息"> 获取信息 </button> -->
-            <button name="systemoff" id="send-button1" class="button" title="使键盘关机"> 键盘关机 </button>
-            <button name="sleep" id="send-button1" class="button" title="使键盘睡眠"> 键盘睡眠 </button>
-            <button name="bootcheck" id="send-button1" class="button" title="切换是否需要启动按钮"> 启动按钮 </button>
-            <button id="notificationButton" name="bootcheck" class="button" title="允许通知键盘重要操作通知">允许通知</button>
+            <div class="text-content">
+                <label class="device-info">键盘信息</label>
+                <ul>
+                    <li><span>设备名称：</span><span id="device_name"> </span></li>
+                    <li><span>设备标识：</span><span id="device_mac"> </span></li>
+                    <li><span>固件版本：</span><span id="firmware_ver"> </span></li>
+                    <li><span>编译日期：</span><span id="firmware_date"> </span></li>
+                </ul>
+            </div>
+            <div class="button-content">
+                <button name="grantdevice" id="grant-button" class="button" style="background: rgb(176, 0, 0)" title="授权访问设备权限或连接设备"> 连接设备 </button>
+                <button id="disconnect-button" class="button" style="background: rgb(176, 0, 0)" title="断开Lotlab设备连接"> 断开连接 </button>
+                <!-- <button id="list-button" class="button" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
+                    <button id="connect-button" class="button" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
+                    <button name="getkeyboardinfo" id="send-button3" class="button"  title="发送命令获取接收器信息"> 获取信息 </button> -->
+                <button name="systemoff" id="send-button1" class="button" title="使键盘关机"> 键盘关机 </button>
+                <button name="sleep" id="send-button1" class="button" title="使键盘睡眠"> 键盘睡眠 </button>
+                <button name="bootcheck" id="send-button1" class="button" title="切换是否需要启动按钮"> 启动按钮 </button>
+                <button id="notificationButton" name="bootcheck" class="button" title="允许通知键盘重要操作通知">允许通知</button>
+            </div>
         </div>
 
         <div id="Tab2" class="tab-content">
@@ -87,7 +98,7 @@
         </div>
 
         <div id="Tab5" class="tab-content">
-            <div class="text">
+            <div class="text" id="help">
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
                 2. 顶部状态栏支持显示连接状态、输出状态、电池电量、激活层、固件编译日期<br />
                 3. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
