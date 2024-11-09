@@ -101,7 +101,7 @@ li {
 
 @media (min-width: 801px) {
     .container {
-        max-width: 800px;
+        max-width: 720px;
     }
     .button {
         padding: 10px 10px;
@@ -185,7 +185,7 @@ li {
 .tab-content {
     /* 定义标签页内容样式 */
     display: none;
-    padding: 20px;
+    padding: 20px 1em;
     border: var(--content-border-color);
     border-top: none;
     background-color: var(--tab-content-background-color);
@@ -198,7 +198,6 @@ li {
     min-height: 150px;
     align-content: flex-start;
     flex-wrap: wrap;
-    justify-content: left;
     align-items: flex-start;
 }
 
@@ -258,6 +257,7 @@ li {
     flex: 1;
     margin: 10px 10px 10px 50px;
     min-width: 120px;
+    max-width: 40%;
 }
 
 .button-content {
