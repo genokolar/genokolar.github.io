@@ -15,6 +15,9 @@ const filters = [
 	{
 		vendorId: 0x4366, // Glab
 		productId: 0x1024, // Glab
+		usagePage: 0xff00,
+		usage: 0x0001,
+		productName: "Glab 2.4G Receiver"
 	}
 ];
 var cmsisdap = false;
