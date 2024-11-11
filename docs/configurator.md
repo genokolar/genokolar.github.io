@@ -42,7 +42,7 @@ WebHID 配置需要2024年11月11日及以后的新版 USB 固件和 蓝牙 固�
 KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="0514", MODE="0664", GROUP="plugdev"
 KERNEL=="hidraw*", KERNELS="uhid", MODE="0664", GROUP="plugdev"
 ```
-确保您的 user 是 ```plugdev``` 群组的成员，或根据你的用户名所属群组进行修改，如修改位 ```users``` 。然后重启主机，重新连接您的设备即可。
+确保您的 user 是 ```plugdev``` 群组的成员，或根据你的用户名所属群组进行修改，如修改为 ```users``` 。然后重启主机连接您的设备。
 
 
 ### 2.使用服务端方式
