@@ -24,13 +24,21 @@ WebHID API 在 所有桌面平台（ChromeOS、Linux、macOS 和 Windows）上�
 
 支持的浏览器包括Chrome 89+ / Edge 89+ / Opera 75+ 以及采用Chrome浏览器内核的浏览器，如 QQ浏览器 / 360浏览器等
 
-使用支持的浏览器访问[配置工具网站](https://keyboard.lotlab.org/)。
+用USB线连接键盘或蓝牙连接键盘，使用上述浏览器访问[配置工具网站](https://keyboard.lotlab.org/)
 
-点击设备旁边列表的刷新按钮，等待弹出授权窗口。待授权对应的设备后，即可在设备列表内找到对应的可配置设备。
+点击设备列表旁边的刷新按钮，等待弹出授权窗口。在授权窗口选择对应的设备授权后，即可在设备列表内找到对应的可配置设备。
 
-注意：当前 WebHID 配置尚处于测试阶段，只能在未启动本地服务器时使用。
+WebHID 配置需要2024年11月11日及以后的新版 USB 固件和 蓝牙 固件。若在弹出设备列表中无法找到对应设备，请先尝试更新设备固件。
 
-WebHID 配置需要2024年11月11日及以后的新版 USB 固件和 蓝牙 固件。若在弹出设备列表中无法找到对应设备，可以先尝试更新设备固件。
+!!! tip "当前 WebHID 配置尚处于测试阶段，只能在未启动本地服务器时使用"
+
+- 蓝牙无线改建注意事项
+
+蓝牙固件首次从2024年11月10日前固件更新到2024年11月11日后固件，需要删除配对，重新与主机配对
+
+蓝牙无线配置按键时，应当确保蓝牙无线信号良好，USB处于断开状态
+
+如遇到信号不佳导致改建超时，可刷新配置工具后重新尝试配置。
 
 - Linux 需要授权
 
@@ -87,7 +95,7 @@ KERNEL=="hidraw*", KERNELS="uhid", MODE="0664", GROUP="plugdev"
     1. 安装 [.net core 运行环境](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)，选择download hosting bundle
     2. 在命令行环境（终端）下输入 dotnet lkb-configurator-server.dll 然后回车
 
-四、用USB线连接键盘，访问配置工具网址：keyboard.lotlab.org
+四、用USB线连接键盘，访问[配置工具网站](https://keyboard.lotlab.org/)
 
 按键配置方法
 ----------
