@@ -60,7 +60,7 @@ li {
 }
 
 .container {
-    max-width: 750px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 20px;
     box-shadow: var(--box-shadow-color);
@@ -100,9 +100,6 @@ li {
 }
 
 @media (min-width: 801px) {
-    .container {
-        max-width: 720px;
-    }
     .button {
         padding: 10px 10px;
         margin: 5px;
