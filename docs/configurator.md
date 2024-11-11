@@ -32,11 +32,11 @@ WebHID API 在 所有桌面平台（ChromeOS、Linux、macOS 和 Windows）上�
 
 WebHID 配置需要2024年11月11日及以后的新版 USB 固件和 蓝牙 固件。若在弹出设备列表中无法找到对应设备，可以先尝试更新设备固件。
 
-#### Linux 需要授权
+- Linux 需要授权
 
 由于Linux系统对设备权限管理比较严格，需要手动修改权限才能使用配置工具。
 
-在大多数 Linux 系统上，HID 设备默认映射为只读权限。如需正常使用配置工具，您需要添加新的 udev 规则。在 ```/etc/udev/rules.d/``` 下 中创建一个包含以下内容的文件，如```50-lotlab-keyboard.rules```：
+在大多数 Linux 系统上，HID 设备默认映射为只读权限。如需正常使用配置工具，您需要添加新的 udev 规则。使用root权限，在 ```/etc/udev/rules.d/``` 下 创建一个文件，如 ```50-lotlab-keyboard.rules``` ，包含以下内容：
 
 ```
 KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="0514", MODE="0664", GROUP="plugdev"
