@@ -16,7 +16,10 @@ const devices = [
     { name: 'Omega64', vendor: 0x4366, product: 0x0317, version: 0x00 },
     { name: 'Omega84', vendor: 0x4366, product: 0x0318, version: 0x00 },
     { name: 'Newhope64 A', vendor: 0x4366, product: 0x0319, version: 0x00 },
-    { name: 'GTPAD', vendor: 0x4366, product: 0x031A, version: 0x00 },
+    { name: 'GTPAD A', vendor: 0x4366, product: 0x031A, version: 0x00 },
+    { name: 'GTPAD B', vendor: 0x4366, product: 0x031A, version: 0x01 },
+    { name: 'GTPAD C', vendor: 0x4366, product: 0x031A, version: 0x02 },
+    { name: 'GTPAD D', vendor: 0x4366, product: 0x031A, version: 0x03 },
     { name: 'BLE60 F', vendor: 0x4366, product: 0x031B, version: 0x00 },
     { name: 'BLE60 G', vendor: 0x4366, product: 0x031B, version: 0x01 },
     { name: 'Omega50 B', vendor: 0x4366, product: 0x031C, version: 0x00 },
@@ -163,7 +166,6 @@ async function default_status() {
 //将设备为默认状态
 async function default_device_info() {
     document.getElementById('device_name').innerHTML = "";
-    document.getElementById('device_ver').innerHTML = "";
     document.getElementById('device_mac').innerHTML = "";
     document.getElementById('firmware_ver').innerHTML = "";
     document.getElementById('firmware_date').innerHTML = "";
@@ -276,9 +278,11 @@ async function GrantDevice() {
         if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
             OpenDevice(devices_list[i]);
             consolelog("Grant & Open Device:", devices_list[i]);
+            return null;
         } else if (devices_list[i].productName == "" && !device_opened) {
             OpenDevice(devices_list[i]);
             consolelog("Grant & Open Device:", devices_list[i]);
+            return null;
         }
     }
 }
@@ -294,6 +298,7 @@ async function ListDevices() {
     consolelog("ListDevices():", devices_list);
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == "")) { }
+        consolelog("List Device:", devices_list[i]);
     }
 }
 
