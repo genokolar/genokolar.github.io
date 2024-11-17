@@ -1,18 +1,39 @@
 //设置过滤器
 const filters = [
     {
-        vendorId: 0x1209, //有线键盘
+        vendorId: 0x1209, //新Usage
         productId: 0x0514,
         usagePage: 0xffea,
         usage: 0x0072,
     },
     {
-        vendorId: 0x1209, // GT
-        productId: 0x0514, // GT
+        vendorId: 0x1209, // 旧Usage 2025年后不兼容
+        productId: 0x0514,
         usagePage: 0xff00,
         usage: 0x0001,
+        productName: "Lotlab Configurator",
+    },
+    {
+        vendorId: 0x1209, // 旧Usage 2025年后不兼容
+        productId: 0x0514,
+        usagePage: 0xff00,
+        usage: 0x0001,
+        productName: "",
     }
 ];
+
+function checkFilters(device) {
+    for (let i = 0; i < filters.length; i++) {
+        const filter = filters[i];
+        if (device.vendorId === filter.vendorId &&
+            device.productId === filter.productId &&
+            device.usagePage === filter.usagePage &&
+            device.usage === filter.usage) {
+            return true; // 符合过滤器要求
+        }
+    }
+    return false; // 不符合任何过滤器要求
+}
 
 //设备信息表 定义设备数组及其供应商ID 和产品ID
 const devices = [
@@ -49,7 +70,7 @@ const devices = [
 let refreshing = false;
 let device_opened = false;
 let layer = 1;
-let Logenable = false;
+let Logenable = true;
 let info;
 const reportId = 0x3f;
 
@@ -229,13 +250,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
     //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
     consolelog("DOMContentLoaded");
+    //DOM加载，获取已授权设备列表，并打开设备
     const devices_list = await navigator.hid.getDevices();
     if (devices_list.length) {
         for (var i = 0; i < devices_list.length; i++) {
             if (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName.includes("Glab")) {
                 OpenDevice(devices_list[i])
+                return;
             } else if (devices_list[i].productName == "") {
                 OpenDevice(devices_list[i])
+                return;
             }
         }
     } else {
@@ -315,7 +339,7 @@ async function OpenDevice(opendevice) {
             default_status();
             return null;
         } else {
-            if (!device_opened) {
+            if (opendevice.productName.includes("Lotlab") || opendevice.productName == "" && !device_opened) {
                 await opendevice.open();
                 device_opened = true;
                 refreshdata();
@@ -404,7 +428,7 @@ async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
     device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
-        // 有设备打开状态，检测断开的设备是什么
+        // 有设备打开状态，设定已有设备打开标识
         if (devices_list[i].opened){
             device_opened = true;
         }
