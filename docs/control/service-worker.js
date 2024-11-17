@@ -1,5 +1,5 @@
 const CACHE_NAME = `KeyCtrl-Glab-v1`;
-const CURRENT_CACHE_VERSION = 2; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 3; // 当前缓存版本
 
 // 使用 install 事件预缓存所有初始资源
 self.addEventListener('install', event => {

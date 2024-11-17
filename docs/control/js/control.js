@@ -1,13 +1,23 @@
 //设置过滤器
-const filters = [{
-    vendorId: 0x1209, // GT
-    productId: 0x0514, // GT
-}];
+const filters = [
+    {
+        vendorId: 0x1209, //有线键盘
+        productId: 0x0514,
+        usagePage: 0xffea,
+        usage: 0x0072,
+    },
+    {
+        vendorId: 0x1209, // GT
+        productId: 0x0514, // GT
+        usagePage: 0xff00,
+        usage: 0x0001,
+    }
+];
 
 //设备信息表 定义设备数组及其供应商ID 和产品ID
 const devices = [
     { name: 'BLE60 D', vendor: 0x4366, product: 0x0311, version: 0x00 },
-    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x00},
+    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x00 },
     { name: 'Omega45 D', vendor: 0x4366, product: 0x0312, version: 0x01 },
     { name: 'Farad69 A', vendor: 0x4366, product: 0x0313, version: 0x00 },
     { name: 'Omega50 A', vendor: 0x4366, product: 0x0314, version: 0x00 },
@@ -156,7 +166,6 @@ function updateHeaderStatus(iconid, textid, iconClass, text) {
 
 //将状态栏设置为默认状态
 async function default_status() {
-    updateHeaderStatus('link-icon', 'link-text', 'fas fa-unlink', '未连接');
     updateHeaderStatus('', 'mode-text', '', '输出端');
     updateHeaderStatus('', 'layer-text', '', '激活层');
     updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
@@ -223,7 +232,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const devices_list = await navigator.hid.getDevices();
     if (devices_list.length) {
         for (var i = 0; i < devices_list.length; i++) {
-            OpenDevice(devices_list[i]);
+            if (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName.includes("Glab")) {
+                OpenDevice(devices_list[i])
+            } else if (devices_list[i].productName == "") {
+                OpenDevice(devices_list[i])
+            }
         }
     } else {
         consolelog("No Device online");
@@ -238,7 +251,9 @@ if ("hid" in navigator) {
         //优先连接有线设备
         if (device.productName.includes("Lotlab")) {
             OpenDevice(device)
-        } else if (device.productName == "") {
+        } else if (device.productName.includes("Glab")) {
+            OpenDevice(device)
+        } else {
             OpenDevice(device)
         }
     });
@@ -248,9 +263,6 @@ if ("hid" in navigator) {
         consolelog(`HID设备断开: ${device.productName}`);
         Check_Opend();
     });
-} else {
-    //document.getElementById('consoleinfo').innerHTML = "🔺提示信息：" + '<br>';
-    //document.getElementById('consoleinfo').innerHTML += "您的浏览器不支持WebHID，请使用Chrome 89+ / Edge 89+ / Opera 75+" + '<br>';
 }
 
 //============================================连接键盘=========================================================
@@ -275,11 +287,7 @@ async function GrantDevice() {
     }
     //遍历设备，并打开符合条件的设备
     for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].productName.includes("Lotlab") && !device_opened) {
-            OpenDevice(devices_list[i]);
-            consolelog("Grant & Open Device:", devices_list[i]);
-            return null;
-        } else if (devices_list[i].productName == "" && !device_opened) {
+        if (!device_opened) {
             OpenDevice(devices_list[i]);
             consolelog("Grant & Open Device:", devices_list[i]);
             return null;
@@ -295,11 +303,7 @@ async function ListDevices() {
         consolelog("No Device Connected");
         return null;
     }
-    consolelog("ListDevices():", devices_list);
-    for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].productName.includes("Lotlab") || (devices_list[i].productName == "")) { }
-        consolelog("List Device:", devices_list[i]);
-    }
+    consolelog("ListDevices", devices_list);
 }
 
 //连接设备【先授权，后连接GT 2.4G Receiver】
@@ -311,26 +315,10 @@ async function OpenDevice(opendevice) {
             default_status();
             return null;
         } else {
-            if (opendevice.productName.includes("Lotlab") && !device_opened) {
+            if (!device_opened) {
                 await opendevice.open();
                 device_opened = true;
                 refreshdata();
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
-                // 显示RGB控制元素
-                LINKCTRLElement.style.display = 'block';
-                consolelog("Open Device:", opendevice);
-                opendevice.oninputreport = ({ device, reportId, data }) => {
-                    const inputdata = new Uint8Array(data.buffer);
-                    consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                    update_statebar(inputdata);
-                };
-            } else if (opendevice.productName == "" && !device_opened) {
-                await opendevice.open();
-                device_opened = true;
-                refreshdata();
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
-                // 隐藏RGB控制元素
-                LINKCTRLElement.style.display = 'none';
                 consolelog("Open Device:", opendevice);
                 opendevice.oninputreport = ({ device, reportId, data }) => {
                     const inputdata = new Uint8Array(data.buffer);
@@ -380,7 +368,7 @@ function getDeviceName(vendorId, productId, versionID) {
 async function GetKeyboardInfo() {
     const devices_list = await navigator.hid.getDevices();
     for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "")) {
+        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "" || devices_list[i].productName.includes("Glab"))) {
             const outputReportData = new Uint8Array([0x20]);
             try {
                 await devices_list[i].sendReport(reportId, outputReportData);
@@ -398,7 +386,7 @@ async function GetKeyboardInfo() {
 async function sendcmd(data) {
     const devices_list = await navigator.hid.getDevices();
     for (let i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "")) {
+        if (devices_list[i].opened) {
             try {
                 const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
@@ -411,22 +399,13 @@ async function sendcmd(data) {
         }
     }
 }
-//检测是否打来设备
+//检测是否打开设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
     device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
         // 有设备打开状态，检测断开的设备是什么
-        if (devices_list[i].opened) {
-            if (devices_list[i].productName.includes("Lotlab") && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-link', 'USB');
-                // 显示RGB控制元素
-                LINKCTRLElement.style.display = 'block';
-            } else if (devices_list[i].productName == "" && devices_list[i].opened) {
-                updateHeaderStatus('link-icon', 'link-text', 'fas fa-wifi', '蓝牙');
-                // 隐藏RGB控制元素
-                LINKCTRLElement.style.display = 'none';
-            }
+        if (devices_list[i].opened){
             device_opened = true;
         }
     }
@@ -459,7 +438,9 @@ async function update_statebar(inputdata) {
             battery_icon = 'fas fa-battery-empty'
         }
         let mode_info = '输出端'
-        if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
+        if ((inputdata[31] & (1 << 7))) {
+            mode_info = 'USB'
+        } else if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
             mode_info = '无线接收'
         } else if ((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
             if ((inputdata[31] & (1 << 0))) {
@@ -480,7 +461,7 @@ async function update_statebar(inputdata) {
         }
         const vendorId = parseInt("0x" + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2));
         const productId = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2));
-        const versionID =parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
+        const versionID = parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
         const deviceName = getDeviceName(vendorId, productId, versionID);
 
         updateHeaderStatus('', 'mode-text', '', mode_info);
@@ -505,13 +486,13 @@ async function update_device_info(inputdata) {
         var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
         const vendorId = parseInt("0x" + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2));
         const productId = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2));
-        const versionID =parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
+        const versionID = parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
         const deviceName = getDeviceName(vendorId, productId, versionID);
         const firmwarever = (("0" + inputdata[11].toString(16)).slice(-2) + ("0" + inputdata[10].toString(16)).slice(-2) + ("0" + inputdata[9].toString(16)).slice(-2) + ("0" + inputdata[8].toString(16)).slice(-2));
 
 
         document.getElementById('device_name').innerHTML = deviceName;
-        document.getElementById('device_mac').innerHTML = ("0" + inputdata[28].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[27].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[26].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2) ;
+        document.getElementById('device_mac').innerHTML = ("0" + inputdata[28].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[27].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[26].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2);
         document.getElementById('firmware_ver').innerHTML = firmwarever.toUpperCase();
         document.getElementById('firmware_date').innerHTML = formattedDate;
         document.getElementById('firmware_date').setAttribute('title', newDate.toLocaleString());

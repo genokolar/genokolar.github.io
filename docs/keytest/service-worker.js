@@ -1,5 +1,5 @@
 const CACHE_NAME = `Keytest-Glab-v1`;
-const CURRENT_CACHE_VERSION = 1; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 2; // 当前缓存版本
 
 // 使用 install 事件预缓存所有初始资源
 self.addEventListener('install', event => {
@@ -10,7 +10,7 @@ self.addEventListener('install', event => {
         './css/kb_test.css',
         './js/kb_test.js',
         './img/logo.png',
-        './img/keytest.png',
+        './img/app.png',
         './media/Arial.ttf',
         './media/keydown.mp3',
         './media/keyup.mp3'

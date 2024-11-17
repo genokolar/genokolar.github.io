@@ -19,12 +19,11 @@
         <div class="header">
             <h2>键盘控制面板</h2>
             <div class="header-info">
-                <div class="status"><i id="link-icon" class="fas fa-unlink"></i><span id="link-text">未连接</span></div>
-                <div class="status"><i id="mode-icon" class="fas fa-keyboard"></i><span id="mode-text">输出端</span></div>
-                <div class="status"><i id="layer-icon" class="fas fa-layer-group"></i><span id="layer-text">激活层</span></div>
-                <div class="status"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
+                <div class="status status_misc"><i id="mode-icon" class="fas fa-keyboard"></i><span id="mode-text">输出端</span></div>
+                <div class="status status_misc"><i id="layer-icon" class="fas fa-layer-group"></i><span id="layer-text">激活层</span></div>
+                <div class="status status_misc"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
                 <div class="status"><i id="device-icon" class="fas fa-sign-out-alt"></i><span id="device-text">设备名称</span></div>
-                <div class="status"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i>
+                <div class="theme"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i>
                 </div>
             </div>
         </div>
@@ -38,8 +37,8 @@
         </div>
 
         <div id="Tab1" class="tab-content">
-            <div class="text-content">
-                <label class="device-info">键盘信息</label>
+            <div class="text-content device-info">
+                <label class="keyboard-info">键盘信息</label>
                 <ul>
                     <li><span>设备名称：</span><span id="device_name"> </span></li>
                     <li><span>设备标识：</span><span id="device_mac"> </span></li>

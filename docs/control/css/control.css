@@ -60,63 +60,13 @@ li {
 }
 
 .container {
-    max-width: 720px;
+    max-width: 750px;
     margin: 0 auto;
     padding: 20px;
     box-shadow: var(--box-shadow-color);
     border-radius: 8px;
     background-color: var(--background-color);
 }
-
-
-/* 媒体查询 - 最大宽度 600px */
-
-@media (max-width: 800px) {
-    body{
-        padding: 3px;
-        font-size: 12px;
-    }
-    .container {
-        max-width: 100%;
-    }
-    .tab button {
-        padding: 10px;
-        font-size: 12px;
-    }
-    .button {
-        padding: 3px 3px;
-        margin: 0px;
-        font-size: 10px;
-        max-width: fit-content;
-        min-width: 64px;
-        max-height: 32px;
-    }
-    .status {
-        margin-left: 8px;
-    }
-    .tab button {
-        font-size: 12px;
-    }
-}
-
-@media (min-width: 801px) {
-    .button {
-        padding: 10px 10px;
-        margin: 5px;
-        font-weight: 600;
-        min-width: 96px;
-        max-width: 112px;
-        max-height: 38px;
-    }
-    .tab button {
-        font-size: 17px;
-    }
-    .status {
-        margin-left: 15px;
-    }
-}
-
-
 
 .header {
     /* 定义头部样式 */
@@ -232,6 +182,11 @@ li {
     margin-right: 5px;
 }
 
+.theme i {
+    /* 定义状态图标样式 */
+    margin-left: 10px;
+}
+
 .theme-button {
     /* 定义主题切换按钮样式 */
     font-size: 24px;
@@ -269,10 +224,77 @@ div #help.text  {
     justify-content: left;
 }
 
-label.device-info {
+label.keyboard-info {
     padding: 0;
     margin: 0;
     font-size: medium;
     font-weight: bold;
     color: var(--tab-text-color)
+}
+
+
+@media (min-width: 801px) {
+    .container {
+        max-width: 720px;
+    }
+    .button {
+        padding: 10px 10px;
+        margin: 5px;
+        font-weight: 600;
+        min-width: 96px;
+        max-width: 112px;
+        max-height: 38px;
+    }
+    .tab button {
+        font-size: 17px;
+    }
+    .status {
+        margin-left: 15px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 800px) {
+    body{
+        padding: 3px;
+        font-size: 14px;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .tab button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .button {
+        padding: 3px 3px;
+        margin: 0px;
+        font-size: 12px;
+        font-family: 600;
+        max-width: fit-content;
+        min-width: 72px;
+        min-height: 28px;
+        max-height: 32px;
+    }
+    .status {
+        margin-left: 8px;
+        display: inline-block;
+    }
+    .tab button {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .status_misc {
+        display: none;
+    }
+    .container {
+        min-width: 356px;
+    }
+    .device-info {
+    padding-top: 10px;
+    margin-left: 10px;
+    min-width: 210px;
+    }
 }

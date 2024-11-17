@@ -7,7 +7,7 @@
     "description": "在线键盘测试工具",
     "icons": [
       {
-        "src": "./img/keytest.png",
+        "src": "./img/app.png",
         "sizes": "512x512",
         "type": "image/png"
       }
