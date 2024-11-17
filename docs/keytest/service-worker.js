@@ -46,11 +46,16 @@ self.addEventListener('fetch', event => {
         // 如果资源不在缓存中，尝试从网络获取
         const fetchResponse = await fetch(event.request);
 
-        // 将新获取的资源添加到缓存中
-        cache.put(event.request, fetchResponse.clone());
+        // 检查响应状态码，只缓存完整的响应
+        if (fetchResponse.status === 200) {
+          // 将新获取的资源添加到缓存中
+          cache.put(event.request, fetchResponse.clone());
+        }
         return fetchResponse;
       } catch (e) {
-        // 网络请求失败
+        // 网络请求失败，可以选择返回一个备用响应或者抛出错误
+        console.error('Fetch failed:', e);
+        // 例如，你可以返回一个错误页面或者重试逻辑
       }
     }
   })());
