@@ -270,7 +270,7 @@ label.keyboard-info {
         padding: 3px 3px;
         margin: 0px;
         font-size: 12px;
-        font-family: 600;
+        font-weight: 500;
         max-width: fit-content;
         min-width: 72px;
         min-height: 28px;
@@ -279,9 +279,6 @@ label.keyboard-info {
     .status {
         margin-left: 8px;
         display: inline-block;
-    }
-    .tab button {
-        font-size: 12px;
     }
 }
 
