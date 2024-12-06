@@ -37,42 +37,100 @@ function checkFilters(device) {
 
 //设备信息表 定义设备数组及其供应商ID 和产品ID
 const devices = [
-    { name: 'BLE60 D', vendor: 0x4366, product: 0x0311, version: 0x00 },
-    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x00 },
-    { name: 'Omega45 D', vendor: 0x4366, product: 0x0312, version: 0x01 },
-    { name: 'Farad69 A', vendor: 0x4366, product: 0x0313, version: 0x00 },
-    { name: 'Omega50 A', vendor: 0x4366, product: 0x0314, version: 0x00 },
+    { name: 'BLE60 D', vendor: 0x4366, product: 0x0311, version: 0x0000 },
+    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x0000 },
+    { name: 'Omega45 D', vendor: 0x4366, product: 0x0312, version: 0x0001 },
+    { name: 'Farad69 A', vendor: 0x4366, product: 0x0313, version: 0x0000 },
+    { name: 'Omega50 A', vendor: 0x4366, product: 0x0314, version: 0x0000 },
     { name: 'BLE60 E', vendor: 0x4366, product: 0x0315, version: 0x00 },
-    { name: 'Farad69 B', vendor: 0x4366, product: 0x0316, version: 0x00 },
-    { name: 'Omega64', vendor: 0x4366, product: 0x0317, version: 0x00 },
-    { name: 'Omega84', vendor: 0x4366, product: 0x0318, version: 0x00 },
-    { name: 'Newhope64 A', vendor: 0x4366, product: 0x0319, version: 0x00 },
-    { name: 'GTPAD A', vendor: 0x4366, product: 0x031A, version: 0x00 },
-    { name: 'GTPAD B', vendor: 0x4366, product: 0x031A, version: 0x01 },
-    { name: 'GTPAD C', vendor: 0x4366, product: 0x031A, version: 0x02 },
-    { name: 'GTPAD D', vendor: 0x4366, product: 0x031A, version: 0x03 },
-    { name: 'BLE60 F', vendor: 0x4366, product: 0x031B, version: 0x00 },
-    { name: 'BLE60 G', vendor: 0x4366, product: 0x031B, version: 0x01 },
-    { name: 'Omega50 B', vendor: 0x4366, product: 0x031C, version: 0x00 },
-    { name: 'Omega50 C', vendor: 0x4366, product: 0x031C, version: 0x01 },
-    { name: 'Farad69 C', vendor: 0x4366, product: 0x031D, version: 0x00 },
-    { name: 'Farad69 D', vendor: 0x4366, product: 0x031D, version: 0x01 },
-    { name: 'Omega45 E', vendor: 0x4366, product: 0x031E, version: 0x00 },
-    { name: 'Omega45 F', vendor: 0x4366, product: 0x031E, version: 0x01 },
-    { name: 'Planck A', vendor: 0x4366, product: 0x031F, version: 0x00 },
-    { name: 'Omega40 A', vendor: 0x4366, product: 0x0320, version: 0x00 },
-    { name: 'Volta9', vendor: 0x4366, product: 0x0321, version: 0x00 },
-    { name: 'Newhope64 B', vendor: 0x4366, product: 0x0322, version: 0x00 },
-    { name: 'Planck B', vendor: 0x4366, product: 0x0323, version: 0x00 },
-    { name: 'HAL67 A', vendor: 0x4366, product: 0x0324, version: 0x00 },
+    { name: 'Farad69 B', vendor: 0x4366, product: 0x0316, version: 0x0000 },
+    { name: 'Omega64', vendor: 0x4366, product: 0x0317, version: 0x0000 },
+    { name: 'Omega84', vendor: 0x4366, product: 0x0318, version: 0x0000 },
+    { name: 'Newhope64 A', vendor: 0x4366, product: 0x0319, version: 0x0000 },
+    { name: 'GTPAD A', vendor: 0x4366, product: 0x031A, version: 0x0000 },
+    { name: 'GTPAD B', vendor: 0x4366, product: 0x031A, version: 0x0001 },
+    { name: 'GTPAD C', vendor: 0x4366, product: 0x031A, version: 0x0002 },
+    { name: 'GTPAD D', vendor: 0x4366, product: 0x031A, version: 0x0003 },
+    { name: 'BLE60 F', vendor: 0x4366, product: 0x031B, version: 0x0000 },
+    { name: 'BLE60 G', vendor: 0x4366, product: 0x031B, version: 0x0001 },
+    { name: 'Omega50 B', vendor: 0x4366, product: 0x031C, version: 0x0000 },
+    { name: 'Omega50 C', vendor: 0x4366, product: 0x031C, version: 0x0001 },
+    { name: 'Farad69 C', vendor: 0x4366, product: 0x031D, version: 0x0000 },
+    { name: 'Farad69 D', vendor: 0x4366, product: 0x031D, version: 0x0001 },
+    { name: 'Omega45 E', vendor: 0x4366, product: 0x031E, version: 0x0000 },
+    { name: 'Omega45 F', vendor: 0x4366, product: 0x031E, version: 0x0001 },
+    { name: 'Planck A', vendor: 0x4366, product: 0x031F, version: 0x0000 },
+    { name: 'Omega40 A', vendor: 0x4366, product: 0x0320, version: 0x0000 },
+    { name: 'Volta9', vendor: 0x4366, product: 0x0321, version: 0x0000 },
+    { name: 'Newhope64 B', vendor: 0x4366, product: 0x0322, version: 0x0000 },
+    { name: 'Planck B', vendor: 0x4366, product: 0x0323, version: 0x0000 },
+    { name: 'HAL67 A', vendor: 0x4366, product: 0x0324, version: 0x0000 },
 ];
+
+const CMD = {
+    // 获取键盘信息
+    HID_CMD_GET_INFORMATION: 0x20,
+    // 获取单个按键键值
+    HID_CMD_GET_SINGLE_KEY: 0x21,
+    // 获取单个Fn的功能
+    HID_CMD_GET_SINGLE_FN: 0x22,
+    // 获取所有键值
+    HID_CMD_GET_ALL_KEYS: 0x23,
+    // 获取所有Fn功能
+    HID_CMD_GET_ALL_FNS: 0x24,
+    // 获取指定的配置项目的值
+    HID_CMD_GET_SINGLE_CONFIG: 0x25,
+    // 获取所有配置项目的值
+    HID_CMD_GET_ALL_CONFIG: 0x26,
+    // 获取所有宏的值
+    HID_CMD_GET_ALL_MACRO: 0x27,
+
+    // 设置单个按键键值
+    HID_CMD_SET_SINGLE_KEY: 0x31,
+    // 设置单个Fn功能
+    HID_CMD_SET_SINGLE_FN: 0x32,
+    // 设置所有键值
+    HID_CMD_SET_ALL_KEYS: 0x33,
+    // 设置所有Fn值
+    HID_CMD_SET_ALL_FNS: 0x34,
+    // 设置指定的配置项目的值
+    HID_CMD_SET_SINGLE_CONFIG: 0x35,
+    // 设置所有配置项目的值
+    HID_CMD_SET_ALL_CONFIG: 0x36,
+    // 设置所有宏的值
+    HID_CMD_SET_ALL_MACRO: 0x37,
+
+    // 放弃当前设置还未写入存储的数据
+    HID_CMD_READ_CONFIG: 0x3D,
+    // 将数据写入存储
+    HID_CMD_WRITE_CONFIG: 0x3E,
+    // 重置键盘
+    HID_CMD_RESET_CONFIG: 0x3F,
+    // 设置/获取当前层
+    HID_CMD_ABOUT_LAYER: 0x40,
+    // 执行 Action Code
+    HID_CMD_EXECUTE_ACTION_CODE: 0x41,
+    // 获取电量信息
+    HID_CMD_GET_BATTERY_INFO: 0x42,
+    // 获取/设置 USB 状态
+    HID_CMD_ABOUT_USB: 0x43,
+    // 获取/设置蓝牙状态
+    HID_CMD_ABOUT_BLE: 0x44,
+    // 获取/设置ESB状态
+    HID_CMD_ABOUT_ESB: 0x45,
+    // 获取接收器信息
+    HID_CMD_GET_ESB_RX_INFO: 0x80
+};
+
+// 是否启用日志输出
+let Logenable = false;
 
 let refreshing = false;
 let device_opened = false;
 let layer = 1;
-let Logenable = true;
 let info;
 const reportId = 0x3f;
+const commandPromises = new Map();
 
 var LINKCTRLElement = document.getElementById('linkctrl');
 
@@ -187,8 +245,8 @@ function updateHeaderStatus(iconid, textid, iconClass, text) {
 
 //将状态栏设置为默认状态
 async function default_status() {
-    updateHeaderStatus('', 'mode-text', '', '输出端');
-    updateHeaderStatus('', 'layer-text', '', '激活层');
+    //updateHeaderStatus('', 'mode-text', '', '输出端');
+    //updateHeaderStatus('', 'layer-text', '', '激活层');
     updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
     updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-out-alt', '设备名称');
 }
@@ -197,6 +255,7 @@ async function default_status() {
 async function default_device_info() {
     document.getElementById('device_name').innerHTML = "";
     document.getElementById('device_mac').innerHTML = "";
+    document.getElementById('soc_model').innerHTML = "";
     document.getElementById('firmware_ver').innerHTML = "";
     document.getElementById('firmware_date').innerHTML = "";
     document.getElementById('firmware_date').setAttribute('title', "");
@@ -248,7 +307,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('defaultlayer6')[0].addEventListener('click', defaultlayer6);
     document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
     document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
-    //document.getElementsByName('getkeyboardinfo')[0].addEventListener('click', GetKeyboardInfo); ：获取键盘信息
     consolelog("DOMContentLoaded");
     //DOM加载，获取已授权设备列表，并打开设备
     const devices_list = await navigator.hid.getDevices();
@@ -341,14 +399,22 @@ async function OpenDevice(opendevice) {
         } else {
             if (opendevice.productName.includes("Lotlab") || opendevice.productName == "" && !device_opened) {
                 await opendevice.open();
-                device_opened = true;
-                refreshdata();
                 consolelog("Open Device:", opendevice);
+                device_opened = true;
                 opendevice.oninputreport = ({ device, reportId, data }) => {
-                    const inputdata = new Uint8Array(data.buffer);
-                    consolelog(`USB InputReport ${reportId} from ${device.productName}:`, inputdata);
-                    update_statebar(inputdata);
+                    console.log('Received data:', data);
+            
+                    // 根据收到的数据找到对应的命令Promise并解析它
+                    for (const [command, resolve] of commandPromises) {
+                      handleResponse(command, data, resolve);
+                      commandPromises.delete(command);
+                      break; // 假设每次只会有一个命令的响应
+                    }
                 };
+                await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
+                await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
+                await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
+                refreshdata();
             }
         }
     }
@@ -379,6 +445,19 @@ function findSingleOneBit(data) {
     return 0; // 如果没有找到1，返回-1
 }
 
+function formatHex(value) {
+    // 将整数转换为十六进制字符串
+    let hexString = value.toString(16).toUpperCase();
+    
+    // 如果转换后的十六进制字符串长度小于4，则在前面补0以达到4位长度
+    if (hexString.length < 4) {
+        hexString = '0'.repeat(4 - hexString.length) + hexString;
+    }
+    
+    // 添加0x前缀
+    return '0x' + hexString;
+}
+
 function getDeviceName(vendorId, productId, versionID) {
     for (const device of devices) {
         if (device.vendor === vendorId && device.product === productId && device.version === versionID) {
@@ -389,33 +468,62 @@ function getDeviceName(vendorId, productId, versionID) {
 }
 
 //发送数据处理函数：获取键盘信息
-async function GetKeyboardInfo() {
+function GetInfo(device, command) {
+    return new Promise((resolve, reject) => {
+        device.sendReport(reportId, new Uint8Array([command])).then(() => {
+            consolelog('SendReport:', reportId, command);
+            const commandPromise = new Promise((innerResolve) => {
+                commandPromises.set(command, innerResolve);
+            });
+            resolve(commandPromise);
+        }).catch(error => {
+            reject(error);
+        });
+    });
+}
+
+function GetSubInfo(device, command) {
+    return new Promise((resolve, reject) => {
+        device.sendReport(reportId, new Uint8Array([command, 0x01, 0x01])).then(() => {
+            consolelog('GetSubInfo:', reportId, command);
+            const commandPromise = new Promise((innerResolve) => {
+                commandPromises.set(command, innerResolve);
+            });
+            resolve(commandPromise);
+        }).catch(error => {
+            reject(error);
+        });
+    });
+}
+
+async function GetBatteryInfo() {
     const devices_list = await navigator.hid.getDevices();
     for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened && (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName == "" || devices_list[i].productName.includes("Glab"))) {
-            const outputReportData = new Uint8Array([0x20]);
+        if (devices_list[i].opened) {
+            const outputReportData = new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO]);
             try {
                 await devices_list[i].sendReport(reportId, outputReportData);
+                lastSentCommand = CMD.HID_CMD_GET_BATTERY_INFO;
                 consolelog('SendReport:', reportId, outputReportData);
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
-            consolelog("GetKeyboardInfo():", devices_list[i]);
+            consolelog("GetBatteryInfo:", devices_list[i]);
         }
     }
 }
 
 
 //发送数据
-async function sendcmd(data) {
+async function ExecuteActionCode(data) {
     const devices_list = await navigator.hid.getDevices();
     for (let i = 0; i < devices_list.length; i++) {
         if (devices_list[i].opened) {
             try {
-                const newData = new Uint8Array([0x40, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
+                const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
                 await devices_list[i].sendReport(reportId, newData);
+                //lastSentCommand = CMD.HID_CMD_EXECUTE_ACTION_CODE;
                 consolelog('SendReport:', reportId, newData);
-                GetKeyboardInfo(); //发送命令后及时获取信息
             } catch (error) {
                 console.error('SendReport: Failed:', error);
             }
@@ -429,7 +537,7 @@ async function Check_Opend() {
     device_opened = false;
     for (var i = 0; i < devices_list.length; i++) {
         // 有设备打开状态，设定已有设备打开标识
-        if (devices_list[i].opened){
+        if (devices_list[i].opened) {
             device_opened = true;
         }
     }
@@ -444,92 +552,140 @@ async function Check_Opend() {
     }
 }
 //============================================================================页面更新=========================================================
-//刷新数据任务
-async function update_statebar(inputdata) {
-    if (inputdata[0] == 0) {
-        //var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-        //var newDate = new Date();
-        //newDate.setTime(builddata * 1000);
-        //var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
+function handleResponse(command, data, resolve) {
+    switch (command) {
+        case CMD.HID_CMD_GET_INFORMATION:
+            const inputdata = new Uint8Array(data.buffer);
+            if (inputdata[1] == 8) {
+                update_device_subinfo(data);
+            } else {
+                update_device_info(data);
+            }
+            break;
+        case CMD.HID_CMD_GET_BATTERY_INFO:
+            update_statebar_battery(data);
+            break;
+        case CMD.HID_CMD_EXECUTE_ACTION_CODE:
+            if (data[0] == 0) {
+                consolelog('Action Code Executed');
+            }
+            break;
+        default:
+            consolelog('Unknown Data');
+            break;
+    }
+    resolve(data);
+}
+
+
+//刷新电池状态
+async function update_statebar_battery(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_BATTERY_INFO) {
         let battery_icon = 'fas fa-battery-full'
-        if (inputdata[20] < 90 && inputdata[20] >= 75) {
+        if (inputdata[2] < 90 && inputdata[2] >= 75) {
             battery_icon = 'fas fa-battery-three-quarters'
-        } else if (inputdata[20] < 75 && inputdata[20] >= 50) {
+        } else if (inputdata[2] < 75 && inputdata[2] >= 50) {
             battery_icon = 'fas fa-battery-half'
-        } else if (inputdata[20] < 50 && inputdata[20] >= 25) {
+        } else if (inputdata[2] < 50 && inputdata[2] >= 25) {
             battery_icon = 'fas fa-battery-quarter'
-        } else if (inputdata[20] < 25) {
+        } else if (inputdata[2] < 25) {
             battery_icon = 'fas fa-battery-empty'
         }
-        let mode_info = '输出端'
-        if ((inputdata[31] & (1 << 7))) {
-            mode_info = 'USB'
-        } else if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
-            mode_info = '无线接收'
-        } else if ((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
-            if ((inputdata[31] & (1 << 0))) {
-                mode_info = '无线一'
-            } else if ((inputdata[31] & (1 << 1))) {
-                mode_info = '无线二'
-            } else if ((inputdata[31] & (1 << 2))) {
-                mode_info = '无线三'
-            }
-        } else if (!(inputdata[31] & (1 << 6))) {
-            if ((inputdata[31] & (1 << 0))) {
-                mode_info = '蓝牙一'
-            } else if ((inputdata[31] & (1 << 1))) {
-                mode_info = '蓝牙二'
-            } else if ((inputdata[31] & (1 << 2))) {
-                mode_info = '蓝牙三'
-            }
-        }
-        const vendorId = parseInt("0x" + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2));
-        const productId = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2));
-        const versionID = parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
-        const deviceName = getDeviceName(vendorId, productId, versionID);
-
-        updateHeaderStatus('', 'mode-text', '', mode_info);
-        updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-in-alt', deviceName);
-        updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[20].toLocaleString() + '%');
-        updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-        if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
-            layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-            showNotification('激活层更改', '当前激活层为层' + layer);
-        }
-        update_device_info(inputdata);
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        GetKeyboardInfo();             //立刻重新获取键盘信息
+        updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[2].toLocaleString() + '%');
     }
 }
 
-async function update_device_info(inputdata) {
-    if (inputdata[0] == 0) {
-        var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-        var newDate = new Date();
-        newDate.setTime(builddata * 1000);
-        var formattedDate = newDate.getFullYear() + '/' + (newDate.getMonth() + 1).toString().padStart(2, '0') + '/' + newDate.getDate().toString().padStart(2, '0');
-        const vendorId = parseInt("0x" + ("0" + inputdata[3].toString(16)).slice(-2) + ("0" + inputdata[2].toString(16)).slice(-2));
-        const productId = parseInt("0x" + ("0" + inputdata[5].toString(16)).slice(-2) + ("0" + inputdata[4].toString(16)).slice(-2));
-        const versionID = parseInt("0x" + ("0" + inputdata[6].toString(16)).slice(-2))
-        const deviceName = getDeviceName(vendorId, productId, versionID);
-        const firmwarever = (("0" + inputdata[11].toString(16)).slice(-2) + ("0" + inputdata[10].toString(16)).slice(-2) + ("0" + inputdata[9].toString(16)).slice(-2) + ("0" + inputdata[8].toString(16)).slice(-2));
+/*
+async function update_statebar_mode(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    let mode_info = '输出端'
+    if ((inputdata[31] & (1 << 7))) {
+        mode_info = 'USB'
+    } else if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
+        mode_info = '无线接收'
+    } else if ((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
+        if ((inputdata[31] & (1 << 0))) {
+            mode_info = '无线一'
+        } else if ((inputdata[31] & (1 << 1))) {
+            mode_info = '无线二'
+        } else if ((inputdata[31] & (1 << 2))) {
+            mode_info = '无线三'
+        }
+    } else if (!(inputdata[31] & (1 << 6))) {
+        if ((inputdata[31] & (1 << 0))) {
+            mode_info = '蓝牙一'
+        } else if ((inputdata[31] & (1 << 1))) {
+            mode_info = '蓝牙二'
+        } else if ((inputdata[31] & (1 << 2))) {
+            mode_info = '蓝牙三'
+        }
+    }
+    updateHeaderStatus('', 'mode-text', '', mode_info);
+}
 
+async function update_statebar_layer(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
+        layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+        showNotification('激活层更改', '当前激活层为层' + layer);
+    }
+}*/
 
-        document.getElementById('device_name').innerHTML = deviceName;
-        document.getElementById('device_mac').innerHTML = ("0" + inputdata[28].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[27].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[26].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2);
-        document.getElementById('firmware_ver').innerHTML = firmwarever.toUpperCase();
+async function update_device_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
+       /* consolelog('Vid:', formatHex(data.getUint16(2, true)))
+        consolelog('Pid:', formatHex(data.getUint16(4, true)))
+        consolelog('HwVer:', formatHex(data.getUint8(6)))
+        consolelog('Protocol:', data.getUint8(7))
+        consolelog('FirmwareVer:', data.getUint32(8, true).toString(16).padStart(8, '0'))
+        consolelog('BuildDate:', data.getUint32(12, true))
+        consolelog('FuncTable:', data.getUint32(16, true))
+        consolelog('SocModel:', data.getUint32(20, true).toString(16).padStart(5, '0')) */
+
+        //data
+        const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
+        const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
+        const formattedDate = date.toLocaleDateString(); // 使用内置方法格式化日期
         document.getElementById('firmware_date').innerHTML = formattedDate;
-        document.getElementById('firmware_date').setAttribute('title', newDate.toLocaleString());
+        document.getElementById('firmware_date').setAttribute('title', date.toLocaleString());
+        //name
+        const vendorId = parseInt(formatHex(data.getUint16(2, true)));
+        const productId = parseInt(formatHex(data.getUint16(4, true)));
+        const versionID = parseInt(formatHex(data.getUint8(6)));
+        const deviceName = getDeviceName(vendorId, productId, versionID);
+        updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-in-alt', deviceName);
+        document.getElementById('device_name').innerHTML = deviceName;
+        //firmware
+        const firmwarever = data.getUint32(8, 1).toString(16).padStart(8, '0');
+        document.getElementById('firmware_ver').innerHTML = firmwarever.toUpperCase();
+        //soc
+        document.getElementById('soc_model').innerHTML = "nRF" + data.getUint32(20, 1).toString(16).padStart(5, '0');
+
+
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        GetKeyboardInfo();             //立刻重新获取键盘信息
+        console.error('update_device_info：Received an error packet');
+    }
+}
+
+async function update_device_subinfo(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
+        //device_mac
+        document.getElementById('device_mac').innerHTML = ("0" + inputdata[5].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[4].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[3].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[2].toString(16).toUpperCase()).slice(-2);
+
+
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_subinfo：Received an error packet');
     }
 }
 
 //刷新数据任务
 async function refreshdata() {
     if (!refreshing) {
-        GetKeyboardInfo();
-        info = setInterval(GetKeyboardInfo, 5000);
+        info = setInterval(GetBatteryInfo, 60000*5); //5分钟刷新一次电池电量
         refreshing = true;
     }
 }
@@ -538,25 +694,25 @@ async function refreshdata() {
 //发送数据处理函数：SYSTEMOFF
 async function SYSTEMOFF() {
     cmd = new Uint8Array([0x02, 0x12, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SLEEP
 async function SLEEP() {
     cmd = new Uint8Array([0x02, 0x00, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：TOGGLE_INDICATOR_LIGHT
 async function TOGGLE_INDICATOR_LIGHT() {
     cmd = new Uint8Array([0x02, 0x12, 0x01]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：BOOTCHECK
 async function BOOTCHECK() {
     cmd = new Uint8Array([0x02, 0x12, 0x02]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 
@@ -564,163 +720,163 @@ async function BOOTCHECK() {
 //发送数据处理函数：RGBLIGHT_TOGGLE
 async function RGBLIGHT_TOGGLE() {
     cmd = new Uint8Array([0x02, 0x05, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_INCREASE
 async function RGBLIGHT_MODE_INCREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x01]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_DECREASE
 async function RGBLIGHT_MODE_DECREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x02]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_INCREASE
 async function RGBLIGHT_HUE_INCREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x03]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_DECREASE
 async function RGBLIGHT_HUE_DECREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x04]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_INCREASE
 async function RGBLIGHT_SAT_INCREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x05]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_DECREASE
 async function RGBLIGHT_SAT_DECREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x06]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_INCREASE
 async function RGBLIGHT_VAL_INCREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x07]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_DECREASE
 async function RGBLIGHT_VAL_DECREASE() {
     cmd = new Uint8Array([0x02, 0x05, 0x08]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //=========================================================================模式控制按钮===============================================
 //发送数据处理函数：SWITCH_USB
 async function SWITCH_USB() {
     cmd = new Uint8Array([0x02, 0x01, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_ESB
 async function SWITCH_ESB() {
     cmd = new Uint8Array([0x02, 0x13, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_BLE
 async function SWITCH_BLE() {
     cmd = new Uint8Array([0x02, 0x13, 0x01]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_ESB_TX
 async function SWITCH_ESB_TX() {
     cmd = new Uint8Array([0x02, 0x14, 0x00]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_ESB_RX
 async function SWITCH_ESB_RX() {
     cmd = new Uint8Array([0x02, 0x14, 0x01]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：READV
 async function READV() {
     cmd = new Uint8Array([0x02, 0x01, 0x0B]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：REBOND
 async function REBOND() {
     cmd = new Uint8Array([0x02, 0x01, 0x07]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_BT1
 async function SWITCH_BT1() {
     cmd = new Uint8Array([0x02, 0x01, 0x08]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_BT2
 async function SWITCH_BT2() {
     cmd = new Uint8Array([0x02, 0x01, 0x09]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：SWITCH_BT3
 async function SWITCH_BT3() {
     cmd = new Uint8Array([0x02, 0x01, 0x0A]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //==========================层操作===============================
 //发送数据处理函数：LAYER1
 async function defaultlayer1() {
     cmd = new Uint8Array([0x02, 0x12, 0x03]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER2
 async function defaultlayer2() {
     cmd = new Uint8Array([0x02, 0x12, 0x04]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER3
 async function defaultlayer3() {
     cmd = new Uint8Array([0x02, 0x12, 0x05]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER4
 async function defaultlayer4() {
     cmd = new Uint8Array([0x02, 0x12, 0x06]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER5
 async function defaultlayer5() {
     cmd = new Uint8Array([0x02, 0x12, 0x07]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER6
 async function defaultlayer6() {
     cmd = new Uint8Array([0x02, 0x12, 0x08]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER7
 async function defaultlayer7() {
     cmd = new Uint8Array([0x02, 0x12, 0x09]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
 
 //发送数据处理函数：LAYER8
 async function defaultlayer8() {
     cmd = new Uint8Array([0x02, 0x12, 0x0A]);
-    sendcmd(cmd);
+    ExecuteActionCode(cmd);
 }
