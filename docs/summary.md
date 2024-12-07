@@ -37,7 +37,7 @@
 
     硬件上采用无线SoC(nRF52810/nRF52811/nRF52832) + USB MCU(CH552/CH554)的组合，实现蓝牙、2.4G与USB三模，使用了nRF SDK 15.3/17.1作为底层硬件驱动，并使用TMK键盘库作为键盘功能的上部实现。
 
-    LotKB是一个开源项目，其软件源码与硬件设计都是开源的，您可以从[Github](https://github.com/genokolar/nrf52-keyboard)上获得。
+    LotKB是一个开源项目，其软件源码与硬件设计都是开源的，您可以从[🌍Github](https://github.com/genokolar/nrf52-keyboard)上获得。
 
 :fontawesome-solid-fan: 蓝牙兼容性说明
 -----

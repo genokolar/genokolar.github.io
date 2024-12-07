@@ -26,13 +26,13 @@ LotKB固件编译指南
 
 下载安装下列程序
 
-下载安装 `SDCC`  [点击进入官网下载地址](https://sourceforge.net/projects/sdcc/files/)
+下载安装 `SDCC`  [🌍点击进入官网下载地址](https://sourceforge.net/projects/sdcc/files/)
 
-下载安装或解压 `GNU Arm Embedded Toolchain`  [gcc-arm-none-eabi下载地址](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+下载安装或解压 `GNU Arm Embedded Toolchain`  [🌍gcc-arm-none-eabi下载地址](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
 
-直接到项目主页 `下载 nrfutil.exe <https://github.com/NordicSemiconductor/pc-nrfutil/releases>` 并放置于 ``任意PATH`` 目录下。
+直接到项目主页 [🌍下载 nrfutil.exe](https://github.com/NordicSemiconductor/pc-nrfutil/releases) 并放置于 ``任意PATH`` 目录下。
 
-下载并安装`Msys2`  [下载Msys2](https://sourceforge.net/projects/msys2/files/latest/download)
+下载并安装`Msys2`  [🌍下载Msys2](https://sourceforge.net/projects/msys2/files/latest/download)
 
 !!! tip
     

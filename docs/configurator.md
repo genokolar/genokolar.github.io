@@ -24,7 +24,7 @@ WebHID API 在 所有桌面平台（ChromeOS、Linux、macOS 和 Windows）上�
 
 支持的浏览器包括Chrome 89+ / Edge 89+ / Opera 75+ 以及采用Chrome浏览器内核的浏览器，如 QQ浏览器 / 360浏览器等
 
-用USB线连接键盘或蓝牙连接键盘，使用上述浏览器访问[配置工具网站](https://keyboard.lotlab.org/)
+用USB线连接键盘或蓝牙连接键盘，使用上述浏览器访问[🌍配置工具网站](https://keyboard.lotlab.org/)
 
 点击设备列表旁边的刷新按钮，等待弹出授权窗口。在授权窗口选择对应的设备授权后，即可在设备列表内找到对应的可配置设备。
 
@@ -92,15 +92,15 @@ KERNEL=="hidraw*", KERNELS="uhid", MODE="0664", GROUP="plugdev"
 
 - Universal: 
     
-    1. 安装 [.net core 运行环境](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)，选择download hosting bundle
+    1. 安装 [🌍.net core 运行环境](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)，选择download hosting bundle
     2. 在命令行环境（终端）下输入 dotnet lkb-configurator-server.dll 然后回车
 
-四、用USB线连接键盘，访问[配置工具网站](https://keyboard.lotlab.org/)
+四、用USB线连接键盘，访问[🌍配置工具网站](https://keyboard.lotlab.org/)
 
 按键配置方法
 ----------
 
-请参考配置工具的[帮助页面](https://keyboard.lotlab.org/help)
+请参考配置工具的[🌍帮助页面](https://keyboard.lotlab.org/help)
 
 使用演示视频：
 <video id="video" width="360px" height="auto" controls="controls" preload="none" poster="https://wiki.glab.online/img/videoicon.png">
