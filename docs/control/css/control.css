@@ -56,7 +56,7 @@ ul {
 }
 
 li {
-    padding: 5px 0;
+    padding: 3px 0;
 }
 
 .container {
@@ -219,8 +219,35 @@ li {
     gap: 10px;
 }
 
+.footer {
+    margin-top: 15px;
+    text-align:center;
+}
+
+a {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:link {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:visited {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--tab-button-active-font-color);
+    text-decoration: none;
+}
+
+.copyright {
+    color: var(--tab-text-color);
+}
+
 /* 需单独设定样式的元素 */
 div #help.text  {
+    margin: 0  10px 10px 20px;
     justify-content: left;
 }
 
