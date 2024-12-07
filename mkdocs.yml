@@ -191,7 +191,7 @@ nav:
     - 下载: 
       - 相关下载: down/download.md
       - 更新日志: changelog.md
-    - 信息公告: blog/info.md
+    - 信息: blog/info.md
     - 接收器控制: 2.4G/index.html
     - 键盘控制: control/index.html
     - 键盘测试: keytest/index.html

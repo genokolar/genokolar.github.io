@@ -149,7 +149,7 @@ _________________________
 
 <b>一、升级键盘固件</B>:
 
-固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/) / [官方下载页面](https://down.glab.online:5550/Glab3.1/) 
+固件下载地址：[Github发布页](https://github.com/genokolar/nrf52-keyboard/releases/) / [官方下载页面](https://down.glab.online:5550/Glab3.2/) 
 
 键盘刷写👆面的固件，刷完固件用Lshift+Rshift+U （或者通过配置工具配置一个无线模式切换按键）切换无线模式。
 
@@ -160,7 +160,7 @@ _________________________
 如果要将Volta9或者PAD作为接收器，需要刷写专门的接收器固件，刷完固件通过配置工具配置一个无线模式切换按键，切换到2.4G模式，然后插入USB线，它就是一个2.4G接收器了，切换回蓝牙模式，它就是一个正常的键盘。
 
 /// 仅提供Volta9的固件
-接收器固件下载： [Volta9](https://down.glab.online:5550/Glab3.1/)
+接收器固件下载： [Volta9](https://down.glab.online:5550/Glab3.2/)
 
 <b>三、如何使用</B>:
 

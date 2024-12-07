@@ -38,7 +38,7 @@
 === "文字说明"
 
     1. 下载LotKB专属 [烧录工具](https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe)，并安装。
-    2. 下载键盘对应的 `键盘主控核心固件` 或 `键盘主控完整固件` [蓝牙固件下载地址](https://down.glab.online:5550/Glab3.1/)
+    2. 下载键盘对应的 `键盘主控核心固件` 或 `键盘主控完整固件` [蓝牙固件下载地址](https://down.glab.online:5550/Glab3.2/)
     3. 打开烧录工具`wch_nrf_burner.exe`。
     4. 直接通过USB连接键盘。
         - 选择配置文件，一般为`nRF52系列(CH552)`
@@ -94,6 +94,7 @@
 
     1. 使用手机安装并打开 nRF Connect 程序
         - 可以到[官方下载页面](https://www.nordicsemi.com/Software-and-tools/Development-Tools/nRF-Connect-for-mobile)或者应用商店搜索下载。
+        - <a href="https://down.glab.online:5550/nRF.Connect.4.26.0.apk" class="button">🌍本站下载：4.26版本</a>
     2. 使键盘进入DFU模式（参见 [如何进入DFU模式](faq.md#如何进入DFU模式)）
     3. 点击nRF Connect右上角的Scan扫描蓝牙设备，找到`DFUTarg`标识的蓝牙设备
     4. 点击蓝牙设备旁CONNECT按钮，等待连接成功
@@ -150,6 +151,29 @@
     !!! tip
         由于烧录工具已经更新，此视频只做为烧录演示。
 
+<span id="更新2.4G接收器固件">更新2.4G接收器固件</span>
+-----------
+
+接收器长期插在电脑USB口上，为避免为键盘刷机时误刷入接收器，接收器默认是不能刷写USB固件和主控固件的。
+
+=== "文字说明"
+
+在刷写固件之前，需要先通过[接收器控制面板](../2.4G/index.html) 启用刷写功能，刷写时只能接入一个USB设备，多余的键盘或2.4G接收器请先拔出。
+
+    1. 将接收器插入电脑USB口，并使用浏览器[^2]访问[接收器控制面板](../2.4G/index.html)
+    2. 首次使用需授权：点击 <kbd>授权设备</kbd> 按钮，弹出授权面板，选择设备，点击<kbd>连接</kbd>授权连接接收器
+    3. 授权成功后，每次插入接收器，访问[接收器控制面板](../2.4G/index.html)会自动连接接收器
+    4. 需要刷写USB固件的话，点击<kbd>进入 USB ISP模式</kbd> 按钮，启用USB ISP模式，随后通过烧录工具，参照键盘刷写USB固件的方法刷写USB固件
+    5. 需要刷写主控固件的话，点击<kbd>启用CMSIS-DAP</kbd> 按钮，启用CMSIS-DAP刷写功能，随后通过烧录工具，参照键盘刷写键盘主控固件的方法刷写主控固件
+    6. 刷写固件后，请重新拔插接收器，以便恢复默认禁止刷写状态
+
+=== "视频演示"
+
+    <video id="video" width="640px" height="auto" controls="controls" preload="none" poster="../../img/videoicon_640.png">
+    <source id="mp4" src="https://down.glab.online:5550//2.4G接收器刷写.mp4" type="video/mp4">
+    您的浏览器不支持播放此视频
+    </video>
+
 <span id="CMSIS-DAP烧录工具更新">CMSIS-DAP烧录</span>
 -----------
 
@@ -160,7 +184,7 @@ CMSIS-DAP烧录工具包自带键盘主控完整固件，适合快速刷写完�
 === "文字说明"
     （仅Windows）
 
-    1. 下载CMSIS-DAP烧录工具 [官方地址下载](https://down.glab.online:5550/Glab3.1)
+    1. 下载CMSIS-DAP烧录工具 [官方地址下载](https://down.glab.online:5550/Glab3.2)
 
     2. 下载后解压，双击运行其中的`#开始烧录.bat`文件
 
