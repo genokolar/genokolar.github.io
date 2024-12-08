@@ -3,7 +3,7 @@
 
 ![](../img/receiver.png "2.4G接收器"){ align=right width="420"}
 
-!!! tip "键盘升级20221214固件后，需要同步升级接收器固件"
+!!! tip "键盘升级20241207固件后，需要同步升级接收器固件20241120"
 
 ## 2.4G接收器描述
 
@@ -22,7 +22,7 @@
 ## 键盘如何支持2.4G功能
 
 1. 所有Glab键盘[^1]需升级到20220624版及以后固件。
-2. 如需支持动态跳频和多接收器配对功能[^2]，需将键盘升级到20221214版及以后固件。
+2. 如需支持更多功能[^2]，请将键盘和2.4G固件更新到最新版本。
 3. 访问[淘宝店铺](https://glab.taobao.com)购买一个2.4G无线接收器
 4. 将键盘刷写支持2.4G无线功能的固件，从双模固件升级的，刷写时注意勾选"擦除蓝牙芯片"，刷写键盘主控完整固件
 5. 刷完固件用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> （或者通过配置工具配置一个无线模式切换按键）切换无线模式
@@ -32,11 +32,11 @@
 
 1. 将接收器插入电脑USB口通电
 2. 按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>U</kbd> 将键盘切换到2.4G无线模式
-3. 键盘未配对：快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
-4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，快速多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
+3. 键盘未配对：可多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
+4. 键盘已配对：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>O</kbd>删除配对信息，可多次按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>R</kbd>启动配对通讯，直到正确连接输出按键
 5. 配对多个接收器：按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换不同的无线通道，然后重复执行2-4三个步骤完成与不同接收器的配对
 6. 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的无线通道，可在多个配对的无线接收器之间切换。
-7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，启动配对通讯、删除配对信息、切换无线接收器
+7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，或通过键盘控制面板，启动配对通讯、删除配对信息、切换无线接收器
 
 ## 接收器配对满载后如何配对设备
 
@@ -75,5 +75,5 @@
 
 
 [^1]: 过于老旧的PCB不支持线刷固件，无法升级到最新固件版，需要自行使用Jlink等烧录器通过PCB上SWD接口烧录升级固件
-[^2]: 动态跳频和多接收器配对功能，需要同时升级接收器固件和键盘固件到20221214以后固件
+[^2]: 动态跳频和多接收器配对功能，需要同时升级接收器固件和键盘固件到20221214以后固件；2.4G全键无冲功能与性能提升需要更新到20241120以后固件
 [^3]: 当前支持的浏览器包括chrome 89+ / EDGE 89+ / Opera 75+
