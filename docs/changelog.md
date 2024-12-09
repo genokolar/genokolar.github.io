@@ -19,6 +19,9 @@
 4. 其他调整优化
 5. 部分键盘更新后RGB轴灯等故障修复
 
+已知问题：采用信驰达RF-BM-ND04蓝牙模块的PCB将升级后会导致反复重启，请使用此模块的PCB勿升级，建议暂时采用2023年11月29日的固件版本
+采用信驰达RF-BM-ND04蓝牙模块的包括Omega45 Rev.C  / Farad69 REV.B / GT BLE60 Rev.D / NewHope64 Rev.A / Omega50 Rev.A / Omega64 Rev.A / Omega64 Rev.B
+
 2024年11月11日更新内容
 --------
 
@@ -145,14 +148,14 @@
 --------
 1. NewHope64 Rev.A版支持actionmap
 2. 添加NewHope64 Rev.B
-3. 添加Farad69 rev.D
+3. 添加Farad69 Rev.D
 4. 添加BLE60 Rev.G
 5. 修正RGB MATRIX指示灯开关状态无法保存问题
 
 2022年4月9日更新内容
 --------
 1. 键盘矩阵扫描：支持虚拟列
-2. 修正GT PAD rev.C的电量检测错误
+2. 修正GT PAD Rev.C的电量检测错误
 3. 调整睡眠延时到1S，避免使用FN睡眠按键时易被马上唤醒
 
 2022年3月11日更新内容
@@ -205,7 +208,7 @@ USB固件更新：
 2021年11月23日更新内容
 --------
 
-1. 加入Omega40 rev.A
+1. 加入Omega40 Rev.A
 2. 系统和媒体控制键 在 ACTION_MODS_TAP_KEY与ACTION_LAYER_TAP_KEY下正常工作
 3. 修复偶发的RGB乱闪的问题
 
@@ -217,8 +220,8 @@ USB固件更新：
 2. 补全/修正RGB控制
 3. 解决OLED耗电问题
 4. Omega64启用actionmap
-5. 加入Omega45 rev.F
-6. 加入GT-PAD rev.B
+5. 加入Omega45 Rev.F
+6. 加入GT-PAD Rev.B
 7. 其他修正
 
 

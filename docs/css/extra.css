@@ -1,34 +1,65 @@
-        .button {
-          border-color: var(--md-accent-fg-color);
-          color: var(--md-accent-fg-color);
-          border-radius: .2rem;
-          border-style: solid;
-          border-width: .1rem;
-          padding: .625em 2em;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          margin: .2em .2em;
-          cursor: pointer;
-          transition: color 125ms, background-color 125ms, border-color 125ms;
-          font-weight: 600;
-        }
+.button {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  border-radius: .2rem;
+  border-style: solid;
+  border-width: .1rem;
+  padding: .625em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: .2em .2em;
+  cursor: pointer;
+  transition: color 125ms, background-color 125ms, border-color 125ms;
+  font-weight: 600;
+}
+.button:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-accent-bg-color)
+}
 
-        .button:hover {
-          background-color: var(--md-accent-fg-color);
-          border-color: var(--md-primary-fg-color);
-          color: var(--md-accent-bg-color)
-        }
+a.button:hover {
+  color: var(--md-accent-bg-color);
+  font-weight: 700;
+}
 
-        a.button:hover {
-            color: var(--md-accent-bg-color);
-            font-weight: 700;
-        }
+a.button {
+  color: var(--md-accent-fg-color);
+}
 
-        a.button {
-            color: var(--md-accent-fg-color);
-        }
 
+.button2 {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  border-radius: .2rem;
+  border-style: solid;
+  border-width: .1rem;
+  padding: .625em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: .2em .2em;
+  cursor: pointer;
+  transition: color 125ms, background-color 125ms, border-color 125ms;
+  font-weight: 600;
+  font-size:.8em;
+}
+
+.button2:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-accent-bg-color)
+}
+
+a.button2:hover {
+  color: var(--md-accent-bg-color);
+  font-weight: 700;
+}
+
+a.button2 {
+  color: var(--md-accent-fg-color);
+}
 
 /*自定义图标颜色
 
