@@ -1,7 +1,7 @@
 GT Planck 直列40%的键盘
 =====================
 
-GT Planck rev.B
+GT Planck Rev.B
 ---------------
 
 #### 描述
@@ -54,7 +54,7 @@ GT Planck rev.B
 
 ![](../img/rotary.png "按键示意图")
 
-GT Planck rev.A
+GT Planck Rev.A
 ---------------
 
 #### 描述

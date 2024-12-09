@@ -1,7 +1,7 @@
 Omega50 键盘
 =====================
 
-Omega50 rev.C
+Omega50 Rev.C
 --------------------
 
 #### 描述
@@ -16,7 +16,7 @@ Omega50 rev.C
 - 共引出6个针脚可自行添加外设
 - PCB尺寸：PCB尺寸：247.7mm×95.3mm
 
-![](../img/omega50-c.jpg "Omega50 rev.C PCB")
+![](../img/omega50-c.jpg "Omega50 Rev.C PCB")
 
 #### RGB轴灯说明
 

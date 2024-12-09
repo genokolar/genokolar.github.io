@@ -1,7 +1,7 @@
 GT BLE60 标准60%键盘
 =====================
 
-GT BLE60 rev.G
+GT BLE60 Rev.G
 --------------------
 
 #### 描述
@@ -16,7 +16,7 @@ GT BLE60 rev.G
 - RGB轴灯兼容指示灯
 - PCB尺寸：285mm×95.3mm
 
-![](../img/gt-ble60_g.jpg "GT BLE60 rev.g PCB")
+![](../img/gt-ble60_g.jpg "GT BLE60 Rev.g PCB")
 
 #### RGB轴灯说明
 
@@ -53,7 +53,7 @@ GT BLE60 rev.G
 
 ![](../img/rotary.png "按键示意图")
 
-GT BLE60 rev.F
+GT BLE60 Rev.F
 ----------------
 
 #### 描述
@@ -70,7 +70,7 @@ GT BLE60 rev.F
 - 支持PCB卫星轴
 - PCB尺寸：285mm×95.3mm
 
-![](../img/gt-ble60.jpg "GT BLE60 rev.F PCB")
+![](../img/gt-ble60.jpg "GT BLE60 Rev.F PCB")
 
 #### 指示灯说明
 
@@ -101,7 +101,7 @@ GT BLE60 rev.F
 
 ![](../img/rotary.png "按键示意图")
 
-GT BLE60 rev.E
+GT BLE60 Rev.E
 --------------------
 
 - 5x13的60%键盘
@@ -115,7 +115,7 @@ GT BLE60 rev.E
 - PCB尺寸：285mm×95.3mm
 
 
-GT BLE60 rev.D
+GT BLE60 Rev.D
 --------------------
 
 部分老旧PCB上没有版本标识，属于Rev.D版本

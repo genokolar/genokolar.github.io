@@ -16,7 +16,7 @@ Farad69 REV.D
 - RGB轴灯兼容指示灯
 - PCB尺寸：285mm×95.3mm
 
-![](../img/farad69_d.jpg "Fard69 rev.D PCB")
+![](../img/farad69_d.jpg "Fard69 Rev.D PCB")
 
 #### RGB轴灯说明
 
@@ -71,7 +71,7 @@ Farad69 REV.C
 - 支持PCB卫星轴
 - PCB尺寸：285mm×95.3mm
 
-![](../img/farad69-c.jpg "Farad69 rev.C PCB")
+![](../img/farad69-c.jpg "Farad69 Rev.C PCB")
 
 #### 指示灯说明
 

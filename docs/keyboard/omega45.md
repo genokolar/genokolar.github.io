@@ -18,7 +18,7 @@ Omega45 Rev.F
 
 相比rev.E版本：不再采用模块，而是芯片+贴片天线，实测信号与E版本信号持平甚至略有超过；支持DCDC模式，更省电。
 
-![](../img/omega45.rev.F.jpg "Omega45 PCB")
+![](../img/omega45.Rev.F.jpg "Omega45 PCB")
 
 #### RGB轴灯说明
 
@@ -74,7 +74,7 @@ Omega45 Rev.E
 
 相比rev.D版本：采用高品质的主控模块，贴片天线信号更稳定可靠；引出4个针脚可自行定义；支持PCB卫星轴。
 
-![](../img/omega45.rev.E.jpg "Omega45 PCB")
+![](../img/omega45.Rev.E.jpg "Omega45 PCB")
 
 #### 指示灯说明
 

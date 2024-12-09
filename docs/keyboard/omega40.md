@@ -22,7 +22,7 @@ Omega40 Rev.A
     
     刷写的固件是不同的，请注意区分自己的硬件主控，选择对应的固件
 
-![](../img/omega40.rev.A.jpg "Omega40 PCB")
+![](../img/omega40.Rev.A.jpg "Omega40 PCB")
 
 #### RGB轴灯说明
 

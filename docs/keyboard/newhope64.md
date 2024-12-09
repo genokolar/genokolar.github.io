@@ -1,7 +1,7 @@
 NewHope64 键盘
 =====================
 
-NewHope64 rev.B
+NewHope64 Rev.B
 ------------
 
 ### 描述
@@ -16,7 +16,7 @@ NewHope64 rev.B
 - RGB轴灯兼容指示灯
 - PCB尺寸：285mm×95.3mm
 
-![](../img/newhope64_b.jpg "NewHope64 rev.b PCB")
+![](../img/newhope64_b.jpg "NewHope64 Rev.b PCB")
 
 ### RGB轴灯说明
 
@@ -53,7 +53,7 @@ NewHope64 rev.B
 
 ![](../img/rotary.png "按键示意图")
 
-NewHope64 rev.A
+NewHope64 Rev.A
 ------------
 
 
