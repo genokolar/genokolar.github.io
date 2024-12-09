@@ -5,20 +5,6 @@ const filters = [
         productId: 0x0514,
         usagePage: 0xffea,
         usage: 0x0072,
-    },
-    {
-        vendorId: 0x1209, // 旧Usage 2025年后不兼容
-        productId: 0x0514,
-        usagePage: 0xff00,
-        usage: 0x0001,
-        productName: "Lotlab Configurator",
-    },
-    {
-        vendorId: 0x1209, // 旧Usage 2025年后不兼容
-        productId: 0x0514,
-        usagePage: 0xff00,
-        usage: 0x0001,
-        productName: "",
     }
 ];
 
@@ -38,7 +24,7 @@ function checkFilters(device) {
 //设备信息表 定义设备数组及其供应商ID 和产品ID
 const devices = [
     { name: 'BLE60 D', vendor: 0x4366, product: 0x0311, version: 0x0000 },
-    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x0000 },
+    { name: 'Omega45 C', vendor: 0x4366, product: 0x0312, version: 0x0002 },
     { name: 'Omega45 D', vendor: 0x4366, product: 0x0312, version: 0x0001 },
     { name: 'Farad69 A', vendor: 0x4366, product: 0x0313, version: 0x0000 },
     { name: 'Omega50 A', vendor: 0x4366, product: 0x0314, version: 0x0000 },
@@ -312,10 +298,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const devices_list = await navigator.hid.getDevices();
     if (devices_list.length) {
         for (var i = 0; i < devices_list.length; i++) {
-            if (devices_list[i].productName.includes("Lotlab") || devices_list[i].productName.includes("Glab")) {
-                OpenDevice(devices_list[i])
-                return;
-            } else if (devices_list[i].productName == "") {
+            if (checkFilters(devices_list[i])) {
                 OpenDevice(devices_list[i])
                 return;
             }
@@ -331,11 +314,7 @@ if ("hid" in navigator) {
     navigator.hid.addEventListener('connect', ({ device }) => {
         consolelog(`HID设备连接: ${device.productName}`);
         //优先连接有线设备
-        if (device.productName.includes("Lotlab")) {
-            OpenDevice(device)
-        } else if (device.productName.includes("Glab")) {
-            OpenDevice(device)
-        } else {
+        if (checkFilters(device)) {
             OpenDevice(device)
         }
     });
@@ -397,25 +376,23 @@ async function OpenDevice(opendevice) {
             default_status();
             return null;
         } else {
-            if (opendevice.productName.includes("Lotlab") || opendevice.productName == "" && !device_opened) {
-                await opendevice.open();
-                consolelog("Open Device:", opendevice);
-                device_opened = true;
-                opendevice.oninputreport = ({ device, reportId, data }) => {
-                    console.log('Received data:', data);
-            
-                    // 根据收到的数据找到对应的命令Promise并解析它
-                    for (const [command, resolve] of commandPromises) {
-                      handleResponse(command, data, resolve);
-                      commandPromises.delete(command);
-                      break; // 假设每次只会有一个命令的响应
-                    }
-                };
-                await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
-                await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
-                await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
-                refreshdata();
-            }
+            await opendevice.open();
+            consolelog("Open Device:", opendevice);
+            device_opened = true;
+            opendevice.oninputreport = ({ device, reportId, data }) => {
+                console.log('Received data:', data);
+
+                // 根据收到的数据找到对应的命令Promise并解析它
+                for (const [command, resolve] of commandPromises) {
+                    handleResponse(command, data, resolve);
+                    commandPromises.delete(command);
+                    break; // 假设每次只会有一个命令的响应
+                }
+            };
+            await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
+            await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
+            await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
+            refreshdata();
         }
     }
 }
@@ -448,12 +425,12 @@ function findSingleOneBit(data) {
 function formatHex(value) {
     // 将整数转换为十六进制字符串
     let hexString = value.toString(16).toUpperCase();
-    
+
     // 如果转换后的十六进制字符串长度小于4，则在前面补0以达到4位长度
     if (hexString.length < 4) {
         hexString = '0'.repeat(4 - hexString.length) + hexString;
     }
-    
+
     // 添加0x前缀
     return '0x' + hexString;
 }
@@ -636,14 +613,14 @@ async function update_statebar_layer(data) {
 async function update_device_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
-       /* consolelog('Vid:', formatHex(data.getUint16(2, true)))
-        consolelog('Pid:', formatHex(data.getUint16(4, true)))
-        consolelog('HwVer:', formatHex(data.getUint8(6)))
-        consolelog('Protocol:', data.getUint8(7))
-        consolelog('FirmwareVer:', data.getUint32(8, true).toString(16).padStart(8, '0'))
-        consolelog('BuildDate:', data.getUint32(12, true))
-        consolelog('FuncTable:', data.getUint32(16, true))
-        consolelog('SocModel:', data.getUint32(20, true).toString(16).padStart(5, '0')) */
+        /* consolelog('Vid:', formatHex(data.getUint16(2, true)))
+         consolelog('Pid:', formatHex(data.getUint16(4, true)))
+         consolelog('HwVer:', formatHex(data.getUint8(6)))
+         consolelog('Protocol:', data.getUint8(7))
+         consolelog('FirmwareVer:', data.getUint32(8, true).toString(16).padStart(8, '0'))
+         consolelog('BuildDate:', data.getUint32(12, true))
+         consolelog('FuncTable:', data.getUint32(16, true))
+         consolelog('SocModel:', data.getUint32(20, true).toString(16).padStart(5, '0')) */
 
         //data
         const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
@@ -685,7 +662,7 @@ async function update_device_subinfo(data) {
 //刷新数据任务
 async function refreshdata() {
     if (!refreshing) {
-        info = setInterval(GetBatteryInfo, 60000*5); //5分钟刷新一次电池电量
+        info = setInterval(GetBatteryInfo, 60000 * 5); //5分钟刷新一次电池电量
         refreshing = true;
     }
 }
