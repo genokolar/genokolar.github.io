@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>键盘控制</title>
+    <meta name="description" content="Glab系列键盘在线控制面板.">
+    <meta name="author" content="Geno">
+    <link rel="icon" href="app.png">
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/control.css">
+    <link rel="manifest" href="./manifest.json">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>键盘控制面板</h2>
+            <div class="header-info">
+                <!-- <div class="status status_misc"><i id="mode-icon" class="fas fa-keyboard"></i><span id="mode-text">输出端</span></div>
+                <div class="status status_misc"><i id="layer-icon" class="fas fa-layer-group"></i><span id="layer-text">激活层</span></div> -->
+                <div class="status status_misc"><i id="device-icon" class="fas fa-sign-out-alt"></i><span id="device-text">设备名称</span></div>
+                <div class="status"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
+                <div class="theme"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <button class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
+            <button id="linkctrl" class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
+            <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
+            <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab5')"><i class="fas fa-hands-helping"></i> 帮助 </button>
+        </div>
+
+        <div id="Tab1" class="tab-content">
+            <div class="text-content device-info">
+                <label class="keyboard-info">键盘信息</label>
+                <ul>
+                    <li><span>设备名称：</span><span id="device_name"> </span></li>
+                    <li><span>芯片型号：</span><span id="soc_model"> </span></li>
+                    <li><span>设备标识：</span><span id="device_mac"> </span></li>
+                    <li><span>固件版本：</span><span id="firmware_ver"> </span></li>
+                    <li><span>编译日期：</span><span id="firmware_date"> </span></li>
+                </ul>
+            </div>
+            <div class="button-content">
+                <button name="grantdevice" id="grant-button" class="button" style="background: rgb(176, 0, 0)" title="授权访问设备权限或连接设备"> 连接设备 </button>
+                <button id="disconnect-button" class="button" style="background: rgb(176, 0, 0)" title="断开Lotlab设备连接"> 断开连接 </button>
+                <!-- <button id="list-button" class="button" style="color: rgb(255, 255, 255); background: rgb(255, 85, 43)" title="列出已授权设备列表"> 列出设备 </button>
+                    <button id="connect-button" class="button" style="color: rgb(27, 27, 27); background: rgb(42, 255, 237)" title="连接已经授权的Lotlab设备"> 连接设备 </button>
+                    <button name="getkeyboardinfo" id="send-button3" class="button"  title="发送命令获取接收器信息"> 获取信息 </button> -->
+                <button name="systemoff" id="send-button1" class="button" title="使键盘关机"> 键盘关机 </button>
+                <button name="sleep" id="send-button1" class="button" title="使键盘睡眠"> 键盘睡眠 </button>
+                <button name="bootcheck" id="send-button1" class="button" title="切换是否需要启动按钮"> 启动按钮 </button>
+                <button id="notificationButton" name="bootcheck" class="button" title="允许通知键盘重要操作通知">允许通知</button>
+            </div>
+        </div>
+
+        <div id="Tab2" class="tab-content">
+            <button name="switchusb" id="send-button2" class="button" title="启用禁用USB模式"> USB模式 </button>
+            <button name="switchble" id="send-button2" class="button" title="键盘切换到蓝牙模式"> 蓝牙模式 </button>
+            <button name="switchesb" id="send-button2" class="button" title="键盘切换2.4G模式"> 2.4G模式 </button>
+            <button name="switchesbtx" id="send-button2" class="button" title="键盘切换2.4G的发送模式（键盘）"> 2.4G发送 </button>
+            <button name="switchesbrx" id="send-button2" class="button" title="键盘切换2.4G的接收模式（接收器）"> 2.4G接收 </button>
+            <button name="readv" id="send-button2" class="button" title="键盘蓝牙广播或2.4G配对"> 广播配对 </button>
+            <button name="rebond" id="send-button2" class="button" title="键盘解除蓝牙或2.4G配对"> 解除配对 </button>
+            <button name="switchbt1" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道一"> 通道一 </button>
+            <button name="switchbt2" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道二"> 通道二 </button>
+            <button name="switchbt3" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道三"> 通道三 </button>
+        </div>
+
+        <div id="Tab3" class="tab-content">
+            <button name="indicatorlight" id="send-button1" class="button" title="开关指示灯"> 指示灯 </button>
+            <button name="rgbtoggle" id="send-button4" class="button" title="RGB灯光开关"> 灯光开关 </button>
+            <button name="rgbmodeinc" id="send-button4" class="button" title="RGB灯光模式+"> 模式+ </button>
+            <button name="rgbmodedec" id="send-button4" class="button" title="RGB灯光模式-"> 模式- </button>
+            <button name="rgbhueinc" id="send-button4" class="button" title="RGB灯光色相+"> 色相+ </button>
+            <button name="rgbhuedec" id="send-button4" class="button" title="RGB灯光色相-"> 色相- </button>
+            <button name="rgbsatinc" id="send-button4" class="button" title="RGB灯光饱和度+"> 饱和度+ </button>
+            <button name="rgbsatdec" id="send-button4" class="button" title="RGB灯光饱和度-"> 饱和度- </button>
+            <button name="rgbvalinc" id="send-button4" class="button" title="RGB灯光色调+"> 亮度+ </button>
+            <button name="rgbvaldec" id="send-button4" class="button" title="RGB灯光色调-"> 亮度- </button>
+        </div>
+
+        <div id="Tab4" class="tab-content">
+            <button name="defaultlayer1" id="send-button1" class="button" title="设置层1为默认层"> 默认层1 </button>
+            <button name="defaultlayer2" id="send-button4" class="button" title="设置层2为默认层"> 默认层2 </button>
+            <button name="defaultlayer3" id="send-button4" class="button" title="设置层3为默认层"> 默认层3 </button>
+            <button name="defaultlayer4" id="send-button4" class="button" title="设置层4为默认层"> 默认层4 </button>
+            <button name="defaultlayer5" id="send-button4" class="button" title="设置层5为默认层"> 默认层5 </button>
+            <button name="defaultlayer6" id="send-button4" class="button" title="设置层6为默认层"> 默认层6 </button>
+            <button name="defaultlayer7" id="send-button4" class="button" title="设置层7为默认层"> 默认层7 </button>
+            <button name="defaultlayer8" id="send-button4" class="button" title="设置层8为默认层"> 默认层8 </button>
+        </div>
+
+        <div id="Tab5" class="tab-content">
+            <div class="text" id="help">
+                版本：Beta-2.1.0<br /><br />
+                1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
+                2. 顶部状态栏支持显示电池电量<br />
+                3. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
+                4. 蓝牙设备每次都需要重新授权连接,断联后也需要重新授权连接<br />
+                5. 仅支持2024年12月7日后固件<br />
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.0">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+      </div>
+    <script type="text/javascript" src="./js/control_20241209.js"></script>
+    <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw20241209.js', { scope: './' });
+        }
+    </script>
+</body>
+
+</html>
