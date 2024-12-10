@@ -11,10 +11,10 @@ const filters = [
 function checkFilters(device) {
     for (let i = 0; i < filters.length; i++) {
         const filter = filters[i];
-        if (device.vendorId === filter.vendorId &&
-            device.productId === filter.productId &&
-            device.usagePage === filter.usagePage &&
-            device.usage === filter.usage) {
+        if (device.vendorId == filter.vendorId &&
+            device.productId == filter.productId &&
+            device.collections[0].usagePage == filter.usagePage &&
+            device.collections[0].usage == filter.usage) {
             return true; // 符合过滤器要求
         }
     }
@@ -120,6 +120,9 @@ const commandPromises = new Map();
 
 var LINKCTRLElement = document.getElementById('linkctrl');
 
+
+
+//===================== 通知权限部分======================
 
 // 检查浏览器是否支持通知
 if (!("Notification" in window)) {
@@ -299,6 +302,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (devices_list.length) {
         for (var i = 0; i < devices_list.length; i++) {
             if (checkFilters(devices_list[i])) {
+                consolelog(`重连设备: ${devices_list[i].productName}`, devices_list[i]);
                 OpenDevice(devices_list[i])
                 return;
             }
@@ -312,7 +316,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 if ("hid" in navigator) {
     //监听HID授权设备的接入，并连接设备
     navigator.hid.addEventListener('connect', ({ device }) => {
-        consolelog(`HID设备连接: ${device.productName}`);
+        consolelog(`HID设备连接: ${device.productName}`, device);
         //优先连接有线设备
         if (checkFilters(device)) {
             OpenDevice(device)
@@ -321,9 +325,11 @@ if ("hid" in navigator) {
 
     //监听HID授权设备的断开，并提示
     navigator.hid.addEventListener('disconnect', ({ device }) => {
-        consolelog(`HID设备断开: ${device.productName}`);
+        consolelog(`HID设备断开: ${device.productName}`, device);
         Check_Opend();
     });
+} else {
+    console.log("浏览器不支持WebHID");
 }
 
 //============================================连接键盘=========================================================

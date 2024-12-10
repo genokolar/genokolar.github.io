@@ -19,7 +19,7 @@
 4. 其他调整优化
 5. 部分键盘更新后RGB轴灯等故障修复
 
-已知问题：采用信驰达RF-BM-ND04蓝牙模块的PCB将升级后会导致反复重启，请使用此模块的PCB勿升级，建议暂时采用2023年11月29日的固件版本
+已知问题：采用信驰达RF-BM-ND04蓝牙模块的PCB升级后会导致反复重启，请使用此模块的PCB勿升级，建议暂时采用2023年11月29日的固件版本
 采用信驰达RF-BM-ND04蓝牙模块的包括Omega45 Rev.C  / Farad69 REV.B / GT BLE60 Rev.D / NewHope64 Rev.A / Omega50 Rev.A / Omega64 Rev.A / Omega64 Rev.B
 
 2024年11月11日更新内容
