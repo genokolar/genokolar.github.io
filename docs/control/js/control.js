@@ -118,7 +118,7 @@ let info;
 const reportId = 0x3f;
 const commandPromises = new Map();
 
-var LINKCTRLElement = document.getElementById('linkctrl');
+var UpdateElement = document.getElementById('update');
 
 
 
@@ -171,6 +171,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //===========================页面更新操作部分====================================
 
+// 创建Broadcast Channel并监听发送给它的消息
+const broadcast = new BroadcastChannel('sw-update-channel');
+broadcast.onmessage = (event) => {
+  if (event.data && event.data.type === 'CRITICAL_SW_UPDATE') {
+    // 显示更新按钮
+    UpdateElement.style.display = 'block';
+  }
+};
+
 // 切换标签页内容的函数
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -200,6 +209,10 @@ function toggleTheme() {
         themeIcon.classList.add("fa-moon");
         localStorage.setItem("theme", "dark"); // 保存暗色主题到localStorage
     }
+}
+
+function update() {
+    broadcast.postMessage({ type: SKIP_WAITING });
 }
 
 // 页面加载时应用保存的主题

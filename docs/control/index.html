@@ -23,14 +23,14 @@
                 <div class="status status_misc"><i id="layer-icon" class="fas fa-layer-group"></i><span id="layer-text">激活层</span></div> -->
                 <div class="status status_misc"><i id="device-icon" class="fas fa-sign-out-alt"></i><span id="device-text">设备名称</span></div>
                 <div class="status"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
-                <div class="theme"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i>
-                </div>
+                <div class="status" id="update"><i id="update-icon" onclick="update()" class="fas fa-sync" style="display:none;"></i></div>
+                <div class="theme"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i></div>
             </div>
         </div>
 
         <div class="tab">
             <button class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
-            <button id="linkctrl" class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
             <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
             <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
             <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab5')"><i class="fas fa-hands-helping"></i> 帮助 </button>
@@ -99,7 +99,7 @@
 
         <div id="Tab5" class="tab-content">
             <div class="text" id="help">
-                版本：Beta-2.1.1<br /><br />
+                版本：Beta-2.1.3<br /><br />
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
                 2. 顶部状态栏支持显示电池电量<br />
                 3. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
@@ -110,12 +110,12 @@
         </div>
     </div>
     <div class="footer">
-        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.1">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.3">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
       </div>
-    <script type="text/javascript" src="./js/control_20241210.js"></script>
+    <script type="text/javascript" src="./js/control.js"></script>
     <script>
         if('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./sw20241210.js', { scope: './' });
+          navigator.serviceWorker.register('./sw_keyctrl.js', { scope: './' });
         }
     </script>
 </body>
