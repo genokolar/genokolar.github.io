@@ -19,14 +19,12 @@ hide:
 
 === "键盘主控固件"
 
-    - 2024.12.07更新：
-        - 2.4G无线支持全键无冲，更新通讯协议v5
-        - 休眠唤醒流程、耗电等调整优化，RGB轴灯等问题修复
-    - 已知问题：
-        - 采用信驰达RF-BM-ND04蓝牙模块的PCB升级后会导致反复重启
-        - 请使用此模块的PCB勿升级，建议暂时采用2023年11月29日的固件版本
-        - 包括Omega45 Rev.C  / Farad69 REV.B / GT BLE60 Rev.D /
-        - NewHope64 Rev.A / Omega50 Rev.A / Omega64 Rev.A / Omega64 Rev.B
+    - 2024.12.13更新
+
+        - 优化耗电
+        - 解决信驰达RF-BM-ND04蓝牙模块的PCB升级后导致反复重启的问题
+        - 老版本指示灯适配2.4G无线
+        - 其他调整优化
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="http://down6.glab.online:5550/Glab3.2/" class="button2">🌏仅IPv6官网</a>
@@ -36,6 +34,7 @@ hide:
 
     - 2024.11.11更新：
         - 支持免工具USB改键
+        - 建议配合2024年11月11日后键盘固件使用
 
       <a href="https://down.glab.online:5550/ch554" class="button2">🌍官方下载</a>
       <a href="http://down6.glab.online:5550/ch554" class="button2">🌏仅IPv6官网 </a>
