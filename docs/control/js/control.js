@@ -176,7 +176,13 @@ const broadcast = new BroadcastChannel('sw-update-channel');
 broadcast.onmessage = (event) => {
   if (event.data && event.data.type === 'CRITICAL_SW_UPDATE') {
     // 显示更新按钮
+    console.log('有新版本，点击更新');
     UpdateElement.style.display = 'block';
+  }
+  if (event.data && event.data.type === 'HIDE_UPDATE_BUTTON') {
+    // 隐藏更新按钮
+    console.log('更新完成');
+    UpdateElement.style.display = 'none';
   }
 };
 
@@ -212,7 +218,8 @@ function toggleTheme() {
 }
 
 function update() {
-    broadcast.postMessage({ type: SKIP_WAITING });
+    console.log("开始更新");
+    broadcast.postMessage({ type: 'SKIP_WAITING' });
 }
 
 // 页面加载时应用保存的主题

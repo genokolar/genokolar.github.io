@@ -1,9 +1,7 @@
-const CURRENT_CACHE_VERSION = 4; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 5; // 当前缓存版本
 const CACHE_NAME = `KeyCtrl-v${CURRENT_CACHE_VERSION}`;
 
 const broadcast = new BroadcastChannel('sw-update-channel');
-// 定义消息类型常量
-const CRITICAL_SW_UPDATE_MESSAGE = 'CRITICAL_SW_UPDATE';
 
 // 使用 install 事件预缓存所有初始资源
 self.addEventListener('install', event => {
@@ -18,7 +16,7 @@ self.addEventListener('install', event => {
         './css/all.min.css',
         './fonts/fa-solid-900.woff2'
       ]);
-      broadcast.postMessage({ type: CRITICAL_SW_UPDATE_MESSAGE });
+      broadcast.postMessage({ type: 'CRITICAL_SW_UPDATE' });
     } catch (error) {
       console.error('Caching failed:', error);
     }
@@ -66,8 +64,11 @@ self.addEventListener('fetch', event => {
   })());
 });
 
-self.addEventListener('message', event => {
+broadcast.onmessage = (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
+    // 更新
+    console.log('直接更新缓存');
     self.skipWaiting();
+    broadcast.postMessage({ type: 'HIDE_UPDATE_BUTTON' });
   }
-});
+};
