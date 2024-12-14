@@ -22,7 +22,7 @@
                 <!-- <div class="status status_misc"><i id="mode-icon" class="fas fa-keyboard"></i><span id="mode-text">输出端</span></div>
                 <div class="status status_misc"><i id="layer-icon" class="fas fa-layer-group"></i><span id="layer-text">激活层</span></div> -->
                 <div class="status status_misc"><i id="device-icon" class="fas fa-sign-out-alt"></i><span id="device-text">设备名称</span></div>
-                <div class="status"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
+                <div class="status" onclick="GetBatteryInfo()"><i id="battery-icon" class="fas fa-battery-empty"></i><span id="battery-text">电量</span></div>
                 <div class="status" id="update" style="display:none;"><i id="update-icon" onclick="update()" class="fas fa-sync" title="点击更新控制面板新版"></i></div>
                 <div class="theme"><i id="theme-icon" onclick="toggleTheme()" class="fas fa-moon theme-button"></i></div>
             </div>
@@ -33,7 +33,8 @@
             <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
             <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
             <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
-            <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab5')"><i class="fas fa-hands-helping"></i> 帮助 </button>
+            <button class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetReceiverInfo();"><i class="fas fa-hands-helping"></i> 接收器 </button>
+            <button class="tablinks tab-icon-6" onclick="openTab(event, 'Tab6')"><i class="fas fa-hands-helping"></i> 帮助 </button>
         </div>
 
         <div id="Tab1" class="tab-content">
@@ -98,19 +99,34 @@
         </div>
 
         <div id="Tab5" class="tab-content">
+            <div class="text-content device-info">
+                <label class="keyboard-info">无线信息</label>
+                <ul>
+                    <li><span>已绑定设备数量：</span><span id="pipe_num"> </span></li>
+                    <li><span>已绑定管道索引值：</span><span id="pipe_index"> </span></li>
+                    <li><span>当前连接设备数量：</span><span id="link_num"> </span></li>
+                    <li><span>当前无线通讯频道：</span><span id="link_channel"> </span></li>
+                </ul>
+            </div>
+            <div class="button-content">
+                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetReceiverInfo();">刷新数据</button>
+            </div>
+        </div>
+
+        <div id="Tab6" class="tab-content">
             <div class="text" id="help">
-                版本：Beta-2.1.4<br /><br />
+                版本：Beta-2.1.5<br /><br />
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
-                2. 顶部状态栏支持显示电池电量<br />
-                3. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
-                4. 蓝牙设备每次都需要重新授权连接,断联后也需要重新授权连接<br />
+                2. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
+                3. 蓝牙设备每次都需要重新授权连接,断联后也需要重新授权连接<br />
+                4. 顶部图标：电量图标点击将更新电量数据，有新更新时将显示更新按钮<br />
                 5. 仅支持2024年12月7日后固件<br />
             </div>
 
         </div>
     </div>
     <div class="footer">
-        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.4">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.5">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
       </div>
     <script type="text/javascript" src="./js/control.js"></script>
     <script>

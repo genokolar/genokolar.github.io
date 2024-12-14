@@ -104,8 +104,10 @@ const CMD = {
     HID_CMD_ABOUT_BLE: 0x44,
     // 获取/设置ESB状态
     HID_CMD_ABOUT_ESB: 0x45,
+    // 获取当前输出模式
+    HID_CMD_ABOUT_MODE: 0x80,
     // 获取接收器信息
-    HID_CMD_GET_ESB_RX_INFO: 0x80
+    HID_CMD_GET_ESB_RX_INFO:0x81,
 };
 
 // 是否启用日志输出
@@ -503,15 +505,36 @@ async function GetBatteryInfo() {
     const devices_list = await navigator.hid.getDevices();
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].opened) {
-            const outputReportData = new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO]);
-            try {
-                await devices_list[i].sendReport(reportId, outputReportData);
-                lastSentCommand = CMD.HID_CMD_GET_BATTERY_INFO;
-                consolelog('SendReport:', reportId, outputReportData);
-            } catch (error) {
-                console.error('SendReport: Failed:', error);
-            }
-            consolelog("GetBatteryInfo:", devices_list[i]);
+            return new Promise((resolve, reject) => {
+                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO])).then(() => {
+                    consolelog('SendReport:', reportId, CMD.HID_CMD_GET_BATTERY_INFO);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
+        }
+    }
+}
+
+async function GetReceiverInfo() {
+    const devices_list = await navigator.hid.getDevices();
+    for (var i = 0; i < devices_list.length; i++) {
+        if (devices_list[i].opened) {
+            return new Promise((resolve, reject) => {
+                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO])).then(() => {
+                    consolelog('SendReport:', reportId, CMD.HID_CMD_GET_ESB_RX_INFO);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
         }
     }
 }
@@ -567,6 +590,9 @@ function handleResponse(command, data, resolve) {
             break;
         case CMD.HID_CMD_GET_BATTERY_INFO:
             update_statebar_battery(data);
+            break;
+        case CMD.HID_CMD_GET_ESB_RX_INFO:
+            update_device_esb_rx_info(data);
             break;
         case CMD.HID_CMD_EXECUTE_ACTION_CODE:
             if (data[0] == 0) {
@@ -682,6 +708,24 @@ async function update_device_subinfo(data) {
 
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
         console.error('update_device_subinfo：Received an error packet');
+    }
+}
+
+async function update_device_esb_rx_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_ESB_RX_INFO) {
+
+        //pipe num
+        document.getElementById('pipe_num').innerHTML = inputdata[2];
+        //pipe index
+        document.getElementById('pipe_index').innerHTML = (inputdata[3] / 2).toString(2).padStart(7, "0");
+        //link channel
+        document.getElementById('link_channel').innerHTML = inputdata[4];
+        //link num
+        document.getElementById('link_num').innerHTML = inputdata[5];
+
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet');
     }
 }
 
