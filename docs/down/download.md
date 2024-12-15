@@ -27,6 +27,8 @@ hide:
         - 老版本指示灯适配2.4G无线
         - 其他调整优化
 
+        已知问题：绝少部分键盘可能存在启用‘唤醒按键’功能后，手动休眠后无法使用<kbd>Space</kbd>+<kbd>U</kbd> 唤醒键盘
+
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="http://down6.glab.online:5550/Glab3.2/" class="button2">🌏仅IPv6官网</a>
       <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button2">🧱Github发布页</a>
