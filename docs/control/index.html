@@ -30,7 +30,7 @@
 
         <div class="tab">
             <button class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
-            <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2')"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
             <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
             <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
             <button class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetReceiverInfo();"><i class="fas fa-toolbox"></i> 接收器 </button>
@@ -62,16 +62,22 @@
         </div>
 
         <div id="Tab2" class="tab-content">
-            <button name="switchusb" id="send-button2" class="button" title="启用禁用USB模式"> USB模式 </button>
-            <button name="switchble" id="send-button2" class="button" title="键盘切换到蓝牙模式"> 蓝牙模式 </button>
-            <button name="switchesb" id="send-button2" class="button" title="键盘切换2.4G模式"> 2.4G模式 </button>
-            <button name="switchesbtx" id="send-button2" class="button" title="键盘切换2.4G的发送模式（键盘）"> 2.4G发送 </button>
-            <button name="switchesbrx" id="send-button2" class="button" title="键盘切换2.4G的接收模式（接收器）"> 2.4G接收 </button>
-            <button name="readv" id="send-button2" class="button" title="键盘蓝牙广播或2.4G配对"> 广播配对 </button>
-            <button name="rebond" id="send-button2" class="button" title="键盘解除蓝牙或2.4G配对"> 解除配对 </button>
-            <button name="switchbt1" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道一"> 通道一 </button>
-            <button name="switchbt2" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道二"> 通道二 </button>
-            <button name="switchbt3" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道三"> 通道三 </button>
+            <div class="info-content mode">
+                <i class="fas fa-keyboard"></i><span>模式：</span><span id="link_mode_info"></span>
+            </div>
+            <div class="mode-button-content">
+                <button name="switchusb" id="send-button2" class="button" title="启用禁用USB模式"> USB模式 </button>
+                <button name="switchble" id="send-button2" class="button" title="键盘切换到蓝牙模式"> 蓝牙模式 </button>
+                <button name="switchesb" id="send-button2" class="button" title="键盘切换2.4G模式"> 2.4G模式 </button>
+                <button name="switchesbtx" id="send-button2" class="button" title="键盘切换2.4G的发送模式（键盘）"> 2.4G发送 </button>
+                <button name="switchesbrx" id="send-button2" class="button" title="键盘切换2.4G的接收模式（接收器）"> 2.4G接收 </button>
+                <button name="readv" id="send-button2" class="button" title="键盘蓝牙广播或2.4G配对"> 广播配对 </button>
+                <button name="rebond" id="send-button2" class="button" title="键盘解除蓝牙或2.4G配对"> 解除配对 </button>
+                <button name="switchbt1" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道一"> 通道一 </button>
+                <button name="switchbt2" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道二"> 通道二 </button>
+                <button name="switchbt3" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道三"> 通道三 </button>
+                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetModeInfo();">刷新数据</button>
+            </div>
         </div>
 
         <div id="Tab3" class="tab-content">
@@ -115,7 +121,7 @@
 
         <div id="Tab6" class="tab-content">
             <div class="text" id="help">
-                版本：Beta-2.1.5<br /><br />
+                版本：Beta-2.1.6<br /><br />
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
                 2. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
                 3. 蓝牙设备每次都需要重新授权连接,断联后也需要重新授权连接<br />
@@ -126,7 +132,7 @@
         </div>
     </div>
     <div class="footer">
-        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.5">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.1.6">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
       </div>
     <script type="text/javascript" src="./js/control.js"></script>
     <script>

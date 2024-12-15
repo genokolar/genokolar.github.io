@@ -212,11 +212,31 @@ li {
     max-width: 40%;
 }
 
+.info-content {
+    display: flex;
+    margin-left: 10px;
+    min-height: 24px;
+    color: var(--tab-text-color);
+}
+
 .button-content {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+.mode-button-content {
+    display: block;
+}
+
+.mode i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.mode span {
+    align-self:center;
 }
 
 .footer {

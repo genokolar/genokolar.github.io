@@ -476,7 +476,7 @@ function getDeviceName(vendorId, productId, versionID) {
 function GetInfo(device, command) {
     return new Promise((resolve, reject) => {
         device.sendReport(reportId, new Uint8Array([command])).then(() => {
-            consolelog('SendReport:', reportId, command);
+            consolelog('GetInfo:', command);
             const commandPromise = new Promise((innerResolve) => {
                 commandPromises.set(command, innerResolve);
             });
@@ -490,7 +490,7 @@ function GetInfo(device, command) {
 function GetSubInfo(device, command) {
     return new Promise((resolve, reject) => {
         device.sendReport(reportId, new Uint8Array([command, 0x01, 0x01])).then(() => {
-            consolelog('GetSubInfo:', reportId, command);
+            consolelog('GetSubInfo:', command);
             const commandPromise = new Promise((innerResolve) => {
                 commandPromises.set(command, innerResolve);
             });
@@ -507,7 +507,7 @@ async function GetBatteryInfo() {
         if (devices_list[i].opened) {
             return new Promise((resolve, reject) => {
                 devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO])).then(() => {
-                    consolelog('SendReport:', reportId, CMD.HID_CMD_GET_BATTERY_INFO);
+                    consolelog('GetBatteryInfo:', CMD.HID_CMD_GET_BATTERY_INFO);
                     const commandPromise = new Promise((innerResolve) => {
                         commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, innerResolve);
                     });
@@ -526,9 +526,47 @@ async function GetReceiverInfo() {
         if (devices_list[i].opened) {
             return new Promise((resolve, reject) => {
                 devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO])).then(() => {
-                    consolelog('SendReport:', reportId, CMD.HID_CMD_GET_ESB_RX_INFO);
+                    consolelog('GetReceiverInfo:', CMD.HID_CMD_GET_ESB_RX_INFO);
                     const commandPromise = new Promise((innerResolve) => {
                         commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
+        }
+    }
+}
+
+async function GetModeInfo() {
+    const devices_list = await navigator.hid.getDevices();
+    for (var i = 0; i < devices_list.length; i++) {
+        if (devices_list[i].opened) {
+            return new Promise((resolve, reject) => {
+                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_MODE])).then(() => {
+                    consolelog('GetModeInfo:', CMD.HID_CMD_ABOUT_MODE);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_ABOUT_MODE, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
+        }
+    }
+}
+
+async function GetLayerInfo() {
+    const devices_list = await navigator.hid.getDevices();
+    for (var i = 0; i < devices_list.length; i++) {
+        if (devices_list[i].opened) {
+            return new Promise((resolve, reject) => {
+                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_LAYER])).then(() => {
+                    consolelog('GetLayerInfo:', reportId, CMD.HID_CMD_ABOUT_LAYER);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, innerResolve);
                     });
                     resolve(commandPromise);
                 }).catch(error => {
@@ -594,6 +632,12 @@ function handleResponse(command, data, resolve) {
         case CMD.HID_CMD_GET_ESB_RX_INFO:
             update_device_esb_rx_info(data);
             break;
+        case CMD.HID_CMD_ABOUT_MODE:
+            update_device_mode(data);
+            break;
+        case CMD.HID_CMD_ABOUT_LAYER:
+            update_device_layer(data);
+            break;
         case CMD.HID_CMD_EXECUTE_ACTION_CODE:
             if (data[0] == 0) {
                 consolelog('Action Code Executed');
@@ -624,44 +668,6 @@ async function update_statebar_battery(data) {
         updateHeaderStatus('battery-icon', 'battery-text', battery_icon, inputdata[2].toLocaleString() + '%');
     }
 }
-
-/*
-async function update_statebar_mode(data) {
-    const inputdata = new Uint8Array(data.buffer);
-    let mode_info = '输出端'
-    if ((inputdata[31] & (1 << 7))) {
-        mode_info = 'USB'
-    } else if ((inputdata[31] & (1 << 6)) && (inputdata[31] & (1 << 5))) {
-        mode_info = '无线接收'
-    } else if ((inputdata[31] & (1 << 6)) && !(inputdata[31] & (1 << 5))) {
-        if ((inputdata[31] & (1 << 0))) {
-            mode_info = '无线一'
-        } else if ((inputdata[31] & (1 << 1))) {
-            mode_info = '无线二'
-        } else if ((inputdata[31] & (1 << 2))) {
-            mode_info = '无线三'
-        }
-    } else if (!(inputdata[31] & (1 << 6))) {
-        if ((inputdata[31] & (1 << 0))) {
-            mode_info = '蓝牙一'
-        } else if ((inputdata[31] & (1 << 1))) {
-            mode_info = '蓝牙二'
-        } else if ((inputdata[31] & (1 << 2))) {
-            mode_info = '蓝牙三'
-        }
-    }
-    updateHeaderStatus('', 'mode-text', '', mode_info);
-}
-
-async function update_statebar_layer(data) {
-    const inputdata = new Uint8Array(data.buffer);
-    updateHeaderStatus('', 'layer-text', '', findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
-        layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-        showNotification('激活层更改', '当前激活层为层' + layer);
-    }
-}*/
-
 async function update_device_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
@@ -709,6 +715,55 @@ async function update_device_subinfo(data) {
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
         console.error('update_device_subinfo：Received an error packet');
     }
+}
+
+async function update_device_mode(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_MODE) {
+
+        let mode_info = '输出端'
+        if ((inputdata[2] & (1 << 7))) {
+            mode_info = 'USB'
+        } else if ((inputdata[2] & (1 << 6)) && (inputdata[2] & (1 << 5))) {
+            mode_info = '无线接收'
+        } else if ((inputdata[2] & (1 << 6)) && !(inputdata[2] & (1 << 5))) {
+            if ((inputdata[2] & (1 << 0))) {
+                mode_info = '无线一'
+            } else if ((inputdata[2] & (1 << 1))) {
+                mode_info = '无线二'
+            } else if ((inputdata[2] & (1 << 2))) {
+                mode_info = '无线三'
+            }
+        } else if (!(inputdata[2] & (1 << 6))) {
+            if ((inputdata[2] & (1 << 0))) {
+                mode_info = '蓝牙一'
+            } else if ((inputdata[2] & (1 << 1))) {
+                mode_info = '蓝牙二'
+            } else if ((inputdata[2] & (1 << 2))) {
+                mode_info = '蓝牙三'
+            }
+        }
+        document.getElementById('link_mode_info').innerHTML = mode_info;
+
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet');
+    }
+}
+
+async function update_device_layer(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_LAYER) {
+
+        document.getElementById('layer_info').innerHTML = findSingleOneBit(inputdata[21] | inputdata[22]) + 1;
+
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet');
+    }
+/*    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
+        layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+        showNotification('激活层更改', '当前激活层为层' + layer);
+    }
+*/
 }
 
 async function update_device_esb_rx_info(data) {

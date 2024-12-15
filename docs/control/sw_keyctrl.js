@@ -1,4 +1,4 @@
-const CURRENT_CACHE_VERSION = 6; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 7; // 当前缓存版本
 const CACHE_NAME = `KeyCtrl-v${CURRENT_CACHE_VERSION}`;
 
 const broadcast = new BroadcastChannel('sw-update-channel');
