@@ -47,8 +47,10 @@ WebHID 配置需要2024年11月11日及以后的新版 USB 固件和 蓝牙 固�
 在大多数 Linux 系统上，HID 设备默认映射为只读权限。如需正常使用配置工具，您需要添加新的 udev 规则。使用root权限，在 ```/etc/udev/rules.d/``` 下 创建一个文件，如 ```50-lotlab-keyboard.rules``` ，包含以下内容：
 
 ```
-KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="0514", MODE="0664", GROUP="plugdev"
-KERNEL=="hidraw*", KERNELS="uhid", MODE="0664", GROUP="plugdev"
+# lotlab keybaord 设备
+KERNEL=="hidraw*", KERNELS=="*1209:0514*", MODE="0664", GROUP="plugdev"
+# Glab 2.4G接收器
+KERNEL=="hidraw*", KERNELS=="*4366:1024*", MODE="0664", GROUP="plugdev"
 ```
 确保您的 user 是 ```plugdev``` 群组的成员，或根据你的用户名所属群组进行修改，如修改为 ```users``` 。然后重启主机连接您的设备。
 

@@ -38,6 +38,31 @@
 6. 通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Q</kbd>/<kbd>W</kbd>/<kbd>E</kbd>切换到不同的无线通道，可在多个配对的无线接收器之间切换。
 7. 如PAD等小键盘，无<kbd>Lshift</kbd>、<kbd>Rshift</kbd>，可通过配置工具配置<kbd>切换 无线模式</kbd>/<kbd>无线 广播配对</kbd>/<kbd>无线 解除配对</kbd>/<kbd>BT 1</kbd> / <kbd>BT 2</kbd> / <kbd>BT 3</kbd>按键，或通过键盘控制面板，启动配对通讯、删除配对信息、切换无线接收器
 
+## 2.4G接收器控制面板
+
+[接收器控制面板](../2.4G/index.html)可显示2.4G接收器的相关信息，如配对信息，固件信息，并可对接收器进行刷写固件功能启用、重置等操作。
+
+使用支持WebHID API 的浏览器访问 [接收器控制面板](../2.4G/index.html) 即可使用
+
+在 所有桌面平台（ChromeOS、Linux、macOS 和 Windows）上均可用
+
+支持的浏览器包括Chrome 89+ / Edge 89+ / Opera 75+ 以及采用Chrome浏览器内核的浏览器，如 QQ浏览器 / 360浏览器等
+
+
+- Linux 需要授权
+
+由于Linux系统对设备权限管理比较严格，需要手动修改权限才能使用[接收器控制面板](../2.4G/index.html)。
+
+在大多数 Linux 系统上，HID 设备默认映射为只读权限。如需正常使用配置工具，您需要添加新的 udev 规则。使用root权限，在 ```/etc/udev/rules.d/``` 下 创建一个文件，如 ```50-lotlab-keyboard.rules``` ，包含以下内容：
+
+```
+# lotlab keybaord 设备
+KERNEL=="hidraw*", KERNELS=="*1209:0514*", MODE="0664", GROUP="plugdev"
+# Glab 2.4G接收器
+KERNEL=="hidraw*", KERNELS=="*4366:1024*", MODE="0664", GROUP="plugdev"
+```
+确保您的 user 是 ```plugdev``` 群组的成员，或根据你的用户名所属群组进行修改，如修改为 ```users``` 。然后重启主机连接您的设备。
+
 ## 接收器配对满载后如何配对设备
 
 当7个设备位置绑定完成后，接收器将不再接收配对新设备，如需配对新的设备，需要先重置接收器。
