@@ -1,4 +1,4 @@
-const CURRENT_CACHE_VERSION = 2; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 3; // 当前缓存版本
 const CACHE_NAME = `2.4G-Receiver-v${CURRENT_CACHE_VERSION}`;
 
 const broadcast = new BroadcastChannel('sw-update-channel');
