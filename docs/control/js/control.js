@@ -1,3 +1,15 @@
+// 是否启用日志输出
+let Logenable = true;
+// 是否刷新
+//let refreshing = false;
+let device_opened = false;
+let layer = 1;
+let info;
+var s_device;
+const reportId = 0x3f;
+const commandPromises = new Map();
+
+
 //设置过滤器
 const filters = [
     {
@@ -11,11 +23,13 @@ const filters = [
 function checkFilters(device) {
     for (let i = 0; i < filters.length; i++) {
         const filter = filters[i];
-        if (device.vendorId == filter.vendorId &&
-            device.productId == filter.productId &&
-            device.collections[0].usagePage == filter.usagePage &&
-            device.collections[0].usage == filter.usage) {
-            return true; // 符合过滤器要求
+        if (device.collections.length) {
+            if (device.vendorId == filter.vendorId &&
+                device.productId == filter.productId &&
+                device.collections[0].usagePage == filter.usagePage &&
+                device.collections[0].usage == filter.usage) {
+                return true; // 符合过滤器要求
+            }
         }
     }
     return false; // 不符合任何过滤器要求
@@ -110,19 +124,6 @@ const CMD = {
     HID_CMD_GET_ESB_RX_INFO:0x81,
 };
 
-// 是否启用日志输出
-let Logenable = false;
-
-let refreshing = false;
-let device_opened = false;
-let layer = 1;
-let info;
-const reportId = 0x3f;
-const commandPromises = new Map();
-
-var UpdateElement = document.getElementById('update');
-
-
 
 //===================== 通知权限部分======================
 
@@ -176,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // 创建Broadcast Channel并监听发送给它的消息
 const broadcast = new BroadcastChannel('sw-update-channel');
 broadcast.onmessage = (event) => {
+  let UpdateElement = document.getElementById('update');
   if (event.data && event.data.type === 'CRITICAL_SW_UPDATE') {
     // 显示更新按钮
     console.log('有新版本，点击更新');
@@ -227,6 +229,7 @@ function update() {
 // 页面加载时应用保存的主题
 document.addEventListener("DOMContentLoaded", function () {
     var savedTheme = localStorage.getItem("theme");
+    document.getElementsByClassName("tablinks")[0].click();
     if (savedTheme === "dark") {
         document.body.classList.add("dark-theme");
         document.getElementById("theme-icon").classList.remove("fa-sun");
@@ -237,8 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("theme-icon").classList.add("fa-sun");
     }
 });
-
-document.getElementsByClassName("tablinks")[0].click();
 
 // 更新头部状态的函数
 function updateHeaderStatus(iconid, textid, iconClass, text) {
@@ -339,7 +340,6 @@ if ("hid" in navigator) {
     //监听HID授权设备的接入，并连接设备
     navigator.hid.addEventListener('connect', ({ device }) => {
         consolelog(`HID设备连接: ${device.productName}`, device);
-        //优先连接有线设备
         if (checkFilters(device)) {
             OpenDevice(device)
         }
@@ -378,7 +378,7 @@ async function GrantDevice() {
     for (var i = 0; i < devices_list.length; i++) {
         if (!device_opened) {
             OpenDevice(devices_list[i]);
-            consolelog("Grant & Open Device:", devices_list[i]);
+            consolelog("Grant Device:", devices_list[i]);
             return null;
         }
     }
@@ -405,6 +405,7 @@ async function OpenDevice(opendevice) {
             return null;
         } else {
             await opendevice.open();
+            s_device = opendevice;  //存储打开的设备
             consolelog("Open Device:", opendevice);
             device_opened = true;
             opendevice.oninputreport = ({ device, reportId, data }) => {
@@ -420,7 +421,7 @@ async function OpenDevice(opendevice) {
             await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
-            refreshdata();
+            //refreshdata();
         }
     }
 }
@@ -432,6 +433,7 @@ async function CloseDevice() {
     for (var i = 0; i < devices_list.length; i++) {
         if (devices_list[i].opened) {
             await devices_list[i].close();
+            s_device = null;
             device_opened = false;
             consolelog("CloseDevice():", devices_list[i]);
         }
@@ -475,7 +477,7 @@ function getDeviceName(vendorId, productId, versionID) {
 //发送数据处理函数：获取键盘信息
 function GetInfo(device, command) {
     return new Promise((resolve, reject) => {
-        device.sendReport(reportId, new Uint8Array([command])).then(() => {
+        device.sendReport(reportId, new Uint8Array([command, 0x00])).then(() => {
             consolelog('GetInfo:', command);
             const commandPromise = new Promise((innerResolve) => {
                 commandPromises.set(command, innerResolve);
@@ -502,99 +504,69 @@ function GetSubInfo(device, command) {
 }
 
 async function GetBatteryInfo() {
-    const devices_list = await navigator.hid.getDevices();
-    for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened) {
-            return new Promise((resolve, reject) => {
-                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO])).then(() => {
-                    consolelog('GetBatteryInfo:', CMD.HID_CMD_GET_BATTERY_INFO);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, innerResolve);
-                    });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
+    if (s_device.opened) {
+        return new Promise(async (resolve, reject) => {
+            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO, 0x00])).then(() => {
+                consolelog('GetBatteryInfo:', s_device, CMD.HID_CMD_GET_BATTERY_INFO);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, innerResolve);
                 });
+                resolve(commandPromise);
+            }).catch(error => {
+                reject(error);
             });
-        }
+        });
     }
 }
 
 async function GetReceiverInfo() {
-    const devices_list = await navigator.hid.getDevices();
-    for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened) {
-            return new Promise((resolve, reject) => {
-                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO])).then(() => {
-                    consolelog('GetReceiverInfo:', CMD.HID_CMD_GET_ESB_RX_INFO);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
-                    });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
+    if (s_device.opened) {
+        return new Promise(async (resolve, reject) => {
+            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO, 0x00])).then(() => {
+                consolelog('GetReceiverInfo:', s_device, CMD.HID_CMD_GET_ESB_RX_INFO);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
                 });
+                resolve(commandPromise);
+            }).catch(error => {
+                reject(error);
             });
-        }
+        });
     }
 }
 
 async function GetModeInfo() {
-    const devices_list = await navigator.hid.getDevices();
-    for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened) {
-            return new Promise((resolve, reject) => {
-                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_MODE])).then(() => {
-                    consolelog('GetModeInfo:', CMD.HID_CMD_ABOUT_MODE);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_ABOUT_MODE, innerResolve);
-                    });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
+    if (s_device.opened) {
+        return new Promise(async (resolve, reject) => {
+            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_MODE, 0x00])).then(() => {
+                consolelog('GetModeInfo:', s_device, CMD.HID_CMD_ABOUT_MODE);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(CMD.HID_CMD_ABOUT_MODE, innerResolve);
                 });
+                resolve(commandPromise);
+            }).catch(error => {
+                reject(error);
             });
-        }
+        });
     }
 }
 
 async function GetLayerInfo() {
-    const devices_list = await navigator.hid.getDevices();
-    for (var i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened) {
-            return new Promise((resolve, reject) => {
-                devices_list[i].sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_LAYER])).then(() => {
-                    consolelog('GetLayerInfo:', reportId, CMD.HID_CMD_ABOUT_LAYER);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, innerResolve);
-                    });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
+    if (s_device.opened) {
+        return new Promise(async (resolve, reject) => {
+            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_LAYER, 0x00])).then(() => {
+                consolelog('GetLayerInfo:', s_device, CMD.HID_CMD_ABOUT_LAYER);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, innerResolve);
                 });
+                resolve(commandPromise);
+            }).catch(error => {
+                reject(error);
             });
-        }
+        });
     }
 }
 
-
-//发送数据
-async function ExecuteActionCode(data) {
-    const devices_list = await navigator.hid.getDevices();
-    for (let i = 0; i < devices_list.length; i++) {
-        if (devices_list[i].opened) {
-            try {
-                const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
-                await devices_list[i].sendReport(reportId, newData);
-                //lastSentCommand = CMD.HID_CMD_EXECUTE_ACTION_CODE;
-                consolelog('SendReport:', reportId, newData);
-            } catch (error) {
-                console.error('SendReport: Failed:', error);
-            }
-            return;
-        }
-    }
-}
 //检测是否打开设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
@@ -671,15 +643,6 @@ async function update_statebar_battery(data) {
 async function update_device_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
-        /* consolelog('Vid:', formatHex(data.getUint16(2, true)))
-         consolelog('Pid:', formatHex(data.getUint16(4, true)))
-         consolelog('HwVer:', formatHex(data.getUint8(6)))
-         consolelog('Protocol:', data.getUint8(7))
-         consolelog('FirmwareVer:', data.getUint32(8, true).toString(16).padStart(8, '0'))
-         consolelog('BuildDate:', data.getUint32(12, true))
-         consolelog('FuncTable:', data.getUint32(16, true))
-         consolelog('SocModel:', data.getUint32(20, true).toString(16).padStart(5, '0')) */
-
         //data
         const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
         const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
@@ -785,200 +748,186 @@ async function update_device_esb_rx_info(data) {
 }
 
 //刷新数据任务
+/*
 async function refreshdata() {
     if (!refreshing) {
         info = setInterval(GetBatteryInfo, 60000 * 5); //5分钟刷新一次电池电量
         refreshing = true;
     }
 }
+*/
 
 //====================================================================================键盘控制按键==================================
+//发送action命令
+async function ExecuteActionCode(data) {
+        if (s_device.opened) {
+            try {
+                const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
+                await s_device.sendReport(reportId, newData);
+                consolelog('SendReport:', s_device, newData);
+            } catch (error) {
+                console.error('SendReport: Failed:', error);
+            }
+            return;
+        }
+}
+
+
 //发送数据处理函数：SYSTEMOFF
-async function SYSTEMOFF() {
-    cmd = new Uint8Array([0x02, 0x12, 0x00]);
-    ExecuteActionCode(cmd);
+function SYSTEMOFF() {
+    ExecuteActionCode([0x02, 0x12, 0x00]);
 }
 
 //发送数据处理函数：SLEEP
-async function SLEEP() {
-    cmd = new Uint8Array([0x02, 0x00, 0x00]);
-    ExecuteActionCode(cmd);
+function SLEEP() {
+    ExecuteActionCode([0x02, 0x00, 0x00]);
 }
 
 //发送数据处理函数：TOGGLE_INDICATOR_LIGHT
-async function TOGGLE_INDICATOR_LIGHT() {
-    cmd = new Uint8Array([0x02, 0x12, 0x01]);
-    ExecuteActionCode(cmd);
+function TOGGLE_INDICATOR_LIGHT() {
+    ExecuteActionCode([0x02, 0x12, 0x01]);
 }
 
 //发送数据处理函数：BOOTCHECK
-async function BOOTCHECK() {
-    cmd = new Uint8Array([0x02, 0x12, 0x02]);
-    ExecuteActionCode(cmd);
+function BOOTCHECK() {
+    ExecuteActionCode([0x02, 0x12, 0x02]);
 }
 
 
 //====================================================================================RGB控制按键==================================
 //发送数据处理函数：RGBLIGHT_TOGGLE
-async function RGBLIGHT_TOGGLE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x00]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_TOGGLE() {
+    ExecuteActionCode([0x02, 0x05, 0x00]);
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_INCREASE
-async function RGBLIGHT_MODE_INCREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x01]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_MODE_INCREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x01]);
 }
 
 //发送数据处理函数：RGBLIGHT_MODE_DECREASE
-async function RGBLIGHT_MODE_DECREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x02]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_MODE_DECREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x02]);
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_INCREASE
-async function RGBLIGHT_HUE_INCREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x03]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_HUE_INCREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x03]);
 }
 
 //发送数据处理函数：RGBLIGHT_HUE_DECREASE
-async function RGBLIGHT_HUE_DECREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x04]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_HUE_DECREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x04]);
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_INCREASE
-async function RGBLIGHT_SAT_INCREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x05]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_SAT_INCREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x05]);
 }
 
 //发送数据处理函数：RGBLIGHT_SAT_DECREASE
-async function RGBLIGHT_SAT_DECREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x06]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_SAT_DECREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x06]);
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_INCREASE
-async function RGBLIGHT_VAL_INCREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x07]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_VAL_INCREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x07]);
 }
 
 //发送数据处理函数：RGBLIGHT_VAL_DECREASE
-async function RGBLIGHT_VAL_DECREASE() {
-    cmd = new Uint8Array([0x02, 0x05, 0x08]);
-    ExecuteActionCode(cmd);
+function RGBLIGHT_VAL_DECREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x08]);
 }
 
 //=========================================================================模式控制按钮===============================================
 //发送数据处理函数：SWITCH_USB
-async function SWITCH_USB() {
-    cmd = new Uint8Array([0x02, 0x01, 0x00]);
-    ExecuteActionCode(cmd);
+function SWITCH_USB() {
+    ExecuteActionCode([0x02, 0x01, 0x00]);
 }
 
 //发送数据处理函数：SWITCH_ESB
-async function SWITCH_ESB() {
-    cmd = new Uint8Array([0x02, 0x13, 0x00]);
-    ExecuteActionCode(cmd);
+function SWITCH_ESB() {
+    ExecuteActionCode([0x02, 0x13, 0x00]);
 }
 
 //发送数据处理函数：SWITCH_BLE
-async function SWITCH_BLE() {
-    cmd = new Uint8Array([0x02, 0x13, 0x01]);
-    ExecuteActionCode(cmd);
+function SWITCH_BLE() {
+    ExecuteActionCode([0x02, 0x13, 0x01]);
 }
 
 //发送数据处理函数：SWITCH_ESB_TX
-async function SWITCH_ESB_TX() {
-    cmd = new Uint8Array([0x02, 0x14, 0x00]);
-    ExecuteActionCode(cmd);
+function SWITCH_ESB_TX() {
+    ExecuteActionCode([0x02, 0x14, 0x00]);
 }
 
 //发送数据处理函数：SWITCH_ESB_RX
-async function SWITCH_ESB_RX() {
-    cmd = new Uint8Array([0x02, 0x14, 0x01]);
-    ExecuteActionCode(cmd);
+function SWITCH_ESB_RX() {
+    ExecuteActionCode([0x02, 0x14, 0x01]);
 }
 
 //发送数据处理函数：READV
-async function READV() {
-    cmd = new Uint8Array([0x02, 0x01, 0x0B]);
-    ExecuteActionCode(cmd);
+function READV() {
+    ExecuteActionCode([0x02, 0x01, 0x0B]);
 }
 
 //发送数据处理函数：REBOND
-async function REBOND() {
-    cmd = new Uint8Array([0x02, 0x01, 0x07]);
-    ExecuteActionCode(cmd);
+function REBOND() {
+    ExecuteActionCode([0x02, 0x01, 0x07]);
 }
 
 //发送数据处理函数：SWITCH_BT1
-async function SWITCH_BT1() {
-    cmd = new Uint8Array([0x02, 0x01, 0x08]);
-    ExecuteActionCode(cmd);
+function SWITCH_BT1() {
+    ExecuteActionCode([0x02, 0x01, 0x08]);
 }
 
 //发送数据处理函数：SWITCH_BT2
-async function SWITCH_BT2() {
-    cmd = new Uint8Array([0x02, 0x01, 0x09]);
-    ExecuteActionCode(cmd);
+function SWITCH_BT2() {
+    ExecuteActionCode([0x02, 0x01, 0x09]);
 }
 
 //发送数据处理函数：SWITCH_BT3
-async function SWITCH_BT3() {
-    cmd = new Uint8Array([0x02, 0x01, 0x0A]);
-    ExecuteActionCode(cmd);
+function SWITCH_BT3() {
+    ExecuteActionCode([0x02, 0x01, 0x0A]);
 }
 
 //==========================层操作===============================
 //发送数据处理函数：LAYER1
-async function defaultlayer1() {
-    cmd = new Uint8Array([0x02, 0x12, 0x03]);
-    ExecuteActionCode(cmd);
+function defaultlayer1() {
+    ExecuteActionCode([0x02, 0x12, 0x03]);
 }
 
 //发送数据处理函数：LAYER2
-async function defaultlayer2() {
-    cmd = new Uint8Array([0x02, 0x12, 0x04]);
-    ExecuteActionCode(cmd);
+function defaultlayer2() {
+    ExecuteActionCode([0x02, 0x12, 0x04]);
 }
 
 //发送数据处理函数：LAYER3
-async function defaultlayer3() {
-    cmd = new Uint8Array([0x02, 0x12, 0x05]);
-    ExecuteActionCode(cmd);
+function defaultlayer3() {
+    ExecuteActionCode([0x02, 0x12, 0x05]);
 }
 
 //发送数据处理函数：LAYER4
-async function defaultlayer4() {
-    cmd = new Uint8Array([0x02, 0x12, 0x06]);
-    ExecuteActionCode(cmd);
+function defaultlayer4() {
+    ExecuteActionCode([0x02, 0x12, 0x06]);
 }
 
 //发送数据处理函数：LAYER5
-async function defaultlayer5() {
-    cmd = new Uint8Array([0x02, 0x12, 0x07]);
-    ExecuteActionCode(cmd);
+function defaultlayer5() {
+    ExecuteActionCode([0x02, 0x12, 0x07]);
 }
 
 //发送数据处理函数：LAYER6
-async function defaultlayer6() {
-    cmd = new Uint8Array([0x02, 0x12, 0x08]);
-    ExecuteActionCode(cmd);
+function defaultlayer6() {
+    ExecuteActionCode([0x02, 0x12, 0x08]);
 }
 
 //发送数据处理函数：LAYER7
-async function defaultlayer7() {
-    cmd = new Uint8Array([0x02, 0x12, 0x09]);
-    ExecuteActionCode(cmd);
+function defaultlayer7() {
+    ExecuteActionCode([0x02, 0x12, 0x09]);
 }
 
 //发送数据处理函数：LAYER8
-async function defaultlayer8() {
-    cmd = new Uint8Array([0x02, 0x12, 0x0A]);
-    ExecuteActionCode(cmd);
+function defaultlayer8() {
+    ExecuteActionCode([0x02, 0x12, 0x0A]);
 }
