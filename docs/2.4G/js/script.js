@@ -17,13 +17,15 @@ const filters = [
 		productId: 0x1024, // Glab
 		usagePage: 0xff00,
 		usage: 0x0001,
-		productName: "Glab 2.4G Receiver"
+		productName: "Receiver"
 	}
 ];
 var cmsisdap = false;
 var info;
 const reportId = 0x3f;
 var Logenable = false;
+var device_opened = false;
+var s_device;
 
 function consolelog(Logtxt, ...args) {
     if (Logenable) {
@@ -38,7 +40,8 @@ function checkFilters(device) {
             if (device.vendorId == filter.vendorId &&
                 device.productId == filter.productId &&
                 device.collections[0].usagePage == filter.usagePage &&
-                device.collections[0].usage == filter.usage) {
+                device.collections[0].usage == filter.usage &&
+			    device.productName.includes(filter.productName)) {
                 return true; // 符合过滤器要求
             }
         }
@@ -47,21 +50,35 @@ function checkFilters(device) {
 }
 
 
+
 //============================================连接键盘=========================================================
 //授权设备
 async function GrantDevice() {
-	let devices_list = await navigator.hid.requestDevice({
-		filters
-	});
-	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].productName.includes("Receiver")) {
-			consolelog("GrantDevice():", devices_list[i]);
-			document.getElementById('consoleinfo').innerHTML += "授权设备:" + devices_list[i].productName + '<br>';
-			OpenDevice().then(GetKeyboardInfo);
-			refreshdata();
-			return null;
-		}
-	}
+    let devices_list = await navigator.hid.requestDevice({
+        filters
+    });
+
+    //如果新选了设备，先断开所有设备
+    if (devices_list) {
+        const link_devices_list = await navigator.hid.getDevices();
+        if (!link_devices_list) return null;
+        for (var i = 0; i < link_devices_list.length; i++) {
+            if (link_devices_list[i].opened) {
+                await link_devices_list[i].close();
+                device_opened = false;
+                consolelog("Close Device:", link_devices_list[i]);
+            }
+        }
+
+    }
+    //遍历设备，并打开符合条件的设备
+    for (var i = 0; i < devices_list.length; i++) {
+        if (!device_opened) {
+            await OpenDevice(devices_list[i]).then(GetKeyboardInfo);
+            consolelog("Grant Device:", devices_list[i]);
+            return null;
+        }
+    }
 }
 
 
@@ -83,46 +100,33 @@ async function ListDevices() {
 }
 
 //连接设备【先授权，后连接Glab 2.4G Receiver】
-async function OpenDevice() {
-	const devices_list = await navigator.hid.getDevices();
-	if (!devices_list.length) {
-		consolelog("No Device Connected");
-		document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
-		return null;
-	} else {
-		for (var i = 0; i < devices_list.length; i++) {
-			if (devices_list[i].opened && devices_list[i].productName.includes("Receiver")) {
-				document.getElementById('consoleinfo').innerHTML += "设备已经连接，请勿重复点击" + '<br>';
-				return devices_list[i];
-			} else if (devices_list[i].productName.includes("Receiver")) {
-				await devices_list[i].open();
-				devices_list[i].oninputreport = ({ device, reportId, data }) => {
-					const inputdata = new Uint8Array(data.buffer);
-					consolelog(`Input report ${reportId} from ${device.productName}:`, inputdata);
-					//consolelog(`已绑定设备数量：`, inputdata[20]);
-					//consolelog(`绑定设备索引：`, inputdata[21]);
-					var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-					var newDate = new Date();
-					newDate.setTime(builddata * 1000);
-					document.getElementById('consoleinfo').innerHTML = "📃" + device.productName + ' 的信息：<br>';
-					if (cmsisdap) {
-						document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
-					}
-					document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[20] + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[21] / 2).toString(2).padStart(7, "0") + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[27] + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[26] + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[24].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[23].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[22].toString(16).toUpperCase()).slice(-2) + '<br>';
-					document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + newDate.toLocaleString() + '<br>';
-				};
-				consolelog("OpenDevice():", devices_list[i]);
-				document.getElementById('consoleinfo').innerHTML += "已连接设备:" + devices_list[i].productName + '<br>';
-				//return devices_list[i];
-			}
+async function OpenDevice(opendevice) {
+	s_device = opendevice;
+	await opendevice.open();
+	device_opened = true;
+	refreshdata();
+	opendevice.oninputreport = ({ device, reportId, data }) => {
+		const inputdata = new Uint8Array(data.buffer);
+		consolelog(`Input report ${reportId} from ${device.productName}:`, inputdata);
+		var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
+		var newDate = new Date();
+		newDate.setTime(builddata * 1000);
+		document.getElementById('consoleinfo').innerHTML = "📃" + device.productName + ' 的信息：<br>';
+		if (cmsisdap) {
+			document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
 		}
-	}
+		document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[20] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[21] / 2).toString(2).padStart(7, "0") + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[27] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[26] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[24].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[23].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[22].toString(16).toUpperCase()).slice(-2) + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + newDate.toLocaleString() + '<br>';
+	};
+	consolelog("OpenDevice():", opendevice);
+	document.getElementById('consoleinfo').innerHTML += "已连接设备:" + opendevice.productName + '<br>';
+	//return devices_list[i];
 }
+
 
 //断开设备
 async function CloseDevice() {
@@ -182,14 +186,11 @@ async function ResetKeyboard() {
 
 //发送数据处理函数：获取键盘信息
 async function GetKeyboardInfo() {
-	const devices_list = await navigator.hid.getDevices();
-	for (var i = 0; i < devices_list.length; i++) {
-		if (devices_list[i].opened && devices_list[i].productName.includes("Receiver")) {
-			const outputReportData = new Uint8Array([0x20]);
-			await senddata(devices_list[i], outputReportData);
-			consolelog("GetKeyboardInfo():", devices_list[i]);
-			document.getElementById('consoleinfo').innerHTML = "📃" + devices_list[i].productName + ' 的信息：<br>';
-		}
+	if (s_device != null) {
+		const outputReportData = new Uint8Array([0x20, 0x00]);
+		await senddata(s_device, outputReportData);
+		consolelog("GetKeyboardInfo():",s_device);
+		document.getElementById('consoleinfo').innerHTML = "📃" + s_device.productName + ' 的信息：<br>';
 	}
 	CheckCMSISDAP();
 }
@@ -258,7 +259,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		document.getElementById('consoleinfo').innerHTML += "已接入授权HID设备" + '<br>';
 		for (var i = 0; i < devices.length; i++) {
 			if (checkFilters(devices[i])) {
-				OpenDevice().then(GetKeyboardInfo);
+				OpenDevice(devices[i]).then(GetKeyboardInfo);
 				consolelog("DOMContentLoaded & Opened Device :", devices[i]);
 				document.getElementById('consoleinfo').innerHTML += "🔌自动连接设备: " + devices[i].productName + '<br>';
 				refreshdata();
@@ -272,21 +273,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 if ("hid" in navigator) {
 	//监听HID授权设备的接入，并连接设备
 	navigator.hid.addEventListener('connect', ({ device }) => {
-		consolelog(`HID设备连接: ${device.productName}`);
+		consolelog(`HID设备连接:`, device);
 		if (checkFilters(device)) {
+			OpenDevice(device).then(GetKeyboardInfo);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备接入" + '<br>';
-			OpenDevice().then(GetKeyboardInfo)
 			refreshdata();
 		}
 	});
 
 	//监听HID授权设备的断开，并提示
 	navigator.hid.addEventListener('disconnect', ({ device }) => {
-		consolelog(`HID设备断开: ${device.productName}`);
+		consolelog(`HID设备断开:`, device);
 		if (checkFilters(device)) {
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
+			s_device = null;
 			clearInterval(info);
 		}
 	});
