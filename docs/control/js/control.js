@@ -844,26 +844,31 @@ function RGBLIGHT_VAL_DECREASE() {
 //发送数据处理函数：SWITCH_USB
 function SWITCH_USB() {
     ExecuteActionCode([0x02, 0x01, 0x00]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_ESB
 function SWITCH_ESB() {
     ExecuteActionCode([0x02, 0x13, 0x00]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_BLE
 function SWITCH_BLE() {
     ExecuteActionCode([0x02, 0x13, 0x01]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_ESB_TX
 function SWITCH_ESB_TX() {
     ExecuteActionCode([0x02, 0x14, 0x00]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_ESB_RX
 function SWITCH_ESB_RX() {
     ExecuteActionCode([0x02, 0x14, 0x01]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：READV
@@ -879,16 +884,19 @@ function REBOND() {
 //发送数据处理函数：SWITCH_BT1
 function SWITCH_BT1() {
     ExecuteActionCode([0x02, 0x01, 0x08]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_BT2
 function SWITCH_BT2() {
     ExecuteActionCode([0x02, 0x01, 0x09]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //发送数据处理函数：SWITCH_BT3
 function SWITCH_BT3() {
     ExecuteActionCode([0x02, 0x01, 0x0A]);
+    setTimeout(GetModeInfo, 1000); // 延迟1秒执行GetModeInfo
 }
 
 //==========================层操作===============================
