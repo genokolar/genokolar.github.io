@@ -152,6 +152,12 @@ const CMD = {
     HID_CMD_GET_RECEIVER_RUN_INFORMATION: 0xA1,
     // 重置 接收器 信息
     HID_CMD_RESET_RECEIVER_CONFIG: 0xA2,
+    // 进入USBISP
+    HID_CMD_ENTER_USBISP: 0xF1,
+    // 进入CMSIS-DAP
+    HID_CMD_ENTER_CMSISDAP: 0xF2,
+    // 禁用CMSIS-DAP
+    HID_CMD_ENTER_CMSISDAP: 0xF3,
 };
 
 
@@ -291,6 +297,7 @@ async function default_status() {
     //updateHeaderStatus('', 'layer-text', '', '激活层');
     updateHeaderStatus('battery-icon', 'battery-text', 'fas fa-battery-empty', '电量');
     updateHeaderStatus('device-icon', 'device-text', 'fas fa-sign-out-alt', '设备名称');
+    document.getElementsByClassName("tablinks")[0].click();
 }
 
 //将设备为默认状态
@@ -623,16 +630,30 @@ async function GetLayerInfo() {
 
 function CleanReceiverDate() {
     if (s_device.opened) {
-        return new Promise(async (resolve, reject) => {
-            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00])).then(() => {
-                consolelog('CleanReceiverDate:', s_device, CMD.HID_CMD_RESET_RECEIVER_CONFIG);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_RESET_RECEIVER_CONFIG, innerResolve);
-                });
-                resolve(commandPromise);
-            }).catch(error => {
-                reject(error);
-            });
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00])).then(() => {
+            consolelog('CleanReceiverDate:', s_device, CMD.HID_CMD_RESET_RECEIVER_CONFIG);
+        }).catch(error => {
+            reject(error);
+        });
+    }
+}
+
+function EnterUSBISP() {
+    if (s_device.opened) {
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_USBISP, 0x00])).then(() => {
+            consolelog('EnterUSBISP:', s_device, CMD.HID_CMD_ENTER_USBISP);
+        }).catch(error => {
+            reject(error);
+        });
+    }
+}
+
+function EnterCMSISDAP() {
+    if (s_device.opened) {
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_CMSISDAP, 0x00])).then(() => {
+            consolelog('EnterUSBISP:', s_device, CMD.HID_CMD_ENTER_CMSISDAP);
+        }).catch(error => {
+            reject(error);
         });
     }
 }

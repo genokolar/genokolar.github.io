@@ -30,7 +30,7 @@
 
         <div class="tab">
             <button id="system-tab" class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
-            <button id="receiver-tab" class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetRXInfo();" style="display:none;"><i class="fas fa-toolbox"></i> 接收器 </button>
+            <button id="receiver-tab" class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetRXInfo();" style="display: none;"><i class="fas fa-toolbox"></i> 接收器 </button>
             <button id="mode-tab" class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
             <button id="light-tab" class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
             <button id="layer-tab" class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
@@ -117,25 +117,28 @@
                 </ul>
             </div>
             <div class="button-content">
-                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetRXInfo();">刷新数据</button>
-                <button name="cleanrxdata" id="send-button1" class="button" title="重新获取无线信息" onclick="CleanReceiverDate();">重置数据</button>
+                <button name="refreshinfo" id="send-button1" class="button" style="background: rgb(26, 135, 47); width: 136px;" title="刷新接收器运行数据" onclick="GetRXInfo();">获取信息</button>
+                <button name="cleanrxdata" id="send-button1" class="button" style="background: rgb(176, 0, 0); width: 136px;" title="重置接收器" onclick="CleanReceiverDate();">重置接收器</button>
+                <button name="enterusbisp" id="send-button1" class="button" style="width: 136px;" title="重新获取无线信息" onclick="EnterUSBISP();">进入USB ISP模式</button>
+                <button name="entercmsisdap" id="send-button1" class="button" style="width: 136px;" title="重新获取无线信息" onclick="EnterCMSISDAP();">启用CMSIS-DAP</button>
             </div>
         </div>
 
         <div id="Tab6" class="tab-content">
             <div class="text" id="help">
-                版本：Beta-2.2.1<br /><br />
+                版本：Beta-2.3.0<br /><br />
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
-                2. 当接入多个设备时,可断开已连接设备,重新连接需要控制的设备 <br />
+                2. 当接入多个设备时,可通过<kbd>连接设备</kbd>重新连接需要控制的设备 <br />
                 3. 蓝牙设备每次都需要重新授权连接,断联后也需要重新授权连接<br />
-                4. 顶部图标：电量图标点击将更新电量数据，有新更新时将显示更新按钮<br />
-                5. 仅支持2024年12月7日后固件<br />
+                4. 点击电量图标将更新电量数据，有新更新时将显示更新按钮<br />
+                5. 接收器仅支持2025年1月4日后固件<br />
+                6. 键盘仅支持2024年12月7日后固件<br />
             </div>
 
         </div>
     </div>
     <div class="footer">
-        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.2.1">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
+        <div class="copyright"> <a href="https://glab.online/" title="版本：Beta - 2.3.0">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2024-2027 Glab.online </div>
       </div>
     <script type="text/javascript" src="./js/control.js"></script>
     <script>
