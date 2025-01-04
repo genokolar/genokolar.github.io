@@ -6,6 +6,7 @@ let device_opened = false;
 let layer = 1;
 let info;
 var s_device;
+var is_receiver = false;
 const reportId = 0x3f;
 const commandPromises = new Map();
 
@@ -13,7 +14,14 @@ const commandPromises = new Map();
 //设置过滤器
 const filters = [
     {
-        vendorId: 0x1209, //新Usage
+        vendorId: 0x4366, // 接收器,必须放在首位
+        productId: 0x1024, //
+        usagePage: 0xffea,
+        usage: 0x0072,
+        productName: "Receiver"
+	},
+    {
+        vendorId: 0x1209, //键盘
         productId: 0x0514,
         usagePage: 0xffea,
         usage: 0x0072,
@@ -30,6 +38,19 @@ function checkFilters(device) {
                 device.collections[0].usage == filter.usage) {
                 return true; // 符合过滤器要求
             }
+        }
+    }
+    return false; // 不符合任何过滤器要求
+}
+
+function check_receiver(device) {
+    if (device.collections.length) {
+        if (device.vendorId == filters[0].vendorId &&
+            device.productId == filters[0].productId &&
+            device.collections[0].usagePage == filters[0].usagePage &&
+            device.collections[0].usage == filters[0].usage &&
+            device.productName.includes(filters[0].productName)) {
+            return true; // 符合过滤器要求
         }
     }
     return false; // 不符合任何过滤器要求
@@ -65,6 +86,7 @@ const devices = [
     { name: 'Newhope64 B', vendor: 0x4366, product: 0x0322, version: 0x0000 },
     { name: 'Planck B', vendor: 0x4366, product: 0x0323, version: 0x0000 },
     { name: 'HAL67 A', vendor: 0x4366, product: 0x0324, version: 0x0000 },
+    { name: '2.4G接收器', vendor: 0x4366, product: 0x0500, version: 0x0000 },
 ];
 
 const CMD = {
@@ -122,6 +144,14 @@ const CMD = {
     HID_CMD_ABOUT_MODE: 0x80,
     // 获取接收器信息
     HID_CMD_GET_ESB_RX_INFO:0x81,
+    // 重置接收器模式配置
+    HID_CMD_RESET_ESB_RX_CONFIG: 0x82,
+    // 获取 接收器 信息
+    HID_CMD_GET_RECEIVER_INFORMATION: 0xA0,
+    // 获取 接收器 运行信息
+    HID_CMD_GET_RECEIVER_RUN_INFORMATION: 0xA1,
+    // 重置 接收器 信息
+    HID_CMD_RESET_RECEIVER_CONFIG: 0xA2,
 };
 
 
@@ -369,6 +399,8 @@ async function GrantDevice() {
             if (link_devices_list[i].opened) {
                 await link_devices_list[i].close();
                 device_opened = false;
+                is_receiver = false;
+                document.getElementById('receiver-tab').style.display = 'none';
                 consolelog("Close Device:", link_devices_list[i]);
             }
         }
@@ -408,6 +440,10 @@ async function OpenDevice(opendevice) {
             s_device = opendevice;  //存储打开的设备
             consolelog("Open Device:", opendevice);
             device_opened = true;
+            if(check_receiver(opendevice)){
+                is_receiver = true;
+                document.getElementById('receiver-tab').style.display = 'block';
+            };
             opendevice.oninputreport = ({ device, reportId, data }) => {
                 console.log('Received data:', data);
 
@@ -421,6 +457,9 @@ async function OpenDevice(opendevice) {
             await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
+            if (is_receiver) {
+                await GetInfo(opendevice, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
+            }
             //refreshdata();
         }
     }
@@ -435,6 +474,8 @@ async function CloseDevice() {
             await devices_list[i].close();
             s_device = null;
             device_opened = false;
+            is_receiver = false;
+            document.getElementById('receiver-tab').style.display = 'none';
             consolelog("CloseDevice():", devices_list[i]);
         }
     }
@@ -519,18 +560,30 @@ async function GetBatteryInfo() {
     }
 }
 
-async function GetReceiverInfo() {
+async function GetRXInfo() {
     if (s_device.opened) {
         return new Promise(async (resolve, reject) => {
-            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO, 0x00])).then(() => {
-                consolelog('GetReceiverInfo:', s_device, CMD.HID_CMD_GET_ESB_RX_INFO);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
+            if (is_receiver) {
+                await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, 0x00])).then(() => {
+                    consolelog('GetRXInfo:', s_device, CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
                 });
-                resolve(commandPromise);
-            }).catch(error => {
-                reject(error);
-            });
+            } else {
+                await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO, 0x00])).then(() => {
+                    consolelog('GetRXInfo:', s_device, CMD.HID_CMD_GET_ESB_RX_INFO);
+                    const commandPromise = new Promise((innerResolve) => {
+                        commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
+                    });
+                    resolve(commandPromise);
+                }).catch(error => {
+                    reject(error);
+                });
+            }
         });
     }
 }
@@ -567,6 +620,23 @@ async function GetLayerInfo() {
     }
 }
 
+
+function CleanReceiverDate() {
+    if (s_device.opened) {
+        return new Promise(async (resolve, reject) => {
+            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00])).then(() => {
+                consolelog('CleanReceiverDate:', s_device, CMD.HID_CMD_RESET_RECEIVER_CONFIG);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(CMD.HID_CMD_RESET_RECEIVER_CONFIG, innerResolve);
+                });
+                resolve(commandPromise);
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    }
+}
+
 //检测是否打开设备
 async function Check_Opend() {
     const devices_list = await navigator.hid.getDevices();
@@ -580,7 +650,11 @@ async function Check_Opend() {
     if (!device_opened) {
         //所有设备断开，停掉定时刷新任务
         clearInterval(info);
-        refreshing = false;
+        //停止刷新
+        //refreshing = false;
+        //恢复是否接收器的变量
+        is_receiver = false;
+        document.getElementById('receiver-tab').style.display = 'none';
         //恢复状态栏
         default_status();
         default_device_info();
@@ -598,11 +672,17 @@ function handleResponse(command, data, resolve) {
                 update_device_info(data);
             }
             break;
+        case CMD.HID_CMD_GET_RECEIVER_INFORMATION:
+            update_receiver_info(data);
+            break;
         case CMD.HID_CMD_GET_BATTERY_INFO:
             update_statebar_battery(data);
             break;
         case CMD.HID_CMD_GET_ESB_RX_INFO:
             update_device_esb_rx_info(data);
+            break;
+        case CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION:
+            update_receiver_run_info(data);
             break;
         case CMD.HID_CMD_ABOUT_MODE:
             update_device_mode(data);
@@ -680,6 +760,25 @@ async function update_device_subinfo(data) {
     }
 }
 
+
+async function update_receiver_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_INFORMATION) {
+
+        //receiver mac
+        const firmwarever = data.getUint32(20, 1).toString(16).padStart(8, '0');
+        document.getElementById('receiver_hardware').innerHTML = firmwarever.toUpperCase();
+        //receiver firmware data
+        const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
+        const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
+        const formattedDate = date.toLocaleDateString(); // 使用内置方法格式化日期
+        document.getElementById('receiver_firmware').innerHTML = formattedDate;
+        document.getElementById('receiver_firmware').setAttribute('title', date.toLocaleString());
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet');
+    }
+}
+
 async function update_device_mode(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_MODE) {
@@ -744,6 +843,24 @@ async function update_device_esb_rx_info(data) {
 
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
         console.error('update_device_esb_rx_info：Received an error packet');
+    }
+}
+
+async function update_receiver_run_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION) {
+
+        //pipe num
+        document.getElementById('receiver_pipe_num').innerHTML = inputdata[2];
+        //pipe index
+        document.getElementById('receiver_pipe_index').innerHTML = (inputdata[3] / 2).toString(2).padStart(7, "0");
+        //link channel
+        document.getElementById('receiver_link_channel').innerHTML = inputdata[4];
+        //link num
+        document.getElementById('receiver_link_num').innerHTML = inputdata[5];
+
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_receiver_run_info：Received an error packet');
     }
 }
 
@@ -939,3 +1056,6 @@ function defaultlayer7() {
 function defaultlayer8() {
     ExecuteActionCode([0x02, 0x12, 0x0A]);
 }
+
+//=============================无线接收器控制================================
+

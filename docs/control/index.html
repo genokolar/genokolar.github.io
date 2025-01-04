@@ -29,12 +29,12 @@
         </div>
 
         <div class="tab">
-            <button class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
-            <button class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
-            <button class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
-            <button class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
-            <button class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetReceiverInfo();"><i class="fas fa-toolbox"></i> 接收器 </button>
-            <button class="tablinks tab-icon-6" onclick="openTab(event, 'Tab6')"><i class="fas fa-hands-helping"></i> 帮助 </button>
+            <button id="system-tab" class="tablinks tab-icon-1" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
+            <button id="receiver-tab" class="tablinks tab-icon-5" onclick="openTab(event, 'Tab5'); GetRXInfo();" style="display:none;"><i class="fas fa-toolbox"></i> 接收器 </button>
+            <button id="mode-tab" class="tablinks tab-icon-2" onclick="openTab(event, 'Tab2'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button id="light-tab" class="tablinks tab-icon-3" onclick="openTab(event, 'Tab3')"><i class="fas fa-adjust"></i> 灯光 </button>
+            <button id="layer-tab" class="tablinks tab-icon-4" onclick="openTab(event, 'Tab4')"><i class="fas fa-layer-group"></i> 层控 </button>
+            <button id="help-tab" class="tablinks tab-icon-6" onclick="openTab(event, 'Tab6')"><i class="fas fa-hands-helping"></i> 帮助 </button>
         </div>
 
         <div id="Tab1" class="tab-content">
@@ -108,14 +108,17 @@
             <div class="text-content device-info">
                 <label class="keyboard-info">无线信息</label>
                 <ul>
-                    <li><span>已绑定设备数量：</span><span id="pipe_num"> </span></li>
-                    <li><span>已绑定管道索引值：</span><span id="pipe_index"> </span></li>
-                    <li><span>当前连接设备数量：</span><span id="link_num"> </span></li>
-                    <li><span>当前无线通讯频道：</span><span id="link_channel"> </span></li>
+                    <li><span>已绑定设备数量：</span><span id="receiver_pipe_num"> </span></li>
+                    <li><span>已绑定管道索引值：</span><span id="receiver_pipe_index"> </span></li>
+                    <li><span>当前连接设备数量：</span><span id="receiver_link_num"> </span></li>
+                    <li><span>当前无线通讯频道：</span><span id="receiver_link_channel"> </span></li>
+                    <li><span>接收器硬件信息：</span><span id="receiver_hardware"> </span></li>
+                    <li><span>接收器固件日期：</span><span id="receiver_firmware"> </span></li>
                 </ul>
             </div>
             <div class="button-content">
-                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetReceiverInfo();">刷新数据</button>
+                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetRXInfo();">刷新数据</button>
+                <button name="cleanrxdata" id="send-button1" class="button" title="重新获取无线信息" onclick="CleanReceiverDate();">重置数据</button>
             </div>
         </div>
 
