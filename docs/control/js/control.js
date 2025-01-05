@@ -537,6 +537,14 @@ function getDeviceName(vendorId, productId, versionID) {
     }
     return 'UNKNOW';
 }
+async function GetKeyboardInfo() {
+    if (s_device.opened) {
+        await GetInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
+        await GetSubInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
+        await GetInfo(s_device, CMD.HID_CMD_GET_BATTERY_INFO);
+        GetBatteryInfo();
+    }
+}
 
 //发送数据处理函数：获取键盘信息
 function GetInfo(device, command) {
@@ -648,6 +656,16 @@ function CleanReceiverDate() {
     if (s_device.opened) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00])).then(() => {
             consolelog('CleanReceiverDate:', s_device, CMD.HID_CMD_RESET_RECEIVER_CONFIG);
+        }).catch(error => {
+            reject(error);
+        });
+    }
+}
+
+function ResetKeyboard() {
+    if (s_device.opened) {
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_CONFIG, 0x01, 0x0F])).then(() => {
+            consolelog('ResetKeyboard:', s_device, CMD.HID_CMD_RESET_CONFIG);
         }).catch(error => {
             reject(error);
         });
