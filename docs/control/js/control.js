@@ -7,6 +7,7 @@ let layer = 1;
 let info;
 var s_device;
 var is_receiver = false;
+var cmsisdap = false;
 const reportId = 0x3f;
 const commandPromises = new Map();
 
@@ -157,7 +158,7 @@ const CMD = {
     // 进入CMSIS-DAP
     HID_CMD_ENTER_CMSISDAP: 0xF2,
     // 禁用CMSIS-DAP
-    HID_CMD_ENTER_CMSISDAP: 0xF3,
+    HID_CMD_DISABLE_CMSISDAP: 0xF3,
 };
 
 
@@ -308,6 +309,20 @@ async function default_device_info() {
     document.getElementById('firmware_ver').innerHTML = "";
     document.getElementById('firmware_date').innerHTML = "";
     document.getElementById('firmware_date').setAttribute('title', "");
+}
+
+async function CheckCMSISDAP() {
+	const devices_list = await navigator.hid.getDevices();
+	for (var i = 0; i < devices_list.length; i++) {
+		if ((devices_list[i].productName == "CMSIS-DAP") && (devices_list[i].productId == "0x1024") && (devices_list[i].vendorId == "0x4366")) {
+			document.getElementsByName('entercmsisdap')[0].innerHTML = "禁用CMSSIS-DAP"
+			cmsisdap = true;
+			return null;
+		} else {
+			document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
+			cmsisdap = false;
+		}
+	}
 }
 
 function consolelog(Logtxt, ...args) {
@@ -467,6 +482,7 @@ async function OpenDevice(opendevice) {
             if (is_receiver) {
                 await GetInfo(opendevice, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
             }
+            CheckCMSISDAP();
             //refreshdata();
         }
     }
@@ -649,9 +665,16 @@ function EnterUSBISP() {
 }
 
 function EnterCMSISDAP() {
-    if (s_device.opened) {
+    if (s_device.opened && cmsisdap) {
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_DISABLE_CMSISDAP, 0x00])).then(() => {
+            consolelog('DISABLECMSISDAP:', s_device, CMD.HID_CMD_DISABLE_CMSISDAP);
+        }).catch(error => {
+            reject(error);
+        });
+    } 
+    if (s_device.opened && !cmsisdap) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_CMSISDAP, 0x00])).then(() => {
-            consolelog('EnterUSBISP:', s_device, CMD.HID_CMD_ENTER_CMSISDAP);
+            consolelog('EnterCMSISDAP:', s_device, CMD.HID_CMD_ENTER_CMSISDAP);
         }).catch(error => {
             reject(error);
         });
