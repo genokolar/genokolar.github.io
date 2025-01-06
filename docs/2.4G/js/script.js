@@ -18,6 +18,13 @@ const filters = [
 		usagePage: 0xff00,
 		usage: 0x0001,
 		productName: "Receiver"
+	},
+	{
+		vendorId: 0x4366, // Glab
+		productId: 0x1024, // Glab
+		usagePage: 0xffea,
+		usage: 0x0072,
+		productName: "Receiver"
 	}
 ];
 var cmsisdap = false;
@@ -171,6 +178,7 @@ async function ResetKeyboard() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Receiver")) {
 			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
+			//const outputReportData = new Uint8Array([0xA2, 0x00]);
 			await senddata(devices_list[i], outputReportData);
 			consolelog("ResetKeyboard():", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
@@ -188,6 +196,7 @@ async function ResetKeyboard() {
 async function GetKeyboardInfo() {
 	if (s_device != null) {
 		const outputReportData = new Uint8Array([0x20, 0x00]);
+		//const outputReportData = new Uint8Array([0xA0, 0x00]);
 		await senddata(s_device, outputReportData);
 		consolelog("GetKeyboardInfo():",s_device);
 		document.getElementById('consoleinfo').innerHTML = "📃" + s_device.productName + ' 的信息：<br>';
