@@ -1,4 +1,4 @@
-const CURRENT_CACHE_VERSION = 11; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 12; // 当前缓存版本
 const CACHE_NAME = `KeyCtrl-v${CURRENT_CACHE_VERSION}`;
 
 const broadcast = new BroadcastChannel('sw-update-channel');
@@ -52,7 +52,7 @@ self.addEventListener('fetch', event => {
       const fetchResponse = await fetch(event.request);
 
       // 只有当状态码为 200 时才缓存资源
-      if (fetchResponse.status === 200) {
+      if (fetchResponse.ok) {
         // 将新获取的资源添加到缓存中
         cache.put(event.request, fetchResponse.clone());
       }

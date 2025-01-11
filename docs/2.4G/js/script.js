@@ -13,19 +13,19 @@ document.getElementsByName('resetkeyboard')[0].addEventListener('click', ResetKe
 //设置过滤器
 const filters = [
 	{
-		vendorId: 0x4366, // Glab
-		productId: 0x1024, // Glab
+		vendorId: 0x4366, //新固件
+		productId: 0x1024,
+		usagePage: 0xffea,
+		usage: 0x0072,
+		productName: "Receiver"
+	},
+	{
+		vendorId: 0x4366, // 老固件
+		productId: 0x1024,
 		usagePage: 0xff00,
 		usage: 0x0001,
 		productName: "Receiver"
 	},
-	{
-		vendorId: 0x4366, // Glab
-		productId: 0x1024, // Glab
-		usagePage: 0xffea,
-		usage: 0x0072,
-		productName: "Receiver"
-	}
 ];
 var cmsisdap = false;
 var info;
@@ -33,6 +33,81 @@ const reportId = 0x3f;
 var Logenable = false;
 var device_opened = false;
 var s_device;
+var new_ver = false;
+var firmwarever;
+var formattedDate;
+const commandPromises = new Map();
+
+const CMD = {
+    // 获取键盘信息
+    HID_CMD_GET_INFORMATION: 0x20,
+    // 获取单个按键键值
+    HID_CMD_GET_SINGLE_KEY: 0x21,
+    // 获取单个Fn的功能
+    HID_CMD_GET_SINGLE_FN: 0x22,
+    // 获取所有键值
+    HID_CMD_GET_ALL_KEYS: 0x23,
+    // 获取所有Fn功能
+    HID_CMD_GET_ALL_FNS: 0x24,
+    // 获取指定的配置项目的值
+    HID_CMD_GET_SINGLE_CONFIG: 0x25,
+    // 获取所有配置项目的值
+    HID_CMD_GET_ALL_CONFIG: 0x26,
+    // 获取所有宏的值
+    HID_CMD_GET_ALL_MACRO: 0x27,
+
+    // 设置单个按键键值
+    HID_CMD_SET_SINGLE_KEY: 0x31,
+    // 设置单个Fn功能
+    HID_CMD_SET_SINGLE_FN: 0x32,
+    // 设置所有键值
+    HID_CMD_SET_ALL_KEYS: 0x33,
+    // 设置所有Fn值
+    HID_CMD_SET_ALL_FNS: 0x34,
+    // 设置指定的配置项目的值
+    HID_CMD_SET_SINGLE_CONFIG: 0x35,
+    // 设置所有配置项目的值
+    HID_CMD_SET_ALL_CONFIG: 0x36,
+    // 设置所有宏的值
+    HID_CMD_SET_ALL_MACRO: 0x37,
+
+    // 放弃当前设置还未写入存储的数据
+    HID_CMD_READ_CONFIG: 0x3D,
+    // 将数据写入存储
+    HID_CMD_WRITE_CONFIG: 0x3E,
+    // 重置键盘
+    HID_CMD_RESET_CONFIG: 0x3F,
+    // 设置/获取当前层
+    HID_CMD_ABOUT_LAYER: 0x40,
+    // 执行 Action Code
+    HID_CMD_EXECUTE_ACTION_CODE: 0x41,
+    // 获取电量信息
+    HID_CMD_GET_BATTERY_INFO: 0x42,
+    // 获取/设置 USB 状态
+    HID_CMD_ABOUT_USB: 0x43,
+    // 获取/设置蓝牙状态
+    HID_CMD_ABOUT_BLE: 0x44,
+    // 获取/设置ESB状态
+    HID_CMD_ABOUT_ESB: 0x45,
+    // 获取当前输出模式
+    HID_CMD_ABOUT_MODE: 0x80,
+    // 获取接收器信息
+    HID_CMD_GET_ESB_RX_INFO: 0x81,
+    // 重置接收器模式配置
+    HID_CMD_RESET_ESB_RX_CONFIG: 0x82,
+    // 获取 接收器 信息
+    HID_CMD_GET_RECEIVER_INFORMATION: 0xA0,
+    // 获取 接收器 运行信息
+    HID_CMD_GET_RECEIVER_RUN_INFORMATION: 0xA1,
+    // 重置 接收器 信息
+    HID_CMD_RESET_RECEIVER_CONFIG: 0xA2,
+    // 进入USBISP
+    HID_CMD_ENTER_USBISP: 0xF1,
+    // 进入CMSIS-DAP
+    HID_CMD_ENTER_CMSISDAP: 0xF2,
+    // 禁用CMSIS-DAP
+    HID_CMD_DISABLE_CMSISDAP: 0xF3,
+};
 
 function consolelog(Logtxt, ...args) {
     if (Logenable) {
@@ -56,6 +131,18 @@ function checkFilters(device) {
     return false; // 不符合任何过滤器要求
 }
 
+function check_receiver(device) {
+    if (device.collections.length) {
+        if (device.vendorId == filters[0].vendorId &&
+            device.productId == filters[0].productId &&
+            device.collections[0].usagePage == filters[0].usagePage &&
+            device.collections[0].usage == filters[0].usage &&
+            device.productName.includes(filters[0].productName)) {
+            return true; // 符合过滤器要求
+        }
+    }
+    return false; // 不符合任何过滤器要求
+}
 
 
 //============================================连接键盘=========================================================
@@ -73,6 +160,10 @@ async function GrantDevice() {
             if (link_devices_list[i].opened) {
                 await link_devices_list[i].close();
                 device_opened = false;
+				document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
+				document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
+				s_device = null;
+				clearInterval(info);
                 consolelog("Close Device:", link_devices_list[i]);
             }
         }
@@ -81,7 +172,7 @@ async function GrantDevice() {
     //遍历设备，并打开符合条件的设备
     for (var i = 0; i < devices_list.length; i++) {
         if (!device_opened) {
-            await OpenDevice(devices_list[i]).then(GetKeyboardInfo);
+            await OpenDevice(devices_list[i]);
             consolelog("Grant Device:", devices_list[i]);
             return null;
         }
@@ -108,32 +199,42 @@ async function ListDevices() {
 
 //连接设备【先授权，后连接Glab 2.4G Receiver】
 async function OpenDevice(opendevice) {
-	s_device = opendevice;
-	await opendevice.open();
-	device_opened = true;
-	refreshdata();
-	opendevice.oninputreport = ({ device, reportId, data }) => {
-		const inputdata = new Uint8Array(data.buffer);
-		consolelog(`Input report ${reportId} from ${device.productName}:`, inputdata);
-		var builddata = parseInt("0x" + ("0" + inputdata[15].toString(16)).slice(-2) + ("0" + inputdata[14].toString(16)).slice(-2) + ("0" + inputdata[13].toString(16)).slice(-2) + ("0" + inputdata[12].toString(16)).slice(-2)).toString(10);
-		var newDate = new Date();
-		newDate.setTime(builddata * 1000);
-		document.getElementById('consoleinfo').innerHTML = "📃" + device.productName + ' 的信息：<br>';
-		if (cmsisdap) {
-			document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
-		}
-		document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[20] + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[21] / 2).toString(2).padStart(7, "0") + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[27] + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[26] + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + ("0" + inputdata[25].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[24].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[23].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[22].toString(16).toUpperCase()).slice(-2) + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + newDate.toLocaleString() + '<br>';
-	};
-	consolelog("OpenDevice():", opendevice);
-	document.getElementById('consoleinfo').innerHTML += "已连接设备:" + opendevice.productName + '<br>';
-	//return devices_list[i];
-}
+    if (!device_opened) {
+        try {
+            await opendevice.open();
+            s_device = opendevice;  // 存储打开的设备
+            consolelog("Open Device:", opendevice);
+			document.getElementById('consoleinfo').innerHTML += "已连接设备:" + opendevice.productName + '<br>';
+            device_opened = true;
 
+			if(check_receiver(opendevice)){
+				new_ver = true;
+			} else {
+				new_ver = false;
+			}
+;
+
+            opendevice.oninputreport = ({ device, reportId, data }) => {
+                consolelog('Received data:', data);
+
+                // 根据收到的数据找到对应的命令Promise并解析它
+                for (const [command, resolve] of commandPromises) {
+                    handleResponse(command, data, resolve);
+                    commandPromises.delete(command);
+                    break; // 假设每次只会有一个命令的响应
+                }
+            };
+
+			reflushinfo();
+            CheckCMSISDAP();
+			consolelog("OpenDevice():", opendevice);
+			refreshdata();
+
+        } catch (error) {
+            console.error('Failed to open device:', error);
+        }
+    }
+}
 
 //断开设备
 async function CloseDevice() {
@@ -183,7 +284,7 @@ async function ResetKeyboard() {
 			consolelog("ResetKeyboard():", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "重置接收器：" + devices_list[i].productName + '<br>';
-			setTimeout(GetKeyboardInfo, 500);
+			setTimeout(reflushinfo, 500);
 			return null;
 		}
 	}
@@ -192,15 +293,29 @@ async function ResetKeyboard() {
 	document.getElementById('consoleinfo').innerHTML += "无设备连接" + '<br>';
 }
 
-//发送数据处理函数：获取键盘信息
-async function GetKeyboardInfo() {
-	if (s_device != null) {
-		const outputReportData = new Uint8Array([0x20, 0x00]);
-		//const outputReportData = new Uint8Array([0xA0, 0x00]);
-		await senddata(s_device, outputReportData);
-		consolelog("GetKeyboardInfo():",s_device);
-		document.getElementById('consoleinfo').innerHTML = "📃" + s_device.productName + ' 的信息：<br>';
+async function reflushinfo() {
+	if (new_ver) {
+		await GetInfo(s_device, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
+		await GetInfo(s_device, CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION);
+	} else {
+		await GetInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
 	}
+}
+
+//发送数据处理函数：获取键盘信息
+function GetInfo(device, command) {
+    return new Promise((resolve, reject) => {
+        device.sendReport(reportId, new Uint8Array([command, 0x00])).then(() => {
+			consolelog("GetInfo():",s_device,command);
+			document.getElementById('consoleinfo').innerHTML = "📃" + s_device.productName + ' 的信息：<br>';
+            const commandPromise = new Promise((innerResolve) => {
+                commandPromises.set(command, innerResolve);
+            });
+            resolve(commandPromise);
+        }).catch(error => {
+            reject(error);
+        });
+    });
 	CheckCMSISDAP();
 }
 
@@ -236,7 +351,7 @@ async function EnterCMSISDAP() {
 			consolelog("EnterCMSISDAP():", devices_list[i])
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "固件刷写开关:" + devices_list[i].productName + '<br>';
-			setTimeout(GetKeyboardInfo, 500);
+			setTimeout(reflushinfo, 500);
 			return null;
 		}
 	}
@@ -256,10 +371,81 @@ async function senddata(device, data) {
 }
 
 //刷新数据任务
-async function refreshdata() {
-	info = setInterval(GetKeyboardInfo, 5000);
+function refreshdata() {
+	info = setInterval(() => {
+        reflushinfo();
+    }, 10000);
 }
 
+function handleResponse(command, data, resolve) {
+    switch (command) {
+        case CMD.HID_CMD_GET_INFORMATION:
+            update_device_info(data);
+            break;
+        case CMD.HID_CMD_GET_RECEIVER_INFORMATION:
+            update_receiver_info(data);
+            break;
+        case CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION:
+            update_receiver_run_info(data);
+            break;
+        default:
+            consolelog('Unknown Data');
+            break;
+    }
+    resolve(data);
+}
+
+async function update_device_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
+		consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
+        const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
+        formattedDate = date.toLocaleString(); // 使用内置方法格式化日期
+		firmwarever = data.getUint32(22, 1).toString(16).padStart(8, '0');
+		if (cmsisdap) {
+			document.getElementById('consoleinfo').innerHTML += "⚠️警告：设备CMSIS-DAP刷机功能开启" + '<br>';
+		}
+		document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[20] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[21] / 2).toString(2).padStart(7, "0") + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[27] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[26] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + firmwarever + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + formattedDate + '<br>';
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_info：Received an error packet');
+    }
+}
+
+async function update_receiver_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_INFORMATION) {
+		consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        //receiver mac
+        firmwarever = data.getUint32(20, 1).toString(16).padStart(8, '0');
+        //receiver firmware data
+        const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
+        const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
+        formattedDate = date.toLocaleString(); // 使用内置方法格式化日期
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet');
+    }
+}
+
+async function update_receiver_run_info(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION) {
+		consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+		document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[2] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[3] / 2).toString(2).padStart(7, "0") + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[4] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[5] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + firmwarever + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + formattedDate + '<br>';
+    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
+        console.error('update_receiver_run_info：Received an error packet');
+    }
+}
 
 //=======================================================================监听器部分=====================
 document.addEventListener('DOMContentLoaded', async () => {
@@ -268,10 +454,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		document.getElementById('consoleinfo').innerHTML += "已接入授权HID设备" + '<br>';
 		for (var i = 0; i < devices.length; i++) {
 			if (checkFilters(devices[i])) {
-				OpenDevice(devices[i]).then(GetKeyboardInfo);
+				OpenDevice(devices[i]);
 				consolelog("DOMContentLoaded & Opened Device :", devices[i]);
 				document.getElementById('consoleinfo').innerHTML += "🔌自动连接设备: " + devices[i].productName + '<br>';
-				refreshdata();
 			}
 		}
 
@@ -284,10 +469,9 @@ if ("hid" in navigator) {
 	navigator.hid.addEventListener('connect', ({ device }) => {
 		consolelog(`HID设备连接:`, device);
 		if (checkFilters(device)) {
-			OpenDevice(device).then(GetKeyboardInfo);
+			OpenDevice(device);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备接入" + '<br>';
-			refreshdata();
 		}
 	});
 
@@ -299,6 +483,7 @@ if ("hid" in navigator) {
 			document.getElementById('consoleinfo').innerHTML += "🔌已授权HID设备断开" + '<br>';
 			s_device = null;
 			clearInterval(info);
+			device_opened = false;
 		}
 	});
 

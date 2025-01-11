@@ -1,5 +1,5 @@
 // 是否启用日志输出
-let Logenable = true;
+let Logenable = false;
 // 是否刷新
 //let refreshing = false;
 let device_opened = false;
@@ -20,7 +20,7 @@ const filters = [
         usagePage: 0xffea,
         usage: 0x0072,
         productName: "Receiver"
-	},
+    },
     {
         vendorId: 0x1209, //键盘
         productId: 0x0514,
@@ -144,7 +144,7 @@ const CMD = {
     // 获取当前输出模式
     HID_CMD_ABOUT_MODE: 0x80,
     // 获取接收器信息
-    HID_CMD_GET_ESB_RX_INFO:0x81,
+    HID_CMD_GET_ESB_RX_INFO: 0x81,
     // 重置接收器模式配置
     HID_CMD_RESET_ESB_RX_CONFIG: 0x82,
     // 获取 接收器 信息
@@ -214,17 +214,18 @@ document.addEventListener("DOMContentLoaded", function () {
 // 创建Broadcast Channel并监听发送给它的消息
 const broadcast = new BroadcastChannel('sw-update-channel');
 broadcast.onmessage = (event) => {
-  let UpdateElement = document.getElementById('update');
-  if (event.data && event.data.type === 'CRITICAL_SW_UPDATE') {
-    // 显示更新按钮
-    console.log('有新版本，点击更新');
-    UpdateElement.style.display = 'block';
-  }
-  if (event.data && event.data.type === 'HIDE_UPDATE_BUTTON') {
-    // 隐藏更新按钮
-    console.log('更新完成');
-    UpdateElement.style.display = 'none';
-  }
+    let UpdateElement = document.getElementById('update');
+    if (event.data && event.data.type === 'CRITICAL_SW_UPDATE') {
+        // 显示更新按钮
+        console.log('有新版本，点击更新');
+        UpdateElement.style.display = 'block';
+    }
+    if (event.data && event.data.type === 'HIDE_UPDATE_BUTTON') {
+        // 隐藏更新按钮
+        console.log('更新完成');
+        UpdateElement.style.display = 'none';
+        window.location.reload();
+    }
 };
 
 // 切换标签页内容的函数
@@ -309,20 +310,27 @@ async function default_device_info() {
     document.getElementById('firmware_ver').innerHTML = "";
     document.getElementById('firmware_date').innerHTML = "";
     document.getElementById('firmware_date').setAttribute('title', "");
+    document.getElementById('receiver_pipe_num').innerHTML = "";
+    document.getElementById('receiver_pipe_index').innerHTML = "";
+    document.getElementById('receiver_link_channel').innerHTML = "";
+    document.getElementById('receiver_link_num').innerHTML = "";
+    document.getElementById('receiver_hardware').innerHTML = "";
+    document.getElementById('receiver_firmware').innerHTML = "";
+    document.getElementById('receiver_firmware').setAttribute('title', "");
 }
 
 async function CheckCMSISDAP() {
-	const devices_list = await navigator.hid.getDevices();
-	for (var i = 0; i < devices_list.length; i++) {
-		if ((devices_list[i].productName == "CMSIS-DAP") && (devices_list[i].productId == "0x1024") && (devices_list[i].vendorId == "0x4366")) {
-			document.getElementsByName('entercmsisdap')[0].innerHTML = "禁用CMSSIS-DAP"
-			cmsisdap = true;
-			return null;
-		} else {
-			document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
-			cmsisdap = false;
-		}
-	}
+    const devices_list = await navigator.hid.getDevices();
+    for (var i = 0; i < devices_list.length; i++) {
+        if ((devices_list[i].productName == "CMSIS-DAP") && (devices_list[i].productId == "0x1024") && (devices_list[i].vendorId == "0x4366")) {
+            document.getElementsByName('entercmsisdap')[0].innerHTML = "禁用CMSSIS-DAP"
+            cmsisdap = true;
+            return null;
+        } else {
+            document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
+            cmsisdap = false;
+        }
+    }
 }
 
 function consolelog(Logtxt, ...args) {
@@ -340,8 +348,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('sleep')[0].addEventListener('click', SLEEP); //授权设备
     document.getElementsByName('indicatorlight')[0].addEventListener('click', TOGGLE_INDICATOR_LIGHT); //授权设备
     document.getElementsByName('bootcheck')[0].addEventListener('click', BOOTCHECK); //授权设备
-    //document.getElementById('list-button').addEventListener('click', ListDevices); //列出设备
-    //document.getElementById('connect-button').addEventListener('click', OpenDevice); //连接设备
     document.getElementById('disconnect-button').addEventListener('click', CloseDevice); //断开连接
 
     document.getElementsByName('switchusb')[0].addEventListener('click', SWITCH_USB);
@@ -420,13 +426,16 @@ async function GrantDevice() {
         for (var i = 0; i < link_devices_list.length; i++) {
             if (link_devices_list[i].opened) {
                 await link_devices_list[i].close();
+                //断开设备后，重置状态
                 device_opened = false;
                 is_receiver = false;
+                default_status();
+                default_device_info();
+                //重置完成,隐藏接收器标签
                 document.getElementById('receiver-tab').style.display = 'none';
                 consolelog("Close Device:", link_devices_list[i]);
             }
         }
-
     }
     //遍历设备，并打开符合条件的设备
     for (var i = 0; i < devices_list.length; i++) {
@@ -452,22 +461,19 @@ async function ListDevices() {
 //连接设备【先授权，后连接GT 2.4G Receiver】
 async function OpenDevice(opendevice) {
     if (!device_opened) {
-        const devices_list = await navigator.hid.getDevices();
-        if (!devices_list.length) {
-            consolelog("No Device Connected");
-            default_status();
-            return null;
-        } else {
+        try {
             await opendevice.open();
-            s_device = opendevice;  //存储打开的设备
+            s_device = opendevice;  // 存储打开的设备
             consolelog("Open Device:", opendevice);
             device_opened = true;
-            if(check_receiver(opendevice)){
+
+            if (check_receiver(opendevice)) {
                 is_receiver = true;
                 document.getElementById('receiver-tab').style.display = 'block';
-            };
+            }
+
             opendevice.oninputreport = ({ device, reportId, data }) => {
-                console.log('Received data:', data);
+                consolelog('Received data:', data);
 
                 // 根据收到的数据找到对应的命令Promise并解析它
                 for (const [command, resolve] of commandPromises) {
@@ -476,14 +482,21 @@ async function OpenDevice(opendevice) {
                     break; // 假设每次只会有一个命令的响应
                 }
             };
+
             await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
             await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
+
             if (is_receiver) {
                 await GetInfo(opendevice, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
             }
+
             CheckCMSISDAP();
-            //refreshdata();
+            // refreshdata();
+
+        } catch (error) {
+            console.error('Failed to open device:', error);
+            default_status();
         }
     }
 }
@@ -689,7 +702,7 @@ function EnterCMSISDAP() {
         }).catch(error => {
             reject(error);
         });
-    } 
+    }
     if (s_device.opened && !cmsisdap) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_CMSISDAP, 0x00])).then(() => {
             consolelog('EnterCMSISDAP:', s_device, CMD.HID_CMD_ENTER_CMSISDAP);
@@ -785,6 +798,7 @@ async function update_statebar_battery(data) {
 async function update_device_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
+        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
         //data
         const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
         const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
@@ -813,6 +827,7 @@ async function update_device_info(data) {
 async function update_device_subinfo(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
+        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
         //device_mac
         document.getElementById('device_mac').innerHTML = ("0" + inputdata[5].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[4].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[3].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[2].toString(16).toUpperCase()).slice(-2);
 
@@ -826,7 +841,7 @@ async function update_device_subinfo(data) {
 async function update_receiver_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_INFORMATION) {
-
+        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
         //receiver mac
         const firmwarever = data.getUint32(20, 1).toString(16).padStart(8, '0');
         document.getElementById('receiver_hardware').innerHTML = firmwarever.toUpperCase();
@@ -883,11 +898,11 @@ async function update_device_layer(data) {
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
         console.error('update_device_esb_rx_info：Received an error packet');
     }
-/*    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
-        layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
-        showNotification('激活层更改', '当前激活层为层' + layer);
-    }
-*/
+    /*    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
+            layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+            showNotification('激活层更改', '当前激活层为层' + layer);
+        }
+    */
 }
 
 async function update_device_esb_rx_info(data) {
@@ -911,7 +926,7 @@ async function update_device_esb_rx_info(data) {
 async function update_receiver_run_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION) {
-
+        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
         //pipe num
         document.getElementById('receiver_pipe_num').innerHTML = inputdata[2];
         //pipe index
@@ -939,16 +954,16 @@ async function refreshdata() {
 //====================================================================================键盘控制按键==================================
 //发送action命令
 async function ExecuteActionCode(data) {
-        if (s_device.opened) {
-            try {
-                const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
-                await s_device.sendReport(reportId, newData);
-                consolelog('SendReport:', s_device, newData);
-            } catch (error) {
-                console.error('SendReport: Failed:', error);
-            }
-            return;
+    if (s_device.opened) {
+        try {
+            const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
+            await s_device.sendReport(reportId, newData);
+            consolelog('SendReport:', s_device, newData);
+        } catch (error) {
+            console.error('SendReport: Failed:', error);
         }
+        return;
+    }
 }
 
 
