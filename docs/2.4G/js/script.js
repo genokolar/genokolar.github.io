@@ -278,8 +278,11 @@ async function ResetKeyboard() {
 	const devices_list = await navigator.hid.getDevices();
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Receiver")) {
-			const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
-			//const outputReportData = new Uint8Array([0xA2, 0x00]);
+			if (new_ver) {
+				const outputReportData = new Uint8Array([0xA2, 0x00]);
+			} else {
+				const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
+			}
 			await senddata(devices_list[i], outputReportData);
 			consolelog("ResetKeyboard():", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
