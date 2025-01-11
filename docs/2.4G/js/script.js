@@ -438,8 +438,8 @@ async function update_receiver_run_info(data) {
 		consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
 		document.getElementById('consoleinfo').innerHTML += "已绑定设备数量：" + inputdata[2] + '<br>';
 		document.getElementById('consoleinfo').innerHTML += "已绑定管道索引值：" + (inputdata[3] / 2).toString(2).padStart(7, "0") + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[4] + '<br>';
-		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[5] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前连接设备数量：" + inputdata[5] + '<br>';
+		document.getElementById('consoleinfo').innerHTML += "当前无线通讯频道：" + inputdata[4] + '<br>';
 		document.getElementById('consoleinfo').innerHTML += "接收器硬件信息：" + firmwarever + '<br>';
 		document.getElementById('consoleinfo').innerHTML += "接收器固件日期：" + formattedDate + '<br>';
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
