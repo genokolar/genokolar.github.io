@@ -279,11 +279,10 @@ async function ResetKeyboard() {
 	for (var i = 0; i < devices_list.length; i++) {
 		if (devices_list[i].opened && devices_list[i].productName.includes("Receiver")) {
 			if (new_ver) {
-				const outputReportData = new Uint8Array([0xA2, 0x00]);
+				await senddata(devices_list[i], new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00]));
 			} else {
-				const outputReportData = new Uint8Array([0x3f, 0x01, 0xff]);
+				await senddata(devices_list[i], new Uint8Array([CMD.HID_CMD_RESET_CONFIG, 0x01, 0xff]));
 			}
-			await senddata(devices_list[i], outputReportData);
 			consolelog("ResetKeyboard():", devices_list[i]);
 			document.getElementById('consoleinfo').innerHTML = "🔹操作信息：" + '<br>';
 			document.getElementById('consoleinfo').innerHTML += "重置接收器：" + devices_list[i].productName + '<br>';
@@ -368,6 +367,7 @@ async function senddata(device, data) {
 	if (!device) return;
 	try {
 		await device.sendReport(reportId, data);
+		consolelog('SendReport:',data);
 	} catch (error) {
 		console.error('SendReport: Failed:', error);
 	}
