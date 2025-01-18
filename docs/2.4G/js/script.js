@@ -314,11 +314,11 @@ function GetInfo(device, command) {
                 commandPromises.set(command, innerResolve);
             });
             resolve(commandPromise);
+			CheckCMSISDAP();
         }).catch(error => {
             reject(error);
         });
     });
-	CheckCMSISDAP();
 }
 
 //检测CMSIS-DAP是否开启
