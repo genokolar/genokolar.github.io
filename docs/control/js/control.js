@@ -1,5 +1,5 @@
 // 是否启用日志输出
-let Logenable = false;
+let Logenable = true;
 // 是否刷新
 //let refreshing = false;
 let device_opened = false;
@@ -483,9 +483,7 @@ async function OpenDevice(opendevice) {
                 }
             };
 
-            await GetInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
-            await GetSubInfo(opendevice, CMD.HID_CMD_GET_INFORMATION);
-            await GetInfo(opendevice, CMD.HID_CMD_GET_BATTERY_INFO);
+            await GetKeyboardInfo();
 
             if (is_receiver) {
                 await GetInfo(opendevice, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
@@ -555,7 +553,6 @@ async function GetKeyboardInfo() {
         await GetInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
         await GetSubInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
         await GetInfo(s_device, CMD.HID_CMD_GET_BATTERY_INFO);
-        GetBatteryInfo();
     }
 }
 
@@ -609,7 +606,7 @@ async function GetRXInfo() {
         return new Promise(async (resolve, reject) => {
             if (is_receiver) {
                 await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, 0x00])).then(() => {
-                    consolelog('GetRXInfo:', s_device, CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION);
+                    consolelog('GetReceiverInfo:', s_device, CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION);
                     const commandPromise = new Promise((innerResolve) => {
                         commandPromises.set(CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, innerResolve);
                     });
@@ -816,7 +813,11 @@ async function update_device_info(data) {
         const firmwarever = data.getUint32(8, 1).toString(16).padStart(8, '0');
         document.getElementById('firmware_ver').innerHTML = firmwarever.toUpperCase();
         //soc
-        document.getElementById('soc_model').innerHTML = "nRF" + data.getUint32(20, 1).toString(16).padStart(5, '0');
+        if (deviceName == '2.4G接收器') {  //兼容接收器芯片信息
+            document.getElementById('soc_model').innerHTML = "nRF" + data.getUint32(24, 1).toString(16).padStart(5, '0');
+        } else {
+            document.getElementById('soc_model').innerHTML = "nRF" + data.getUint32(20, 1).toString(16).padStart(5, '0');
+        }
 
 
     } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
