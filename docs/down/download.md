@@ -19,10 +19,13 @@ hide:
 
 === "键盘主控固件"
 
-    - 2025.01.11更新:
+    - 2025.01.22更新:
 
-        - 优化减少键盘出错重启机率
-        - 支持2.4G无线配置按键。（需同步更新2.4G接收器固件）
+        - 支持Windows10 & Windows11 Swift pair（蓝牙迅速配对）功能
+        - 修正2.4G配对后无法输出问题
+        - 修正2.4G无线配置键盘时，HID下发配置出错问题
+        - 3灯指示灯指示优化，更好的支持2.4G和蓝牙状态显示
+        - 2.4G接收器跳频与通讯的其他优化
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="http://down6.glab.online:5550/Glab3.2/" class="button2">🌏仅IPv6官网</a>
@@ -40,8 +43,11 @@ hide:
 
 === "2.4G接收器固件"
 
-    - 2025.01.05更新：
-        - 支持2.4G模式下配置键盘按键，更新HID通讯协议（需同步更新键盘固件）
+    - 2025.01.22更新（需同步更新键盘固件）：
+        - 2.4G接收器跳频优化
+        - 修正2.4G无线配置键盘时，HID下发配置出错问题
+        - 当无键盘连接时，由接收器响应HID命令
+        - 优化多键盘同时连接的通讯能力
 
       <a href="https://down.glab.online:5550/receiver" class="button2">🌍官方下载</a>
       <a href="http://down6.glab.online:5550/receiver" class="button2">🌏仅IPv6官网</a>
