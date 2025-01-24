@@ -326,10 +326,12 @@ async function CheckCMSISDAP() {
     for (var i = 0; i < devices_list.length; i++) {
         if ((devices_list[i].productName == "CMSIS-DAP") && (devices_list[i].productId == "0x1024") && (devices_list[i].vendorId == "0x4366")) {
             document.getElementsByName('entercmsisdap')[0].innerHTML = "禁用CMSSIS-DAP"
+            document.getElementById('cmsis-dap').style.display = 'block';
             cmsisdap = true;
             return null;
         } else {
             document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
+            document.getElementById('cmsis-dap').style.display = 'none';
             cmsisdap = false;
         }
     }
