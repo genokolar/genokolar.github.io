@@ -404,6 +404,8 @@ if ("hid" in navigator) {
         consolelog(`HID设备连接: ${device.productName}`, device);
         if (checkFilters(device)) {
             OpenDevice(device)
+        } else {
+            CheckCMSISDAP();
         }
     });
 
