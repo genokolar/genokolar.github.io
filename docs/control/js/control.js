@@ -8,6 +8,7 @@ let info;
 var s_device;
 var is_receiver = false;
 var cmsisdap = false;
+const COMMAND_TIMEOUT = 100; // 命令超时时间（毫秒）
 const reportId = 0x3f;
 const commandPromises = new Map();
 
@@ -51,6 +52,7 @@ function check_receiver(device) {
             device.collections[0].usagePage == filters[0].usagePage &&
             device.collections[0].usage == filters[0].usage &&
             device.productName.includes(filters[0].productName)) {
+            consolelog("设备为接收器！");
             return true; // 符合过滤器要求
         }
     }
@@ -473,7 +475,7 @@ async function OpenDevice(opendevice) {
             }
 
             opendevice.oninputreport = ({ device, reportId, data }) => {
-                consolelog('Received data:', data);
+                //consolelog('Received data:', data);
 
                 // 根据收到的数据找到对应的命令Promise并解析它
                 for (const [command, resolve] of commandPromises) {
@@ -484,11 +486,6 @@ async function OpenDevice(opendevice) {
             };
 
             await GetKeyboardInfo();
-
-            if (is_receiver) {
-                await GetInfo(opendevice, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
-            }
-
             CheckCMSISDAP();
             // refreshdata();
 
@@ -553,19 +550,31 @@ async function GetKeyboardInfo() {
         await GetInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
         await GetSubInfo(s_device, CMD.HID_CMD_GET_INFORMATION);
         await GetInfo(s_device, CMD.HID_CMD_GET_BATTERY_INFO);
+        if (is_receiver) {
+            await GetInfo(s_device, CMD.HID_CMD_GET_RECEIVER_INFORMATION);
+        }
     }
 }
 
 //发送数据处理函数：获取键盘信息
 function GetInfo(device, command) {
     return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+            commandPromises.delete(command);
+            reject(new Error('Timeout: No response received'));
+        }, COMMAND_TIMEOUT); // 设置超时时间
+
         device.sendReport(reportId, new Uint8Array([command, 0x00])).then(() => {
             consolelog('GetInfo:', command);
             const commandPromise = new Promise((innerResolve) => {
-                commandPromises.set(command, innerResolve);
+                commandPromises.set(command, (data) => {
+                    clearTimeout(timeout);
+                    innerResolve(data);
+                });
             });
             resolve(commandPromise);
         }).catch(error => {
+            clearTimeout(timeout);
             reject(error);
         });
     });
@@ -573,13 +582,22 @@ function GetInfo(device, command) {
 
 function GetSubInfo(device, command) {
     return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+            commandPromises.delete(command);
+            reject(new Error('Timeout: No response received'));
+        }, COMMAND_TIMEOUT); // 设置超时时间
+
         device.sendReport(reportId, new Uint8Array([command, 0x01, 0x01])).then(() => {
             consolelog('GetSubInfo:', command);
             const commandPromise = new Promise((innerResolve) => {
-                commandPromises.set(command, innerResolve);
+                commandPromises.set(command, (data) => {
+                    clearTimeout(timeout);
+                    innerResolve(data);
+                });
             });
             resolve(commandPromise);
         }).catch(error => {
+            clearTimeout(timeout);
             reject(error);
         });
     });
@@ -588,13 +606,22 @@ function GetSubInfo(device, command) {
 async function GetBatteryInfo() {
     if (s_device.opened) {
         return new Promise(async (resolve, reject) => {
+            const timeout = setTimeout(() => {
+                commandPromises.delete(CMD.HID_CMD_GET_BATTERY_INFO);
+                reject(new Error('Timeout: No response received'));
+            }, COMMAND_TIMEOUT); // 设置超时时间
+
             await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO, 0x00])).then(() => {
                 consolelog('GetBatteryInfo:', s_device, CMD.HID_CMD_GET_BATTERY_INFO);
                 const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, innerResolve);
+                    commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, (data) => {
+                        clearTimeout(timeout);
+                        innerResolve(data);
+                    });
                 });
                 resolve(commandPromise);
             }).catch(error => {
+                clearTimeout(timeout);
                 reject(error);
             });
         });
@@ -604,27 +631,25 @@ async function GetBatteryInfo() {
 async function GetRXInfo() {
     if (s_device.opened) {
         return new Promise(async (resolve, reject) => {
-            if (is_receiver) {
-                await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, 0x00])).then(() => {
-                    consolelog('GetReceiverInfo:', s_device, CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION, innerResolve);
+            const command = is_receiver ? CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION : CMD.HID_CMD_GET_ESB_RX_INFO;
+            const timeout = setTimeout(() => {
+                commandPromises.delete(command);
+                reject(new Error('Timeout: No response received'));
+            }, COMMAND_TIMEOUT); // 设置超时时间
+
+            await s_device.sendReport(reportId, new Uint8Array([command, 0x00])).then(() => {
+                consolelog('GetRXInfo:', s_device, command);
+                const commandPromise = new Promise((innerResolve) => {
+                    commandPromises.set(command, (data) => {
+                        clearTimeout(timeout);
+                        innerResolve(data);
                     });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
                 });
-            } else {
-                await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_ESB_RX_INFO, 0x00])).then(() => {
-                    consolelog('GetRXInfo:', s_device, CMD.HID_CMD_GET_ESB_RX_INFO);
-                    const commandPromise = new Promise((innerResolve) => {
-                        commandPromises.set(CMD.HID_CMD_GET_ESB_RX_INFO, innerResolve);
-                    });
-                    resolve(commandPromise);
-                }).catch(error => {
-                    reject(error);
-                });
-            }
+                resolve(commandPromise);
+            }).catch(error => {
+                clearTimeout(timeout);
+                reject(error);
+            });
         });
     }
 }
@@ -632,13 +657,22 @@ async function GetRXInfo() {
 async function GetModeInfo() {
     if (s_device.opened) {
         return new Promise(async (resolve, reject) => {
+            const timeout = setTimeout(() => {
+                commandPromises.delete(CMD.HID_CMD_ABOUT_MODE);
+                reject(new Error('Timeout: No response received'));
+            }, COMMAND_TIMEOUT); // 设置超时时间
+
             await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_MODE, 0x00])).then(() => {
                 consolelog('GetModeInfo:', s_device, CMD.HID_CMD_ABOUT_MODE);
                 const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_ABOUT_MODE, innerResolve);
+                    commandPromises.set(CMD.HID_CMD_ABOUT_MODE, (data) => {
+                        clearTimeout(timeout);
+                        innerResolve(data);
+                    });
                 });
                 resolve(commandPromise);
             }).catch(error => {
+                clearTimeout(timeout);
                 reject(error);
             });
         });
@@ -648,13 +682,22 @@ async function GetModeInfo() {
 async function GetLayerInfo() {
     if (s_device.opened) {
         return new Promise(async (resolve, reject) => {
+            const timeout = setTimeout(() => {
+                commandPromises.delete(CMD.HID_CMD_ABOUT_LAYER);
+                reject(new Error('Timeout: No response received'));
+            }, COMMAND_TIMEOUT); // 设置超时时间
+
             await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_LAYER, 0x00])).then(() => {
                 consolelog('GetLayerInfo:', s_device, CMD.HID_CMD_ABOUT_LAYER);
                 const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, innerResolve);
+                    commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, (data) => {
+                        clearTimeout(timeout);
+                        innerResolve(data);
+                    });
                 });
                 resolve(commandPromise);
             }).catch(error => {
+                clearTimeout(timeout);
                 reject(error);
             });
         });
@@ -779,6 +822,7 @@ function handleResponse(command, data, resolve) {
 async function update_statebar_battery(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_BATTERY_INFO) {
+        consolelog(`update_statebar_battery:`, inputdata);
         let battery_icon = 'fas fa-battery-full'
         if (inputdata[2] < 90 && inputdata[2] >= 75) {
             battery_icon = 'fas fa-battery-three-quarters'
@@ -795,7 +839,7 @@ async function update_statebar_battery(data) {
 async function update_device_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
-        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        consolelog(`update_device_info:`, inputdata);
         //data
         const timestamp = data.getUint32(12, true); // 使用true表示小端字节序（如果适用）
         const date = new Date(timestamp * 1000); // 转换为毫秒并创建Date对象
@@ -820,21 +864,21 @@ async function update_device_info(data) {
         }
 
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_info：Received an error packet', inputdata);
     }
 }
 
 async function update_device_subinfo(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_INFORMATION) {
-        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        consolelog(`update_device_subinfo:`, inputdata);
         //device_mac
         document.getElementById('device_mac').innerHTML = ("0" + inputdata[5].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[4].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[3].toString(16).toUpperCase()).slice(-2) + ":" + ("0" + inputdata[2].toString(16).toUpperCase()).slice(-2);
 
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_subinfo：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_subinfo：Received an error packet', inputdata);
     }
 }
 
@@ -842,7 +886,7 @@ async function update_device_subinfo(data) {
 async function update_receiver_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_INFORMATION) {
-        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        consolelog(`update_receiver_info:`, inputdata);
         //receiver mac
         const firmwarever = data.getUint32(20, 1).toString(16).padStart(8, '0');
         document.getElementById('receiver_hardware').innerHTML = firmwarever.toUpperCase();
@@ -852,15 +896,15 @@ async function update_receiver_info(data) {
         const formattedDate = date.toLocaleDateString(); // 使用内置方法格式化日期
         document.getElementById('receiver_firmware').innerHTML = formattedDate;
         document.getElementById('receiver_firmware').setAttribute('title', date.toLocaleString());
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_esb_rx_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_receiver_info：Received an error packet', inputdata);
     }
 }
 
 async function update_device_mode(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_MODE) {
-
+        consolelog(`update_device_mode:`, inputdata);
         let mode_info = '输出端'
         if ((inputdata[2] & (1 << 7))) {
             mode_info = 'USB'
@@ -885,19 +929,19 @@ async function update_device_mode(data) {
         }
         document.getElementById('link_mode_info').innerHTML = mode_info;
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_esb_rx_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_mode：Received an error packet', inputdata);
     }
 }
 
 async function update_device_layer(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_LAYER) {
-
+        consolelog(`update_device_layer:`, inputdata);
         document.getElementById('layer_info').innerHTML = findSingleOneBit(inputdata[21] | inputdata[22]) + 1;
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_esb_rx_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_layer：Received an error packet', inputdata);
     }
     /*    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
             layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
@@ -909,7 +953,7 @@ async function update_device_layer(data) {
 async function update_device_esb_rx_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_ESB_RX_INFO) {
-
+        consolelog(`update_device_esb_rx_info:`, inputdata);
         //pipe num
         document.getElementById('pipe_num').innerHTML = inputdata[2];
         //pipe index
@@ -919,15 +963,15 @@ async function update_device_esb_rx_info(data) {
         //link num
         document.getElementById('link_num').innerHTML = inputdata[5];
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_device_esb_rx_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_esb_rx_info：Received an error packet', inputdata);
     }
 }
 
 async function update_receiver_run_info(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION) {
-        consolelog(`Input report ${reportId} from ${s_device.productName}:`, inputdata);
+        consolelog(`update_receiver_run_info:`, inputdata);
         //pipe num
         document.getElementById('receiver_pipe_num').innerHTML = inputdata[2];
         //pipe index
@@ -937,8 +981,8 @@ async function update_receiver_run_info(data) {
         //link num
         document.getElementById('receiver_link_num').innerHTML = inputdata[5];
 
-    } else if (inputdata[0] == 0x05) {  //收到键盘接收出错错误的数据包
-        console.error('update_receiver_run_info：Received an error packet');
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_receiver_run_info：Received an error packet', inputdata);
     }
 }
 
