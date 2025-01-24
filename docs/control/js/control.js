@@ -329,12 +329,12 @@ async function CheckCMSISDAP() {
             document.getElementById('cmsis-dap').style.display = 'block';
             cmsisdap = true;
             return null;
-        } else {
-            document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
-            document.getElementById('cmsis-dap').style.display = 'none';
-            cmsisdap = false;
         }
     }
+    //如果没有找到CMSIS-DAP，则隐藏CMSIS-DAP警示信息，并显示为启用CMSIS-DAP按钮
+    document.getElementsByName('entercmsisdap')[0].innerHTML = "启用CMSSIS-DAP"
+    document.getElementById('cmsis-dap').style.display = 'none';
+    cmsisdap = false;
 }
 
 function consolelog(Logtxt, ...args) {
@@ -488,7 +488,7 @@ async function OpenDevice(opendevice) {
             };
 
             await GetKeyboardInfo();
-            CheckCMSISDAP();
+            await CheckCMSISDAP();
             // refreshdata();
 
         } catch (error) {
@@ -507,8 +507,6 @@ async function CloseDevice() {
             await devices_list[i].close();
             s_device = null;
             device_opened = false;
-            is_receiver = false;
-            document.getElementById('receiver-tab').style.display = 'none';
             consolelog("CloseDevice():", devices_list[i]);
         }
     }
@@ -769,9 +767,9 @@ async function Check_Opend() {
         clearInterval(info);
         //停止刷新
         //refreshing = false;
-        //恢复是否接收器的变量
-        is_receiver = false;
+        s_device = null;
         document.getElementById('receiver-tab').style.display = 'none';
+        document.getElementById('cmsis-dap').style.display = 'none';
         //恢复状态栏
         default_status();
         default_device_info();
