@@ -28,7 +28,7 @@ hide:
         - 2.4G接收器跳频与通讯的其他优化
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
-      <a href="http://down6.glab.online:5550/Glab3.2/" class="button2">🌏仅IPv6官网</a>
+      <a href="https://down6.glab.online:5550/Glab3.2/" class="button2">🌏官方下载（IPv6）</a>
       <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button2">🧱Github发布页</a>
 
 === "USB固件" 
@@ -38,7 +38,7 @@ hide:
         - 建议配合2024年11月11日后键盘固件使用
 
       <a href="https://down.glab.online:5550/ch554" class="button2">🌍官方下载</a>
-      <a href="http://down6.glab.online:5550/ch554" class="button2">🌏仅IPv6官网 </a>
+      <a href="https://down6.glab.online:5550/ch554" class="button2">🌏官方下载（IPv6）</a>
       <a href="https://github.com/genokolar/nrf52-keyboard/releases/" class="button2">🧱Github发布页</a>
 
 === "2.4G接收器固件"
@@ -50,7 +50,7 @@ hide:
         - 优化多键盘同时连接的通讯能力
 
       <a href="https://down.glab.online:5550/receiver" class="button2">🌍官方下载</a>
-      <a href="http://down6.glab.online:5550/receiver" class="button2">🌏仅IPv6官网</a>
+      <a href="https://down6.glab.online:5550/receiver" class="button2">🌏官方下载（IPv6）</a>
 
 ###  烧录&配置工具
 
@@ -61,8 +61,8 @@ hide:
 
       <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x86.exe" class="button2">🌍32位官网下载</a>
       <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x64.exe" class="button2">🌍64位官网下载</a>
-      <a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x86.exe" class="button2">🌏32位官网下载（IPv6）</a>
-      <a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x64.exe" class="button2">🌏64位官网下载（IPv6）</a><br>
+      <a href="https://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x86.exe" class="button2">🌏32位官网下载（IPv6）</a>
+      <a href="https://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x64.exe" class="button2">🌏64位官网下载（IPv6）</a><br>
 
 === "配置工具" 
 
@@ -71,7 +71,7 @@ hide:
     - 2024年10月07日后键盘固件已支持免工具在线配置
 
       <a href="https://down.glab.online:5550/lkb-configurator" class="button2">🌍官方下载</a>
-      <a href="http://down6.glab.online:5550/lkb-configurator" class="button2">🌏仅IPv6官网</a>
+      <a href="https://down6.glab.online:5550/lkb-configurator" class="button2">🌏官方下载（IPv6）</a>
       <a href="https://github.com/Lotlab/lkb-configurator/releases" class="button2">🧱Github发布页</a>
 
 ### 开源文件
@@ -81,6 +81,7 @@ hide:
     - 各个键盘的定位板图纸，可用于自己定制定位板或外壳
 
       <a href="https://down.glab.online:5550/dxf" class="button2">🌍官方下载</a>
+      <a href="https://down6.glab.online:5550/dxf" class="button2">🌍官方下载（IPv6）</a>
       <a href="https://pan.quark.cn/s/1d8c704f258b" class="button2">🗂️夸克网盘下载</a>
 
 === "GT PAD 开源文件" 
