@@ -61,7 +61,8 @@ hide:
 
       <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x86.exe" class="button2">🌍32位官网下载</a>
       <a href="https://down.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x64.exe" class="button2">🌍64位官网下载</a>
-      <a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe" class="button2">🌏仅IPv6官网</a><br>
+      <a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x86.exe" class="button2">🌏32位官网下载（IPv6）</a>
+      <a href="http://down6.glab.online:5550/wch_nrf_burner_setup_1.2.3.0_x64.exe" class="button2">🌏64位官网下载（IPv6）</a><br>
 
 === "配置工具" 
 
