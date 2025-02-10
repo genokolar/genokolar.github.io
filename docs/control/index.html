@@ -80,7 +80,7 @@
 
         <div id="Tab3" class="tab-content">
             <div class="info-content mode">
-                <i class="fas fa-keyboard"></i><span>模式：</span><span id="link_mode_info"></span>
+                <i class="fas fa-keyboard" onclick="GetModeInfo();"></i><span>模式：</span><span id="link_mode_info"></span>
             </div>
             <div class="mode-button-content">
                 <button name="switchusb" id="send-button2" class="button" title="启用禁用USB模式"> USB模式 </button>
@@ -93,13 +93,12 @@
                 <button name="switchbt1" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道一"> 通道一 </button>
                 <button name="switchbt2" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道二"> 通道二 </button>
                 <button name="switchbt3" id="send-button2" class="button" title="键盘切换蓝牙或2.4G通道三"> 通道三 </button>
-                <button name="refreshinfo" id="send-button1" class="button" title="重新获取无线信息" onclick="GetModeInfo();">刷新数据</button>
             </div>
         </div>
 
         <div id="Tab4" class="tab-content">
             <div class="info-content rgb">
-                <i class="fas fas fa-adjust"></i><span>灯光信息：</span><span id="rgb_info"></span>
+                <i class="fas fa-adjust" onclick="GetRGBInfo();"></i><span>灯光信息：</span><span id="rgb_info"></span>
             </div>
             <div class="mode-button-content">
                 <button name="indicatorlight" id="send-button1" class="button" title="开关指示灯"> 指示灯 </button>
@@ -119,7 +118,7 @@
 
         <div id="Tab5" class="tab-content">
             <div class="info-content layer">
-                <i class="fas fa-layer-group"></i><span>激活层：</span><span id="layer_info"></span>
+                <i class="fas fa-layer-group" onclick="GetLayerInfo();"></i><span>激活层：</span><span id="layer_info"></span>
             </div>
             <div class="mode-button-content">
                 <button name="defaultlayer1" id="send-button1" class="button" title="设置层1为默认层"> 默认层1 </button>
