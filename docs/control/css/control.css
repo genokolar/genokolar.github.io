@@ -1,40 +1,42 @@
 :root {
     /* 定义全局样式变量 */
-    --background-color: #fff;
-    --header-background-color: #0b8ec2;
-    --header-text-color: #fff;
-    --tab-background-color: #f0f0f0;
-    --tab-text-color: #4a4a4a;
-    --tab-button-hover-color: #d0d0d0;
-    --tab-button-active-color: #e0e0e0;
-    --tab-button-active-font-color: #2e92bc;
-    --tab-button-font-color :#666;
-    --button-background-color: #0b8ec2;
-    --button-hover-background-color: #0675a1;
-    --button-text-color: #fff;
-    --tab-content-background-color: #fafafa;
-    --help-text-color: #4a4a4a;
-    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --content-border-color: 1px solid #ccc;
+    --background-color: #f4f4f9; /* 浅灰蓝背景 */
+    --header-background-color: #77b4f0; /* 灰蓝色 */
+    --header-text-color: #fff; /* 白色文字 */
+    --tab-background-color: #fafafa; /* 浅灰色 */
+    --tab-text-color: #333; /* 深灰色文字 */
+    --tab-button-hover-color: #f3f3f3; /* 悬停时稍浅的灰色 */
+    --tab-button-active-color: #efefef; /* 激活时更浅的灰色 */
+    --tab-button-active-font-color: #77b4f0; /* 激活时蓝色文字 */
+    --tab-button-font-color: #666; /* 默认灰色文字 */
+    --button-background-color: #52a2f0; /* 浅蓝色按钮 */
+    --button-hover-background-color: #66a5e0; /* 悬停时稍暗的蓝色 */
+    --button-text-color: #fff; /* 白色按钮文字 */
+    --tab-content-background-color: #fafafa; /* 浅白色内容背景 */
+    --help-text-color: #666; /* 浅灰色帮助文字 */
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微的盒子阴影 */
+    --button-box-shadow-color: 0 2px 4px rgb(0, 0, 0, 0.15); /* 轻微的盒子阴影 */
+    --content-border-color: 1px solid #e8e8e8; /* 浅灰色边框 */
 }
 
 .dark-theme {
     /* 定义暗色主题样式变量 */
-    --background-color: #333;
-    --header-background-color: #014b55;
-    --tab-background-color: #4f4f4f;
-    --tab-text-color: #eee;
-    --tab-button-hover-color: #8b8b8b;
-    --tab-button-active-color: #666666;
-    --tab-button-active-font-color: #004f5a;
-    --tab-button-font-color :#ccc;
-    --button-background-color: #014b55;
-    --button-hover-background-color: #025d69;
-    --button-text-color: #ccc;
-    --tab-content-background-color: #444;
-    --help-text-color: #ccc;
-    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.18);
-    --content-border-color: 1px solid #5f5f5f;
+    --background-color: #2e3440; /* 深蓝色背景 */
+    --header-background-color: #4c566a; /* 深灰色标题背景 */
+    --tab-background-color: #3b4252; /* 更深的灰色标签背景 */
+    --tab-text-color: #eceff4; /* 浅灰色标签文字 */
+    --tab-button-hover-color: #434c5e; /* 悬停时稍浅的深灰色 */
+    --tab-button-active-color: #323848; /* 激活时更深的灰色 */
+    --tab-button-active-font-color: #77b4f0; /* 激活时浅蓝色文字 */
+    --tab-button-font-color: #8892a3; /* 默认灰色文字 */
+    --button-background-color: #4c566a; /* 深灰色按钮背景 */
+    --button-hover-background-color: #5e6475; /* 悬停时稍浅的深灰色 */
+    --button-text-color: #eceff4; /* 浅灰色按钮文字 */
+    --tab-content-background-color: #3b4252; /* 深灰色内容背景 */
+    --help-text-color: #8892a3; /* 浅灰色帮助文字 */
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.2); /* 稍重的盒子阴影 */
+    --button-box-shadow-color: 0 2px 4px rgba(0, 0, 0, 0.2); /* 轻微的盒子阴影 */
+    --content-border-color: 1px solid #434c5e; /* 深灰色边框 */
 }
 
 
@@ -77,7 +79,7 @@ li {
     color: var(--header-text-color);
     padding: 10px 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-color);
 }
 
 .header-info {
@@ -99,7 +101,7 @@ li {
     margin-top: 20px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--button-box-shadow-color);
 }
 
 .tab button {
@@ -139,10 +141,9 @@ li {
     transition: background-color 0.3s;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* display: flex; */
+    box-shadow: var(--button-box-shadow-color);
     gap: 10px;
-    min-height: 150px;
+    min-height: 190px;
     align-content: flex-start;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -162,7 +163,7 @@ li {
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--button-box-shadow-color);
     text-align: center;
 }
 
@@ -228,15 +229,18 @@ li {
 }
 
 .mode-button-content {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top:15px;
 }
 
-.mode i {
+.info-content i {
     margin-right: 5px;
     font-size: 24px;
 }
 
-.mode span {
+.info-content span {
     align-self:center;
 }
 
@@ -268,8 +272,7 @@ a:hover {
 
 /* 需单独设定样式的元素 */
 div #help.text  {
-    margin: 0  10px 10px 20px;
-    justify-content: left;
+    margin: 0 10px 10px 20px;
 }
 
 label.keyboard-info {
@@ -277,7 +280,7 @@ label.keyboard-info {
     margin: 0;
     font-size: medium;
     font-weight: bold;
-    color: var(--tab-text-color)
+    color: var(--tab-text-color);
 }
 
 
@@ -338,8 +341,8 @@ label.keyboard-info {
         min-width: 356px;
     }
     .device-info {
-    padding-top: 10px;
-    margin-left: 10px;
-    min-width: 210px;
+        padding-top: 10px;
+        margin-left: 10px;
+        min-width: 210px;
     }
 }

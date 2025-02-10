@@ -143,7 +143,9 @@ const CMD = {
     // 获取/设置蓝牙状态
     HID_CMD_ABOUT_BLE: 0x44,
     // 获取/设置ESB状态
-    HID_CMD_ABOUT_ESB: 0x45,
+    HID_CMD_ABOUT_ESB: 0x50,
+    // 获取/设置RGB状态
+    HID_CMD_ABOUT_RGB: 0x60,
     // 获取当前输出模式
     HID_CMD_ABOUT_MODE: 0x80,
     // 获取接收器信息
@@ -374,14 +376,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementsByName('rgbsatdec')[0].addEventListener('click', RGBLIGHT_SAT_DECREASE);
     document.getElementsByName('rgbvalinc')[0].addEventListener('click', RGBLIGHT_VAL_INCREASE);
     document.getElementsByName('rgbvaldec')[0].addEventListener('click', RGBLIGHT_VAL_DECREASE);
-    document.getElementsByName('defaultlayer1')[0].addEventListener('click', defaultlayer1);
-    document.getElementsByName('defaultlayer2')[0].addEventListener('click', defaultlayer2);
-    document.getElementsByName('defaultlayer3')[0].addEventListener('click', defaultlayer3);
-    document.getElementsByName('defaultlayer4')[0].addEventListener('click', defaultlayer4);
-    document.getElementsByName('defaultlayer5')[0].addEventListener('click', defaultlayer5);
-    document.getElementsByName('defaultlayer6')[0].addEventListener('click', defaultlayer6);
-    document.getElementsByName('defaultlayer7')[0].addEventListener('click', defaultlayer7);
-    document.getElementsByName('defaultlayer8')[0].addEventListener('click', defaultlayer8);
+    document.getElementsByName('rgbspeedinc')[0].addEventListener('click', RGBLIGHT_SPEED_INCREASE);
+    document.getElementsByName('rgbspeeddec')[0].addEventListener('click', RGBLIGHT_SPEED_DECREASE);
+    document.getElementsByName('defaultlayer1')[0].addEventListener('click', DEFAULTLAYER1);
+    document.getElementsByName('defaultlayer2')[0].addEventListener('click', DEFAULTLAYER2);
+    document.getElementsByName('defaultlayer3')[0].addEventListener('click', DEFAULTLAYER3);
+    document.getElementsByName('defaultlayer4')[0].addEventListener('click', DEFAULTLAYER4);
+    document.getElementsByName('defaultlayer5')[0].addEventListener('click', DEFAULTLAYER5);
+    document.getElementsByName('defaultlayer6')[0].addEventListener('click', DEFAULTLAYER6);
+    document.getElementsByName('defaultlayer7')[0].addEventListener('click', DEFAULTLAYER7);
+    document.getElementsByName('defaultlayer8')[0].addEventListener('click', DEFAULTLAYER8);
     //DOM加载，获取已授权设备列表，并打开设备
     const devices_list = await navigator.hid.getDevices();
     if (devices_list.length) {
@@ -548,6 +552,7 @@ function getDeviceName(vendorId, productId, versionID) {
     return 'UNKNOW';
 }
 async function GetKeyboardInfo() {
+    if(s_device == null) return;
     if (s_device.opened) {
         await GetInfo();
         await GetSubInfo();
@@ -558,222 +563,118 @@ async function GetKeyboardInfo() {
     }
 }
 
-//发送数据处理函数：获取键盘信息
-async function GetInfo() {
-    return new Promise(async (resolve, reject) => {
-        const timeout = setTimeout(() => {
-            commandPromises.delete(CMD.HID_CMD_GET_INFORMATION);
-            reject(new Error('Timeout: No response received'));
-        }, COMMAND_TIMEOUT); // 设置超时时间
+// 通用发送命令函数
+async function sendCommand(command, data, cnlog = []) {
+    if (s_device == null) return;
+    if (!s_device.opened) return;
 
-        await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_INFORMATION, 0x01, 0x00])).then(() => {
-            consolelog('获取键盘信息:', CMD.HID_CMD_GET_INFORMATION);
+    return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+            commandPromises.delete(command);
+            reject(new Error('Timeout: No response received'));
+        }, COMMAND_TIMEOUT);
+
+        s_device.sendReport(reportId, new Uint8Array([command, ...data])).then(() => {
+            consolelog(`${cnlog}: ${command}`);
             const commandPromise = new Promise((innerResolve) => {
-                commandPromises.set(CMD.HID_CMD_GET_INFORMATION, (data) => {
+                commandPromises.set(command, (responseData) => {
                     clearTimeout(timeout);
-                    innerResolve(data);
+                    innerResolve(responseData);
                 });
             });
             resolve(commandPromise);
-        }).catch(error => {
+        }).catch((error) => {
             clearTimeout(timeout);
             reject(error);
         });
     });
+}
+
+// 使用通用函数重构的函数
+async function GetInfo() {
+    return sendCommand(CMD.HID_CMD_GET_INFORMATION, [0x01, 0x00], ['获取键盘信息']);
 }
 
 async function GetSubInfo() {
-    return new Promise(async (resolve, reject) => {
-        const timeout = setTimeout(() => {
-            commandPromises.delete(CMD.HID_CMD_GET_INFORMATION);
-            reject(new Error('Timeout: No response received'));
-        }, COMMAND_TIMEOUT); // 设置超时时间
-
-        await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_INFORMATION, 0x01, 0x01])).then(() => {
-            consolelog('获取键盘补充信息:', CMD.HID_CMD_GET_INFORMATION);
-            const commandPromise = new Promise((innerResolve) => {
-                commandPromises.set(CMD.HID_CMD_GET_INFORMATION, (data) => {
-                    clearTimeout(timeout);
-                    innerResolve(data);
-                });
-            });
-            resolve(commandPromise);
-        }).catch(error => {
-            clearTimeout(timeout);
-            reject(error);
-        });
-    });
+    return sendCommand(CMD.HID_CMD_GET_INFORMATION, [0x01, 0x01], ['获取键盘子信息']);
 }
 
 async function GetBatteryInfo() {
-    if (s_device.opened) {
-        return new Promise(async (resolve, reject) => {
-            const timeout = setTimeout(() => {
-                commandPromises.delete(CMD.HID_CMD_GET_BATTERY_INFO);
-                reject(new Error('Timeout: No response received'));
-            }, COMMAND_TIMEOUT); // 设置超时时间
-
-            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_BATTERY_INFO, 0x00])).then(() => {
-                consolelog('获取电量信息:', CMD.HID_CMD_GET_BATTERY_INFO);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_GET_BATTERY_INFO, (data) => {
-                        clearTimeout(timeout);
-                        innerResolve(data);
-                    });
-                });
-                resolve(commandPromise);
-            }).catch(error => {
-                clearTimeout(timeout);
-                reject(error);
-            });
-        });
-    }
+    return sendCommand(CMD.HID_CMD_GET_BATTERY_INFO, [0x00], ['获取电池信息']);
 }
 
 async function GetReceiverInfo() {
-    return new Promise(async (resolve, reject) => {
-        const timeout = setTimeout(() => {
-            commandPromises.delete(CMD.HID_CMD_GET_RECEIVER_INFORMATION);
-            reject(new Error('Timeout: No response received'));
-        }, COMMAND_TIMEOUT); // 设置超时时间
-
-        await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_GET_RECEIVER_INFORMATION, 0x00])).then(() => {
-            consolelog('获取接收器信息:', CMD.HID_CMD_GET_RECEIVER_INFORMATION);
-            const commandPromise = new Promise((innerResolve) => {
-                commandPromises.set(CMD.HID_CMD_GET_RECEIVER_INFORMATION, (data) => {
-                    clearTimeout(timeout);
-                    innerResolve(data);
-                });
-            });
-            resolve(commandPromise);
-        }).catch(error => {
-            clearTimeout(timeout);
-            reject(error);
-        });
-    });
+    return sendCommand(CMD.HID_CMD_GET_RECEIVER_INFORMATION, [0x00], ['获取接收器信息']);
 }
 
 async function GetRXInfo() {
-    if (s_device.opened) {
-        return new Promise(async (resolve, reject) => {
-            const command = is_receiver ? CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION : CMD.HID_CMD_GET_ESB_RX_INFO;
-            const timeout = setTimeout(() => {
-                commandPromises.delete(command);
-                reject(new Error('Timeout: No response received'));
-            }, COMMAND_TIMEOUT); // 设置超时时间
-
-            await s_device.sendReport(reportId, new Uint8Array([command, 0x00])).then(() => {
-                consolelog('获取ESB运行信息:', command);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(command, (data) => {
-                        clearTimeout(timeout);
-                        innerResolve(data);
-                    });
-                });
-                resolve(commandPromise);
-            }).catch(error => {
-                clearTimeout(timeout);
-                reject(error);
-            });
-        });
-    }
+    if (!s_device.opened) return Promise.reject(new Error('Device not opened'));
+    const command = is_receiver ? CMD.HID_CMD_GET_RECEIVER_RUN_INFORMATION : CMD.HID_CMD_GET_ESB_RX_INFO;
+    return sendCommand(command, [0x00], ['获取接收器运行信息']);
 }
 
 async function GetModeInfo() {
-    if (s_device.opened) {
-        return new Promise(async (resolve, reject) => {
-            const timeout = setTimeout(() => {
-                commandPromises.delete(CMD.HID_CMD_ABOUT_MODE);
-                reject(new Error('Timeout: No response received'));
-            }, COMMAND_TIMEOUT); // 设置超时时间
-
-            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_MODE, 0x00])).then(() => {
-                consolelog('获取模式信息:', CMD.HID_CMD_ABOUT_MODE);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_ABOUT_MODE, (data) => {
-                        clearTimeout(timeout);
-                        innerResolve(data);
-                    });
-                });
-                resolve(commandPromise);
-            }).catch(error => {
-                clearTimeout(timeout);
-                reject(error);
-            });
-        });
-    }
+    return sendCommand(CMD.HID_CMD_ABOUT_MODE, [0x00], ['获取模式信息']);
 }
 
 async function GetLayerInfo() {
-    if (s_device.opened) {
-        return new Promise(async (resolve, reject) => {
-            const timeout = setTimeout(() => {
-                commandPromises.delete(CMD.HID_CMD_ABOUT_LAYER);
-                reject(new Error('Timeout: No response received'));
-            }, COMMAND_TIMEOUT); // 设置超时时间
-
-            await s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ABOUT_LAYER, 0x00])).then(() => {
-                consolelog('获取层信息:', CMD.HID_CMD_ABOUT_LAYER);
-                const commandPromise = new Promise((innerResolve) => {
-                    commandPromises.set(CMD.HID_CMD_ABOUT_LAYER, (data) => {
-                        clearTimeout(timeout);
-                        innerResolve(data);
-                    });
-                });
-                resolve(commandPromise);
-            }).catch(error => {
-                clearTimeout(timeout);
-                reject(error);
-            });
-        });
-    }
+    return sendCommand(CMD.HID_CMD_ABOUT_LAYER, [0x00], ['获取层信息']);
 }
 
+async function GetRGBInfo() {
+    return sendCommand(CMD.HID_CMD_ABOUT_RGB, [0x00], ['获取RGB信息']);
+}
 
+// 修正错误处理的函数
 function CleanReceiverDate() {
+    if(s_device == null) return;
     if (s_device.opened) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_RECEIVER_CONFIG, 0x00])).then(() => {
             consolelog('清空接收器数据:', CMD.HID_CMD_RESET_RECEIVER_CONFIG);
-        }).catch(error => {
-            reject(error);
+        }).catch((error) => {
+            console.error('Error cleaning receiver data:', error);
         });
     }
 }
 
 function ResetKeyboard() {
+    if(s_device == null) return;
     if (s_device.opened) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_CONFIG, 0x01, 0x0F])).then(() => {
             consolelog('重置键盘:', CMD.HID_CMD_RESET_CONFIG);
-        }).catch(error => {
-            reject(error);
+        }).catch((error) => {
+            console.error('Error resetting keyboard:', error);
         });
     }
 }
 
 function EnterUSBISP() {
+    if(s_device == null) return;
     if (s_device.opened) {
         s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_USBISP, 0x00])).then(() => {
             consolelog('EnterUSBISP:', CMD.HID_CMD_ENTER_USBISP);
-        }).catch(error => {
-            reject(error);
+        }).catch((error) => {
+            console.error('Error entering USBISP mode:', error);
         });
     }
 }
 
 function EnterCMSISDAP() {
-    if (s_device.opened && cmsisdap) {
-        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_DISABLE_CMSISDAP, 0x00])).then(() => {
-            consolelog('DISABLECMSISDAP:', CMD.HID_CMD_DISABLE_CMSISDAP);
-        }).catch(error => {
-            reject(error);
-        });
-    }
-    if (s_device.opened && !cmsisdap) {
-        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_CMSISDAP, 0x00])).then(() => {
-            consolelog('EnterCMSISDAP:', CMD.HID_CMD_ENTER_CMSISDAP);
-        }).catch(error => {
-            reject(error);
-        });
+    if(s_device == null) return;
+    if (s_device.opened) {
+        if (cmsisdap) {
+            s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_DISABLE_CMSISDAP, 0x00])).then(() => {
+                consolelog('DISABLECMSISDAP:', CMD.HID_CMD_DISABLE_CMSISDAP);
+            }).catch((error) => {
+                console.error('Error disabling CMSISDAP:', error);
+            });
+        } else {
+            s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_ENTER_CMSISDAP, 0x00])).then(() => {
+                consolelog('EnterCMSISDAP:', CMD.HID_CMD_ENTER_CMSISDAP);
+            }).catch((error) => {
+                console.error('Error entering CMSISDAP mode:', error);
+            });
+        }
     }
 }
 
@@ -830,13 +731,16 @@ function handleResponse(command, data, resolve) {
         case CMD.HID_CMD_ABOUT_LAYER:
             update_device_layer(data);
             break;
+        case CMD.HID_CMD_ABOUT_RGB:
+            update_device_rgb(data);
+            break;
         case CMD.HID_CMD_EXECUTE_ACTION_CODE:
             if (data[0] == 0) {
                 consolelog('Action Code Executed');
             }
             break;
         default:
-            consolelog('Unknown Data');
+            consolelog('Unknown Data', new Uint8Array(data.buffer));
             break;
     }
     resolve(data);
@@ -963,7 +867,26 @@ async function update_device_layer(data) {
     const inputdata = new Uint8Array(data.buffer);
     if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_LAYER) {
         consolelog(`update_device_layer:`, inputdata);
-        document.getElementById('layer_info').innerHTML = findSingleOneBit(inputdata[21] | inputdata[22]) + 1;
+        document.getElementById('layer_info').innerHTML = findSingleOneBit(inputdata[2] | inputdata[6]) + 1;
+
+    } else {  //收到键盘接收出错错误的数据包
+        console.error('update_device_layer：Received an error packet', inputdata);
+    }
+    /*    if ((findSingleOneBit(inputdata[21] | inputdata[22]) + 1) != layer) {
+            layer = (findSingleOneBit(inputdata[21] | inputdata[22]) + 1);
+            showNotification('激活层更改', '当前激活层为层' + layer);
+        }
+    */
+}
+
+async function update_device_rgb(data) {
+    const inputdata = new Uint8Array(data.buffer);
+    if (inputdata[0] == 0 || inputdata[0] == CMD.HID_CMD_ABOUT_RGB) {
+        consolelog(`update_device_rgb:`, inputdata);
+        const enable = inputdata[2] & 0x01; // 0位
+        const indicators = (inputdata[2] >> 1) & 0x01; // 1位
+        const mode = (inputdata[2] >> 2) & 0x3F; // 2-7位
+        document.getElementById('rgb_info').innerHTML ="轴灯:" + enable + " 指示灯:" + indicators + " 模式:" + mode + " 色相:" + inputdata[3] + " 饱和度:" + inputdata[4] + " 亮度:" + inputdata[5] + " 速度:" + inputdata[6];
 
     } else {  //收到键盘接收出错错误的数据包
         console.error('update_device_layer：Received an error packet', inputdata);
@@ -1024,6 +947,7 @@ async function refreshdata() {
 //====================================================================================键盘控制按键==================================
 //发送action命令
 async function ExecuteActionCode(data) {
+    if(s_device == null) return;
     if (s_device.opened) {
         try {
             const newData = new Uint8Array([CMD.HID_CMD_EXECUTE_ACTION_CODE, ...data]); // 创建一个新数组，包含0x40和原数组的所有元素
@@ -1104,6 +1028,16 @@ function RGBLIGHT_VAL_DECREASE() {
     ExecuteActionCode([0x02, 0x05, 0x08]);
 }
 
+//发送数据处理函数：RGBLIGHT_VAL_INCREASE
+function RGBLIGHT_SPEED_INCREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x09]);
+}
+
+//发送数据处理函数：RGBLIGHT_VAL_DECREASE
+function RGBLIGHT_SPEED_DECREASE() {
+    ExecuteActionCode([0x02, 0x05, 0x0A]);
+}
+
 //=========================================================================模式控制按钮===============================================
 //发送数据处理函数：SWITCH_USB
 function SWITCH_USB() {
@@ -1165,43 +1099,51 @@ function SWITCH_BT3() {
 
 //==========================层操作===============================
 //发送数据处理函数：LAYER1
-function defaultlayer1() {
+function DEFAULTLAYER1() {
     ExecuteActionCode([0x02, 0x12, 0x03]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER2
-function defaultlayer2() {
+function DEFAULTLAYER2() {
     ExecuteActionCode([0x02, 0x12, 0x04]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER3
-function defaultlayer3() {
+function DEFAULTLAYER3() {
     ExecuteActionCode([0x02, 0x12, 0x05]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER4
-function defaultlayer4() {
+function DEFAULTLAYER4() {
     ExecuteActionCode([0x02, 0x12, 0x06]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER5
-function defaultlayer5() {
+function DEFAULTLAYER5() {
     ExecuteActionCode([0x02, 0x12, 0x07]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER6
-function defaultlayer6() {
+function DEFAULTLAYER6() {
     ExecuteActionCode([0x02, 0x12, 0x08]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER7
-function defaultlayer7() {
+function DEFAULTLAYER7() {
     ExecuteActionCode([0x02, 0x12, 0x09]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //发送数据处理函数：LAYER8
-function defaultlayer8() {
+function DEFAULTLAYER8() {
     ExecuteActionCode([0x02, 0x12, 0x0A]);
+    setTimeout(GetLayerInfo, 1000); // 延迟1秒执行GetLayerInfo
 }
 
 //=============================无线接收器控制================================
