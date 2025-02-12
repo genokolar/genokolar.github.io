@@ -19,22 +19,22 @@ GT系列三模键盘PCB没有硬件电源开关，只需要接入电池或插入
 
 插入 USB 时，无法关机（关机后马上会被唤醒）。
 
-### 自动休眠
-在一定时间不敲击按键后，键盘将自动进入休眠模式以便省电。进入自动休眠的时间可以自由设定。
+### 自动睡眠
+在一定时间不敲击按键后，键盘将自动进入睡眠模式以便省电。进入自动睡眠的时间可以自由设定。
 
-自动休眠后，按任意键可唤醒键盘重新工作。
+自动睡眠后，按任意键可唤醒键盘重新工作。
 
-插入 USB 后，由 USB 供电，自动休眠功能不会启用，如处于休眠状态也将自动唤醒。
+插入 USB 后，由 USB 供电，自动睡眠功能不会启用，如处于睡眠状态也将自动唤醒。
 
 
-### 手动休眠
-同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>P</kbd>可以手动进入休眠模式
+### 手动睡眠
+同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>P</kbd>可以手动进入睡眠模式
 
-手动休眠后，按任意键可唤醒键盘重新工作。
+手动睡眠后，按任意键可唤醒键盘重新工作。
 
-如果启用了`唤醒按键`功能，手动休眠后唤醒时需要按<kbd>Space</kbd>+<kbd>U</kbd>才能唤醒键盘。
+如果启用了`唤醒按键`功能，手动睡眠后唤醒时需要按<kbd>Space</kbd>+<kbd>U</kbd>才能唤醒键盘。
 
-插入 USB 后，将直接唤醒键盘重新工作，并且无法手动休眠。
+插入 USB 后，将直接唤醒键盘重新工作，并且无法手动睡眠。
 
 
 ### 蓝牙连接设备
@@ -82,7 +82,7 @@ USB连接状态下，无线模式处于蓝牙模式时，可通过<kbd>Lshift</k
 此键盘支持 NKRO（全键无冲）模式。USB、蓝牙、2.4G模式均支持全键无冲模式。
 
 ### 唤醒按键
-启用`唤醒按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按唤醒按键，可任意键唤醒。
+启用`唤醒按键`功能后，手动睡眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动睡眠时，不需要按唤醒按键，可任意键唤醒。
 
 默认不启用`唤醒按键`功能，可通过<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>启用或禁用。
 
@@ -127,13 +127,13 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 ???+ tip "特别提示"
     - 默认采用<kbd>Lshift</kbd>+<kbd>Rshift</kbd>做为功能键触发按键
     - 可以通过自行编译固件使用<kbd>Lctrl</kbd>+<kbd>Rctrl</kbd> 或 <kbd>Win</kbd>+<kbd>ESC</kbd>等做为触发按键。
-    - 更改后下表所列功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为休眠。
+    - 更改后下表所列功能按键需做相应调整，如触发按键更改为<kbd>Win</kbd>+<kbd>ESC</kbd>，则按下<kbd>Win</kbd>+<kbd>ESC</kbd>+<kbd>P</kbd>为睡眠。
     - 系统功能按键为内置功能，不因修改了按键而消失，只要您确保<kbd>LShift</kbd>/<kbd>RShift</kbd>等功能触发按键存在即可使用
     - PAD数字键盘等较少按键的键盘，没有<kbd>Shift</kbd>等按键,下列系统功能可以通过配置工具-层级/功能-键盘功能进行设定。
 
 | 功能        | 按键          | 功能说明 |
 | ------------| --            |---- |
-| 休眠     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>P</kbd>        |手动进入休眠模式，按任意键可以唤醒。 |
+| 睡眠     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>P</kbd>        |手动进入睡眠模式，按任意键可以唤醒。 |
 | 关机     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>~</kbd>或<kbd>Backspace</kbd>       |手动进入关机模式。新版固件将<kbd>ESC</kbd>更换成了<kbd>Backspace</kbd>。<br>关机后需要插入USB线 或 短按背部多功能按钮开机。<br>长期不用或携带外出建议关机。 |
 | 重启     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>N</kbd>       |手动重启键盘，用于遇到部分故障后重启修正。 |
 | 有线/无线状态切换     | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>M</kbd>        |在USB有线和无线同时工作时，可以切换有线/无线连接模式。<br>如未同时使用USB有线和无线，按键无效。 |
@@ -146,9 +146,9 @@ RGB轴灯同时兼容指示灯，指示灯可通过配置工具设置一颗`状�
 | 输出电量 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>H</kbd>       |通过键盘输出当前键盘剩余电量。输出N为检测未稳定，F为满电，数字为电量百分比。|
 | 状态灯开关 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>L</kbd>       |无轴灯PCB/RGB轴灯PCB：开启或关闭状态指示灯显示（注：不包括键盘大小写等）。<br>轴灯版PCB：使轴灯在轴灯模式和指示灯模式之间切换|
 | 多功能按钮 | PCB背部按钮属于多功能按钮。| 键盘正常模式下，按下1秒以上后（不超过3秒）松手键盘关机；<br>按下4秒以上后（不超过9秒）松手键盘进入DFU刷机模式；<br>按下10秒以上后松手，键盘将重置。<br>关机状态短按一下开机。|
-| 唤醒按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`唤醒按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动休眠时，不需要按唤醒按键，可任意键唤醒。|
-| 切换唤醒按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`唤醒按键`功能。<br> 启用`唤醒按键`功能后，手动休眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
-| 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 休眠或关机后唤醒自动恢复第1层为默认层|
+| 唤醒按键 |  <kbd>Space</kbd>+<kbd>U</kbd> | 启用`唤醒按键`功能后，手动睡眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘。<br>自动睡眠时，不需要按唤醒按键，可任意键唤醒。|
+| 切换唤醒按键 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>I</kbd>       |启用或禁用`唤醒按键`功能。<br> 启用`唤醒按键`功能后，手动睡眠后唤醒需按<kbd>Space</kbd>+<kbd>U</kbd>唤醒键盘|
+| 切换默认层 |  <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>数字键</kbd> | <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>1</kbd>切换默认层到第2层。 <br> <kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>0</kbd>切换默认层到第1层。<br> 睡眠或关机后唤醒自动恢复第1层为默认层|
 | RGB调整颜色 | <kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>      | 轴灯版（轴灯模式下）为控制轴灯；非轴灯版为控制底灯<br>同时按下<kbd>Lshift</kbd>+<kbd>Rshift</kbd>时按<kbd>A</kbd>/<kbd>S</kbd>/<kbd>D</kbd>/<kbd>F</kbd>/<kbd>C</kbd>/<kbd>V</kbd>，<br>分别是增加饱和度、降低饱和度、增加亮度、降低亮度、增加色调、降低色调。|
 | RGB灯效循环 |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>Z</kbd>      | RGB轴灯版为控制RGB轴灯在灯效之间循环<br>轴灯版（轴灯模式下）为控制轴灯在常亮、呼吸、多彩变换之间循环<br>非轴灯版为控制底灯在32种灯效之间循环 |
 | RGB灯开关   |<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>X</kbd>      | RGB轴灯版为RGB轴灯开关<br>轴灯版（轴灯模式下）为轴灯开关<br>非轴灯版为RGB底灯开关|
