@@ -1,4 +1,4 @@
-const CURRENT_CACHE_VERSION = 7; // 当前缓存版本
+const CURRENT_CACHE_VERSION = 10; // 当前缓存版本
 const CACHE_NAME = `2.4G-Receiver-v${CURRENT_CACHE_VERSION}`;
 
 const broadcast = new BroadcastChannel('sw-update-channel');
@@ -11,10 +11,10 @@ self.addEventListener('install', event => {
     try {
       const cache = await caches.open(CACHE_NAME);
       await cache.addAll([
-        './index.html',
-        './css/24g.css',
-        './js/script.js',
-        './app.png',
+        '/offline.html',
+        '/css/24g.css',
+        '/js/script.js',
+        '/app.png',
       ]);
       broadcast.postMessage({ type: CRITICAL_SW_UPDATE_MESSAGE });
     } catch (error) {
@@ -37,31 +37,31 @@ self.addEventListener('activate', event => {
   })());
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith((async () => {
-    const cache = await caches.open(CACHE_NAME);
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
 
-    // 从缓存中获取资源
-    const cachedResponse = await cache.match(event.request);
-    if (cachedResponse) {
-      return cachedResponse;
-    }
+      if (event.request.method !== 'GET') return;
 
-    try {
-      // 如果资源不在缓存中，尝试从网络获取
-      const fetchResponse = await fetch(event.request);
+      let response;
 
-      // 只有当状态码为 200 时才缓存资源
-      if (fetchResponse.ok) {
-        // 将新获取的资源添加到缓存中
-        cache.put(event.request, fetchResponse.clone());
+      response = await cache.match(event.request);
+      if (response) return response;
+
+      try {
+        const fetchResponse = await fetch(event.request);
+        if (fetchResponse.ok) {
+          cache.put(event.request, fetchResponse.clone());
+          return fetchResponse;
+        }
+      } catch (error) {
+        response = await cache.match('/offline.html');
       }
-      return fetchResponse;
-    } catch (error) {
-      // 网络请求失败，返回一个错误信息的文本响应
-      return new Response('Network request failed.', { status: 500 });
-    }
-  })());
+
+      return response || new Response('Offline page not found', { status: 404 });
+    })()
+  );
 });
 
 self.addEventListener('message', event => {

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h1>2.4G接收器控制面板</h1>
+  <h1>2.4G接收器控制面板（离线）</h1>
 
 
   <div class="text">
@@ -32,18 +32,6 @@
   <div class="footer">
     <div class="copyright"> <a href="https://glab.online/" title="版本: 2.0_20250116">键圈欢乐多</a> - <a href="https://beian.miit.gov.cn/">蜀ICP备19008711号</a> © 2025-2029 Glab.online </div>
   </div>
-  <script>
-  if ('serviceWorker' in navigator) {
-    const serviceWorkerUrl = '/2.4G/sw-2.4g.js';
-    navigator.serviceWorker.register(serviceWorkerUrl, { scope: '/2.4G/' })
-      .then((registration) => {
-        console.log('Service Worker registered:', registration);
-      })
-      .catch((error) => {
-        console.error('Service Worker registration failed:', error);
-      });
-  }
-  </script>
 </body>
 
 </html>
