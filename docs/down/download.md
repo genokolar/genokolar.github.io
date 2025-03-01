@@ -19,13 +19,11 @@ hide:
 
 === "键盘主控固件"
 
-    - 2025.02.11更新（预发布，建议完整擦除芯片数据后刷入完整固件）:
+    - 2025.03.0 1更新（建议完整擦除芯片数据后刷入完整固件）:
 
-        - 系统功能按键支持重启：<kbd>Lshift</kbd>+<kbd>Rshift</kbd>+<kbd>N</kbd>
-        - 无线模式及通道间切换机制更新
-        - 支持HID返回RGB信息
-        - 修正RGB存储数据错误
-        - 编译优化
+        - 支持自定义Tapping term，默认启用 “permissive hold” 模式（Tapping term >=200启用）
+        - 修正LEDMAP开关问题（老键盘的三灯指示灯）
+        - 微调部分代码
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="https://down6.glab.online:5550/Glab3.2/" class="button2">🌏官方下载（IPv6）</a>
