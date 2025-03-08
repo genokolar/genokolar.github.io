@@ -1,0 +1,348 @@
+:root {
+    /* 定义全局样式变量 */
+    --background-color: #f4f4f9; /* 浅灰蓝背景 */
+    --header-background-color: #77b4f0; /* 灰蓝色 */
+    --header-text-color: #fff; /* 白色文字 */
+    --tab-background-color: #fafafa; /* 浅灰色 */
+    --tab-text-color: #333; /* 深灰色文字 */
+    --tab-button-hover-color: #f3f3f3; /* 悬停时稍浅的灰色 */
+    --tab-button-active-color: #efefef; /* 激活时更浅的灰色 */
+    --tab-button-active-font-color: #77b4f0; /* 激活时蓝色文字 */
+    --tab-button-font-color: #666; /* 默认灰色文字 */
+    --button-background-color: #52a2f0; /* 浅蓝色按钮 */
+    --button-hover-background-color: #66a5e0; /* 悬停时稍暗的蓝色 */
+    --button-text-color: #fff; /* 白色按钮文字 */
+    --tab-content-background-color: #fafafa; /* 浅白色内容背景 */
+    --help-text-color: #666; /* 浅灰色帮助文字 */
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微的盒子阴影 */
+    --button-box-shadow-color: 0 2px 4px rgb(0, 0, 0, 0.15); /* 轻微的盒子阴影 */
+    --content-border-color: 1px solid #e8e8e8; /* 浅灰色边框 */
+}
+
+.dark-theme {
+    /* 定义暗色主题样式变量 */
+    --background-color: #2e3440; /* 深蓝色背景 */
+    --header-background-color: #4c566a; /* 深灰色标题背景 */
+    --tab-background-color: #3b4252; /* 更深的灰色标签背景 */
+    --tab-text-color: #eceff4; /* 浅灰色标签文字 */
+    --tab-button-hover-color: #434c5e; /* 悬停时稍浅的深灰色 */
+    --tab-button-active-color: #323848; /* 激活时更深的灰色 */
+    --tab-button-active-font-color: #77b4f0; /* 激活时浅蓝色文字 */
+    --tab-button-font-color: #8892a3; /* 默认灰色文字 */
+    --button-background-color: #4c566a; /* 深灰色按钮背景 */
+    --button-hover-background-color: #5e6475; /* 悬停时稍浅的深灰色 */
+    --button-text-color: #eceff4; /* 浅灰色按钮文字 */
+    --tab-content-background-color: #3b4252; /* 深灰色内容背景 */
+    --help-text-color: #8892a3; /* 浅灰色帮助文字 */
+    --box-shadow-color: 0 4px 8px rgba(0, 0, 0, 0.2); /* 稍重的盒子阴影 */
+    --button-box-shadow-color: 0 2px 4px rgba(0, 0, 0, 0.2); /* 轻微的盒子阴影 */
+    --content-border-color: 1px solid #434c5e; /* 深灰色边框 */
+}
+
+
+/* 基本样式 */
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", 'Arial', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 10px 0;
+    color: var(--tab-text-color);
+}
+
+li {
+    padding: 3px 0;
+}
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: var(--box-shadow-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+}
+
+.header {
+    /* 定义头部样式 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-color);
+}
+
+.header-info {
+    /* 定义头部信息样式 */
+    display: flex;
+    align-items: center;
+}
+
+.header-info i {
+    /* 定义头部信息图标样式 */
+    margin-right: 8px;
+}
+
+.tab {
+    /* 定义标签页样式 */
+    overflow: hidden;
+    border: var(--content-border-color);
+    background-color: var(--tab-background-color);
+    margin-top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: var(--button-box-shadow-color);
+}
+
+.tab button {
+    /* 定义标签页按钮样式 */
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+    color: var(--tab-button-font-color);
+    width: auto;
+    text-align: left;
+    float: left;
+    /* 使按钮横向排列 */
+}
+
+.tab button:hover {
+    /* 定义标签页按钮悬停样式 */
+    background-color: var(--tab-button-hover-color);
+}
+
+.tab button.active {
+    /* 定义标签页按钮激活样式 */
+    background-color: var(--tab-button-active-color);
+    color: var(--tab-button-active-font-color);
+}
+
+.tab-content {
+    /* 定义标签页内容样式 */
+    display: none;
+    padding: 20px 1em;
+    border: var(--content-border-color);
+    border-top: none;
+    background-color: var(--tab-content-background-color);
+    transition: background-color 0.3s;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: var(--button-box-shadow-color);
+    gap: 10px;
+    min-height: 190px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.tab-content.active {
+    /* 定义激活的标签页内容样式 */
+    display: flex;
+}
+
+.button {
+    /* 定义按钮样式 */
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: var(--button-box-shadow-color);
+    text-align: center;
+}
+
+.button:hover {
+    /* 定义按钮悬停样式 */
+    background-color: var(--button-hover-background-color);
+    transform: translateY(-2px);
+}
+
+.status {
+    /* 定义状态样式 */
+    display: inline-block;
+}
+
+.status i {
+    /* 定义状态图标样式 */
+    margin-right: 5px;
+}
+
+.theme i {
+    /* 定义状态图标样式 */
+    margin-left: 10px;
+}
+
+.theme-button {
+    /* 定义主题切换按钮样式 */
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: var(--button-text-color);
+}
+
+.theme-button:hover {
+    /* 定义主题切换按钮悬停样式 */
+    opacity: 0.8;
+}
+
+.text {
+    /* 定义帮助信息样式 */
+    color: var(--help-text-color);
+}
+
+.text-content {
+    flex: 1;
+    margin: 10px 10px 10px 50px;
+    min-width: 120px;
+    max-width: 40%;
+}
+
+.info-content {
+    display: flex;
+    margin-left: 10px;
+    min-height: 24px;
+    color: var(--tab-text-color);
+}
+
+.button-content {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top:15px;
+}
+
+.mode-button-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top:15px;
+}
+
+.info-content i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.info-content span {
+    align-self:center;
+}
+
+.footer {
+    margin-top: 15px;
+    text-align:center;
+}
+
+a {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:link {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:visited {
+    color: var(--tab-text-color);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--tab-button-active-font-color);
+    text-decoration: none;
+}
+
+.copyright {
+    color: var(--tab-text-color);
+}
+
+/* 需单独设定样式的元素 */
+div #help.text  {
+    margin: 0 10px 10px 20px;
+}
+
+label.keyboard-info {
+    padding: 0;
+    margin: 0;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--tab-text-color);
+}
+
+
+@media (min-width: 801px) {
+    .container {
+        max-width: 720px;
+    }
+    .button {
+        padding: 10px 10px;
+        margin: 5px;
+        font-weight: 600;
+        min-width: 96px;
+        max-width: 136px;
+        max-height: 38px;
+    }
+    .tab button {
+        font-size: 17px;
+    }
+    .status {
+        margin-left: 15px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 800px) {
+    body{
+        padding: 3px;
+        font-size: 14px;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .tab button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .button {
+        padding: 3px 3px;
+        margin: 0px;
+        font-size: 12px;
+        font-weight: 500;
+        max-width: fit-content;
+        min-width: 72px;
+        min-height: 28px;
+        max-height: 32px;
+    }
+    .status {
+        margin-left: 8px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 600px) {
+    .status_misc {
+        display: none;
+    }
+    .container {
+        min-width: 356px;
+    }
+    .device-info {
+        padding-top: 10px;
+        margin-left: 10px;
+        min-width: 210px;
+    }
+}
