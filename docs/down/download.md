@@ -19,10 +19,12 @@ hide:
 
 === "键盘主控固件"
 
-    - 2025.03.0 1更新（建议完整擦除芯片数据后刷入完整固件）:
+    - 2025.03.18更新（建议完整擦除芯片数据后刷入完整固件）:
 
-        - 支持自定义Tapping term，默认启用 “permissive hold” 模式（Tapping term >=200启用）
-        - 修正LEDMAP开关问题（老键盘的三灯指示灯）
+        - 支持 “hold on other key press” 模式
+        - 当tapping term> 250 时自动启用“permissive hold” 与 “hold on other key pres” 模式
+        - 重新启用看门狗增强键盘稳定性
+        - 修正无线模式通道切换出错问题
         - 微调部分代码
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
