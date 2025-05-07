@@ -88,7 +88,7 @@ const devices = [
     { name: 'Omega40 A', vendor: 0x4366, product: 0x0320, version: 0x0000 },
     { name: 'Volta9', vendor: 0x4366, product: 0x0321, version: 0x0000 },
     { name: 'Newhope64 B', vendor: 0x4366, product: 0x0322, version: 0x0000 },
-    { name: 'Planck B', vendor: 0x4366, product: 0x0323, version: 0x0000 },
+    { name: 'Planck B', vendor: 0x4366, product: 0x0323, version: 0x0001 },
     { name: 'HAL67 A', vendor: 0x4366, product: 0x0324, version: 0x0000 },
     { name: 'Double Q9', vendor: 0x4366, product: 0x0325, version: 0x0000 },
     { name: '2.4G接收器', vendor: 0x4366, product: 0x0500, version: 0x0000 },
