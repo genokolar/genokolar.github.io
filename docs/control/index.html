@@ -29,10 +29,11 @@
         <div class="tab">
             <button id="system-tab" class="tablinks" onclick="openTab(event, 'Tab1')"><i class="fas fa-cog"></i> 系统 </button>
             <button id="receiver-tab" class="tablinks" onclick="openTab(event, 'Tab2'); GetRXInfo();" style="display: none;"><i class="fas fa-toolbox"></i> 接收器 </button>
-            <button id="mode-tab" class="tablinks" onclick="openTab(event, 'Tab3'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
-            <button id="light-tab" class="tablinks" onclick="openTab(event, 'Tab4'); GetRGBInfo();"><i class="fas fa-adjust"></i> 灯光 </button>
-            <button id="layer-tab" class="tablinks" onclick="openTab(event, 'Tab5'); GetLayerInfo();"><i class="fas fa-layer-group"></i> 层控 </button>
-            <button id="help-tab" class="tablinks" onclick="openTab(event, 'Tab6')"><i class="fas fa-hands-helping"></i> 帮助 </button>
+            <button id="rx-tab" class="tablinks" onclick="openTab(event, 'Tab3'); GetRXInfo();" style="display: none;"><i class="fas fa-wifi"></i> 无线 </button>
+            <button id="mode-tab" class="tablinks" onclick="openTab(event, 'Tab4'); GetModeInfo();"><i class="fas fa-keyboard"></i> 模式 </button>
+            <button id="light-tab" class="tablinks" onclick="openTab(event, 'Tab5'); GetRGBInfo();"><i class="fas fa-adjust"></i> 灯光 </button>
+            <button id="layer-tab" class="tablinks" onclick="openTab(event, 'Tab6'); GetLayerInfo();"><i class="fas fa-layer-group"></i> 层控 </button>
+            <button id="help-tab" class="tablinks" onclick="openTab(event, 'Tab7')"><i class="fas fa-hands-helping"></i> 帮助 </button>
         </div>
 
         <div id="Tab1" class="tab-content system-tab-content">
@@ -79,6 +80,21 @@
         </div>
 
         <div id="Tab3" class="tab-content">
+            <div class="text-content device-info">
+                <label class="keyboard-info">无线信息</label>
+                <ul>
+                    <li><span>连接设备数量：</span><span id="link_num"> </span> / </span><span id="pipe_num"> </span></li>
+                    <li><span>无线通讯频道：</span><span id="link_channel"> </span></li>
+                    <li><span>绑定管道索引：</span><span id="pipe_index"> </span></li>
+                </ul>
+            </div>
+            <div class="button-content">
+                <button name="refreshrxinfo" id="send-button1" class="button" style="background: rgb(26, 135, 47); width: 136px;" title="重新获取无线信息" onclick="GetRXInfo();">刷新数据</button>
+                <button name="cleanrxrxdata" id="send-button1" class="button" style="background: rgb(176, 0, 0); width: 136px;" title="重置接收模式存储键盘配对数据" onclick="CleanRXDate();">重置接收配对</button>
+            </div>
+        </div>
+
+        <div id="Tab4" class="tab-content">
             <div class="info-content mode">
                 <i class="fas fa-keyboard" onclick="GetModeInfo();"></i><span>模式：</span><span id="link_mode_info"></span>
             </div>
@@ -96,7 +112,7 @@
             </div>
         </div>
 
-        <div id="Tab4" class="tab-content">
+        <div id="Tab5" class="tab-content">
             <div class="info-content rgb">
                 <i class="fas fa-adjust" onclick="GetRGBInfo();"></i><span>灯光信息：</span><span id="rgb_info"></span>
             </div>
@@ -116,7 +132,7 @@
             </div>
         </div>
 
-        <div id="Tab5" class="tab-content">
+        <div id="Tab6" class="tab-content">
             <div class="info-content layer">
                 <i class="fas fa-layer-group" onclick="GetLayerInfo();"></i><span>激活层：</span><span id="layer_info"></span>
             </div>
@@ -132,7 +148,7 @@
             </div>
         </div>
 
-        <div id="Tab6" class="tab-content">
+        <div id="Tab7" class="tab-content">
             <div class="text" id="help">
                 <p>版本：<span id="version"></span></p>
                 1. 初次连接的设备需要先授权连接,授权后的USB设备接入后可自动连接<br />
@@ -153,7 +169,7 @@
         if('serviceWorker' in navigator) {
           navigator.serviceWorker.register('./sw_keyctrl.js', { scope: './' });
         }
-        var version = "2.6_20250507";
+        var version = "2.6_20250522";
         // 在页面加载完成后设置版本信息
         document.addEventListener("DOMContentLoaded", function() {
         // 设置版本信息

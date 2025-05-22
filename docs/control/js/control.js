@@ -320,6 +320,10 @@ async function default_device_info() {
     document.getElementById('receiver_pipe_index').innerHTML = "";
     document.getElementById('receiver_link_channel').innerHTML = "";
     document.getElementById('receiver_link_num').innerHTML = "";
+    document.getElementById('pipe_num').innerHTML = "";
+    document.getElementById('pipe_index').innerHTML = "";
+    document.getElementById('link_channel').innerHTML = "";
+    document.getElementById('link_num').innerHTML = "";
     document.getElementById('receiver_hardware').innerHTML = "";
     document.getElementById('receiver_firmware').innerHTML = "";
     document.getElementById('receiver_firmware').setAttribute('title', "");
@@ -481,6 +485,11 @@ async function OpenDevice(opendevice) {
             if (check_receiver(opendevice)) {
                 is_receiver = true;
                 document.getElementById('receiver-tab').style.display = 'block';
+                document.getElementById('rx-tab').style.display = 'none';
+            } else {
+                is_receiver = false;
+                document.getElementById('receiver-tab').style.display = 'none';
+                document.getElementById('rx-tab').style.display = 'block';
             }
 
             opendevice.oninputreport = ({ device, reportId, data }) => {
@@ -634,6 +643,17 @@ function CleanReceiverDate() {
             consolelog('清空接收器数据:', CMD.HID_CMD_RESET_RECEIVER_CONFIG);
         }).catch((error) => {
             console.error('Error cleaning receiver data:', error);
+        });
+    }
+}
+
+function CleanRXDate() {
+    if(s_device == null) return;
+    if (s_device.opened) {
+        s_device.sendReport(reportId, new Uint8Array([CMD.HID_CMD_RESET_ESB_RX_CONFIG, 0x00])).then(() => {
+            consolelog('清空接收器数据:', CMD.HID_CMD_RESET_ESB_RX_CONFIG);
+        }).catch((error) => {
+            console.error('Error cleaning RX mode data:', error);
         });
     }
 }
