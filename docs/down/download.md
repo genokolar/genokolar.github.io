@@ -84,6 +84,13 @@ hide:
       <a href="https://down6.glab.online:5550/dxf" class="button2">🌍官方下载（IPv6）</a>
       <a href="https://pan.quark.cn/s/1d8c704f258b" class="button2">🗂️夸克网盘下载</a>
 
+=== "键盘外壳图纸"
+
+    - 部分键盘的3D外壳图纸，可用于3D打印外壳或CNC铝合金外壳
+
+      <a href="https://down.glab.online:5550/3d" class="button2">🌍官方下载</a>
+      <a href="https://down6.glab.online:5550/3d" class="button2">🌍官方下载（IPv6）</a>
+
 === "GT PAD 开源文件" 
 
     - 定位板制造文件、外壳3D图纸等硬件开源文件
