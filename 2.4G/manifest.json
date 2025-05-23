@@ -1,0 +1,15 @@
+{
+    "name": "Glab接收器",
+    "short_name": "2.4G Receiver",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "Glab系列键盘2.4G接收器在线控制面板.",
+    "icons": [
+      {
+        "src": "app.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
