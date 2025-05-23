@@ -19,13 +19,10 @@ hide:
 
 === "键盘主控固件"
 
-    - 2025.03.18更新（建议完整擦除芯片数据后刷入完整固件）:
+    - 2025.05.29更新:
 
-        - 支持 “hold on other key press” 模式
-        - 当tapping term> 250 时自动启用“permissive hold” 与 “hold on other key pres” 模式
-        - 重新启用看门狗增强键盘稳定性
-        - 修正无线模式通道切换出错问题
-        - 微调部分代码
+        - 优化2.4G接收器模式
+        - 优化指示灯功能
 
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="https://down6.glab.online:5550/Glab3.2/" class="button2">🌏官方下载（IPv6）</a>
@@ -83,6 +80,14 @@ hide:
       <a href="https://down.glab.online:5550/dxf" class="button2">🌍官方下载</a>
       <a href="https://down6.glab.online:5550/dxf" class="button2">🌍官方下载（IPv6）</a>
       <a href="https://pan.quark.cn/s/1d8c704f258b" class="button2">🗂️夸克网盘下载</a>
+
+=== "键盘外壳图纸"
+
+    - 部分键盘的3D外壳图纸，可用于3D打印外壳或CNC铝合金外壳
+
+      <a href="https://down.glab.online:5550/3d" class="button2">🌍官方下载</a>
+      <a href="https://down6.glab.online:5550/3d" class="button2">🌍官方下载（IPv6）</a>
+      <a href="https://pan.quark.cn/s/681369b5421e" class="button2">🗂️夸克网盘下载</a>
 
 === "GT PAD 开源文件" 
 
