@@ -37,7 +37,7 @@
     
 === "文字说明"
 
-    1. 下载LotKB专属 [烧录工具](https://down.glab.online:5550/wch_nrf_burner_setup_1.2.2.0.exe)，并安装。
+    1. 下载LotKB专属 [烧录工具](down/download.md#_3)，并安装。
     2. 下载键盘对应的 `键盘主控核心固件` 或 `键盘主控完整固件` [🌍蓝牙固件下载地址](https://down.glab.online:5550/Glab3.2/)
     3. 打开烧录工具`wch_nrf_burner.exe`。
     4. 直接通过USB连接键盘。
