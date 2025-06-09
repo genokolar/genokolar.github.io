@@ -19,21 +19,21 @@
 1. 如采用Chrome 89+ / Edge 89+ / Opera 75+ 等支持WebHID API的浏览器，可免服务端使用配置工具。
 2. 如采用的浏览器不支持WebHID或需要离线使用等情况，请采用启用配置工具服务端的方式。
 
-### 1.使用WebHID方式
+### 方式一：使用WebHID方式
 
 WebHID API 在 所有桌面平台（ChromeOS、Linux、macOS 和 Windows）上均可用
 
 支持的浏览器包括Chrome 89+ / Edge 89+ / Opera 75+ 以及采用Chrome浏览器内核的浏览器，如 QQ浏览器 / 360浏览器等
 
-一、 用USB线/蓝牙/2.4G连接键盘均可配置按键
+1. 用USB线/蓝牙/2.4G连接键盘均可配置按键
 
-二、使用上述浏览器访问[🌍配置工具网站](https://keyboard.lotlab.org/)
+2. 使用上述浏览器访问[🌍配置工具网站](https://keyboard.lotlab.org/)
 
-三、点击设备列表旁边的刷新按钮，等待弹出授权窗口。在授权窗口选择对应的设备授权后，即可在设备列表内找到对应的可配置设备。
+3. 点击设备列表旁边的刷新按钮，等待弹出授权窗口。在授权窗口选择对应的设备授权后，即可在设备列表内找到对应的可配置设备。
 
-四、WebHID 配置需要新版固件支持，若在弹出设备列表中无法找到对应设备，请先尝试更新设备固件。
+4. WebHID 配置需要新版固件支持，若在弹出设备列表中无法找到对应设备，请先尝试更新设备固件。
 
-!!! tip "当前 WebHID 配置尚处于测试阶段，只能在未启动本地服务器时使用"
+!!! tip "当前 WebHID 配置仅在未启动本地服务器时可用"
 
 - 蓝牙无线改键注意事项
 
@@ -66,49 +66,49 @@ KERNEL=="hidraw*", KERNELS=="*4366:1024*", MODE="0664", GROUP="plugdev"
 确保您的 user 是 ```plugdev``` 群组的成员，或根据你的用户名所属群组进行修改，如修改为 ```users``` 。然后重启主机连接您的设备。
 
 
-### 2.使用服务端方式
+### 方式二：使用服务端方式
 
 配置工具本地服务端仅支持USB连线方式进行改键，支持多平台。
 
-一、访问[下载页面](down/download.md)下载本地服务端。 
+1. 访问[下载页面](down/download.md)下载本地服务端。 
 
-二、请根据您使用的操作系统下载对应的配置工具：
+2. 请根据您使用的操作系统下载对应的配置工具：
 
-- 若您正在使用64位的Windows，请下载文件名中带有 win-x64字样的压缩包
-- 若您正在使用x86-64的Linux，请下载文件名中带有linux-x64字样的压缩包
-- 若您正在使用64位的macOS，请下载文件名中带有osx-x64字样的压缩包
-- 若您正在使用32位的上述操作系统，或ARM平台的上述操作系统，请下载文件名中带有universal字样的压缩包
+    - 若您正在使用64位的Windows，请下载文件名中带有 win-x64字样的压缩包
+    - 若您正在使用x86-64的Linux，请下载文件名中带有linux-x64字样的压缩包
+    - 若您正在使用64位的macOS，请下载文件名中带有osx-x64字样的压缩包
+    - 若您正在使用32位的上述操作系统，或ARM平台的上述操作系统，请下载文件名中带有universal字样的压缩包
 
-三、下载完毕后解压，并运行本地服务端程序。各版本运行方法：
+3. 下载完毕后解压，并运行本地服务端程序。各版本运行方法：
 
-- Windows 64位: 
-    - 直接双击打开lkb-configurator-server.exe
+    - Windows 64位: 
+        - 直接双击打开lkb-configurator-server.exe
 
-- macOS 64位: 
+    - macOS 64位: 
 
-    1. 在解压后文件夹中打开终端，输入```chmod +x ./lkb-configurator-server``` 然后回车，为此文件添加可执行权限
-    2. 输入```./lkb-configurator-server```然后回车，运行本地服务端
-    3.  如不是在解压后文件夹中打开的终端，上述命令中请加入完整路径，如
-    ```
-      chmod +x /users/name/lkb-configurator-server
-      sudo /users/name/lkb-configurator-server
-    ```
+        1. 在解压后文件夹中打开终端，输入```chmod +x ./lkb-configurator-server``` 然后回车，为此文件添加可执行权限
+        2. 输入```./lkb-configurator-server```然后回车，运行本地服务端
+        3.  如不是在解压后文件夹中打开的终端，上述命令中请加入完整路径，如
+        ```
+          chmod +x /users/name/lkb-configurator-server
+          sudo /users/name/lkb-configurator-server
+        ```
 
-- Linux 64位: 
-    1. 在解压后文件夹中打开终端，输入```chmod +x ./lkb-configurator-server``` 然后回车，为此文件添加可执行权限
-    2. 输入```sudo ./lkb-configurator-server``` 然后回车，运行本地服务端
-    3. 如不是在解压后文件夹中打开的终端，上述命令中请加入完整路径，如
-    ```
-    chmod +x /home/user/lkb-configurator-server
-    sudo /home/user/lkb-configurator-server
-    ```
+    - Linux 64位: 
+        1. 在解压后文件夹中打开终端，输入```chmod +x ./lkb-configurator-server``` 然后回车，为此文件添加可执行权限
+        2. 输入```sudo ./lkb-configurator-server``` 然后回车，运行本地服务端
+        3. 如不是在解压后文件夹中打开的终端，上述命令中请加入完整路径，如
+       ```
+        chmod +x /home/user/lkb-configurator-server
+        sudo /home/user/lkb-configurator-server
+        ```
 
-- Universal: 
+    - Universal: 
     
-    1. 安装 [🌍.net core 运行环境](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)，选择download hosting bundle
-    2. 在命令行环境（终端）下输入 dotnet lkb-configurator-server.dll 然后回车
+        1. 安装 [🌍.net core 运行环境](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)，选择download hosting bundle
+        2. 在命令行环境（终端）下输入 dotnet lkb-configurator-server.dll 然后回车
 
-四、用USB线连接键盘，访问[🌍配置工具网站](https://keyboard.lotlab.org/)
+4. 用USB线连接键盘，访问[🌍配置工具网站](https://keyboard.lotlab.org/)
 
 按键配置方法
 ----------
