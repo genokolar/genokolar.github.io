@@ -167,6 +167,9 @@ nav:
       - 常见问答: faq.md
       - 故障排除: trouble.md
       - 组装键盘: pdf/怎么组装键盘.pdf
+      - 编译指南: build.md
+      - 移植指南: porting.md
+      - 傻瓜式编译: githubaction.md
     - 产品信息:
       - 2.4G接收器: keyboard/receiver.md
       - GT Volta9: keyboard/volta9.md
@@ -179,12 +182,9 @@ nav:
       - Omega45: keyboard/omega45.md
       - GT BLE60: keyboard/gt_ble60.md
       - Farad69: keyboard/farad69.md
-    - 更新日志: changelog.md
-    - 相关下载: down/download.md
-    - 开发指南:
-        - 编译指南: build.md
-        - 移植指南: porting.md
-        - 傻瓜式编译: githubaction.md
+    - 下载更新: 
+      - 更新日志: changelog.md
+      - 相关下载: down/download.md
     - 信息动态: blog/info.md
     - 键盘控制: control/index.html
     - 键盘测试: keytest/index.html

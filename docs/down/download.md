@@ -6,10 +6,6 @@ hide:
 相关下载
 ==========
 
-!!! note "提示"
-
-    - | [怎么升级2.4G无线功能](../keyboard/receiver.md) | [如何更新键盘主控固件?](../upgrade.md#更新键盘主控固件)  |  [如何更新USB固件?](../upgrade.md#更新USB固件) |  [固件名称命令规则？](../faq.md#固件名称命令规则)   |  
-
 !!! info "下载固件之前，建议先查看[更新日志](../changelog.md)"
 
 ### 固件下载
@@ -24,6 +20,8 @@ hide:
         - 优化2.4G接收器模式
         - 优化指示灯功能
 
+      [如何更新键盘主控固件?](../upgrade.md#更新键盘主控固件) 
+
       <a href="https://down.glab.online:5550/Glab3.2/" class="button2">🌍官网下载</a>
       <a href="https://down6.glab.online:5550/Glab3.2/" class="button2">🌏官方下载（IPv6）</a>
       <a href="https://github.com/genokolar/nrf52-keyboard/releases" class="button2">🧱Github发布页</a>
@@ -33,6 +31,8 @@ hide:
     - 2024.11.11更新：
         - 支持免工具USB改键
         - 建议配合2024年11月11日后键盘固件使用
+
+      [如何更新USB固件?](../upgrade.md#更新USB固件)
 
       <a href="https://down.glab.online:5550/ch554" class="button2">🌍官方下载</a>
       <a href="https://down6.glab.online:5550/ch554" class="button2">🌏官方下载（IPv6）</a>
@@ -45,6 +45,8 @@ hide:
         - 修正2.4G无线配置键盘时，HID下发配置出错问题
         - 当无键盘连接时，由接收器响应HID命令
         - 优化多键盘同时连接的通讯能力
+
+      [怎么升级2.4G无线功能](../keyboard/receiver.md#_2)
 
       <a href="https://down.glab.online:5550/receiver" class="button2">🌍官方下载</a>
       <a href="https://down6.glab.online:5550/receiver" class="button2">🌏官方下载（IPv6）</a>
