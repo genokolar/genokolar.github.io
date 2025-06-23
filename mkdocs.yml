@@ -185,10 +185,9 @@ nav:
     - 下载更新: 
       - 更新日志: changelog.md
       - 相关下载: down/download.md
-    - 信息动态: blog/info.md
+      - 信息动态: blog/info.md
     - 键盘控制: control/index.html
-    - 键盘测试: keytest/index.html
-    - 购买产品: https://glab.taobao.com
+
 
 
 copyright: <a href=https://glab.online/>键圈欢乐多</a> - <a href=http://beian.miit.gov.cn/>蜀ICP备19008711号</a> © 2024-2027 Glab.online
