@@ -1,0 +1,91 @@
+.button {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  border-radius: .2rem;
+  border-style: solid;
+  border-width: .1rem;
+  padding: .625em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: .2em .2em;
+  cursor: pointer;
+  transition: color 125ms, background-color 125ms, border-color 125ms;
+  font-weight: 600;
+}
+.button:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-accent-bg-color)
+}
+
+a.button:hover {
+  color: var(--md-accent-bg-color);
+  font-weight: 700;
+}
+
+a.button {
+  color: var(--md-accent-fg-color);
+}
+
+
+.button2 {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  border-radius: .2rem;
+  border-style: solid;
+  border-width: .1rem;
+  padding: .625em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: .2em .2em;
+  cursor: pointer;
+  transition: color 125ms, background-color 125ms, border-color 125ms;
+  font-weight: 600;
+  font-size:.8em;
+}
+
+.button2:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-accent-bg-color)
+}
+
+a.button2:hover {
+  color: var(--md-accent-bg-color);
+  font-weight: 700;
+}
+
+a.button2 {
+  color: var(--md-accent-fg-color);
+}
+
+/*自定义图标颜色
+
+.twemoji {
+    color: #1DA1F2;
+  }
+   */
+/* 自定义页面最大宽度
+  .md-grid {
+    max-width: 1440px;
+  }*/
+  .md-header__button.md-logo {
+    margin: 0; 
+    padding: 0;
+  }
+
+  .md-header__button.md-logo img {
+    height: 36px;
+    width: 36px;
+  }
+
+/* 自定义主题颜色*/
+[data-md-color-scheme="youtube"] {
+  --md-primary-fg-color:        #EE0F0F;
+  --md-primary-fg-color--light: #ECB7B7;
+  --md-primary-fg-color--dark:  #90030C;
+  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+}

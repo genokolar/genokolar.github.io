@@ -1,0 +1,15 @@
+{
+    "name": "键盘测试",
+    "short_name": "Keytest",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "在线键盘测试工具",
+    "icons": [
+      {
+        "src": "./img/app.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
